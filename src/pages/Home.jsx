@@ -176,8 +176,8 @@ export default function Home() {
           <span>Founder on every sprint</span>
         </div>
 
-        {/* Interactive Studio Workspace Sandbox */}
-        <div className="reveal relative w-full max-w-5xl" style={{ animationDelay: "280ms" }}>
+        {/* Flagship Production Project Showcase */}
+        <div className="reveal relative w-full max-w-6xl" style={{ animationDelay: "280ms" }}>
           <StudioWindow />
         </div>
       </section>
