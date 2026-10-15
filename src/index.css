@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+:root {
+  /* Surfaces & Backgrounds (Linear / Developer-tool Palette) */
+  --color-bg: #08090A;
+  --color-surface-dark: #2F3031;
+  --color-border: #494B4D;
+  --color-surface-light: #E5E5E6;
+
+  /* Typography Colors */
+  --color-text-primary: #F4F4F6;
+  --color-text-light: #D0D6E0;
+  --color-text-secondary: #8A8F98;
+  --color-text-muted: #62666D;
+
+  /* Accent Tokens */
+  --color-accent-red: #FF6363;     /* Brand primary CTA, errors, attention */
+  --color-accent-blue: #57C1FF;
+  --color-accent-green: #59D499;
+  --color-accent-yellow: #FFC533;
+  --color-accent-violet: #D3B2FF;
+
+  /* Cookie Inc. Studio Brand Identity Colors */
+  --color-extra-light-cream: #c18b13;
+  --color-light-cream: #c18b43;
+  --color-white: #f2f7f7;
+  --color-black: #0a0a0a;
+  --color-dark-cream: #86602c;
+  --color-muted: #aaaaaa;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f2f2f2;
+  --bg-dark: #212121;
+  --bg-light: #fafafa;
+  --bg-accent: #c18b43;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  /* Elevation & Highlights */
+  --hairline: 1px solid #494B4D;
+  --hairline-subtle: 1px solid rgba(73, 75, 77, 0.45);
+  --inset-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glow-red: 0 0 32px -6px rgba(255, 99, 99, 0.35);
+  --glow-cream: 0 0 32px -6px rgba(193, 139, 67, 0.35);
+  --glow-blue: 0 0 40px -8px rgba(87, 193, 255, 0.28);
+  --glow-green: 0 0 40px -8px rgba(89, 212, 153, 0.28);
+  --glow-violet: 0 0 40px -8px rgba(211, 178, 255, 0.28);
+}
+
+@theme {
+  --color-bg: #08090A;
+  --color-surface-dark: #2F3031;
+  --color-border: #494B4D;
+  --color-surface-light: #E5E5E6;
+
+  --color-text-primary: #F4F4F6;
+  --color-text-light: #D0D6E0;
+  --color-text-secondary: #8A8F98;
+  --color-text-muted: #62666D;
+
+  --color-accent-red: #FF6363;
+  --color-accent-blue: #57C1FF;
+  --color-accent-green: #59D499;
+  --color-accent-yellow: #FFC533;
+  --color-accent-violet: #D3B2FF;
+
+  /* Cookie Inc Studio Theme Keys */
+  --color-extra-light-cream: #c18b13;
+  --color-light-cream: #c18b43;
+  --color-white: #f2f7f7;
+  --color-black: #0a0a0a;
+  --color-dark-cream: #86602c;
+  --color-muted: #aaaaaa;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f2f2f2;
+  --color-bg-dark: #212121;
+  --color-bg-light: #fafafa;
+  --color-bg-accent: #c18b43;
+
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-full: 9999px;
+}
+
+/* Linear-style canvas: near-black with a faint cream aura at the top */
+body {
+  background-color: #08090A;
+  color: #F4F4F6;
+  font-family: var(--font-sans);
+  background-image:
+    radial-gradient(ellipse 70% 40% at 50% -10%, rgba(217, 165, 91, 0.10), transparent 70%);
+  background-repeat: no-repeat;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Linear headline gradient: white fading to cool grey */
+.gradient-text {
+  background: linear-gradient(180deg, #FFFFFF 0%, #D0D6E0 45%, #8A8F98 110%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Cream accent gradient for key words */
+.gradient-cream {
+  background: linear-gradient(180deg, #F3D9A8 0%, #D9A55B 60%, #B88340 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Linear bento panel: flat panel, hairline border, soft top highlight */
+.bento {
+  background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.bento:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Section separators as hairlines */
+.hairline-y { border-top: 1px solid rgba(255, 255, 255, 0.07); }
+
+/* Scroll reveal */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fade-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Linear precision card surface */
+.linear-card {
+  background: linear-gradient(180deg, rgba(47, 48, 49, 0.4) 0%, rgba(8, 9, 10, 0.7) 100%);
+  border: 1px solid rgba(73, 75, 77, 0.55);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.linear-card:hover {
+  border-color: rgba(138, 143, 152, 0.6);
+  background: linear-gradient(180deg, rgba(47, 48, 49, 0.55) 0%, rgba(8, 9, 10, 0.75) 100%);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 24px 48px -12px rgba(0, 0, 0, 0.85);
+}
+
+/* Linear primary CTA: light pill with dark text */
+.linear-btn-primary {
+  background: #E6E6E6;
+  color: #08090A;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: background 100ms ease-in-out, box-shadow 100ms ease-in-out;
+}
+
+.linear-btn-primary:hover {
+  background: #FFFFFF;
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.12), 0 0 28px -4px rgba(217, 165, 91, 0.55);
+}
+
+/* Cookie cream brand button (used for the single accent action) */
+.linear-btn-cream {
+  background: linear-gradient(180deg, #E4B46A 0%, #D9A55B 55%, #C18B43 100%);
+  color: #0A0A0A;
+  border: 1px solid rgba(245, 205, 140, 0.6);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 24px -4px rgba(217, 165, 91, 0.45);
+  transition: all 100ms ease-in-out;
+}
+
+.linear-btn-cream:hover {
+  background: linear-gradient(180deg, #ECC07A 0%, #E0AC62 55%, #C99650 100%);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5), 0 0 32px -2px rgba(217, 165, 91, 0.6);
+}
+
+.linear-btn-ghost {
+  background: rgba(47, 48, 49, 0.35);
+  color: #F4F4F6;
+  border: 1px solid rgba(73, 75, 77, 0.6);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 100ms ease-in-out;
+}
+
+.linear-btn-ghost:hover {
+  background: rgba(47, 48, 49, 0.6);
+  border-color: rgba(138, 143, 152, 0.8);
+  color: #FFFFFF;
+}
+
+/* Raycast / Linear Keycap */
+.keycap {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: #2F3031;
+  border: 1px solid #494B4D;
+  box-shadow: 0 1px 0 0 #08090A, inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  color: #D0D6E0;
+}
+
+/* Linear hairline glow beam */
+.hairline-beam {
+  position: relative;
+}
+.hairline-beam::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217, 165, 91, 0.6), transparent);
+}
+
+/* Focus visible styling (3:1 contrast ratio) */
+:focus-visible {
+  outline: 2px solid #D9A55B;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08090A;
+}
+::-webkit-scrollbar-thumb {
+  background: #494B4D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #62666D;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
