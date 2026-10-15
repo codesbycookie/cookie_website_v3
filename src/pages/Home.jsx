@@ -5,6 +5,7 @@ import Button from "../components/shared/Button";
 import SectionHeading from "../components/shared/SectionHeading";
 import Accordion from "../components/shared/Accordion";
 import StudioWindow from "../components/shared/StudioWindow";
+import StickyFeatures from "../components/shared/StickyFeatures";
 import {
   ArrowRight,
   Globe,
@@ -51,7 +52,7 @@ export default function Home() {
   const { reviews, projects } = homepage.section6;
 
   return (
-    <div className="w-full flex flex-col items-center relative overflow-hidden bg-[#08090A]">
+    <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
       {/* 1. Hero */}
       <section className="relative w-full pt-20 pb-24 md:pt-28 md:pb-32 flex flex-col items-center text-center px-5 sm:px-8">
         <div
@@ -60,7 +61,7 @@ export default function Home() {
         />
 
         <Link
-          to="/portfolio"
+          to="/work"
           className="reveal relative inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.09] hover:border-white/20 text-[13px] text-[#8A8F98] hover:text-[#F4F4F6] transition-colors mb-8 group"
         >
           <span className="font-semibold text-[#D9A55B]">New</span>
@@ -77,9 +78,9 @@ export default function Home() {
         </p>
 
         <div className="reveal relative flex flex-col sm:flex-row items-center gap-3 mb-5" style={{ animationDelay: "180ms" }}>
-          <Button to="/contact-us" variant="primary" size="lg">Start a project</Button>
+          <Button to="/contact" variant="primary" size="lg">Start a project</Button>
           <Link
-            to="/portfolio"
+            to="/work"
             className="inline-flex items-center gap-1.5 h-12 px-5 text-[15px] font-medium text-[#8A8F98] hover:text-[#F4F4F6] transition-colors"
           >
             See our work <ArrowRight className="w-4 h-4" />
@@ -131,8 +132,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 3b. Sticky scroll features */}
+      <section className="w-full hairline-y py-24 md:py-32 px-5 sm:px-8">
+        <div className="max-w-[1200px] mx-auto">
+          <SectionHeading
+            eyebrow="How it works"
+            title="One calm rhythm,"
+            highlight="from idea to launch"
+            description="Scroll through the way a Cookie project unfolds."
+          />
+          <StickyFeatures />
+        </div>
+      </section>
+
       {/* 4. Bento features */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      <section id="services" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
             eyebrow="What we build"
@@ -212,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* 5. Process */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      <section id="process" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
             eyebrow="Process"
@@ -256,7 +270,7 @@ export default function Home() {
             {projects.map((p) => (
               <Link
                 key={p.title}
-                to="/portfolio"
+                to="/work"
                 className="bento rounded-[16px] overflow-hidden group flex flex-col"
               >
                 <div className="aspect-[4/3] bg-black/30 border-b border-white/[0.07] flex items-center justify-center p-6 overflow-hidden">
@@ -306,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* 9. FAQ */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      <section id="faq" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
         <div className="max-w-[820px] mx-auto">
           <SectionHeading eyebrow="FAQ" title={homepage.section8.title} />
           <Accordion items={homepage.section8.faqs} />
@@ -314,7 +328,7 @@ export default function Home() {
       </section>
 
       {/* 10. Closing CTA */}
-      <section className="relative w-full hairline-y py-28 md:py-40 px-5 sm:px-8 text-center overflow-hidden">
+      <section id="cta" className="relative w-full hairline-y py-28 md:py-40 px-5 sm:px-8 text-center overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D9A55B]/12 blur-[140px] rounded-full pointer-events-none" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto flex flex-col items-center">
           <h2 className="gradient-text text-[36px] sm:text-[52px] md:text-[64px] font-medium tracking-[-0.035em] leading-[1.05] mb-6">
@@ -323,7 +337,7 @@ export default function Home() {
           <p className="text-[17px] text-[#8A8F98] mb-10 max-w-xl">
             Tell us what you are building. We will reply within a day with a plan, a timeline and a fixed quote.
           </p>
-          <Button to="/contact-us" variant="primary" size="lg">Start a project</Button>
+          <Button to="/contact" variant="primary" size="lg">Start a project</Button>
         </div>
       </section>
     </div>

@@ -5,30 +5,31 @@ import CookieLogo from "./CookieLogo";
 
 const COLUMNS = [
   {
-    title: "Studio",
+    title: "Navigation",
     links: [
       { name: "Home", to: "/" },
-      { name: "About", to: "/about-us" },
-      { name: "Portfolio", to: "/portfolio" },
-      { name: "Contact", to: "/contact-us" },
+      { name: "Work", to: "/work" },
+      { name: "About", to: "/about" },
+      { name: "Contact", to: "/contact" },
     ],
   },
   {
-    title: "Services",
+    title: "Sections",
     links: [
-      { name: "Web development", to: "/service" },
-      { name: "Mobile apps", to: "/service" },
-      { name: "ERP systems", to: "/service" },
-      { name: "UI/UX design", to: "/service" },
-      { name: "Branding", to: "/service" },
+      { name: "Services", to: "/#services" },
+      { name: "Process", to: "/#process" },
+      { name: "FAQ", to: "/#faq" },
+      { name: "Start a project", to: "/contact" },
     ],
   },
   {
-    title: "Work",
+    title: "Case Studies",
     links: [
-      { name: "Case studies", to: "/portfolio#case-studies" },
-      { name: "Packages", to: "/service" },
-      { name: "Process", to: "/service" },
+      { name: "All case studies", to: "/work" },
+      { name: "IQ Bridge", to: "/work/iq-bridge" },
+      { name: "Audnex", to: "/work/audnex" },
+      { name: "SAP Checklist", to: "/work/sap-checklist" },
+      { name: "Torque Toyzz", to: "/work/torque-toyzz" },
     ],
   },
 ];
@@ -116,9 +117,9 @@ export default function Footer() {
           <div>{footer.copyright}</div>
           <div className="flex items-center gap-6">
             {footer.policies.map((p) => (
-              <a key={p.name} href={p.href} className="hover:text-[#8A8F98] transition-colors">
+              <Link key={p.name} to={p.href} className="hover:text-[#8A8F98] transition-colors">
                 {p.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

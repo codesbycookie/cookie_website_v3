@@ -115,7 +115,7 @@ export default function Navbar() {
           >
             WhatsApp
           </a>
-          <Button to="/contact-us" variant="primary" size="sm" ariaLabel="Start a project">
+          <Button to="/contact" variant="primary" size="sm" ariaLabel="Start a project">
             Start a project
           </Button>
         </div>
@@ -178,7 +178,7 @@ export default function Navbar() {
               <span className="text-[#D0D6E0]">Chennai, Tamil Nadu</span>
             </div>
             <Button
-              to="/contact-us"
+              to="/contact"
               variant="primary"
               size="lg"
               className="w-full"

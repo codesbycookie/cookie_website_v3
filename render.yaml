@@ -1,0 +1,14 @@
+services:
+  # Option 1: Web Service (Full Node SSR)
+  - type: web
+    name: cookie-website-v3
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20

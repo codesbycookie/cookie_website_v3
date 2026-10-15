@@ -24,7 +24,7 @@ export default function Services() {
   const { section1, section2, section4 } = servicepage;
 
   return (
-    <div className="w-full flex flex-col items-center relative overflow-hidden bg-[#08090A]">
+    <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
       {/* Hero */}
       <section className="relative w-full pt-24 pb-20 md:pt-32 md:pb-28 px-5 sm:px-8 flex flex-col items-center text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-[#D9A55B]/10 blur-[150px] rounded-full pointer-events-none" aria-hidden="true" />

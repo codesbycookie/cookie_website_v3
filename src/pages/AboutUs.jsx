@@ -19,7 +19,7 @@ export default function AboutUs() {
   const pillars = aboutpage.section3.items;
 
   return (
-    <div className="w-full flex flex-col items-center relative overflow-hidden bg-[#08090A]">
+    <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
       {/* Hero */}
       <section className="relative w-full pt-24 pb-24 md:pt-32 md:pb-32 px-5 sm:px-8 flex flex-col items-center text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-[#D9A55B]/10 blur-[150px] rounded-full pointer-events-none" aria-hidden="true" />
@@ -113,7 +113,7 @@ export default function AboutUs() {
             {aboutpage.section4.hypertext}
           </h2>
           <p className="text-[16px] text-[#8A8F98] mb-9">Let us build the next chapter together.</p>
-          <Button to="/contact-us" variant="primary" size="lg">Start a project</Button>
+          <Button to="/contact" variant="primary" size="lg">Start a project</Button>
         </div>
       </section>
     </div>

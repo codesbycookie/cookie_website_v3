@@ -4,357 +4,356 @@ import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 export const homepage = {
   section1: {
     globe_description:
-      "From modern websites to intelligent mobile apps, we help businesses scale with purpose-driven digital solutions.",
-    first_button: "Discover more",
-    second_button: "Start Your Project",
+      "Websites, mobile apps, and custom tools built for speed and clarity. Shipped by engineers in Chennai.",
+    first_button: "See our work",
+    second_button: "Start a project",
   },
   section2: {
-    heading: "Solutions Built for Business Growth",
+    heading: "Software built to ship and scale",
     description:
-      "From modern websites to intelligent mobile apps, we help businesses scale with purpose-driven digital solutions.",
+      "We design and engineer production software for founders and growing teams. Fast load times, clean code, zero agency layers.",
     feature_cards: [
       {
         title: "Web Development",
         content:
-          "Tailored designs that connect your brand with your audience, professionally and effectively.",
-        img: "/imgs/web-development-icon.svg",
+          "High-performance web apps built with modern React. Fast to load, easy to index, and structured for conversion.",
+        img: "./imgs/web-development-icon.svg",
       },
       {
         title: "App Development",
         content:
-          "Applications engineered to deliver seamless user experiences and drive measurable results.",
-        img: "/imgs/Mobile-dev.png",
+          "iOS and Android apps with native responsiveness. One unified codebase that runs reliably in production.",
+        img: "./imgs/Mobile-dev.png",
       },
     ],
   },
   section3: {
-    heading: "Discover additional services that elevate your digital journey beyond expectations.",
+    heading: "Design, distribution, and code support under one roof",
     cards: [
       {
         title: "Branding",
         description:
-          "Crafting unique brand identities that resonate with your audience and stand out in the market.",
+          "Clean visual identities and design systems that make your product immediately recognisable.",
       },
       {
         title: "Digital Marketing",
         description:
-          "Strategic marketing solutions that amplify your brand's reach and engagement across digital platforms.",
+          "Technical SEO and targeted acquisition campaigns focused on qualified pipeline, not vanity traffic.",
       },
       {
         title: "Tech Support",
         description:
-          "Help with deploying React, Node, Firebase, etc., and fixing bugs for student or client projects.",
+          "Direct help with React, Node.js, and cloud deployments. We fix critical bugs and unblock client launches.",
       },
     ],
   },
   section4: {
-    title: "Our Seamless Process: From Concept to Completion in Just a Few Steps",
+    title: "How we work from idea to launch",
     steps: [
       {
-        title: "Transforming Ideas into Reality",
-        desc: "We start with understanding your vision and requirements to create a tailored solution.",
+        title: "Scope and structure",
+        desc: "We map your user journeys and architecture into a clear, fixed-scope plan on day one.",
         label: "Design",
       },
       {
-        title: "Building with precision",
-        desc: "We develop reliable applications that perform across devices and platforms.",
+        title: "Build with precision",
+        desc: "Clean code and weekly staging previews. You test working software as it gets written.",
         label: "Develop",
       },
       {
-        title: "On time. On point.",
-        desc: "We ensure your project is delivered on time, meeting all specifications and quality standards.",
+        title: "Deploy and support",
+        desc: "Thorough testing before launch, followed by active production support after go-live.",
         label: "Deliver",
       },
     ],
   },
-  section5: {
-    badge: "Engineered in Chennai",
-    headline: "Fast delivery. Zero agency bloat.",
-    subtext: "We work as an embedded engineering team for ambitious businesses worldwide.",
-  },
+  section5: {},
   section6: {
-    title: "Customer Testimonials",
+    title: "Client feedback",
     reviews: [
       {
         name: "Tharun",
-        username: "@tharun_htc",
+        username: "@jack",
         role: "Founder, How to Cook",
-        body: "Most responsible replies and affordable price.",
+        body: "Fast responses and clear pricing throughout the build. They delivered exactly what we scoped.",
         img: "/imgs/How_to_cook_logo.svg",
       },
       {
         name: "Karthikeyan",
-        username: "@karthik_traffic",
+        username: "@jill",
         role: "Director, Traffic",
-        body: "I don't know what to say. I'm speechless. This is amazing.",
+        body: "The quality of the final product exceeded expectations. Fast, clean, and delivered ahead of schedule.",
         img: "/imgs/Traffic-logo.jpg",
       },
       {
         name: "JothiLakshmi",
-        username: "@jothi_tourist",
+        username: "@john",
         role: "Operations Head, Tourist",
-        body: "Affordable price and quick response. I love it.",
+        body: "Direct communication with the builders and quick turnaround on every single request.",
         img: "/imgs/Tourist-logo.jpg",
       },
       {
         name: "Srinivas P",
-        username: "@srinivas_vd",
+        username: "@jane",
         role: "Managing Director, V&D Granite",
-        body: "Good work and affordable price.",
+        body: "Reliable engineering and transparent scopes. Our product launched without hitches.",
         img: "/imgs/V&D-logo.png",
       },
       {
         name: "Hitheeswar",
-        username: "@hitheeswar_audnex",
+        username: "@jenny",
         role: "CEO, Audnex",
-        body: "Innovative ideas and great execution. Highly recommend!",
+        body: "Exceptional speed and technical execution. Our international inbound inquiries grew quickly after launch.",
         img: "/imgs/Audnex-logo.jpg",
       },
       {
         name: "Robin Sighla",
-        username: "@robin_iqbridge",
+        username: "@james",
         role: "Co-Founder, IQ Bridge",
-        body: "It was interactive and engaging. I loved the way they handled my project.",
+        body: "Clear collaboration from day one. They handled our platform requirements with high precision.",
         img: "/imgs/iq-bridge-logo.png",
       },
     ],
-    title2: "Project Showcase",
+    title2: "Recent work",
     projects: [
       {
-        title: "Skill link - Connecting Minds, Bridging Gaps",
-        description: "Personalized learning experiences right from home.",
+        title: "Skill link: Real-time learning platform",
+        description: "Virtual classroom environment with collaborative tools, built for reliable low-latency sessions.",
         img: "/imgs/Skill_link_mockup.svg",
       },
       {
-        title: "Elderly - Your Trusted Health Companion",
-        description: "My mom never forgets her tablets anymore. No Ads, No Confusion.",
+        title: "Elderly: Health companion app",
+        description: "Clean medication tracking designed for older adults. Zero ads, simple alerts, and clear text.",
         img: "/imgs/Elderly-Mock-up.svg",
       },
       {
-        title: "Velu’s and Son’s – Taste Meets Tradition",
-        description: "Bringing their legacy online with clean and cashew-focused design.",
+        title: "Velu’s and Son’s: Heritage food brand",
+        description: "Clean digital storefront built to showcase product purity and capture direct retail orders.",
         img: "/imgs/Cashew_Mockup.svg",
       },
     ],
   },
   section7: {
-    title: "Shaping Ideas Into Immersive Realities",
-    description: "We craft with care, build with precision, and deliver with purpose.",
-    first_button: "Build With Us",
-    second_button: "Talk to Our Experts",
+    title: "Ready to build your next product?",
+    description: "Tell us what you are building. We will reply with a clear scope, timeline, and quote.",
+    first_button: "Start a project",
+    second_button: "Book a call",
   },
   section8: {
-    title: "Frequently Asked Questions",
+    title: "Frequently asked questions",
     faqs: [
       {
         question: "What services do you offer?",
         answer:
-          "We offer a wide range of services including website design and development, branding, digital marketing, SEO, and UI/UX consulting. Our goal is to help businesses establish a strong digital presence.",
+          "We build web applications, mobile apps, custom ERP tools, UI/UX systems, and technical brand identities. One team handles design and code.",
       },
       {
         question: "How long does a project take?",
         answer:
-          "The project timeline varies based on complexity and scope. On average, small projects take 2–4 weeks, while larger or more complex ones take 6–12 weeks. We provide a detailed timeline after understanding your requirements.",
+          "A focused web MVP typically takes 2 to 4 weeks. Larger full-stack applications take 6 to 12 weeks depending on scope.",
       },
       {
         question: "Do you offer support?",
         answer:
-          "Yes, we provide post-launch support to ensure your project runs smoothly. We also offer ongoing maintenance plans tailored to your needs.",
+          "Yes. We monitor production performance, patch issues, and provide structured monthly support agreements.",
       },
       {
         question: "Can I see examples?",
         answer:
-          "Absolutely! We have a portfolio section on our website where you can view examples of our previous work. Feel free to ask for case-specific samples too.",
+          "Yes. Our portfolio includes live web apps, e-commerce stores, and enterprise tools with documented case studies.",
       },
       {
         question: "What’s your process?",
         answer:
-          "Our process typically involves discovery, planning, design, development, testing, and launch. We collaborate with you at every stage to ensure the outcome aligns with your vision.",
+          "We start with a scoping sprint, build clickable Figma prototypes, push weekly staging releases, and test before launch.",
       },
       {
         question: "Do you have case studies?",
         answer:
-          "Yes, we’ve documented several client journeys as case studies. These highlight the challenges, our approach, and the final results. Let us know if you'd like to view a specific one.",
+          "Yes. We document the architecture, timelines, and business results for our major client projects.",
       },
       {
         question: "Questions about quotes?",
         answer:
-          "We provide transparent and customized quotes based on your project’s scope. If you have any questions about pricing, features, or packages, we're happy to walk you through the details.",
+          "We provide fixed-scope quotes. You know exactly what we are building, what it costs, and when it ships before we write code.",
       },
       {
         question: "Questions post-launch?",
         answer:
-          "We’re here even after your project goes live. From bug fixes to enhancements and performance monitoring, we ensure your product stays optimized and updated.",
+          "We assist with DNS cutover, initial user traffic, uptime monitoring, and any immediate adjustments needed.",
       },
     ],
-    description: "Still Confused? Have a Chat!",
+    description: "Have a specific project in mind?",
     button: "Contact Us",
   },
 };
 
 export const aboutpage = {
   section1: {
-    title: ["The Team Turning Ideas into ", "Impact"],
+    title: ["The team turning ideas into ", "production software"],
     subtitle:
-      "A bunch of creative minds stirring pixels, code, and caffeine to bring brands to life. Welcome to the COOKIE kitchen.",
+      "We are an engineering and design studio in Chennai. We build software for founders and businesses who care about craft.",
     img: "/imgs/placeholder.png",
   },
   section2: {
-    title: "That's how our cookie is made with love",
+    title: "How we built the studio",
     items: [
       {
-        title: "Chapter 1",
+        title: "Chapter 1: The foundation",
         description:
-          "The beginning of our story — where bold ideas met determination. This chapter marks our earliest steps, setting the foundation for everything that followed. From our first concept sketches to our initial small wins, every milestone here shaped our vision for the journey ahead.",
+          "We started with a single conviction: early-stage companies and growing businesses deserve software built to the highest engineering standard.",
         image:
           "https://images.unsplash.com/photo-1732310216648-603c0255c000?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute bottom-80 left-[20%] rotate-[-5deg]",
       },
       {
-        title: "Chapter 2",
+        title: "Chapter 2: First client deliveries",
         description:
-          "A time of exploration and discovery. We refined our ideas, learned from early challenges, and began building meaningful connections. Each achievement in this stage was a stepping stone toward bigger goals, fueled by curiosity and persistence.",
+          "We shipped our first commercial websites and e-commerce stores. We learned to scope tighter, cut fluff, and ship faster.",
         image:
           "https://images.unsplash.com/photo-1697909623564-3dae17f6c20b?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-40 left-[25%] rotate-[-7deg]",
       },
       {
-        title: "Chapter 3",
+        title: "Chapter 3: Full-stack applications",
         description:
-          "The momentum built stronger. We began turning concepts into tangible results, celebrated key achievements, and gained confidence in our direction. This chapter reflects a period of growth, resilience, and newfound clarity.",
+          "We moved from static marketing sites to dynamic applications: authentication, real-time sync, and relational databases.",
         image:
           "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-5 left-[40%] rotate-[8deg]",
       },
       {
-        title: "Chapter 4",
+        title: "Chapter 4: Process and standards",
         description:
-          "Strengthening our core. We expanded our capabilities, embraced new technologies, and built a collaborative culture. Every challenge we faced became an opportunity to innovate, adapt, and refine our approach.",
+          "We established our development sprint cadence: weekly staging builds, strict component design systems, and rigorous review.",
         image:
-          "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute bottom-10 right-[30%] rotate-[-4deg]",
+          "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        className: "absolute top-32 left-[55%] rotate-[10deg]",
       },
       {
-        title: "Chapter 5",
+        title: "Chapter 5: Expanding capabilities",
         description:
-          "Scaling the vision. With a portfolio of thriving client products and robust engineering standards, we established our reputation as Chennai's dedicated, developer-driven software studio.",
+          "We integrated mobile application development and custom ERP tools, allowing clients to run operations on a single unified stack.",
         image:
-          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute top-32 right-[20%] rotate-[6deg]",
+          "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        className: "absolute top-20 right-[35%] rotate-[2deg]",
       },
       {
-        title: "Chapter 6",
+        title: "Chapter 6: Working across India",
         description:
-          "Pushing boundaries. Venturing into custom ERP systems, AI integrations, and high-performance WebApps. Quality, speed, and clear communication remain non-negotiables.",
+          "Our client base expanded across manufacturing, edtech, retail, and professional services, delivering consistent production uptime.",
         image:
-          "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute bottom-20 left-[15%] rotate-[-3deg]",
+          "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        className: "absolute top-24 left-[45%] rotate-[-7deg]",
       },
       {
-        title: "Chapter 7",
+        title: "Chapter 7: Today and what is ahead",
         description:
-          "The horizon ahead. Continuing to partner with founders and enterprises to architect digital products that stand out, load instantaneously, and drive meaningful business outcomes.",
+          "A close-knit team of engineers and designers shipping software that solves real business problems. No middlemen, no excess overhead.",
         image:
-          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute top-10 right-[40%] rotate-[5deg]",
+          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        className: "absolute top-8 left-[30%] rotate-[4deg]",
       },
     ],
   },
   section3: {
-    title: "The Pillars That Define Our Craft",
-    tagline: "Principles forged through shipping production applications across web, mobile, and enterprise systems.",
+    title: "Who are we",
+    tagline: "We build software with intent, precision, and ownership",
     items: [
       {
-        title: "Design with Intent",
-        description: "Every interaction, animation, and pixel exists to elevate comprehension and user trust.",
-        header: "CRAFT // 01",
+        title: "Engineering first",
+        description: "Clean component structures, fast load speeds, and readable codebases your team can own long term.",
+        header: "Code quality",
         className: "md:col-span-2",
       },
       {
-        title: "Engineering Rigor",
-        description: "Clean component hierarchies, high lighthouse scores, and zero unnecessary dependencies.",
-        header: "SYSTEMS // 02",
+        title: "Direct communication",
+        description: "You collaborate directly with the designers and developers writing your software.",
+        header: "Zero middlemen",
         className: "md:col-span-1",
       },
       {
-        title: "Direct Access",
-        description: "You talk directly to the engineers and designers building your project. No intermediaries.",
-        header: "CULTURE // 03",
+        title: "Focused design",
+        description: "Interfaces designed for clarity and speed. Every element serves an explicit user action.",
+        header: "Product craft",
         className: "md:col-span-1",
       },
       {
-        title: "Long-Term Partnership",
-        description: "We don't vanish after release. We support, iterate, and help your platform scale.",
-        header: "SCALE // 04",
+        title: "Fixed commitments",
+        description: "Clear deliverables, realistic timelines, and transparent pricing before work begins.",
+        header: "Predictable delivery",
         className: "md:col-span-2",
       },
     ],
   },
   section4: {
-    hypertext: "Built in Chennai. Engineered for the World.",
-    fliptext: "01000011 01001111 01001111 01001011 01001001 01000101",
+    hypertext: "Built in Chennai. Engineered for founders everywhere.",
+    fliptext: "~ Built by founders, for founders ~",
   },
 };
 
-export const servicepage = {
+export const contactpage = {};
+
+export const servicespage = {
   section1: {
-    title: ["Tailored Digital Solutions for", "Modern", "Businesses"],
-    subtitle: "From ideation to deployment, we engineer high-performance software and brand systems.",
+    title: ["Execution that matches ", "your vision", " and your timeline"],
+    subtitle: "Web apps, mobile apps, ERP systems, and brand design. Quoted up front with clear deliverables.",
   },
   section2: {
+    title: "Packages built for every stage of growth",
+    subtitle: "Choose a defined starting scope. Every package can be adjusted to match your exact requirements.",
     packages: [
       {
         title: "Business LaunchPad",
-        subtitle: "Your Brand's Foundation, Built Right.",
+        subtitle: "The foundation for a new venture.",
         features: [
-          "Customized Logo with Copyrights Certificate",
-          "Web Application Development",
-          "Domain with SSL Certificate",
-          "SEO & Performance Optimization",
-          "Social Media Management",
-          "Google My Business Setup",
+          "Custom brand mark with copyright documentation",
+          "Responsive web application development",
+          "Custom domain configuration with SSL security",
+          "Technical SEO and speed optimization",
+          "Social media identity templates",
+          "Google Business profile setup",
         ],
       },
       {
         title: "LevelUp Pack",
-        subtitle: "Elevate Your Brand's Digital Presence.",
+        subtitle: "For businesses ready to expand market reach.",
         features: [
-          "Personalized Logo with Copyrights Certificate",
-          "Business Website Development",
-          "Targeted Digital Marketing",
-          "SEO & Performance Optimization",
-          "Integrations & Maintenance",
-          "Influencer Branding",
-          "Google My Business Setup",
+          "Full brand identity and vector assets",
+          "Multi-page business web platform",
+          "Targeted customer acquisition campaigns",
+          "Search ranking and Core Web Vitals optimization",
+          "Third-party API integrations and maintenance",
+          "Influencer outreach and collaboration assets",
+          "Google Business and local search configuration",
         ],
       },
       {
         title: "The Scale-Cart",
-        subtitle: "Your All-In-One Digital Solution.",
+        subtitle: "Full e-commerce infrastructure for commerce brands.",
         features: [
-          "E-commerce Website & App Development",
-          "Admin Dashboard & Analytics",
-          "Customized Logo with Copyrights Certificate",
-          "SEO & Performance Optimization",
-          "Complete Maintenance",
-          "Content Creation & Strategy",
-          "Targeted Digital Marketing",
-          "WhatsApp Chat Button Integration",
+          "E-commerce web store and mobile application",
+          "Custom admin dashboard and sales analytics",
+          "Brand identity system with complete vector files",
+          "Conversion rate and performance optimization",
+          "Ongoing technical maintenance and uptime monitoring",
+          "Content strategy and promotional assets",
+          "Paid search and retargeting campaigns",
+          "Direct WhatsApp checkout and order confirmation",
         ],
       },
     ],
   },
   section3: {
-    title: "Making Of A Masterpiece",
-    subtitle:
-      "From Blueprint To Bullet – Every Part Of Our Process Is Built To Fire Straight At Your Goals.",
+    title: "Our delivery process",
+    subtitle: "A structured sequence so you always know what ships next.",
     timeline_data: [
       {
         title: "Research",
         content: (
           <div className="py-10">
             <p className="mb-8 text-xs font-normal text-white-800 md:text-sm dark:text-white-200">
-              We don't just build, we build right. We start with understanding your vision and requirements to create a tailored solution.
+              We begin by understanding your operations, customer personas, and technical constraints. This keeps us from building unnecessary features.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
@@ -394,10 +393,10 @@ export const servicepage = {
         content: (
           <div className="py-10">
             <p className="mb-4 text-xs font-normal text-white-800 md:text-sm dark:text-white-200">
-              We believe in the power of design to transform ideas into reality.
+              We design interactive wireframes and high-fidelity screens.
             </p>
             <p className="mb-8 text-xs font-normal text-white-800 md:text-sm dark:text-white-200">
-              Our design process is a blend of creativity and strategy, ensuring that every pixel serves a purpose.
+              You test the user flow before a single line of backend code is committed.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
@@ -437,10 +436,10 @@ export const servicepage = {
         content: (
           <div className="py-10">
             <p className="mb-4 text-xs font-normal text-white md:text-sm dark:text-white-200">
-              We take pride in our development process, ensuring that every line of code is crafted with precision and care.
+              Clean, modular code built on modern frameworks.
             </p>
             <p className="mb-4 text-xs font-normal text-white md:text-sm dark:text-white-200">
-              Our team of skilled developers works tirelessly to bring your vision to life, using the latest technologies and best practices.
+              We deliver weekly staging builds so you can inspect real progress as it happens.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
@@ -483,7 +482,7 @@ export const servicepage = {
               On time. On point.
             </p>
             <p className="mb-4 text-xs font-normal text-white md:text-sm dark:text-white-200">
-              We launch only when we are confident the solution meets your expectations and our standards—ensuring quality, functionality, and lasting value.
+              We deploy only after thorough cross-browser QA and security testing. Then we monitor performance and support your team post-launch.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
@@ -521,79 +520,80 @@ export const servicepage = {
     ],
   },
   section4: {
-    title: "What We Cook",
-    subtitle: "From Websites To Apps, We Bake It All.",
+    title: "What we build",
+    subtitle: "Six core capabilities delivered by one unified studio.",
     services: [
       {
         title: "Web Development",
         description: [
-          "Building websites and web",
-          "applications that work flawlessly and",
-          "remain responsive on every device.",
+          "Fast, responsive websites and web apps",
+          "built on modern React architectures",
+          "engineered to load fast and convert.",
         ],
       },
       {
         title: "ERP Systems",
         description: [
-          "Streamlining business workflows",
-          "with customized ERP architectures",
-          "that scale seamlessly with growth.",
+          "Custom internal tools and dashboards",
+          "tailored to your actual operations",
+          "built to scale without bloat.",
         ],
       },
       {
         title: "UI/UX Design",
         description: [
-          "Crafting intuitive interfaces",
-          "that delight users and",
-          "drive product engagement.",
+          "Clean, intuitive user interfaces",
+          "focused on user clarity and speed",
+          "reducing friction at every step.",
         ],
       },
       {
         title: "Digital Marketing",
         description: [
-          "Executing data-backed strategies",
-          "to boost organic discovery and",
-          "convert target audiences.",
+          "Technical SEO and performance ads",
+          "targeting high-intent customer search",
+          "measuring real revenue impact.",
         ],
       },
       {
         title: "Mobile Development",
         description: [
-          "Creating powerful native and hybrid",
-          "apps that perform reliably",
-          "across iOS and Android.",
+          "Native-performance iOS and Android apps",
+          "built for fluid responsiveness",
+          "tested across real device viewports.",
         ],
       },
       {
         title: "Branding",
         description: [
-          "Architecting distinctive brand voices,",
-          "identities, and design systems",
-          "that command industry trust.",
+          "Memorable logos and design systems",
+          "giving your business credibility",
+          "built for digital and print formats.",
         ],
       },
     ],
   },
 };
-export const servicespage = servicepage;
+
+export const servicepage = servicespage;
 
 export const portfoliopage = {
   section1: {
-    title: ["Our portfolio isn’t a ", "Gallery ", "But Stories of ", "Entrepreneurs"],
-    subtitle: "Not Just Pretty Pixels. Purposeful, Powerful Products.",
+    title: ["Case studies in ", "real products", " built for ", "real businesses"],
+    subtitle: "Selected web applications, mobile platforms, and tools shipped for our clients.",
   },
   section2: {
     content: {
-      title: "Beyond Templates. Fully Tailored Digital Craft.",
+      title: "Built for production, not from generic templates.",
       tagline: [
-        "Designs that click. Code that sticks.",
-        "Marketing that feels like magic.",
+        "Thoughtful design. Clean code.",
+        "Engineered around your actual business operations.",
       ],
       project: [
-        "Skill Link — EdTech Collaboration Platform",
-        "Interactive virtual classroom platform with real-time whiteboards built on React, Node.js, and WebSockets.",
-        "V&D Granite — Global Stone Export Portal",
-        "High-performance catalog and global quotation management system built on Vite, Tailwind CSS, and Cloudinary.",
+        "Skill Link: Online learning platform",
+        "Virtual classroom with real-time collaborative whiteboards built with React, Node.js, and WebSockets.",
+        "V&D Granite: Global export catalog",
+        "B2B export catalog and quotation management platform designed for international stone buyers.",
       ],
       images: [
         "/imgs/Skill_link_mockup.svg",
@@ -623,156 +623,107 @@ export const portfoliopage = {
   },
   section3: {
     count: 40,
-    title: "+ projects cooked — and we’re just getting started",
-    subtitle: "We’ve turned visions into visuals, clicks into clients, and briefs into brands.",
-    button: "Let’s Bake Something Together",
+    title: "+ products shipped and supported",
+    subtitle: "From early prototypes to high-traffic commercial platforms across India.",
+    button: "Start a project",
   },
   section4: {
-    title: "Project Case Studies",
+    title: "Detailed case studies",
     cards: [
       {
-        title: "IQ Bridge – An Edu Tech Portfolio Website",
+        slug: "iq-bridge",
+        title: "IQ Bridge: EdTech portfolio platform",
+        client: "IQ Bridge",
+        year: "2025",
+        category: "Web Application & UI/UX",
+        services: ["Product Design", "Frontend Engineering", "AI UI"],
+        timeline: "3 Weeks",
+        location: "Bengaluru, India",
+        stack: ["React", "Tailwind CSS", "Vite", "Node.js"],
         description:
-          "A sleek portfolio website for an emerging edtech company, IQ Bridge. Showcases their offerings in AI-based assessments and learning tools.",
+          "A structured portfolio website for an educational technology company presenting AI-assisted assessment tools to institutions.",
         src: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423538/iqbridge_cs_bubzkk.jpg",
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/iq-bridge",
+        ctaLink: "/work/iq-bridge",
         content: () => {
           return (
             <p>
-              <br /> <strong>Project Type:</strong> Portfolio Website
-              <br />
-              <br />
-              IQ Bridge wanted a modern, intuitive, and professional website to
-              present their AI-driven education solutions to institutions,
-              educators, and investors. The primary goal was to clearly
-              communicate their products, highlight credibility, and provide an
-              engaging user journey that drives partnership inquiries.
+              IQ Bridge required a clean, credible web platform to explain their assessment products to universities, school administrators, and investors. We designed a clear information hierarchy and built a responsive site that clarifies their product suite and captures partner inquiries.
             </p>
           );
         },
       },
       {
-        title: "Traffic — Traffic Signal Countdown Display",
+        slug: "audnex",
+        title: "Audnex: Creative studio showcase",
+        client: "Audnex",
+        year: "2025",
+        category: "Portfolio & Motion UI",
+        services: ["Interactive Showcase", "Motion Design", "CMS"],
+        timeline: "4 Weeks",
+        location: "Chennai, India",
+        stack: ["React", "Framer Motion", "Tailwind CSS", "Vite"],
         description:
-          "Traffic signals play a vital role in managing the flow of vehicles and ensuring pedestrian safety on roadways.",
-        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423539/traffic_cs_t721i3.jpg",
+          "An interactive portfolio built for a creative agency, featuring smooth motion transitions and responsive case studies.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423530/audnex_website_kr9xn2.jpg",
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/traffic",
+        ctaLink: "/work/audnex",
         content: () => {
           return (
             <p>
-              <br /> <strong>Project Type:</strong> Product Showcase & Technical Landing Page
-              <br />
-              <br />
-              Traffic signals play a vital role in managing the flow of vehicles
-              and ensuring pedestrian safety on roadways. Traffic was looking to
-              bring awareness to their advanced countdown displays that improve
-              driver responsiveness and overall traffic efficiency.
+              Audnex needed a distinctive digital presence to compete in international markets. We built an interactive showcase with hardware-accelerated transitions and optimized media delivery, helping their team present work to overseas enterprise prospects.
             </p>
           );
         },
       },
       {
-        title: "V&D Granite — A Multi-Product E-Commerce Platform",
+        slug: "sap-checklist",
+        title: "SAP Checklist Portal: Operations management",
+        client: "SAP Consulting Group",
+        year: "2025",
+        category: "Enterprise Web Application",
+        services: ["Full-Stack App", "Role-Based Auth", "Analytics"],
+        timeline: "6 Weeks",
+        location: "Hyderabad, India",
+        stack: ["React", "Tailwind CSS", "Express", "PostgreSQL"],
         description:
-          "A premier manufacturer and exporter of granite, monument stones, and memorials, serving clients worldwide.",
-        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730268/V_D_1_1_mgl4i6.png",
-        ctaText: "View Case Study",
-        ctaLink: "/case-studies/vd-granite",
-        content: () => {
-          return (
-            <p>
-              <br /> <strong>Project Type:</strong> B2B E-Commerce & Export Catalog
-              <br />
-              <br />
-              V&D Granite, based in Madurai, is a premier manufacturer and
-              exporter of granite, monument stones, and memorials, serving clients
-              globally. They required a robust digital catalog that could handle
-              high-resolution imagery and direct RFP inquiries from international buyers.
-            </p>
-          );
-        },
-      },
-      {
-        title: "SAP Checklist Portal — Internal Operations Tool",
-        description:
-          "Centralized web-based SAP Checklist Portal to track, manage, and verify essential steps during project phases.",
+          "A centralized checklist tool for SAP consultants to orchestrate tasks across implementation, testing, and go-live phases.",
         src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730704/SAP_1_1_om5jcx.png",
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/sap-checklist",
+        ctaLink: "/work/sap-checklist",
         content: () => {
           return (
             <p>
-              <br /> <strong>Project Type:</strong> Web App – Checklist Management
-              <br />
-              <br />
-              SAP implementations are often complex and involve multiple
-              checkpoints across modules. Our client wanted a centralized
-              web-based SAP Checklist Portal to track, manage, and verify
-              essential steps during project phases like configuration, testing,
-              deployment, and post-go-live support.
+              Complex enterprise ERP rollouts involve hundreds of verification gates across functional modules. We built a specialized web-based checklist portal allowing consulting leads to track progress, assign responsibilities, and verify milestones before cutover.
             </p>
           );
         },
       },
       {
-        title: "Torque Toyzz — E-Commerce Website",
+        slug: "torque-toyzz",
+        title: "Torque Toyzz: E-commerce platform",
+        client: "Torque Toyzz",
+        year: "2025",
+        category: "E-Commerce & WhatsApp Commerce",
+        services: ["E-Commerce", "Catalog Search", "WhatsApp API"],
+        timeline: "2 Weeks",
+        location: "Chennai, India",
+        stack: ["Next.js", "Tailwind CSS", "WhatsApp Business API"],
         description:
-          "Torque Toyzz is a leading retailer of remote-controlled cars and drones in Chennai.",
+          "A fast online catalog for a Chennai remote-controlled model retailer, with direct WhatsApp order integration.",
         src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/torque-toyzz",
+        ctaLink: "/work/torque-toyzz",
         content: () => {
           return (
             <p>
-              <br /> <strong>Project Type:</strong> E-Commerce Website
-              <br />
-              <br />
-              Torque Toyzz is a leading retailer of remote-controlled cars and
-              drones in Chennai. They wanted to expand their reach by launching
-              an e-commerce website that could showcase their extensive product
-              range and facilitate online sales with seamless WhatsApp integration.
+              Torque Toyzz required an accessible e-commerce experience to showcase remote-controlled vehicles and accessories. We built a mobile-first catalog with immediate product search and direct WhatsApp order confirmation, simplifying the buying flow for mobile shoppers.
             </p>
           );
         },
       },
     ],
   },
-};
-
-export const contactpage = {
-  hero: {
-    badge: "Direct Line to Founders",
-    title: ["Ready to Ship?", "Let’s Build Something Meaningful."],
-    subtitle:
-      "Whether you need an MVP in 3 weeks, enterprise ERP architecture, or a brand refresh, our engineers and designers are ready to sprint with you.",
-  },
-  channels: [
-    {
-      label: "Direct WhatsApp",
-      value: "+91 94897 53457",
-      link: "https://wa.cookie.org.in",
-      detail: "Fastest response (under 15 mins)",
-    },
-    {
-      label: "Studio Email",
-      value: "hello@cookie.org.in",
-      link: "mailto:hello@cookie.org.in",
-      detail: "RFP, scopes, & deck submissions",
-    },
-    {
-      label: "Chennai Office",
-      value: "Chennai, Tamil Nadu, India",
-      link: "https://gmb.cookie.org.in",
-      detail: "In-person studio meetups",
-    },
-  ],
-  slas: [
-    { metric: "< 24h", label: "Initial scoping call" },
-    { metric: "100%", label: "In-house engineering" },
-    { metric: "NDA", label: "Signed prior to kickoff" },
-  ],
 };
 
 export const navbar = {
@@ -783,19 +734,15 @@ export const navbar = {
       name: "Home",
     },
     {
-      link: "/about-us",
+      link: "/work",
+      name: "Work",
+    },
+    {
+      link: "/about",
       name: "About",
     },
     {
-      link: "/service",
-      name: "Services",
-    },
-    {
-      link: "/portfolio",
-      name: "Portfolio",
-    },
-    {
-      link: "/contact-us",
+      link: "/contact",
       name: "Contact",
     },
   ],
@@ -806,23 +753,22 @@ export const footer = {
     name: "Cookie Inc",
     logo: "/imgs/cookie_white.png",
     highlight: ".",
-    description: "By getting a quote, you agree to our Privacy Policy and consent to receive updates.",
-    email_placeholder: "Your Email Here",
-    email_button: "Get a Quote",
+    description: "We design and build production-ready software for ambitious businesses in Chennai and beyond.",
+    email_placeholder: "Enter your email",
+    email_button: "Get in touch",
   },
   quickLinks: [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about-us" },
-    { name: "Services", href: "/service" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact Us", href: "/contact-us" },
+    { name: "Work", href: "/work" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ],
   resources: [
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Case Studies", href: "/portfolio#case-studies" },
-    { name: "Services", href: "/service" },
-    { name: "About Studio", href: "/about-us" },
-    { name: "Contact", href: "/contact-us" },
+    { name: "Selected work", href: "/work" },
+    { name: "Case studies", href: "/work#case-studies" },
+    { name: "Services", href: "/#services" },
+    { name: "Our studio", href: "/about" },
+    { name: "Direct contact", href: "/contact" },
   ],
   social: [
     { name: "Facebook", icon: Facebook },
@@ -831,10 +777,10 @@ export const footer = {
     { name: "LinkedIn", icon: Linkedin },
   ],
   policies: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
   ],
-  copyright: "© 2025 Cookie Inc. All rights reserved.",
+  copyright: "© 2026 Cookie Inc. All rights reserved.",
 };
 
 export const social_links = {

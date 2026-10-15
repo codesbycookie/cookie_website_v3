@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Search,
   PenSquare,
@@ -19,29 +19,31 @@ import {
 
 const PROJECTS = [
   { id: "skill-link", name: "Skill Link", color: "#57C1FF" },
-  { id: "vd-granite", name: "V&D Granite", color: "#D9A55B" },
+  { id: "elderly", name: "Elderly", color: "#D9A55B" },
   { id: "iq-bridge", name: "IQ Bridge", color: "#D3B2FF" },
   { id: "torque-toyzz", name: "Torque Toyzz", color: "#59D499" },
 ];
 
 const ISSUES = {
-  "vd-granite": {
+  elderly: {
     id: "CKE-214",
-    title: "Export catalog v2",
-    body: "Ship a bilingual product catalog with 4K stone imagery, instant filters and a one-tap quote request for overseas buyers.",
-    code: "catalog_v2",
+    progress: 86,
+    title: "Medicine reminders",
+    body: "A simple health companion for the elderly. Clear reminders, large text and no ads, so nobody misses a tablet.",
+    code: "reminders_v1",
     feed: [
-      { who: "Cookie", text: "opened the brief from a WhatsApp call with", target: "Srinivas", time: "9d ago", tone: "#D9A55B", Icon: Sparkles },
-      { who: "Design", text: "approved the labels", target: "Catalog and Export", time: "6d ago", tone: "#D3B2FF", Icon: Tag },
-      { who: "Build", text: "merged the PR", target: "filters + quote form", time: "2d ago", tone: "#59D499", Icon: GitPullRequest },
+      { who: "Cookie", text: "opened the brief for", target: "Elderly", time: "9d ago", tone: "#D9A55B", Icon: Sparkles },
+      { who: "Design", text: "approved the labels", target: "Accessibility", time: "6d ago", tone: "#D3B2FF", Icon: Tag },
+      { who: "Build", text: "merged the PR", target: "reminder scheduler", time: "2d ago", tone: "#59D499", Icon: GitPullRequest },
     ],
     comments: [
-      { who: "srinivas", time: "3 days ago", color: "#D9A55B", text: "The new filters are exactly what our buyers kept asking for." },
-      { who: "aravind", time: "just now", color: "#57C1FF", text: "Lighthouse is 98 on mobile. Shipping to production tonight." },
+      { who: "design", time: "3 days ago", color: "#D9A55B", text: "Larger buttons and higher contrast are in. Ready for review." },
+      { who: "build", time: "just now", color: "#57C1FF", text: "Lighthouse is 98 on mobile. Shipping to production tonight." },
     ],
   },
   "skill-link": {
     id: "CKE-198",
+    progress: 64,
     title: "Live classroom whiteboard",
     body: "Real-time shared whiteboard for mentors and learners, built on WebSockets with offline-safe drawing sessions.",
     code: "board_sync",
@@ -50,11 +52,12 @@ const ISSUES = {
       { who: "Build", text: "added the labels", target: "Realtime and Web", time: "8d ago", tone: "#D3B2FF", Icon: Tag },
     ],
     comments: [
-      { who: "mentor", time: "1 day ago", color: "#57C1FF", text: "Drawing feels instant even on a weak connection." },
+      { who: "build", time: "1 day ago", color: "#57C1FF", text: "Drawing stays smooth even on a weak connection." },
     ],
   },
   "iq-bridge": {
     id: "CKE-176",
+    progress: 100,
     title: "Assessment portal launch",
     body: "A modern portfolio and partner portal that explains AI based assessments to institutions and investors.",
     code: "portal_launch",
@@ -63,11 +66,12 @@ const ISSUES = {
       { who: "Build", text: "merged the PR", target: "partner enquiry flow", time: "14d ago", tone: "#59D499", Icon: GitPullRequest },
     ],
     comments: [
-      { who: "robin", time: "2 weeks ago", color: "#D3B2FF", text: "Interactive and engaging. We loved how they handled the project." },
+      { who: "design", time: "2 weeks ago", color: "#D3B2FF", text: "Final screens signed off. Handing over to build." },
     ],
   },
   "torque-toyzz": {
     id: "CKE-231",
+    progress: 42,
     title: "WhatsApp checkout",
     body: "E-commerce storefront for RC cars and drones with a seamless WhatsApp ordering flow.",
     code: "wa_checkout",
@@ -76,13 +80,13 @@ const ISSUES = {
       { who: "Build", text: "added the label", target: "E-commerce", time: "3d ago", tone: "#FFC533", Icon: Tag },
     ],
     comments: [
-      { who: "owner", time: "yesterday", color: "#59D499", text: "Orders landing straight in WhatsApp is a game changer." },
+      { who: "build", time: "yesterday", color: "#59D499", text: "Orders now land straight in WhatsApp. Testing the flow today." },
     ],
   },
 };
 
 export default function StudioWindow() {
-  const [active, setActive] = useState("vd-granite");
+  const [active, setActive] = useState("elderly");
   const [draft, setDraft] = useState("");
   const [extra, setExtra] = useState({});
 
@@ -97,11 +101,27 @@ export default function StudioWindow() {
       [active]: [...(prev[active] || []), { who: "you", time: "just now", color: "#59D499", text: draft.trim() }],
     }));
     setDraft("");
+    paused.current = true;
+  };
+
+  // Auto-cycle projects like a live product demo until the visitor interacts
+  const paused = useRef(false);
+  useEffect(() => {
+    const order = PROJECTS.map((p) => p.id);
+    const t = setInterval(() => {
+      if (paused.current) return;
+      setActive((cur) => order[(order.indexOf(cur) + 1) % order.length]);
+    }, 6500);
+    return () => clearInterval(t);
+  }, []);
+  const pick = (id) => {
+    paused.current = true;
+    setActive(id);
   };
 
   return (
     <div
-      className="w-full rounded-[14px] bg-[#0B0C0E] border border-white/[0.09] overflow-hidden text-left shadow-[0_40px_120px_-20px_rgba(0,0,0,0.95),0_0_80px_-30px_rgba(217,165,91,0.25),inset_0_1px_0_0_rgba(255,255,255,0.1)]"
+      className="beam window-in w-full rounded-[14px] bg-[#0B0C0E] border border-white/[0.09] overflow-hidden text-left shadow-[0_40px_120px_-20px_rgba(0,0,0,0.95),0_0_80px_-30px_rgba(217,165,91,0.25),inset_0_1px_0_0_rgba(255,255,255,0.1)]"
       role="region"
       aria-label="Cookie studio board preview"
     >
@@ -155,7 +175,7 @@ export default function StudioWindow() {
                   <button
                     key={p.id}
                     type="button"
-                    onClick={() => setActive(p.id)}
+                    onClick={() => pick(p.id)}
                     aria-pressed={active === p.id}
                     className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-[6px] transition-colors ${active === p.id ? "bg-white/[0.07] text-[#F4F4F6] font-medium" : "text-[#8A8F98] hover:bg-white/[0.04] hover:text-[#F4F4F6]"
                       }`}
@@ -196,7 +216,7 @@ export default function StudioWindow() {
                   <button
                     key={p.id}
                     type="button"
-                    onClick={() => setActive(p.id)}
+                    onClick={() => pick(p.id)}
                     className={`shrink-0 text-[12px] px-3 py-1.5 rounded-full border transition-colors ${active === p.id ? "border-white/30 text-[#F4F4F6] bg-white/[0.07]" : "border-white/10 text-[#8A8F98]"
                       }`}
                   >
@@ -205,18 +225,42 @@ export default function StudioWindow() {
                 ))}
               </div>
 
-              <h3 className="text-[24px] sm:text-[28px] font-medium text-[#F4F4F6] tracking-tight mb-3">{issue.title}</h3>
-              <p className="text-[15px] text-[#D0D6E0] leading-relaxed mb-8">
-                {issue.body}{" "}
-                <code className="font-mono text-[12px] bg-white/[0.07] px-1.5 py-0.5 rounded border border-white/10 text-[#F4F4F6]">{issue.code}</code>
-              </p>
+              <div key={active} className="feed-in">
+                <h3 className="text-[24px] sm:text-[28px] font-medium text-[#F4F4F6] tracking-tight mb-3">{issue.title}</h3>
+                <p className="text-[15px] text-[#D0D6E0] leading-relaxed mb-6">
+                  {issue.body}{" "}
+                  <code className="font-mono text-[12px] bg-white/[0.07] px-1.5 py-0.5 rounded border border-white/10 text-[#F4F4F6]">{issue.code}</code>
+                </p>
+
+                {/* Properties */}
+                <div className="flex flex-wrap items-center gap-2 mb-3 text-[12px]">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.04] text-[#D0D6E0]">
+                    <span className="w-2 h-2 rounded-full bg-[#FFC533]" /> In progress
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.04] text-[#D0D6E0]">
+                    <span className="font-mono text-[#FF6363]">!!!</span> Urgent
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.04] text-[#D0D6E0]">
+                    <span className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: PROJECTS.find((p) => p.id === active).color }} /> Cookie team
+                  </span>
+                </div>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="flex-1 h-1 rounded-full bg-white/[0.08] overflow-hidden">
+                    <div
+                      className="bar-fill h-full rounded-full"
+                      style={{ width: `${issue.progress}%`, background: `linear-gradient(90deg, ${PROJECTS.find((p) => p.id === active).color}66, ${PROJECTS.find((p) => p.id === active).color})` }}
+                    />
+                  </div>
+                  <span className="font-mono text-[11px] text-[#8A8F98]">{issue.progress}%</span>
+                </div>
+              </div>
 
               <div className="text-[11px] font-mono uppercase tracking-wider text-[#62666D] mb-4">Activity</div>
-              <div className="space-y-4">
+              <div key={`feed-${active}`} className="space-y-4">
                 {issue.feed.map((f, i) => {
                   const Icon = f.Icon;
                   return (
-                    <div key={i} className="flex items-start gap-3 text-[13px]">
+                    <div key={i} className="feed-in flex items-start gap-3 text-[13px]" style={{ animationDelay: `${150 + i * 130}ms` }}>
                       <span className="w-5 h-5 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 mt-0.5">
                         <Icon className="w-3 h-3" style={{ color: f.tone }} />
                       </span>
@@ -230,7 +274,7 @@ export default function StudioWindow() {
                 })}
 
                 {[...issue.comments, ...extras].map((c, i) => (
-                  <div key={i} className="flex items-start gap-3 text-[13px] pt-1">
+                  <div key={i} className="feed-in flex items-start gap-3 text-[13px] pt-1" style={{ animationDelay: `${300 + i * 130}ms` }}>
                     <span
                       className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold text-[#08090A] shrink-0"
                       style={{ backgroundColor: c.color }}
@@ -259,6 +303,7 @@ export default function StudioWindow() {
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               placeholder="Leave a comment for the Cookie team..."
+              onFocus={() => { paused.current = true; }}
               className="w-full bg-transparent text-[13px] text-[#F4F4F6] placeholder-[#62666D] focus:outline-none"
             />
             <button

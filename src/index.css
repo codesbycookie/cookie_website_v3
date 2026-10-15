@@ -122,19 +122,119 @@ body {
   color: transparent;
 }
 
-/* Linear bento panel: flat panel, hairline border, soft top highlight */
-.bento {
-  background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
-  transition: border-color 150ms ease, background 150ms ease;
-}
-.bento:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+/* Linear type: Inter variable, 510 weight, tight tracking */
+h1, h2, h3 { font-weight: 510; letter-spacing: -0.022em; text-wrap: balance; }
+p { text-wrap: pretty; }
+.font-medium { font-weight: 510; }
+::selection { background: rgba(217, 165, 91, 0.28); color: #F4F4F6; }
+html { scroll-behavior: smooth; }
+
+/* Hero backdrop: masked line grid like linear.app */
+section:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 0%, #000 0%, transparent 75%);
 }
 
-/* Section separators as hairlines */
-.hairline-y { border-top: 1px solid rgba(255, 255, 255, 0.07); }
+/* Linear bento panel: hairline border, top highlight, cursor spotlight */
+.bento {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.008) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+}
+.bento::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(217, 165, 91, 0.10), transparent 70%);
+  transition: opacity 250ms ease;
+}
+.bento:hover { border-color: rgba(255, 255, 255, 0.16); }
+.bento:hover::before { opacity: 1; }
+
+/* Section separators: hairline fading at the edges */
+.hairline-y {
+  border-top: 0;
+  position: relative;
+}
+.hairline-y::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, transparent);
+}
+
+/* Scroll reveal (added by main.jsx observer) */
+.rv {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
+              transform 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
+              border-color 200ms ease, background 200ms ease;
+}
+.rv.is-in { opacity: 1; transform: none; }
+
+/* Border beam: a light that travels around the card's 1px edge */
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes beam-spin { to { --beam-angle: 360deg; } }
+.beam { position: relative; }
+.beam::after,
+.bento::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(from var(--beam-angle), transparent 0deg, transparent 300deg, rgba(243, 217, 168, 0.9) 335deg, rgba(255, 255, 255, 0.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: beam-spin 6s linear infinite;
+}
+.bento::after { opacity: 0; transition: opacity 300ms ease; animation-duration: 4s; }
+.bento:hover::after { opacity: 1; }
+.beam-hover::after { opacity: 0; transition: opacity 300ms ease; animation: beam-spin 4s linear infinite; }
+.beam-hover:hover::after { opacity: 1; }
+
+/* Hero window entrance + subtle perspective settle */
+@keyframes window-in {
+  from { opacity: 0; transform: perspective(1400px) rotateX(10deg) translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: perspective(1400px) rotateX(0) translateY(0) scale(1); }
+}
+.window-in { animation: window-in 1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both; transform-origin: 50% 0; }
+@keyframes feed-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.feed-in { animation: feed-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes bar-fill { from { width: 0; } }
+.bar-fill { animation: bar-fill 1400ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes caret { 50% { opacity: 0; } }
+.caret { animation: caret 1s steps(1) infinite; }
+
+/* Sticky scroll feature steps */
+.feature-step { opacity: 0.35; transition: opacity 400ms ease; }
+.feature-step[data-active="true"] { opacity: 1; }
 
 /* Scroll reveal */
 @keyframes fade-up {

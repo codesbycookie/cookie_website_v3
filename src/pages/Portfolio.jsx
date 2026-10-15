@@ -20,13 +20,13 @@ export default function Portfolio() {
     typeof study.content === "function" ? study.content() : study.content;
 
   return (
-    <div className="w-full flex flex-col items-center relative overflow-hidden bg-[#08090A]">
+    <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
       {/* Hero */}
       <section className="relative w-full pt-24 pb-20 md:pt-32 md:pb-28 px-5 sm:px-8 flex flex-col items-center text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-[#D9A55B]/10 blur-[150px] rounded-full pointer-events-none" aria-hidden="true" />
         <div className="reveal relative mb-6 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] shadow-[0_0_10px_#D9A55B]" />
-          Portfolio
+          Work
         </div>
         <h1 className="reveal gradient-text relative text-[40px] sm:text-[58px] md:text-[72px] font-medium tracking-[-0.04em] leading-[1.05] max-w-4xl mb-6" style={{ animationDelay: "60ms" }}>
           {section1.title[0]}
@@ -100,10 +100,9 @@ export default function Portfolio() {
           <SectionHeading eyebrow="Case studies" title={section4.title} description="Challenges, decisions and outcomes behind our client launches." />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {section4.cards.map((study) => (
-              <button
+              <Link
                 key={study.title}
-                type="button"
-                onClick={() => setSelected(study)}
+                to={`/work/${study.slug || "iq-bridge"}`}
                 className="bento rounded-[16px] overflow-hidden text-left flex flex-col group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
                 aria-label={`Open case study: ${study.title}`}
               >
@@ -124,7 +123,7 @@ export default function Portfolio() {
                     {study.ctaText} <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -137,7 +136,7 @@ export default function Portfolio() {
           <h2 className="gradient-text text-[34px] sm:text-[48px] font-medium tracking-[-0.03em] leading-[1.08] mb-9">
             Your product could be next.
           </h2>
-          <Button to="/contact-us" variant="primary" size="lg">{section3.button}</Button>
+          <Button to="/contact" variant="primary" size="lg">{section3.button}</Button>
         </div>
       </section>
 
