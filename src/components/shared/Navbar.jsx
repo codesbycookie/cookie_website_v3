@@ -142,7 +142,7 @@ export default function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-[#08090A]/95 backdrop-blur-xl border-t border-[#494B4D]/60 z-50 flex flex-col justify-between p-6 overflow-y-auto animate-[fadeIn_150ms_ease-in-out]"
+          className="md:hidden fixed inset-x-0 top-14 bottom-0 bg-[#08090A]/95 backdrop-blur-xl border-t border-[#494B4D]/60 z-50 flex flex-col justify-between p-6 overflow-y-auto animate-[fadeIn_150ms_ease-in-out]"
         >
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between px-3 mb-2">
@@ -173,7 +173,7 @@ export default function Navbar() {
           </div>
 
           <div className="pt-6 border-t border-[#494B4D]/50 flex flex-col gap-4">
-            <div className="flex items-center justify-between text-[12px] font-mono text-[#8A8F98]">
+            <div className="flex items-center justify-between text-[12px] font-mono text-[#8A8F98] px-1">
               <span>Studio HQ</span>
               <span className="text-[#D0D6E0]">Chennai, Tamil Nadu</span>
             </div>

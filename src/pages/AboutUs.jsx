@@ -5,7 +5,7 @@ import SectionHeading from "../components/shared/SectionHeading";
 import { Sparkles, Terminal, Compass, Layers } from "lucide-react";
 
 const ICONS = [Compass, Terminal, Layers, Sparkles];
-const YEARS = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"];
+const YEARS = ["2020", "2021", "2022", "2023", "2024", "2025", "2026"];
 
 const VALUES = [
   { n: "10+", label: "Engineers and designers" },
@@ -106,7 +106,7 @@ export default function AboutUs() {
       </section>
 
       {/* CTA */}
-      <section className="relative w-full hairline-y py-28 md:py-36 px-5 sm:px-8 text-center overflow-hidden">
+      <section className="relative w-full hairline-y py-24 md:py-36 px-5 sm:px-8 text-center overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[260px] bg-[#D9A55B]/12 blur-[130px] rounded-full pointer-events-none" aria-hidden="true" />
         <div className="relative max-w-2xl mx-auto flex flex-col items-center">
           <h2 className="gradient-text text-[34px] sm:text-[48px] font-medium tracking-[-0.03em] leading-[1.08] mb-5">

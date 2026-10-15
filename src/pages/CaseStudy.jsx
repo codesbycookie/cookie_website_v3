@@ -220,7 +220,7 @@ export default function CaseStudy() {
       )}
 
       {/* Bottom CTA */}
-      <section className="relative w-full hairline-y py-28 md:py-36 px-5 sm:px-8 text-center overflow-hidden">
+      <section className="relative w-full hairline-y py-24 md:py-36 px-5 sm:px-8 text-center overflow-hidden">
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[260px] bg-[#D9A55B]/12 blur-[130px] rounded-full pointer-events-none"
           aria-hidden="true"

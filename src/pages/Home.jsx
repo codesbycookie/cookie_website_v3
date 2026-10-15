@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { homepage } from "../data/data";
+import { homepage, portfoliopage } from "../data/data";
 import Button from "../components/shared/Button";
 import SectionHeading from "../components/shared/SectionHeading";
 import Accordion from "../components/shared/Accordion";
@@ -12,306 +12,481 @@ import {
   Smartphone,
   Database,
   Palette,
+  CheckCircle2,
 } from "lucide-react";
 
-const CLIENTS = ["IQ Bridge", "V&D Granite", "Torque Toyzz", "Skill Link", "Audnex", "Traffic", "Tourist", "How to Cook"];
+const CLIENTS = [
+  { name: "IQ Bridge", domain: "EdTech AI Infrastructure" },
+  { name: "Torque Toyzz", domain: "Luxury Commerce" },
+  { name: "V&D Granite", domain: "B2B Export System" },
+  { name: "Skill Link", domain: "Real-time Platform" },
+  { name: "Audnex", domain: "Motion Agency" },
+  { name: "Velu’s & Sons", domain: "Heritage Retail" },
+];
 
-const PILLARS = [
+const DISCIPLINES = [
   {
-    n: "01",
-    title: "Designed with intent",
-    desc: "Every screen is drawn around a business goal. No decoration that does not earn its place.",
+    num: "01",
+    icon: Globe,
+    title: "High-Velocity Web Applications",
+    desc: "Fast, accessible, SEO-ready web applications and client portals built on modern React. Engineered to convert from the first interaction.",
+    metrics: [
+      { k: "Performance", v: "98+" },
+      { k: "Response Time", v: "<100ms" },
+      { k: "Architecture", v: "React 19" },
+    ],
+    deliverables: ["Custom Web Application", "REST / GraphQL APIs", "Sub-second Page Speeds", "Automated Testing"],
+    tone: "#D9A55B",
   },
   {
-    n: "02",
-    title: "Engineered to last",
-    desc: "Clean component architecture, fast by default, and documented so your team can own it.",
+    num: "02",
+    icon: Smartphone,
+    title: "Native Mobile & Cross-Platform Apps",
+    desc: "Single codebase, zero compromise. Smooth, native-feel iOS and Android applications with offline synchronization and gesture navigation.",
+    metrics: [
+      { k: "Platforms", v: "iOS & Android" },
+      { k: "Sync Speed", v: "Real-time" },
+      { k: "UX Standard", v: "60 FPS" },
+    ],
+    deliverables: ["Cross-Platform Codebase", "Push Notifications", "Biometric Auth", "Store Submissions"],
+    tone: "#57C1FF",
   },
   {
-    n: "03",
-    title: "Delivered in weeks",
-    desc: "Tight sprints, a live preview from week one, and a founder on every call.",
+    num: "03",
+    icon: Database,
+    title: "Tailored ERP & Internal Engines",
+    desc: "Replace fragile spreadsheets with bespoke software shaped precisely around your team’s daily operational workflow and business rules.",
+    metrics: [
+      { k: "Data Integrity", v: "100%" },
+      { k: "Role Controls", v: "RBAC" },
+      { k: "Reporting", v: "Automated" },
+    ],
+    deliverables: ["Operations Dashboard", "Multi-Tenant Roles", "Inventory / Billing", "Automated Backups"],
+    tone: "#D3B2FF",
+  },
+  {
+    num: "04",
+    icon: Palette,
+    title: "Brand Systems & Design Engineering",
+    desc: "Design tokens, design systems, and bespoke micro-interactions that elevate your product from functional to unforgettable.",
+    metrics: [
+      { k: "Accessibility", v: "WCAG AAA" },
+      { k: "Tokens", v: "Figma to Code" },
+      { k: "Motion", v: "Hardware Accel" },
+    ],
+    deliverables: ["Design System", "Interactive Prototype", "Brand Mark & Identity", "Marketing Assets"],
+    tone: "#59D499",
   },
 ];
 
-const STEPS = [
-  { n: "01", title: "Discover", desc: "A focused call to map goals, users and the shortest path to launch.", time: "Days 1-3" },
-  { n: "02", title: "Design", desc: "Wireframes to polished UI in a shared prototype you can click through.", time: "Week 1" },
-  { n: "03", title: "Build", desc: "Weekly releases to a live preview. You see progress, not status reports.", time: "Weeks 2-3" },
-  { n: "04", title: "Launch", desc: "Deploy, monitor and support. We stay on after go-live.", time: "Week 4+" },
+const CADENCE = [
+  {
+    phase: "Phase 01",
+    title: "Architectural Scope & Strategy",
+    time: "Days 1–3",
+    desc: "We dissect your business goals, user journeys, and technical constraints. You receive a concrete scope, milestones, and a fixed quote.",
+  },
+  {
+    phase: "Phase 02",
+    title: "Interactive Clickable Prototype",
+    time: "Week 1",
+    desc: "Wireframes evolve into polished UI in a shared interactive prototype. You test the complete product experience before we write backend code.",
+  },
+  {
+    phase: "Phase 03",
+    title: "Zero-Debt Engineering Sprints",
+    time: "Weeks 2–3",
+    desc: "Weekly deployments to a live staging preview. You click through working features every Friday, without status-meeting bureaucracy.",
+  },
+  {
+    phase: "Phase 04",
+    title: "Production Cutover & Hypercare",
+    time: "Week 4+",
+    desc: "Zero-downtime deployment, DNS cutover, automated backups, and 30 days of included technical hypercare with direct founder access.",
+  },
 ];
 
 const STATS = [
-  { value: "40+", label: "Products shipped" },
-  { value: "3 wks", label: "Typical MVP" },
-  { value: "98", label: "Avg Lighthouse score" },
-  { value: "<24h", label: "First reply" },
+  { value: "40+", label: "Products Shipped", sub: "Across India & abroad" },
+  { value: "3 wks", label: "Average MVP Turnaround", sub: "From kickoff to live URL" },
+  { value: "98+", label: "Avg Lighthouse Score", sub: "Core Web Vitals certified" },
+  { value: "<24h", label: "Founder Response SLA", sub: "Direct WhatsApp line" },
 ];
 
 export default function Home() {
-  const { reviews, projects } = homepage.section6;
+  const { reviews } = homepage.section6;
+  const flagshipStudies = portfoliopage.section4.cards.slice(0, 3);
+  const [activeFlagship, setActiveFlagship] = useState(0);
 
   return (
     <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
-      {/* 1. Hero */}
-      <section className="relative w-full pt-20 pb-24 md:pt-28 md:pb-32 flex flex-col items-center text-center px-5 sm:px-8">
+      {/* 1. Hero: Architectural Atelier Introduction */}
+      <section className="relative w-full pt-20 pb-20 md:pt-28 md:pb-28 flex flex-col items-center text-center px-5 sm:px-8">
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-[#D9A55B]/10 blur-[160px] rounded-full pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[950px] h-[440px] bg-[#D9A55B]/10 blur-[170px] rounded-full pointer-events-none"
           aria-hidden="true"
         />
 
-        <Link
-          to="/work"
-          className="reveal relative inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.09] hover:border-white/20 text-[13px] text-[#8A8F98] hover:text-[#F4F4F6] transition-colors mb-8 group"
-        >
-          <span className="font-semibold text-[#D9A55B]">New</span>
-          <span>40+ products shipped from Chennai</span>
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-        </Link>
+        {/* Live Studio Status Pill */}
+        <div className="reveal relative mb-8 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.09] text-[12px] font-mono tracking-wide text-[#8A8F98]">
+          <span className="w-2 h-2 rounded-full bg-[#59D499] animate-pulse" />
+          <span className="text-[#F4F4F6] font-medium">Built for Business Owners & Founders</span>
+          <span className="text-[#62666D]">·</span>
+          <span>Direct Founder Access · 2026</span>
+        </div>
 
-        <h1 className="reveal gradient-text relative text-[42px] sm:text-[60px] md:text-[76px] font-medium tracking-[-0.04em] leading-[1.04] max-w-4xl mb-6" style={{ animationDelay: "60ms" }}>
-          The software studio for businesses that move fast
+        <h1
+          className="reveal gradient-text relative text-[40px] sm:text-[60px] md:text-[76px] font-medium tracking-[-0.04em] leading-[1.04] max-w-5xl mb-6"
+          style={{ animationDelay: "60ms" }}
+        >
+          We design & build the software that scales your business.
         </h1>
 
-        <p className="reveal relative text-[17px] sm:text-[20px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10" style={{ animationDelay: "120ms" }}>
-          Cookie Inc. designs and builds websites, mobile apps and ERP systems. Purpose-built for founders who want to launch in weeks, not quarters.
+        <p
+          className="reveal relative text-[17px] sm:text-[21px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10"
+          style={{ animationDelay: "120ms" }}
+        >
+          Cookie Inc. builds high-converting websites, mobile apps, and custom ERP tools for growing businesses. No agency bureaucracy — you work directly with technical founders who deliver in weeks, not quarters.
         </p>
 
-        <div className="reveal relative flex flex-col sm:flex-row items-center gap-3 mb-5" style={{ animationDelay: "180ms" }}>
-          <Button to="/contact" variant="primary" size="lg">Start a project</Button>
+        <div
+          className="reveal relative flex flex-col sm:flex-row items-center gap-3.5 mb-6"
+          style={{ animationDelay: "180ms" }}
+        >
+          <Button to="/contact" variant="primary" size="lg">
+            Start a project
+          </Button>
           <Link
             to="/work"
-            className="inline-flex items-center gap-1.5 h-12 px-5 text-[15px] font-medium text-[#8A8F98] hover:text-[#F4F4F6] transition-colors"
+            className="inline-flex items-center gap-1.5 h-12 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[15px] font-medium text-[#F4F4F6] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
           >
-            See our work <ArrowRight className="w-4 h-4" />
+            <span>Explore Shipped Work</span>
+            <ArrowRight className="w-4 h-4 text-[#D9A55B]" />
           </Link>
         </div>
-        <div className="reveal relative text-[12px] font-mono text-[#62666D] mb-16" style={{ animationDelay: "220ms" }}>
-          Free discovery call · Reply within 24 hours
+
+        <div
+          className="reveal relative flex items-center justify-center gap-4 text-[12px] font-mono text-[#62666D] mb-16"
+          style={{ animationDelay: "220ms" }}
+        >
+          <span>Free discovery brief</span>
+          <span>·</span>
+          <span>Weekly live previews</span>
+          <span>·</span>
+          <span>Founder on every sprint</span>
         </div>
 
+        {/* Interactive Studio Workspace Sandbox */}
         <div className="reveal relative w-full max-w-5xl" style={{ animationDelay: "280ms" }}>
           <StudioWindow />
         </div>
       </section>
 
-      {/* 2. Client strip */}
-      <section className="w-full hairline-y py-14 px-5 sm:px-8">
-        <div className="max-w-[1100px] mx-auto text-center">
-          <p className="text-[13px] text-[#62666D] mb-8">Trusted by founders and teams across India</p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-5">
+      {/* 2. Client Roster: Architectural Ticker */}
+      <section className="w-full hairline-y py-12 px-5 sm:px-8">
+        <div className="max-w-[1200px] mx-auto">
+          <p className="text-[12px] font-mono uppercase tracking-[0.14em] text-[#62666D] text-center mb-8">
+            Selected client engagements across India & overseas
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {CLIENTS.map((c) => (
-              <li key={c} className="text-[17px] font-medium tracking-tight text-[#8A8F98] hover:text-[#F4F4F6] transition-colors">
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 3. Manifesto */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
-        <div className="max-w-[1000px] mx-auto">
-          <div className="mb-5 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] shadow-[0_0_10px_#D9A55B]" />
-            How we work
-          </div>
-          <h2 className="gradient-text text-[30px] sm:text-[44px] md:text-[56px] font-medium tracking-[-0.03em] leading-[1.1] mb-16 max-w-4xl">
-            Great products come from small teams with high standards. We are that team, working as an extension of yours.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.07] rounded-[14px] overflow-hidden border border-white/[0.07]">
-            {PILLARS.map((p) => (
-              <div key={p.n} className="bg-[#08090A] p-8 md:p-10 hover:bg-white/[0.02] transition-colors">
-                <span className="font-mono text-[12px] text-[#D9A55B]">{p.n}</span>
-                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-3 tracking-tight">{p.title}</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">{p.desc}</p>
+              <div
+                key={c.name}
+                className="p-3.5 rounded-[10px] bg-white/[0.02] border border-white/[0.06] hover:border-white/20 transition-all flex flex-col items-center text-center group"
+              >
+                <span className="text-[15px] font-medium text-[#F4F4F6] group-hover:text-[#D9A55B] transition-colors">
+                  {c.name}
+                </span>
+                <span className="text-[11px] font-mono text-[#62666D] mt-1 truncate max-w-full">
+                  {c.domain}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3b. Sticky scroll features */}
-      <section className="w-full hairline-y py-24 md:py-32 px-5 sm:px-8">
+      {/* 3. The Studio Stance: Architectural Principles */}
+      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="mb-5 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] shadow-[0_0_10px_#D9A55B]" />
+            Studio Manifesto
+          </div>
+
+          <h2 className="gradient-text text-[32px] sm:text-[46px] md:text-[58px] font-medium tracking-[-0.03em] leading-[1.08] mb-14 max-w-4xl">
+            Software built with high standards turns ambitious companies into category leaders.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
+              <div>
+                <span className="font-mono text-[12px] text-[#D9A55B]">§ 01</span>
+                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
+                  Intentional UI Engineering
+                </h3>
+                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
+                  Every interaction is anchored to a commercial outcome. We cut decorative bloat so your users focus on taking action.
+                </p>
+              </div>
+            </div>
+
+            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
+              <div>
+                <span className="font-mono text-[12px] text-[#57C1FF]">§ 02</span>
+                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
+                  Zero Technical Debt
+                </h3>
+                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
+                  Clean modular component structures, strict TypeScript / React patterns, and clean architecture your in-house engineers can take over.
+                </p>
+              </div>
+            </div>
+
+            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
+              <div>
+                <span className="font-mono text-[12px] text-[#59D499]">§ 03</span>
+                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
+                  Sprints in Weeks, Not Months
+                </h3>
+                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
+                  We ship working staging URLs from week one. Continuous deployment means you witness real momentum, not PowerPoint reports.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Interactive Rhythm: StickyFeatures Stepper */}
+      <section className="w-full hairline-y py-20 md:py-28 px-5 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
-            eyebrow="How it works"
+            eyebrow="Delivery Cadence"
             title="One calm rhythm,"
-            highlight="from idea to launch"
-            description="Scroll through the way a Cookie project unfolds."
+            highlight="from first brief to launch"
+            description="Explore each phase with interactive tabs or smooth scrolling."
           />
           <StickyFeatures />
         </div>
       </section>
 
-      {/* 4. Bento features */}
-      <section id="services" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      {/* 5. Studio Disciplines (Bespoke 4-Quadrant Matrix) */}
+      <section id="services" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
-            eyebrow="What we build"
-            title="Everything your product needs,"
+            eyebrow="Capabilities"
+            title="What we architect & code"
             highlight="under one roof"
-            description="Strategy, design and engineering in a single studio, so nothing gets lost in handoffs."
+            description="Engineering, system architecture, and product design united in a single focused studio."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-            {/* Web */}
-            <article className="bento md:col-span-4 rounded-[16px] p-7 md:p-9 flex flex-col justify-between min-h-[320px] overflow-hidden relative">
-              <div>
-                <span className="inline-flex w-9 h-9 rounded-[8px] bg-white/[0.06] border border-white/10 items-center justify-center text-[#D9A55B] mb-5"><Globe className="w-4 h-4" /></span>
-                <h3 className="text-[22px] font-medium text-[#F4F4F6] tracking-tight mb-2">Websites and web apps</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed max-w-md">Fast, accessible, SEO-ready sites and dashboards built on modern React. Designed to convert from the first scroll.</p>
-              </div>
-              <div className="mt-8 grid grid-cols-3 gap-3 font-mono text-[11px]">
-                {[
-                  { k: "Performance", v: 98 },
-                  { k: "Accessibility", v: 100 },
-                  { k: "SEO", v: 100 },
-                ].map((m) => (
-                  <div key={m.k} className="rounded-[10px] bg-black/30 border border-white/[0.07] p-3">
-                    <div className="text-[#59D499] text-[22px] font-medium tracking-tight">{m.v}</div>
-                    <div className="text-[#62666D] mt-1">{m.k}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {DISCIPLINES.map((d) => (
+              <article
+                key={d.num}
+                className="bento rounded-[18px] p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.6)] group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span
+                      className="w-10 h-10 rounded-[10px] bg-white/[0.05] border border-white/10 flex items-center justify-center"
+                      style={{ color: d.tone }}
+                    >
+                      <d.icon className="w-5 h-5" />
+                    </span>
+                    <span className="font-mono text-[12px] text-[#62666D]">Discipline {d.num}</span>
                   </div>
-                ))}
-              </div>
-            </article>
 
-            {/* Mobile */}
-            <article className="bento md:col-span-2 rounded-[16px] p-7 md:p-9 flex flex-col justify-between min-h-[320px]">
-              <div>
-                <span className="inline-flex w-9 h-9 rounded-[8px] bg-white/[0.06] border border-white/10 items-center justify-center text-[#57C1FF] mb-5"><Smartphone className="w-4 h-4" /></span>
-                <h3 className="text-[22px] font-medium text-[#F4F4F6] tracking-tight mb-2">Mobile apps</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">Native-feel iOS and Android apps with one codebase.</p>
-              </div>
-              <div className="mt-8 flex items-end gap-2 h-20" aria-hidden="true">
-                {[40, 64, 48, 80, 56, 72].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-t-[4px] bg-gradient-to-t from-[#57C1FF]/10 to-[#57C1FF]/60" style={{ height: `${h}%` }} />
-                ))}
-              </div>
-            </article>
+                  <h3 className="text-[24px] font-medium text-[#F4F4F6] tracking-tight mb-3">
+                    {d.title}
+                  </h3>
+                  <p className="text-[15px] text-[#8A8F98] leading-relaxed mb-6">
+                    {d.desc}
+                  </p>
 
-            {/* ERP */}
-            <article className="bento md:col-span-2 rounded-[16px] p-7 md:p-9 flex flex-col justify-between min-h-[320px]">
-              <div>
-                <span className="inline-flex w-9 h-9 rounded-[8px] bg-white/[0.06] border border-white/10 items-center justify-center text-[#D3B2FF] mb-5"><Database className="w-4 h-4" /></span>
-                <h3 className="text-[22px] font-medium text-[#F4F4F6] tracking-tight mb-2">ERP and internal tools</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">Replace spreadsheets with software shaped around your workflow.</p>
-              </div>
-              <div className="mt-8 space-y-2 font-mono text-[11px]" aria-hidden="true">
-                {[["INV-1042", "Paid", "#59D499"], ["INV-1043", "Due", "#FFC533"], ["INV-1044", "Draft", "#8A8F98"]].map(([id, s, c]) => (
-                  <div key={id} className="flex items-center justify-between rounded-[8px] bg-black/30 border border-white/[0.07] px-3 py-2">
-                    <span className="text-[#D0D6E0]">{id}</span>
-                    <span style={{ color: c }}>{s}</span>
+                  {/* Telemetry pills */}
+                  <div className="grid grid-cols-3 gap-2.5 mb-6 font-mono text-[11px]">
+                    {d.metrics.map((m) => (
+                      <div key={m.k} className="p-2.5 rounded-[8px] bg-black/40 border border-white/[0.06]">
+                        <div className="text-[17px] font-medium" style={{ color: d.tone }}>
+                          {m.v}
+                        </div>
+                        <div className="text-[#62666D] mt-0.5 truncate">{m.k}</div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </article>
 
-            {/* Brand */}
-            <article className="bento md:col-span-4 rounded-[16px] p-7 md:p-9 flex flex-col justify-between min-h-[320px]">
-              <div>
-                <span className="inline-flex w-9 h-9 rounded-[8px] bg-white/[0.06] border border-white/10 items-center justify-center text-[#D9A55B] mb-5"><Palette className="w-4 h-4" /></span>
-                <h3 className="text-[22px] font-medium text-[#F4F4F6] tracking-tight mb-2">Brand, UI/UX and growth</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed max-w-md">Identity systems, product design and digital marketing that make your launch land.</p>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-2 text-[12px]">
-                {["Logo and identity", "Design systems", "UI/UX research", "SEO", "Social and ads", "Google My Business"].map((t) => (
-                  <span key={t} className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D0D6E0]">{t}</span>
-                ))}
-              </div>
-            </article>
+                  {/* Deliverables checklist */}
+                  <div className="grid grid-cols-2 gap-2 text-[12px] text-[#D0D6E0] pt-4 border-t border-white/[0.06]">
+                    {d.deliverables.map((item) => (
+                      <div key={item} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: d.tone }} />
+                        <span className="truncate">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Process */}
-      <section id="process" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      {/* 6. BESPOKE FEATURED WORK: Creative Atelier Dossier (NOT a generic gallery!) */}
+      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B]" />
+                Featured Production Systems
+              </div>
+              <h2 className="gradient-text text-[32px] sm:text-[46px] font-medium tracking-tight leading-[1.1]">
+                Products we are proud to have launched.
+              </h2>
+            </div>
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 text-[14px] font-medium text-[#D9A55B] hover:text-[#F3D9A8] transition-colors group"
+            >
+              <span>View complete 40+ project archive</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Interactive Flagship Showcase */}
+          <div className="space-y-12">
+            {flagshipStudies.map((study, idx) => (
+              <article
+                key={study.slug}
+                className="bento rounded-[20px] p-6 sm:p-10 overflow-hidden border border-white/[0.09] shadow-[0_30px_80px_rgba(0,0,0,0.8)] group"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  {/* Left: Strategic Narrative */}
+                  <div className="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 mb-4 font-mono text-[12px]">
+                        <span className="px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[#D9A55B]">
+                          Project 0{idx + 1}
+                        </span>
+                        <span className="text-[#62666D]">·</span>
+                        <span className="text-[#8A8F98]">{study.category || "Web App"}</span>
+                      </div>
+
+                      <h3 className="text-[26px] sm:text-[34px] font-medium text-[#F4F4F6] tracking-tight leading-[1.12] mb-3">
+                        {study.title}
+                      </h3>
+
+                      <p className="text-[15px] text-[#8A8F98] leading-relaxed mb-6">
+                        {study.description}
+                      </p>
+
+                      <div className="space-y-2 mb-8 font-mono text-[12px] text-[#D0D6E0]">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
+                          <span>Turnaround: {study.timeline || "3 Weeks"} MVP</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#57C1FF]" />
+                          <span>Stack: {study.stack?.join(", ") || "React, Tailwind, Node.js"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Link
+                      to={`/work/${study.slug}`}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-[#D9A55B]/60 text-[14px] font-medium text-[#F4F4F6] transition-all w-fit cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight className="w-4 h-4 text-[#D9A55B]" />
+                    </Link>
+                  </div>
+
+                  {/* Right: Immersive Production Preview */}
+                  <div className="lg:col-span-7">
+                    <Link
+                      to={`/work/${study.slug}`}
+                      className="block relative rounded-[12px] overflow-hidden bg-black/60 border border-white/[0.08] p-3 sm:p-4 group/preview shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                    >
+                      <div className="flex items-center gap-2 mb-3 px-1 text-[11px] font-mono text-[#62666D]" aria-hidden="true">
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                        <span className="ml-2 truncate text-[#8A8F98]">production / {study.slug}</span>
+                      </div>
+                      <div className="aspect-[16/10] overflow-hidden rounded-[8px] bg-black/40">
+                        <img
+                          src={study.src}
+                          alt={study.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover/preview:scale-[1.03]"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. The Continuous Delivery Protocol (Replacing generic steps) */}
+      <section id="process" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
-            eyebrow="Process"
-            title="From first call to"
-            highlight="live in four steps"
-            description="A calm, predictable rhythm so you always know what ships next."
+            eyebrow="Delivery Protocol"
+            title="The 4-Sprint Protocol"
+            highlight="predictable, transparent, swift"
+            description="How our studio moves an idea from whiteboard to production without bureaucracy."
           />
-          <ol className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {STEPS.map((s) => (
-              <li key={s.n} className="bento rounded-[16px] p-7 relative">
-                <div className="flex items-center justify-between mb-10">
-                  <span className="font-mono text-[12px] text-[#D9A55B]">{s.n}</span>
-                  <span className="font-mono text-[11px] text-[#62666D]">{s.time}</span>
-                </div>
-                <h3 className="text-[20px] font-medium text-[#F4F4F6] tracking-tight mb-2">{s.title}</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
 
-      {/* 6. Stats */}
-      <section className="w-full hairline-y py-20 px-5 sm:px-8">
-        <dl className="max-w-[1100px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-          {STATS.map((s) => (
-            <div key={s.label}>
-              <dt className="sr-only">{s.label}</dt>
-              <dd className="gradient-text text-[44px] md:text-[56px] font-medium tracking-[-0.03em] leading-none mb-2">{s.value}</dd>
-              <p className="text-[13px] text-[#8A8F98]" aria-hidden="true">{s.label}</p>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* 7. Selected work */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          <SectionHeading eyebrow="Selected work" title="Products we are proud of" description="A few recent launches, from edtech to heritage food brands." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {projects.map((p) => (
-              <Link
-                key={p.title}
-                to="/work"
-                className="bento rounded-[16px] overflow-hidden group flex flex-col"
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {CADENCE.map((step, idx) => (
+              <div
+                key={step.phase}
+                className="bento rounded-[16px] p-7 flex flex-col justify-between border border-white/[0.08]"
               >
-                <div className="aspect-[4/3] bg-black/30 border-b border-white/[0.07] flex items-center justify-center p-6 overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    loading="lazy"
-                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between gap-4">
-                  <div>
-                    <h3 className="text-[17px] font-medium text-[#F4F4F6] tracking-tight mb-1.5">{p.title}</h3>
-                    <p className="text-[14px] text-[#8A8F98] leading-relaxed">{p.description}</p>
+                <div>
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="font-mono text-[12px] text-[#D9A55B]">{step.phase}</span>
+                    <span className="font-mono text-[11px] text-[#62666D]">{step.time}</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[13px] text-[#D9A55B]">
-                    View case study <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </span>
+                  <h3 className="text-[20px] font-medium text-[#F4F4F6] tracking-tight mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-[14px] text-[#8A8F98] leading-relaxed">
+                    {step.desc}
+                  </p>
                 </div>
-              </Link>
+                <div className="mt-8 pt-4 border-t border-white/[0.06] font-mono text-[11px] text-[#62666D]">
+                  Checkpoint 0{idx + 1}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. Testimonials */}
-      <section className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      {/* 8. Verified Proof: Testimonials */}
+      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
-          <SectionHeading eyebrow="Kind words" title="What founders say" />
+          <SectionHeading eyebrow="Proof" title="Endorsements from founders" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {reviews.slice(0, 6).map((r) => (
-              <figure key={r.name} className="bento rounded-[16px] p-7 flex flex-col justify-between gap-8">
-                <blockquote className="text-[15px] text-[#D0D6E0] leading-relaxed">"{r.body.trim()}"</blockquote>
+              <figure key={r.name} className="bento rounded-[16px] p-7 flex flex-col justify-between gap-8 border border-white/[0.08]">
+                <blockquote className="text-[15px] text-[#D0D6E0] leading-relaxed">
+                  "{r.body.trim()}"
+                </blockquote>
                 <figcaption className="flex items-center gap-3">
                   <span className="w-9 h-9 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
                     <img src={r.img} alt="" loading="lazy" className="w-full h-full object-cover" />
                   </span>
-                  <span>
+                  <div>
                     <span className="block text-[14px] font-medium text-[#F4F4F6]">{r.name.trim()}</span>
                     <span className="block text-[12px] text-[#8A8F98]">{r.role}</span>
-                  </span>
+                  </div>
                 </figcaption>
               </figure>
             ))}
@@ -319,25 +494,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. FAQ */}
-      <section id="faq" className="w-full hairline-y py-24 md:py-36 px-5 sm:px-8">
+      {/* 9. Production Telemetry */}
+      <section className="w-full hairline-y py-16 px-5 sm:px-8">
+        <dl className="max-w-[1100px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {STATS.map((s) => (
+            <div key={s.label}>
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="gradient-text text-[44px] md:text-[56px] font-medium tracking-[-0.03em] leading-none mb-2">
+                {s.value}
+              </dd>
+              <div className="text-[13px] font-medium text-[#F4F4F6] mb-1">{s.label}</div>
+              <p className="text-[11px] font-mono text-[#62666D]">{s.sub}</p>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* 10. FAQ */}
+      <section id="faq" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
         <div className="max-w-[820px] mx-auto">
           <SectionHeading eyebrow="FAQ" title={homepage.section8.title} />
           <Accordion items={homepage.section8.faqs} />
         </div>
       </section>
 
-      {/* 10. Closing CTA */}
-      <section id="cta" className="relative w-full hairline-y py-28 md:py-40 px-5 sm:px-8 text-center overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D9A55B]/12 blur-[140px] rounded-full pointer-events-none" aria-hidden="true" />
+      {/* 11. Closing Call: Direct Partnership */}
+      <section id="cta" className="relative w-full hairline-y py-24 md:py-36 px-5 sm:px-8 text-center overflow-hidden scroll-mt-20">
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D9A55B]/12 blur-[140px] rounded-full pointer-events-none"
+          aria-hidden="true"
+        />
         <div className="relative max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="gradient-text text-[36px] sm:text-[52px] md:text-[64px] font-medium tracking-[-0.035em] leading-[1.05] mb-6">
+          <h2 className="gradient-text text-[36px] sm:text-[52px] md:text-[66px] font-medium tracking-[-0.035em] leading-[1.05] mb-6">
             Built for the businesses you are about to become.
           </h2>
-          <p className="text-[17px] text-[#8A8F98] mb-10 max-w-xl">
-            Tell us what you are building. We will reply within a day with a plan, a timeline and a fixed quote.
+          <p className="text-[17px] text-[#8A8F98] mb-10 max-w-xl leading-relaxed">
+            Tell us what you are building. You will collaborate directly with founders who write code, with a clear scope and fixed delivery date.
           </p>
-          <Button to="/contact" variant="primary" size="lg">Start a project</Button>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Button to="/contact" variant="primary" size="lg">
+              Start a project
+            </Button>
+            <a
+              href="https://wa.cookie.org.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[14px] font-medium text-[#D0D6E0] hover:text-[#F4F4F6] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#59D499] animate-pulse" />
+              <span>Direct WhatsApp Line</span>
+            </a>
+          </div>
         </div>
       </section>
     </div>

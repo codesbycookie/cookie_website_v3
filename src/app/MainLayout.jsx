@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
+import ScrollProgress from "../components/shared/ScrollProgress";
+import BackToTop from "../components/shared/BackToTop";
+import FloatingActionDock from "../components/shared/FloatingActionDock";
 
 export default function MainLayout({ children }) {
   const { pathname, hash } = useLocation();
 
-  // Reset scroll on navigation; honour #anchors such as /portfolio#case-studies
+  // Reset scroll on navigation; honour #anchors with smooth scrolling
   useEffect(() => {
     if (hash) {
       const el = document.getElementById(hash.slice(1));
@@ -19,10 +22,31 @@ export default function MainLayout({ children }) {
   }, [pathname, hash]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#08090A] text-[#F4F4F6]">
+    <div className="min-h-screen flex flex-col bg-[#08090A] text-[#F4F4F6] relative selection:bg-[#D9A55B]/25 selection:text-[#F4F4F6]">
+      {/* 2026 Accessibility: WCAG Skip to Main Content Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#D9A55B] focus:text-[#08090A] focus:rounded-[8px] focus:font-semibold focus:shadow-[0_0_24px_rgba(217,165,91,0.6)] focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
+
+      {/* Real-time reading & scroll progress indicator */}
+      <ScrollProgress />
+
       <Navbar />
-      <main className="flex-1 w-full">{children}</main>
+
+      <main id="main-content" tabIndex="-1" className="flex-1 w-full focus:outline-none">
+        {children}
+      </main>
+
       <Footer />
+
+      {/* Modern Boosted Actions Floating Dock */}
+      <FloatingActionDock />
+
+      {/* Ergonomic Back to Top recovery button */}
+      <BackToTop />
     </div>
   );
 }
