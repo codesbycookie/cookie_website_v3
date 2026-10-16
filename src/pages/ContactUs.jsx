@@ -1,57 +1,61 @@
 import React, { useState } from "react";
-import { social_links } from "../data/data";
-import SectionHeading from "../components/shared/SectionHeading";
-import Card from "../components/shared/Card";
 import Button from "../components/shared/Button";
-import Badge from "../components/shared/Badge";
-import FormField from "../components/shared/FormField";
+import CookieLogo from "../components/shared/CookieLogo";
+import { social_links } from "../data/data";
 import {
   MessageSquare,
   Mail,
   MapPin,
   ExternalLink,
-  Send,
   CheckCircle2,
   Clock,
   ShieldCheck,
 } from "lucide-react";
 
+/**
+ * Contact Us Page (Complete Redesign)
+ * The one question: "How do I reach them, and what will happen after I reach out?"
+ * Client-first, honest, transparent, accessible.
+ */
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "web-development",
+    projectType: "website",
     message: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // "idle" | "loading" | "success"
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const serviceOptions = [
-    { label: "Web Application Development", value: "web-development" },
-    { label: "Native Mobile App Development", value: "mobile-development" },
-    { label: "Custom ERP & CRM Systems", value: "erp-systems" },
-    { label: "UI/UX Design & Design Systems", value: "ui-ux-design" },
-    { label: "Brand Strategy & Identity", value: "branding" },
-    { label: "Digital Growth & Marketing", value: "digital-marketing" },
+  const projectTypes = [
+    { value: "website", label: "New Website or Web App" },
+    { value: "mobile", label: "Mobile App (iOS / Android)" },
+    { value: "ecommerce", label: "E-Commerce Store & Checkout" },
+    { value: "operations", label: "Custom Business Tool or Dashboard" },
+    { value: "branding", label: "Visual Identity & Design System" },
+    { value: "other", label: "General Project Consultation" },
   ];
 
   const validate = () => {
-    const errs = {};
-    if (!formData.name.trim()) errs.name = "Full name is required";
+    const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = "Please enter your name.";
+    }
     if (!formData.email.trim()) {
-      errs.email = "Email address is required";
+      newErrors.email = "Please enter your email address.";
     } else if (!formData.email.includes("@") || !formData.email.includes(".")) {
-      errs.email = "Please enter a valid email address";
+      newErrors.email = "Please enter a valid email address.";
     }
     if (!formData.phone.trim()) {
-      errs.phone = "Phone / WhatsApp number is required";
+      newErrors.phone = "Please enter a phone or WhatsApp number.";
     }
     if (!formData.message.trim()) {
-      errs.message = "Please describe your project scope or objectives";
+      newErrors.message = "Please describe what you are looking to build.";
     }
-    return errs;
+    return newErrors;
   };
 
   const handleChange = (e) => {
@@ -67,258 +71,368 @@ export default function ContactUs() {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      // Focus first error field
+      const firstKey = Object.keys(validationErrors)[0];
+      const el = document.getElementById(`field-${firstKey}`);
+      if (el) el.focus();
       return;
     }
 
-    setStatus("loading");
+    setIsSubmitting(true);
     setErrors({});
 
-    // Simulate backend transmission
+    // Simulate reliable dispatch
     setTimeout(() => {
-      setStatus("success");
+      setIsSubmitting(false);
+      setIsSuccess(true);
       setFormData({
         name: "",
         email: "",
         phone: "",
-        service: "web-development",
+        projectType: "website",
         message: "",
       });
-    }, 700);
+    }, 600);
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Hero / Header */}
-      <section className="relative w-full pt-24 pb-16 md:pt-32 md:pb-20 bg-[#08090A] overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-[#D9A55B]/10 blur-[150px] rounded-full pointer-events-none" aria-hidden="true" />
-        <div className="relative max-w-5xl mx-auto px-5 sm:px-8 text-center flex flex-col items-center">
-          <div className="reveal mb-6 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] shadow-[0_0_10px_#D9A55B]" />
-            Contact
+    <div className="w-full flex flex-col items-center bg-[#0A0B0D] text-[#F4F4F6] relative overflow-hidden">
+      {/* Linear Ambient Spotlight Cone */}
+      <div
+        className="linear-spotlight-cone"
+        aria-hidden="true"
+      />
+
+      {/* Hero Section */}
+      <section className="relative w-full pt-20 pb-12 md:pt-28 md:pb-16 px-5 sm:px-8 text-center flex flex-col items-center">
+        <div className="hero-reveal linear-border-beam mb-4">
+          <div>
+            <div className="flex items-center gap-2 px-3.5 py-1.5 text-[13px] font-medium text-[#9EA3AD]">
+              <span className="w-2 h-2 rounded-full bg-[#59D499] pulse-dot" />
+              <span>Currently accepting new client projects</span>
+            </div>
           </div>
-
-          <h1 className="reveal gradient-text text-[40px] sm:text-[58px] md:text-[72px] font-medium tracking-[-0.04em] leading-[1.05] mb-6" style={{ animationDelay: "60ms" }}>
-            Let us build something together
-          </h1>
-
-          <p className="reveal text-[17px] sm:text-[20px] text-[#8A8F98] max-w-xl leading-relaxed" style={{ animationDelay: "120ms" }}>
-            Direct access to our founders in Chennai. Tell us about your idea and get a reply within 24 hours.
-          </p>
         </div>
+
+        <h1 className="hero-reveal-delay-1 text-[36px] sm:text-[52px] md:text-[64px] font-semibold text-[#F4F4F6] tracking-[-0.03em] leading-[1.1] max-w-3xl mb-5">
+          Tell us about what you want to build
+        </h1>
+
+        <p className="hero-reveal-delay-2 text-[17px] sm:text-[20px] text-[#9EA3AD] max-w-2xl leading-relaxed">
+          We will review your notes and reply within 1 business day with clear recommendations and a realistic quote.
+        </p>
       </section>
 
-      {/* Split Layout: Channels on Left, Form on Right */}
-      <section className="w-full py-20 md:py-28 bg-[#08090A]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Direct channels & studio telemetry */}
-            <div className="lg:col-span-5 flex flex-col gap-8">
-              <div>
-                <h2 className="text-[24px] font-semibold text-[#F4F4F6] mb-3">
-                  Direct channels
-                </h2>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
-                  Choose your preferred channel for discovery calls, RFPs, or technical consultations.
-                </p>
-              </div>
+      {/* Linear Traveling Hairline Light Beam */}
+      <div className="hairline-beam" />
 
-              {/* Channel Cards */}
-              <div className="flex flex-col gap-4">
+      {/* Main Content Grid: Direct Channels & Form */}
+      <section className="w-full py-12 md:py-16 px-5 sm:px-8">
+        <div className="max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Direct Alternatives & What Happens Next */}
+          <div className="lg:col-span-5 flex flex-col gap-10">
+            {/* Direct Channel Cards */}
+            <div>
+              <h2 className="text-[22px] font-semibold text-[#F4F4F6] tracking-tight mb-2">
+                Prefer to talk directly?
+              </h2>
+              <p className="text-[15px] text-[#9EA3AD] leading-relaxed mb-6">
+                Skip the form and reach our founders directly on WhatsApp or email.
+              </p>
+
+              <div className="flex flex-col gap-3">
                 {/* WhatsApp */}
                 <a
                   href={social_links.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-5 rounded-[10px] bg-[#2F3031]/50 border border-[#494B4D] hover:border-[#59D499] hover:bg-[#2F3031] transition-all duration-100 flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+                  className="p-4 rounded-[12px] bg-[#121316] border border-white/10 hover:border-[#59D499]/60 hover:bg-[#181A1E] transition-all flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] min-h-[56px]"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-[6px] bg-[#08090A] border border-[#494B4D] flex items-center justify-center text-[#59D499]">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#59D499]/15 border border-[#59D499]/30 flex items-center justify-center text-[#59D499]">
                       <MessageSquare className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-[14px] font-semibold text-[#F4F4F6] block">
-                        WhatsApp Studio
+                      <span className="text-[15px] font-medium text-[#F4F4F6] block">
+                        WhatsApp Message
                       </span>
-                      <span className="font-mono text-[12px] text-[#8A8F98]">
-                        wa.cookie.org.in · Instant chat
+                      <span className="text-[13px] text-[#9EA3AD]">
+                        Fastest for quick inquiries
                       </span>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#8A8F98] group-hover:text-[#59D499] transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-[#767B85] group-hover:text-[#59D499] transition-colors" />
                 </a>
 
                 {/* Email Direct */}
                 <a
                   href="mailto:contact@cookieinc.in"
-                  className="p-5 rounded-[10px] bg-[#2F3031]/50 border border-[#494B4D] hover:border-[#57C1FF] hover:bg-[#2F3031] transition-all duration-100 flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+                  className="p-4 rounded-[12px] bg-[#121316] border border-white/10 hover:border-[#D9A55B]/60 hover:bg-[#181A1E] transition-all flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] min-h-[56px]"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-[6px] bg-[#08090A] border border-[#494B4D] flex items-center justify-center text-[#57C1FF]">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#D9A55B]/15 border border-[#D9A55B]/30 flex items-center justify-center text-[#D9A55B]">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-[14px] font-semibold text-[#F4F4F6] block">
-                        Direct Email
-                      </span>
-                      <span className="font-mono text-[12px] text-[#8A8F98]">
+                      <span className="text-[15px] font-medium text-[#F4F4F6] block">
                         contact@cookieinc.in
                       </span>
-                    </div>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-[#8A8F98] group-hover:text-[#57C1FF] transition-colors" />
-                </a>
-
-                {/* Google My Business */}
-                <a
-                  href={social_links.gmb}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-5 rounded-[10px] bg-[#2F3031]/50 border border-[#494B4D] hover:border-[#FFC533] hover:bg-[#2F3031] transition-all duration-100 flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-[6px] bg-[#08090A] border border-[#494B4D] flex items-center justify-center text-[#FFC533]">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <span className="text-[14px] font-semibold text-[#F4F4F6] block">
-                        Chennai Studio HQ
-                      </span>
-                      <span className="font-mono text-[12px] text-[#8A8F98]">
-                        Google My Business verification
+                      <span className="text-[13px] text-[#9EA3AD]">
+                        Replies within 24 hours
                       </span>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#8A8F98] group-hover:text-[#FFC533] transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-[#767B85] group-hover:text-[#D9A55B] transition-colors" />
                 </a>
-              </div>
 
-              {/* Guarantees & SLA Card */}
-              <div className="p-6 rounded-[12px] bg-[#08090A] border border-[#494B4D] flex flex-col gap-4 font-mono text-[12px]">
-                <div className="flex items-center gap-2.5 text-[#59D499]">
-                  <Clock className="w-4 h-4" />
-                  <span>24-Hour SLA on all discovery briefs</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-[#D0D6E0]">
-                  <ShieldCheck className="w-4 h-4 text-[#57C1FF]" />
-                  <span>Strict NDA and intellectual property protection</span>
+                {/* Chennai Studio HQ */}
+                <div className="p-4 rounded-[12px] bg-[#121316] border border-white/10 flex items-center gap-3.5 min-h-[56px]">
+                  <div className="w-10 h-10 rounded-[8px] bg-white/[0.06] border border-white/10 flex items-center justify-center text-[#9EA3AD]">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[15px] font-medium text-[#F4F4F6] block">
+                      Chennai, India
+                    </span>
+                    <span className="text-[13px] text-[#9EA3AD]">
+                      Studio headquarters and engineering base
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Interactive Form with All States */}
-            <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-[12px] bg-[#2F3031]/40 border border-[#494B4D] shadow-[0_20px_80px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.08)]">
-                <div className="mb-8">
-                  <h2 className="text-[22px] font-semibold text-[#F4F4F6] mb-1">
-                    Project Dispatch Form
-                  </h2>
-                  <p className="text-[13px] text-[#8A8F98]">
-                    Fields marked with an asterisk (<span className="text-[#D9A55B]">*</span>) are mandatory.
-                  </p>
-                </div>
-
-                {status === "success" ? (
-                  <div
-                    role="status"
-                    className="p-8 rounded-[8px] bg-[#59D499]/10 border border-[#59D499]/50 flex flex-col items-center text-center gap-4"
-                  >
-                    <CheckCircle2 className="w-12 h-12 text-[#59D499]" />
-                    <h3 className="text-[20px] font-semibold text-[#F4F4F6]">
-                      Transmission Confirmed
-                    </h3>
-                    <p className="text-[14px] text-[#D0D6E0] max-w-md">
-                      Thank you. Your project brief has been routed to our technical architect. We will review your requirements and reply within 24 hours.
-                    </p>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setStatus("idle")}
-                      className="mt-2"
-                    >
-                      Transmit another inquiry
-                    </Button>
+            {/* What Happens Next Timeline */}
+            <div className="interactive-card p-6 rounded-[16px]">
+              <h3 className="text-[17px] font-semibold text-[#F4F4F6] mb-4 flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#D9A55B]" />
+                What happens after you reach out?
+              </h3>
+              <ol className="space-y-4 text-[14px]">
+                <li className="flex gap-3">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.08] text-[#D9A55B] font-semibold text-[12px] flex items-center justify-center shrink-0">
+                    1
+                  </span>
+                  <div>
+                    <p className="font-medium text-[#F4F4F6]">Initial review within 24 hours</p>
+                    <p className="text-[#9EA3AD]">We read your requirements and check our immediate schedule.</p>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <FormField
-                        label="Full name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Satish Kumar"
-                        required
-                        error={errors.name}
-                      />
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.08] text-[#D9A55B] font-semibold text-[12px] flex items-center justify-center shrink-0">
+                    2
+                  </span>
+                  <div>
+                    <p className="font-medium text-[#F4F4F6]">A quick 20-minute discussion</p>
+                    <p className="text-[#9EA3AD]">A no-pressure conversation with the builders to clarify your exact objectives.</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.08] text-[#D9A55B] font-semibold text-[12px] flex items-center justify-center shrink-0">
+                    3
+                  </span>
+                  <div>
+                    <p className="font-medium text-[#F4F4F6]">Fixed scope, price, and timeline</p>
+                    <p className="text-[#9EA3AD]">You get a transparent written quote. No hidden costs, ever.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
 
-                      <FormField
-                        label="Work email"
+            {/* Reassurance Note */}
+            <div className="flex items-center gap-3 text-[13px] text-[#767B85] px-1">
+              <ShieldCheck className="w-4 h-4 text-[#59D499] shrink-0" />
+              <span>We never share your information or send unrequested marketing emails.</span>
+            </div>
+          </div>
+
+          {/* Right Column: Project Inquiry Form */}
+          <div className="lg:col-span-7">
+            <div className="interactive-card p-8 sm:p-10 rounded-[20px]">
+              {isSuccess ? (
+                <div
+                  role="alert"
+                  className="flex flex-col items-center text-center py-10 animate-[fade-up_200ms_ease-out]"
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#59D499]/15 border border-[#59D499]/30 flex items-center justify-center text-[#59D499] mb-6">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  <h2 className="text-[26px] font-semibold text-[#F4F4F6] tracking-tight mb-3">
+                    Thank you! We received your message.
+                  </h2>
+                  <p className="text-[16px] text-[#9EA3AD] max-w-md leading-relaxed mb-8">
+                    Our team in Chennai will review your project details and get back to you within 1 business day.
+                  </p>
+                  <Button
+                    onClick={() => setIsSuccess(false)}
+                    variant="ghost"
+                    size="md"
+                    className="min-h-[44px]"
+                  >
+                    Send another message
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+                  <div>
+                    <h2 className="text-[24px] font-semibold text-[#F4F4F6] tracking-tight mb-1">
+                      Project inquiry
+                    </h2>
+                    <p className="text-[14px] text-[#9EA3AD]">
+                      Fill out the form below and we will get back to you shortly.
+                    </p>
+                  </div>
+
+                  {/* Name Field */}
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="field-name"
+                      className="text-[14px] font-medium text-[#F4F4F6]"
+                    >
+                      Your name <span className="text-[#D9A55B]">*</span>
+                    </label>
+                    <input
+                      id="field-name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="e.g. Arun Kumar"
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className="w-full h-12 px-4 rounded-[8px] bg-[#0A0B0D] border border-white/15 text-[#F4F4F6] text-[15px] placeholder-[#767B85] focus:outline-none focus:ring-2 focus:ring-[#D9A55B] focus:border-transparent transition-all"
+                    />
+                    {errors.name && (
+                      <p id="name-error" className="text-[13px] text-[#FF6363]">
+                        {errors.name}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Contact Row: Email & Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {/* Email */}
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="field-email"
+                        className="text-[14px] font-medium text-[#F4F4F6]"
+                      >
+                        Email address <span className="text-[#D9A55B]">*</span>
+                      </label>
+                      <input
+                        id="field-email"
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="satish@company.com"
-                        required
-                        error={errors.email}
+                        placeholder="arun@company.com"
+                        aria-required="true"
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "email-error" : undefined}
+                        className="w-full h-12 px-4 rounded-[8px] bg-[#0A0B0D] border border-white/15 text-[#F4F4F6] text-[15px] placeholder-[#767B85] focus:outline-none focus:ring-2 focus:ring-[#D9A55B] focus:border-transparent transition-all"
                       />
+                      {errors.email && (
+                        <p id="email-error" className="text-[13px] text-[#FF6363]">
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <FormField
-                        label="Phone / WhatsApp"
+                    {/* Phone / WhatsApp */}
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="field-phone"
+                        className="text-[14px] font-medium text-[#F4F4F6]"
+                      >
+                        Phone / WhatsApp <span className="text-[#D9A55B]">*</span>
+                      </label>
+                      <input
+                        id="field-phone"
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
-                        required
-                        error={errors.phone}
+                        aria-required="true"
+                        aria-invalid={!!errors.phone}
+                        aria-describedby={errors.phone ? "phone-error" : undefined}
+                        className="w-full h-12 px-4 rounded-[8px] bg-[#0A0B0D] border border-white/15 text-[#F4F4F6] text-[15px] placeholder-[#767B85] focus:outline-none focus:ring-2 focus:ring-[#D9A55B] focus:border-transparent transition-all"
                       />
-
-                      <FormField
-                        label="Target service"
-                        name="service"
-                        as="select"
-                        value={formData.service}
-                        onChange={handleChange}
-                        options={serviceOptions}
-                        required
-                      />
+                      {errors.phone && (
+                        <p id="phone-error" className="text-[13px] text-[#FF6363]">
+                          {errors.phone}
+                        </p>
+                      )}
                     </div>
+                  </div>
 
-                    <FormField
-                      label="Project brief & goals"
+                  {/* Project Type Select */}
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="field-projectType"
+                      className="text-[14px] font-medium text-[#F4F4F6]"
+                    >
+                      What are you looking to build?
+                    </label>
+                    <select
+                      id="field-projectType"
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleChange}
+                      className="w-full h-12 px-4 rounded-[8px] bg-[#0A0B0D] border border-white/15 text-[#F4F4F6] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#D9A55B] focus:border-transparent transition-all cursor-pointer"
+                    >
+                      {projectTypes.map((pt) => (
+                        <option key={pt.value} value={pt.value} className="bg-[#0A0B0D] text-[#F4F4F6]">
+                          {pt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Message Field */}
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="field-message"
+                      className="text-[14px] font-medium text-[#F4F4F6]"
+                    >
+                      Tell us about your project or goals <span className="text-[#D9A55B]">*</span>
+                    </label>
+                    <textarea
+                      id="field-message"
                       name="message"
-                      as="textarea"
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Outline your timeline, current stack, challenges, and deliverables..."
-                      required
-                      error={errors.message}
-                      helperText="Include any reference links, deadline requirements, or technical constraints."
+                      placeholder="Share a few sentences on what you need, your target audience, and your preferred timeline."
+                      aria-required="true"
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? "message-error" : undefined}
+                      className="w-full p-4 rounded-[8px] bg-[#0A0B0D] border border-white/15 text-[#F4F4F6] text-[15px] placeholder-[#767B85] focus:outline-none focus:ring-2 focus:ring-[#D9A55B] focus:border-transparent transition-all resize-y min-h-[110px]"
                     />
+                    {errors.message && (
+                      <p id="message-error" className="text-[13px] text-[#FF6363]">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
 
-                    <div className="pt-4 border-t border-[#494B4D]/50 flex items-center justify-between">
-                      <span className="font-mono text-[11px] text-[#62666D]">
-                        Encrypted transmission · TLS 1.3
-                      </span>
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    loading={isSubmitting}
+                    className="w-full min-h-[50px] font-semibold text-[16px] mt-2"
+                  >
+                    Send project inquiry
+                  </Button>
 
-                      {/* ONE Primary CTA per viewport */}
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        loading={status === "loading"}
-                        ariaLabel="Transmit project inquiry"
-                      >
-                        <span>Transmit inquiry</span>
-                        <Send className="w-4 h-4 ml-1" />
-                      </Button>
-                    </div>
-                  </form>
-                )}
-              </div>
+                  <p className="text-[12px] text-[#767B85] text-center">
+                    Typically answered within 1 business day · Zero obligation
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>

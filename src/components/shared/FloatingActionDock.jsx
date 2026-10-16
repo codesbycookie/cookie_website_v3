@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, MessageSquare } from "lucide-react";
 
 /**
- * 2026 UX Floating Action Dock:
- * Gives users quick access to essential studio actions without
- * having to scroll back and forth.
- *
- * - Intelligent bottom ducking (hides when bottom CTA is in view to prevent overlap)
- * - User collapsible (can minimize to a neat pill)
- * - Accessible keyboard focus and ARIA labels
+ * Clean studio floating action dock:
+ * Gives visitors low-friction access to instant WhatsApp chat or direct inquiry.
+ * - Auto-ducks near footer
+ * - Can be minimized
+ * - Accessible keyboard focus
  */
 export default function FloatingActionDock() {
   const [minimized, setMinimized] = useState(false);
@@ -26,10 +24,7 @@ export default function FloatingActionDock() {
           const totalHeight = document.documentElement.scrollHeight;
           const windowHeight = window.innerHeight;
 
-          // Only show once user has scrolled past the immediate top hero (e.g. 250px)
           setVisibleAfterScroll(scrollY > 250);
-
-          // Hide when within 550px of page bottom (where the main CTA already dominates)
           const distanceToBottom = totalHeight - (scrollY + windowHeight);
           setHiddenAtBottom(distanceToBottom < 480);
 
@@ -53,16 +48,17 @@ export default function FloatingActionDock() {
         <button
           type="button"
           onClick={() => setMinimized(false)}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#08090A]/90 hover:bg-[#18191B] border border-white/10 hover:border-[#D9A55B]/60 text-[13px] text-[#F4F4F6] shadow-[0_12px_32px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#121316] hover:bg-[#181A1E] border border-white/10 hover:border-[#D9A55B]/60 text-[13px] text-[#F4F4F6] shadow-[0_12px_32px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-all cursor-pointer min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
           aria-label="Expand quick actions dock"
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#D9A55B]" />
+          <MessageSquare className="w-3.5 h-3.5 text-[#D9A55B]" />
           <span className="font-medium">Quick Actions</span>
-          <span className="w-2 h-2 rounded-full bg-[#59D499] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#59D499]" />
         </button>
       </div>
     );
   }
+
 
   return (
     <nav

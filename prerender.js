@@ -7,8 +7,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROUTES = [
   "/",
   "/work",
+  "/portfolio",
+  "/services",
+  "/service",
   "/about",
+  "/about-us",
   "/contact",
+  "/contact-us",
+  "/countdown",
   "/privacy",
   "/terms",
   "/work/iq-bridge",
@@ -20,19 +26,43 @@ const ROUTES = [
 const ROUTE_META = {
   "/": {
     title: "Cookie Inc. — Chennai-based Software Studio",
-    desc: "We build web apps, mobile apps, UI/UX systems, branding, and digital growth engines with speed, taste, and precision.",
+    desc: "We build websites, mobile apps, and custom tools that help ambitious companies grow. Shipped by engineers in Chennai.",
   },
   "/work": {
     title: "Selected Work — Cookie Inc.",
-    desc: "Case studies of web apps, mobile products, and systems shipped for clients across industries.",
+    desc: "Case studies of web apps, mobile products, and systems shipped for real business clients across industries.",
+  },
+  "/portfolio": {
+    title: "Selected Work — Cookie Inc.",
+    desc: "Case studies of web apps, mobile products, and systems shipped for real business clients across industries.",
+  },
+  "/services": {
+    title: "Services & Defined Packages — Cookie Inc.",
+    desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
+  },
+  "/service": {
+    title: "Services & Defined Packages — Cookie Inc.",
+    desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
   },
   "/about": {
-    title: "About — Cookie Inc.",
-    desc: "A focused software studio in Chennai. Engineering depth meets high-taste design.",
+    title: "About the Studio — Cookie Inc.",
+    desc: "A focused software studio in Chennai. You collaborate directly with senior creators—no middlemen, no runaround.",
+  },
+  "/about-us": {
+    title: "About the Studio — Cookie Inc.",
+    desc: "A focused software studio in Chennai. You collaborate directly with senior creators—no middlemen, no runaround.",
   },
   "/contact": {
     title: "Start a Project — Cookie Inc.",
-    desc: "Tell us what you're building. We reply with technical scope and a realistic quote within 24 hours.",
+    desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
+  },
+  "/contact-us": {
+    title: "Start a Project — Cookie Inc.",
+    desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
+  },
+  "/countdown": {
+    title: "Studio Launch Preview — Cookie Inc.",
+    desc: "Something new is launching soon from Cookie Inc. Sign up for early access to our next studio platform.",
   },
   "/privacy": {
     title: "Privacy Policy — Cookie Inc.",

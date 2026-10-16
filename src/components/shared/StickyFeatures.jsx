@@ -137,43 +137,14 @@ const VISUALS = { discover: PlanVisual, build: BuildVisual, measure: MeasureVisu
 
 export default function StickyFeatures() {
   const [active, setActive] = useState(0);
-  const refs = useRef([]);
-  const tabListRef = useRef(null);
-
-  // Optimized IntersectionObserver with tighter rootMargin and threshold
-  // to avoid aggressive scroll traps
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setActive(Number(e.target.dataset.index));
-          }
-        });
-      },
-      { rootMargin: "-25% 0px -25% 0px", threshold: 0.2 }
-    );
-    refs.current.forEach((el) => el && io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
-  const selectStep = (index, scrollIntoView = true) => {
-    setActive(index);
-    if (scrollIntoView && refs.current[index]) {
-      // Smoothly bring the text block into view without jarring jumps
-      refs.current[index].scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowRight") {
       e.preventDefault();
-      const next = (active + 1) % FEATURES.length;
-      selectStep(next);
+      setActive((prev) => (prev + 1) % FEATURES.length);
     } else if (e.key === "ArrowLeft") {
       e.preventDefault();
-      const prev = (active - 1 + FEATURES.length) % FEATURES.length;
-      selectStep(prev);
+      setActive((prev) => (prev - 1 + FEATURES.length) % FEATURES.length);
     }
   };
 
@@ -181,14 +152,13 @@ export default function StickyFeatures() {
   const Visual = VISUALS[current.key];
 
   return (
-    <div className="w-full flex flex-col gap-8">
-      {/* 2026 UX Enhancement: Quick Phase Selector Bar (Eliminates scroll fatigue!) */}
+    <div className="w-full flex flex-col gap-6">
+      {/* Linear Phase Selector Tabs */}
       <div
-        ref={tabListRef}
         role="tablist"
-        aria-label="Product phases"
+        aria-label="Studio workflow phases"
         onKeyDown={handleKeyDown}
-        className="w-full flex items-center justify-between sm:justify-start gap-1.5 p-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md overflow-x-auto"
+        className="w-full flex items-center justify-between sm:justify-start gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md overflow-x-auto"
       >
         {FEATURES.map((f, i) => {
           const isSelected = active === i;
@@ -197,13 +167,10 @@ export default function StickyFeatures() {
               key={f.key}
               role="tab"
               aria-selected={isSelected}
-              aria-controls={`feature-panel-${f.key}`}
-              id={`feature-tab-${f.key}`}
-              tabIndex={isSelected ? 0 : -1}
-              onClick={() => selectStep(i)}
-              className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-[12px] sm:text-[13px] font-medium transition-all duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] whitespace-nowrap ${
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-medium transition-all duration-200 cursor-pointer min-h-[40px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] whitespace-nowrap ${
                 isSelected
-                  ? "bg-white/[0.1] text-[#F4F4F6] border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+                  ? "bg-white/[0.12] text-[#F4F4F6] border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] font-semibold"
                   : "text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.04] border border-transparent"
               }`}
             >
@@ -215,93 +182,73 @@ export default function StickyFeatures() {
           );
         })}
 
-        {/* Micro Step Navigator arrows */}
-        <div className="hidden sm:flex items-center gap-1 ml-auto pr-2">
+        {/* Step counter & arrow nav */}
+        <div className="hidden sm:flex items-center gap-1.5 ml-auto pr-3">
           <button
             type="button"
-            onClick={() => selectStep((active - 1 + FEATURES.length) % FEATURES.length)}
-            aria-label="Previous phase"
-            className="p-1 rounded-full text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.08] transition-colors"
+            onClick={() => setActive((active - 1 + FEATURES.length) % FEATURES.length)}
+            aria-label="Previous step"
+            className="p-1.5 rounded-full text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.08] transition-colors cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <span className="font-mono text-[11px] text-[#62666D] px-1">
-            {active + 1}/{FEATURES.length}
+          <span className="font-mono text-[12px] text-[#62666D]">
+            {active + 1} / {FEATURES.length}
           </span>
           <button
             type="button"
-            onClick={() => selectStep((active + 1) % FEATURES.length)}
-            aria-label="Next phase"
-            className="p-1 rounded-full text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.08] transition-colors"
+            onClick={() => setActive((active + 1) % FEATURES.length)}
+            aria-label="Next step"
+            className="p-1.5 rounded-full text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.08] transition-colors cursor-pointer"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Main Content Area: Responsive Split Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-        {/* Left: Compact, Ergonomic Scrolling steps */}
-        <div className="space-y-6 lg:space-y-0">
-          {FEATURES.map((f, i) => (
-            <div
-              key={f.key}
-              ref={(el) => (refs.current[i] = el)}
-              data-index={i}
-              data-active={active === i}
-              id={`feature-panel-${f.key}`}
-              role="tabpanel"
-              aria-labelledby={`feature-tab-${f.key}`}
-              // Reduced to compact min-h-[36vh] from 70vh to prevent scroll trapping
-              className={`feature-step lg:min-h-[36vh] flex flex-col justify-center py-6 lg:py-4 transition-opacity duration-300 ${
-                active === i ? "opacity-100" : "opacity-35 lg:opacity-40"
-              }`}
-            >
+      {/* Interactive Bento Showcase Panel */}
+      <div className="interactive-card p-6 sm:p-10 rounded-[24px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left: Phase Details */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div key={current.key} className="feed-in">
               <div className="flex items-center gap-2 mb-3">
                 <span
                   className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em]"
-                  style={{ color: f.color }}
+                  style={{ color: current.color }}
                 >
-                  <f.Icon className="w-4 h-4" /> {f.tag} · Phase {f.number}
+                  <current.Icon className="w-4 h-4" /> {current.tag} · Phase {current.number}
                 </span>
               </div>
-              <h3 className="gradient-text text-[26px] sm:text-[32px] md:text-[36px] font-medium leading-[1.12] tracking-[-0.03em] mb-3">
-                {f.title}
+              <h3 className="text-[26px] sm:text-[34px] font-semibold text-[#F4F4F6] leading-[1.15] tracking-tight mb-4">
+                {current.title}
               </h3>
-              <p className="text-[15px] sm:text-[16px] text-[#8A8F98] leading-relaxed max-w-lg mb-4">
-                {f.desc}
+              <p className="text-[16px] text-[#9EA3AD] leading-relaxed mb-6">
+                {current.desc}
               </p>
-
-              {/* Mobile-only inline visual so smaller viewports don't lose the live demo */}
-              <div className="block lg:hidden mt-4 pt-4 border-t border-white/[0.06]">
-                <div className="beam rounded-[14px] bg-[#0B0C0E] border border-white/[0.08] p-5 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-                  <div className="flex items-center gap-1.5 mb-4" aria-hidden="true">
-                    <span className="w-2 h-2 rounded-full bg-white/10" />
-                    <span className="w-2 h-2 rounded-full bg-white/10" />
-                    <span className="w-2 h-2 rounded-full bg-white/10" />
-                    <span className="ml-2 font-mono text-[11px] text-[#62666D]">cookie / {f.key}</span>
-                  </div>
-                  {active === i && <Visual color={f.color} />}
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Right: Sticky visual (Desktop) */}
-        <div className="hidden lg:block">
-          <div className="sticky top-[20vh]">
-            <div className="beam rounded-[16px] bg-[#0B0C0E] border border-white/[0.09] p-8 min-h-[360px] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)]">
-              <div className="flex items-center gap-1.5 mb-6" aria-hidden="true">
-                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                <span className="ml-3 font-mono text-[11px] text-[#62666D]">cookie / {current.key}</span>
-                <span className="ml-auto font-mono text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-[#8A8F98]">
+            <div className="pt-6 border-t border-white/10 flex items-center justify-between text-[13px] text-[#767B85]">
+              <span>Predictable studio delivery</span>
+              <span className="text-[#59D499] flex items-center gap-1 font-medium">
+                <CheckCircle2 className="w-4 h-4" /> Verified process
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Live Interactive Visual Demo */}
+          <div className="lg:col-span-7">
+            <div className="rounded-[18px] bg-[#0A0B0D] border border-white/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              <div className="flex items-center gap-2 mb-6" aria-hidden="true">
+                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                <span className="ml-3 font-mono text-[12px] text-[#62666D]">cookie_studio / {current.key}</span>
+                <span className="ml-auto font-mono text-[11px] px-2.5 py-0.5 rounded bg-white/[0.04] text-[#8A8F98]">
                   Phase {current.number}
                 </span>
               </div>
-              <div key={current.key}>
+              <div key={current.key} className="feed-in min-h-[160px] flex flex-col justify-center">
                 <Visual color={current.color} />
               </div>
             </div>

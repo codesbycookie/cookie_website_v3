@@ -4,12 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./app/App";
 import "./index.css";
 
-// Client-only: Linear-style cursor spotlight on cards
+// Client-only: Subtle cursor spotlight on interactive cards
 if (typeof window !== "undefined") {
   document.addEventListener(
     "pointermove",
     (e) => {
-      const card = e.target.closest?.(".bento");
+      const card = e.target.closest?.(".interactive-card, .bento");
       if (!card) return;
       const r = card.getBoundingClientRect();
       card.style.setProperty("--mx", `${e.clientX - r.left}px`);
@@ -18,7 +18,7 @@ if (typeof window !== "undefined") {
     { passive: true }
   );
 
-  // Client-only: Scroll reveal for below-the-fold blocks
+  // Client-only: Subtle scroll reveal for below-the-fold blocks
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -29,15 +29,18 @@ if (typeof window !== "undefined") {
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.05 }
     );
     const scan = () => {
       document
-        .querySelectorAll(".bento:not([data-rv]), section h2:not([data-rv]), dl > div:not([data-rv])")
+        .querySelectorAll(".rv-item:not([data-rv]), article:not([data-rv]), .interactive-card:not([data-rv])")
         .forEach((el, i) => {
-          if (el.getBoundingClientRect().top < window.innerHeight) return;
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add("is-in");
+            return;
+          }
           el.dataset.rv = "1";
-          el.style.setProperty("--rv-delay", `${(i % 4) * 70}ms`);
+          el.style.setProperty("--rv-delay", `${(i % 3) * 60}ms`);
           el.classList.add("rv");
           io.observe(el);
         });

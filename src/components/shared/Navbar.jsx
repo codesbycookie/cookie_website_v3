@@ -86,41 +86,49 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation: flat text links like Linear */}
+        {/* Desktop Navigation: clean, confident typography */}
         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Main Navigation">
-          {navbar.pages.map((page) => {
-            const isActive = location.pathname === page.link;
+          {[
+            { name: "Home", link: "/" },
+            { name: "Work", link: "/work", aliases: ["/portfolio"] },
+            { name: "Services", link: "/services", aliases: ["/service"] },
+            { name: "About", link: "/about", aliases: ["/about-us"] },
+            { name: "Contact", link: "/contact", aliases: ["/contact-us"] },
+          ].map((item) => {
+            const isActive =
+              location.pathname === item.link ||
+              (item.aliases && item.aliases.includes(location.pathname));
             return (
               <Link
-                key={page.link}
-                to={page.link}
-                className={`text-[13px] font-medium px-3.5 py-1.5 rounded-full transition-colors duration-100 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
-                  isActive ? "text-[#F4F4F6]" : "text-[#8A8F98] hover:text-[#F4F4F6]"
+                key={item.link}
+                to={item.link}
+                className={`text-[14px] font-medium px-4 py-2 rounded-full transition-colors duration-150 select-none min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
+                  isActive ? "text-[#F4F4F6] bg-white/[0.08]" : "text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-white/[0.04]"
                 }`}
                 aria-current={isActive ? "page" : undefined}
               >
-                {page.name}
+                {item.name}
               </Link>
             );
           })}
         </nav>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Actions: Persistent Start a Project CTA */}
+        <div className="hidden md:flex items-center gap-3">
           <a
             href="https://wa.cookie.org.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] font-medium text-[#8A8F98] hover:text-[#F4F4F6] transition-colors"
+            className="text-[13px] font-medium text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors px-3 py-2 min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[6px]"
           >
             WhatsApp
           </a>
-          <Button to="/contact" variant="primary" size="sm" ariaLabel="Start a project">
+          <Button to="/contact" variant="primary" size="md" ariaLabel="Start a project">
             Start a project
           </Button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Button with 44x44px minimum touch target */}
         <button
           ref={toggleBtnRef}
           type="button"
@@ -128,7 +136,7 @@ export default function Navbar() {
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-controls="mobile-navigation"
-          className="md:hidden p-2 rounded-[6px] text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-[#2F3031]/60 border border-[#494B4D]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] cursor-pointer"
+          className="md:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-[8px] text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-[#2F3031]/60 border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] cursor-pointer inline-flex items-center justify-center"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -142,49 +150,57 @@ export default function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden fixed inset-x-0 top-14 bottom-0 bg-[#08090A]/95 backdrop-blur-xl border-t border-[#494B4D]/60 z-50 flex flex-col justify-between p-6 overflow-y-auto animate-[fadeIn_150ms_ease-in-out]"
+          className="md:hidden fixed inset-x-0 top-14 bottom-0 bg-[#0A0B0D]/95 backdrop-blur-xl border-t border-white/10 z-50 flex flex-col justify-between p-6 overflow-y-auto animate-[fadeIn_150ms_ease-in-out]"
         >
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between px-3 mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#62666D]">
-                Studio Navigation
+            <div className="flex items-center justify-between px-3 mb-3">
+              <span className="text-[12px] font-medium uppercase tracking-wider text-[#767B85]">
+                Cookie Inc. Studio
               </span>
-              <CookieLogo className="w-4 h-4" color="#8A8F98" dotColor="#D9A55B" />
+              <CookieLogo className="w-5 h-5" color="#9EA3AD" dotColor="#D9A55B" />
             </div>
 
-            {navbar.pages.map((page) => {
-              const isActive = location.pathname === page.link;
+            {[
+              { name: "Home", link: "/" },
+              { name: "Work & Projects", link: "/work", aliases: ["/portfolio"] },
+              { name: "Services & Pricing", link: "/services", aliases: ["/service"] },
+              { name: "About the Studio", link: "/about", aliases: ["/about-us"] },
+              { name: "Contact Us", link: "/contact", aliases: ["/contact-us"] },
+            ].map((page) => {
+              const isActive =
+                location.pathname === page.link ||
+                (page.aliases && page.aliases.includes(location.pathname));
               return (
                 <Link
                   key={page.link}
                   to={page.link}
-                  className={`text-[16px] font-medium px-4 py-3 rounded-[8px] transition-colors duration-100 flex items-center justify-between ${
+                  className={`text-[17px] font-medium px-4 py-3.5 min-h-[48px] rounded-[10px] transition-colors duration-100 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
                     isActive
-                      ? "bg-[#2F3031]/80 text-[#F4F4F6] border border-[#494B4D]"
-                      : "text-[#8A8F98] hover:text-[#F4F4F6] hover:bg-white/[0.04] border border-transparent"
+                      ? "bg-[#1E2024] text-[#F4F4F6] border border-white/10"
+                      : "text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-white/[0.04] border border-transparent"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
                   <span>{page.name}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B]" />}
+                  {isActive && <span className="w-2 h-2 rounded-full bg-[#D9A55B]" />}
                 </Link>
               );
             })}
           </div>
 
-          <div className="pt-6 border-t border-[#494B4D]/50 flex flex-col gap-4">
-            <div className="flex items-center justify-between text-[12px] font-mono text-[#8A8F98] px-1">
+          <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
+            <div className="flex items-center justify-between text-[13px] text-[#9EA3AD] px-1">
               <span>Studio HQ</span>
-              <span className="text-[#D0D6E0]">Chennai, Tamil Nadu</span>
+              <span className="text-[#F4F4F6] font-medium">Chennai, Tamil Nadu</span>
             </div>
             <Button
               to="/contact"
               variant="primary"
               size="lg"
-              className="w-full"
-              ariaLabel="Start your project"
+              className="w-full min-h-[48px]"
+              ariaLabel="Start a project"
             >
-              Start your project
+              Start a project
             </Button>
           </div>
         </div>
@@ -192,3 +208,4 @@ export default function Navbar() {
     </header>
   );
 }
+

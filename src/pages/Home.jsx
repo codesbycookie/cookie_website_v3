@@ -1,548 +1,461 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { homepage, portfoliopage } from "../data/data";
+import { homepage } from "../data/data";
 import Button from "../components/shared/Button";
-import SectionHeading from "../components/shared/SectionHeading";
 import Accordion from "../components/shared/Accordion";
-import StudioWindow from "../components/shared/StudioWindow";
+import CookieLogo from "../components/shared/CookieLogo";
 import StickyFeatures from "../components/shared/StickyFeatures";
 import {
   ArrowRight,
+  TrendingUp,
+  Check,
   Globe,
   Smartphone,
   Database,
   Palette,
-  CheckCircle2,
+  Clock,
+  ShieldCheck,
+  MessageSquare,
+  Users,
+  Star,
 } from "lucide-react";
 
-const CLIENTS = [
-  { name: "IQ Bridge", domain: "EdTech AI Infrastructure" },
-  { name: "Torque Toyzz", domain: "Luxury Commerce" },
-  { name: "V&D Granite", domain: "B2B Export System" },
-  { name: "Skill Link", domain: "Real-time Platform" },
-  { name: "Audnex", domain: "Motion Agency" },
-  { name: "Velu’s & Sons", domain: "Heritage Retail" },
-];
-
-const DISCIPLINES = [
-  {
-    num: "01",
-    icon: Globe,
-    title: "High-Velocity Web Applications",
-    desc: "Fast, accessible, SEO-ready web applications and client portals built on modern React. Engineered to convert from the first interaction.",
-    metrics: [
-      { k: "Performance", v: "98+" },
-      { k: "Response Time", v: "<100ms" },
-      { k: "Architecture", v: "React 19" },
-    ],
-    deliverables: ["Custom Web Application", "REST / GraphQL APIs", "Sub-second Page Speeds", "Automated Testing"],
-    tone: "#D9A55B",
-  },
-  {
-    num: "02",
-    icon: Smartphone,
-    title: "Native Mobile & Cross-Platform Apps",
-    desc: "Single codebase, zero compromise. Smooth, native-feel iOS and Android applications with offline synchronization and gesture navigation.",
-    metrics: [
-      { k: "Platforms", v: "iOS & Android" },
-      { k: "Sync Speed", v: "Real-time" },
-      { k: "UX Standard", v: "60 FPS" },
-    ],
-    deliverables: ["Cross-Platform Codebase", "Push Notifications", "Biometric Auth", "Store Submissions"],
-    tone: "#57C1FF",
-  },
-  {
-    num: "03",
-    icon: Database,
-    title: "Tailored ERP & Internal Engines",
-    desc: "Replace fragile spreadsheets with bespoke software shaped precisely around your team’s daily operational workflow and business rules.",
-    metrics: [
-      { k: "Data Integrity", v: "100%" },
-      { k: "Role Controls", v: "RBAC" },
-      { k: "Reporting", v: "Automated" },
-    ],
-    deliverables: ["Operations Dashboard", "Multi-Tenant Roles", "Inventory / Billing", "Automated Backups"],
-    tone: "#D3B2FF",
-  },
-  {
-    num: "04",
-    icon: Palette,
-    title: "Brand Systems & Design Engineering",
-    desc: "Design tokens, design systems, and bespoke micro-interactions that elevate your product from functional to unforgettable.",
-    metrics: [
-      { k: "Accessibility", v: "WCAG AAA" },
-      { k: "Tokens", v: "Figma to Code" },
-      { k: "Motion", v: "Hardware Accel" },
-    ],
-    deliverables: ["Design System", "Interactive Prototype", "Brand Mark & Identity", "Marketing Assets"],
-    tone: "#59D499",
-  },
-];
-
-const CADENCE = [
-  {
-    phase: "Phase 01",
-    title: "Architectural Scope & Strategy",
-    time: "Days 1–3",
-    desc: "We dissect your business goals, user journeys, and technical constraints. You receive a concrete scope, milestones, and a fixed quote.",
-  },
-  {
-    phase: "Phase 02",
-    title: "Interactive Clickable Prototype",
-    time: "Week 1",
-    desc: "Wireframes evolve into polished UI in a shared interactive prototype. You test the complete product experience before we write backend code.",
-  },
-  {
-    phase: "Phase 03",
-    title: "Zero-Debt Engineering Sprints",
-    time: "Weeks 2–3",
-    desc: "Weekly deployments to a live staging preview. You click through working features every Friday, without status-meeting bureaucracy.",
-  },
-  {
-    phase: "Phase 04",
-    title: "Production Cutover & Hypercare",
-    time: "Week 4+",
-    desc: "Zero-downtime deployment, DNS cutover, automated backups, and 30 days of included technical hypercare with direct founder access.",
-  },
-];
-
-const STATS = [
-  { value: "40+", label: "Products Shipped", sub: "Across India & abroad" },
-  { value: "3 wks", label: "Average MVP Turnaround", sub: "From kickoff to live URL" },
-  { value: "98+", label: "Avg Lighthouse Score", sub: "Core Web Vitals certified" },
-  { value: "<24h", label: "Founder Response SLA", sub: "Direct WhatsApp line" },
-];
-
+/**
+ * Home Page (Complete Redesign)
+ * Client-First, Plain Language, Proof Near Top, Zero Jargon, Accessible WCAG 2.2 AA.
+ */
 export default function Home() {
-  const { reviews } = homepage.section6;
-  const flagshipStudies = portfoliopage.section4.cards.slice(0, 3);
-  const [activeFlagship, setActiveFlagship] = useState(0);
+  const { section6, section8 } = homepage;
+
+  // Selected Proof Projects shown near the top
+  const FEATURED_PROOF = [
+    {
+      title: "Torque Toyzz",
+      category: "E-Commerce & WhatsApp",
+      headline: "1-Tap Direct WhatsApp Shopping",
+      outcome: "3.4x higher checkout rate",
+      turnaround: "Delivered in 14 days",
+      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
+      link: "/work",
+    },
+    {
+      title: "IQ Bridge",
+      category: "EdTech Platform",
+      headline: "Institutional Assessment Showcase",
+      outcome: "Inquiries across 14 countries",
+      turnaround: "Delivered in 21 days",
+      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423538/iqbridge_cs_bubzkk.jpg",
+      link: "/work",
+    },
+    {
+      title: "Audnex Studio",
+      category: "Creative Agency Showcase",
+      headline: "Sub-Second Media Streaming",
+      outcome: "Steady European client contracts",
+      turnaround: "Delivered in 28 days",
+      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423530/audnex_website_kr9xn2.jpg",
+      link: "/work",
+    },
+  ];
+
+  // What we solve: Outcomes, not technologies
+  const OUTCOMES = [
+    {
+      icon: Globe,
+      title: "A website that brings you customers",
+      description:
+        "Fast to load, simple to navigate, and structured to convert casual visitors into qualified inquiries. Built to work smoothly on every phone and screen.",
+      tag: "Websites & Portals",
+    },
+    {
+      icon: Smartphone,
+      title: "A mobile app your users actually enjoy",
+      description:
+        "Intuitive iOS and Android apps with zero lag, instant notifications, and clean interfaces that keep your customers coming back.",
+      tag: "Mobile Apps",
+    },
+    {
+      icon: Database,
+      title: "Custom software that replaces spreadsheets",
+      description:
+        "Custom internal tools tailored to your daily operations. Automate manual paperwork, manage inventory, and track team progress in one secure place.",
+      tag: "Business Systems",
+    },
+    {
+      icon: Palette,
+      title: "A brand that makes your business look established",
+      description:
+        "Professional logos, visual systems, and digital assets that give prospective clients immediate confidence in your capability.",
+      tag: "Brand Identity",
+    },
+  ];
+
+  // How we work in 4 clear, predictable steps
+  const PROCESS_STEPS = [
+    {
+      num: "01",
+      title: "Fixed scope and transparent quote",
+      description:
+        "We discuss your goals and map out exactly what needs to be built. You get a written schedule and a fixed price before we start.",
+      benefit: "No unexpected costs or scope drift.",
+    },
+    {
+      num: "02",
+      title: "Clickable prototype you can test",
+      description:
+        "We design interactive screens first. You click through the complete customer journey and test every detail before code is written.",
+      benefit: "Zero surprises during development.",
+    },
+    {
+      num: "03",
+      title: "Weekly live working previews",
+      description:
+        "Every week, you test real working features on a private link. You see genuine, verifiable progress without status-meeting bureaucracy.",
+      benefit: "Constant clarity on what ships next.",
+    },
+    {
+      num: "04",
+      title: "Careful launch and ongoing support",
+      description:
+        "We test across devices and handle all technical setup. After go-live, we monitor uptime and provide direct support whenever you need help.",
+      benefit: "Peace of mind long after launch.",
+    },
+  ];
+
+  // Real client reviews from data.jsx
+  const REVIEWS = section6.reviews.slice(0, 4);
 
   return (
-    <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#08090A]">
-      {/* 1. Hero: Architectural Atelier Introduction */}
-      <section className="relative w-full pt-20 pb-20 md:pt-28 md:pb-28 flex flex-col items-center text-center px-5 sm:px-8">
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[950px] h-[440px] bg-[#D9A55B]/10 blur-[170px] rounded-full pointer-events-none"
-          aria-hidden="true"
-        />
+    <div className="w-full flex flex-col items-center bg-[#0A0B0D] text-[#F4F4F6] relative overflow-hidden">
+      {/* Linear Ambient Spotlight Cone */}
+      <div
+        className="linear-spotlight-cone"
+        aria-hidden="true"
+      />
 
-        {/* Live Studio Status Pill */}
-        <div className="reveal relative mb-8 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.09] text-[12px] font-mono tracking-wide text-[#8A8F98]">
-          <span className="w-2 h-2 rounded-full bg-[#59D499] animate-pulse" />
-          <span className="text-[#F4F4F6] font-medium">Built for Business Owners & Founders</span>
-          <span className="text-[#62666D]">·</span>
-          <span>Direct Founder Access · 2026</span>
+      {/* 1. HERO SECTION: Plain sentence, supporting line, primary button */}
+      <section className="relative w-full pt-20 pb-16 md:pt-32 md:pb-24 px-5 sm:px-8 text-center flex flex-col items-center">
+        {/* Status Pill with rotating border beam */}
+        <div className="hero-reveal linear-border-beam mb-6">
+          <div>
+            <div className="flex items-center gap-2.5 px-4 py-1.5 text-[13px] font-medium text-[#9EA3AD]">
+              <span className="w-2 h-2 rounded-full bg-[#59D499] pulse-dot" />
+              <span>Software studio based in Chennai, India</span>
+            </div>
+          </div>
         </div>
 
-        <h1
-          className="reveal gradient-text relative text-[40px] sm:text-[60px] md:text-[76px] font-medium tracking-[-0.04em] leading-[1.04] max-w-5xl mb-6"
-          style={{ animationDelay: "60ms" }}
-        >
-          We design & build the software that scales your business.
+        {/* The One Plain Sentence: What we do and for whom */}
+        <h1 className="hero-reveal-delay-1 text-[38px] sm:text-[56px] md:text-[72px] font-semibold text-[#F4F4F6] tracking-[-0.035em] leading-[1.08] max-w-4xl mb-6">
+          We build websites, mobile apps, and custom tools that help ambitious companies grow.
         </h1>
 
-        <p
-          className="reveal relative text-[17px] sm:text-[21px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10"
-          style={{ animationDelay: "120ms" }}
-        >
-          Cookie Inc. builds high-converting websites, mobile apps, and custom ERP tools for growing businesses. No agency bureaucracy — you work directly with technical founders who deliver in weeks, not quarters.
+        {/* Supporting Line */}
+        <p className="hero-reveal-delay-2 text-[18px] sm:text-[21px] text-[#9EA3AD] max-w-2xl leading-relaxed mb-10">
+          A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
         </p>
 
-        <div
-          className="reveal relative flex flex-col sm:flex-row items-center gap-3.5 mb-6"
-          style={{ animationDelay: "180ms" }}
-        >
-          <Button to="/contact" variant="primary" size="lg">
-            Start a project
+        {/* Primary and Secondary Action */}
+        <div className="hero-reveal-delay-3 flex flex-col sm:flex-row items-center gap-4 mb-14">
+          <Button to="/contact" variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto group">
+            <span>Start a project</span>
+            <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
           </Button>
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-1.5 h-12 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[15px] font-medium text-[#F4F4F6] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
-          >
-            <span>Explore Shipped Work</span>
-            <ArrowRight className="w-4 h-4 text-[#D9A55B]" />
-          </Link>
+          <Button to="/work" variant="ghost" size="lg" className="min-h-[48px] w-full sm:w-auto">
+            Explore our work
+          </Button>
         </div>
 
-        <div
-          className="reveal relative flex items-center justify-center gap-4 text-[12px] font-mono text-[#62666D] mb-16"
-          style={{ animationDelay: "220ms" }}
-        >
-          <span>Free discovery brief</span>
-          <span>·</span>
-          <span>Weekly live previews</span>
-          <span>·</span>
-          <span>Founder on every sprint</span>
-        </div>
-
-        {/* Flagship Production Project Showcase */}
-        <div className="reveal relative w-full max-w-6xl" style={{ animationDelay: "280ms" }}>
-          <StudioWindow />
+        {/* Reassurance Microcopy */}
+        <div className="flex flex-wrap items-center justify-center gap-6 text-[13px] text-[#767B85]">
+          <span className="flex items-center gap-1.5">
+            <Check className="w-4 h-4 text-[#59D499]" />
+            Fixed-scope quotes
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Check className="w-4 h-4 text-[#59D499]" />
+            Weekly working previews
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Check className="w-4 h-4 text-[#59D499]" />
+            100% in-house Chennai team
+          </span>
         </div>
       </section>
 
-      {/* 2. Client Roster: Architectural Ticker */}
-      <section className="w-full hairline-y py-12 px-5 sm:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          <p className="text-[12px] font-mono uppercase tracking-[0.14em] text-[#62666D] text-center mb-8">
-            Selected client engagements across India & overseas
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {CLIENTS.map((c) => (
-              <div
-                key={c.name}
-                className="p-3.5 rounded-[10px] bg-white/[0.02] border border-white/[0.06] hover:border-white/20 transition-all flex flex-col items-center text-center group"
-              >
-                <span className="text-[15px] font-medium text-[#F4F4F6] group-hover:text-[#D9A55B] transition-colors">
-                  {c.name}
-                </span>
-                <span className="text-[11px] font-mono text-[#62666D] mt-1 truncate max-w-full">
-                  {c.domain}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. The Studio Stance: Architectural Principles */}
-      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="mb-5 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] shadow-[0_0_10px_#D9A55B]" />
-            Studio Manifesto
-          </div>
-
-          <h2 className="gradient-text text-[32px] sm:text-[46px] md:text-[58px] font-medium tracking-[-0.03em] leading-[1.08] mb-14 max-w-4xl">
-            Software built with high standards turns ambitious companies into category leaders.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
-              <div>
-                <span className="font-mono text-[12px] text-[#D9A55B]">§ 01</span>
-                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
-                  Intentional UI Engineering
-                </h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
-                  Every interaction is anchored to a commercial outcome. We cut decorative bloat so your users focus on taking action.
-                </p>
-              </div>
-            </div>
-
-            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
-              <div>
-                <span className="font-mono text-[12px] text-[#57C1FF]">§ 02</span>
-                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
-                  Zero Technical Debt
-                </h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
-                  Clean modular component structures, strict TypeScript / React patterns, and clean architecture your in-house engineers can take over.
-                </p>
-              </div>
-            </div>
-
-            <div className="bento rounded-[16px] p-8 flex flex-col justify-between min-h-[220px]">
-              <div>
-                <span className="font-mono text-[12px] text-[#59D499]">§ 03</span>
-                <h3 className="text-[20px] font-medium text-[#F4F4F6] mt-4 mb-2 tracking-tight">
-                  Sprints in Weeks, Not Months
-                </h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">
-                  We ship working staging URLs from week one. Continuous deployment means you witness real momentum, not PowerPoint reports.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Interactive Rhythm: StickyFeatures Stepper */}
-      <section className="w-full hairline-y py-20 md:py-28 px-5 sm:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          <SectionHeading
-            eyebrow="Delivery Cadence"
-            title="One calm rhythm,"
-            highlight="from first brief to launch"
-            description="Explore each phase with interactive tabs or smooth scrolling."
-          />
-          <StickyFeatures />
-        </div>
-      </section>
-
-      {/* 5. Studio Disciplines (Bespoke 4-Quadrant Matrix) */}
-      <section id="services" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title="What we architect & code"
-            highlight="under one roof"
-            description="Engineering, system architecture, and product design united in a single focused studio."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {DISCIPLINES.map((d) => (
-              <article
-                key={d.num}
-                className="bento rounded-[18px] p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.6)] group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span
-                      className="w-10 h-10 rounded-[10px] bg-white/[0.05] border border-white/10 flex items-center justify-center"
-                      style={{ color: d.tone }}
-                    >
-                      <d.icon className="w-5 h-5" />
-                    </span>
-                    <span className="font-mono text-[12px] text-[#62666D]">Discipline {d.num}</span>
-                  </div>
-
-                  <h3 className="text-[24px] font-medium text-[#F4F4F6] tracking-tight mb-3">
-                    {d.title}
-                  </h3>
-                  <p className="text-[15px] text-[#8A8F98] leading-relaxed mb-6">
-                    {d.desc}
-                  </p>
-
-                  {/* Telemetry pills */}
-                  <div className="grid grid-cols-3 gap-2.5 mb-6 font-mono text-[11px]">
-                    {d.metrics.map((m) => (
-                      <div key={m.k} className="p-2.5 rounded-[8px] bg-black/40 border border-white/[0.06]">
-                        <div className="text-[17px] font-medium" style={{ color: d.tone }}>
-                          {m.v}
-                        </div>
-                        <div className="text-[#62666D] mt-0.5 truncate">{m.k}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Deliverables checklist */}
-                  <div className="grid grid-cols-2 gap-2 text-[12px] text-[#D0D6E0] pt-4 border-t border-white/[0.06]">
-                    {d.deliverables.map((item) => (
-                      <div key={item} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: d.tone }} />
-                        <span className="truncate">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. BESPOKE FEATURED WORK: Creative Atelier Dossier (NOT a generic gallery!) */}
-      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      {/* 2. PROOF NEAR THE TOP: Selected Client Products & Outcomes */}
+      <section className="w-full py-16 md:py-24 px-5 sm:px-8 border-t border-white/10 bg-[#0E1013]">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
-              <div className="mb-3 inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.14em] text-[#8A8F98]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B]" />
-                Featured Production Systems
-              </div>
-              <h2 className="gradient-text text-[32px] sm:text-[46px] font-medium tracking-tight leading-[1.1]">
-                Products we are proud to have launched.
+              <span className="text-[13px] font-medium text-[#D9A55B] uppercase tracking-wider block mb-2">
+                Recent Client Deliveries
+              </span>
+              <h2 className="text-[28px] sm:text-[40px] font-semibold text-[#F4F4F6] tracking-tight">
+                Real software shipped for real businesses
               </h2>
             </div>
             <Link
               to="/work"
-              className="inline-flex items-center gap-2 text-[14px] font-medium text-[#D9A55B] hover:text-[#F3D9A8] transition-colors group"
+              className="text-[14px] font-medium text-[#D9A55B] hover:text-[#E4B46E] transition-colors inline-flex items-center gap-1 min-h-[44px]"
             >
-              <span>View complete 40+ project archive</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              View all case studies →
             </Link>
           </div>
 
-          {/* Interactive Flagship Showcase */}
-          <div className="space-y-12">
-            {flagshipStudies.map((study, idx) => (
-              <article
-                key={study.slug}
-                className="bento rounded-[20px] p-6 sm:p-10 overflow-hidden border border-white/[0.09] shadow-[0_30px_80px_rgba(0,0,0,0.8)] group"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  {/* Left: Strategic Narrative */}
-                  <div className="lg:col-span-5 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-3 mb-4 font-mono text-[12px]">
-                        <span className="px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[#D9A55B]">
-                          Project 0{idx + 1}
-                        </span>
-                        <span className="text-[#62666D]">·</span>
-                        <span className="text-[#8A8F98]">{study.category || "Web App"}</span>
-                      </div>
-
-                      <h3 className="text-[26px] sm:text-[34px] font-medium text-[#F4F4F6] tracking-tight leading-[1.12] mb-3">
-                        {study.title}
-                      </h3>
-
-                      <p className="text-[15px] text-[#8A8F98] leading-relaxed mb-6">
-                        {study.description}
-                      </p>
-
-                      <div className="space-y-2 mb-8 font-mono text-[12px] text-[#D0D6E0]">
-                        <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
-                          <span>Turnaround: {study.timeline || "3 Weeks"} MVP</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#57C1FF]" />
-                          <span>Stack: {study.stack?.join(", ") || "React, Tailwind, Node.js"}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link
-                      to={`/work/${study.slug}`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-[#D9A55B]/60 text-[14px] font-medium text-[#F4F4F6] transition-all w-fit cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
-                    >
-                      <span>Read Case Study</span>
-                      <ArrowRight className="w-4 h-4 text-[#D9A55B]" />
-                    </Link>
-                  </div>
-
-                  {/* Right: Immersive Production Preview */}
-                  <div className="lg:col-span-7">
-                    <Link
-                      to={`/work/${study.slug}`}
-                      className="block relative rounded-[12px] overflow-hidden bg-black/60 border border-white/[0.08] p-3 sm:p-4 group/preview shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                    >
-                      <div className="flex items-center gap-2 mb-3 px-1 text-[11px] font-mono text-[#62666D]" aria-hidden="true">
-                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                        <span className="ml-2 truncate text-[#8A8F98]">production / {study.slug}</span>
-                      </div>
-                      <div className="aspect-[16/10] overflow-hidden rounded-[8px] bg-black/40">
-                        <img
-                          src={study.src}
-                          alt={study.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover/preview:scale-[1.03]"
-                        />
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. The Continuous Delivery Protocol (Replacing generic steps) */}
-      <section id="process" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto">
-          <SectionHeading
-            eyebrow="Delivery Protocol"
-            title="The 4-Sprint Protocol"
-            highlight="predictable, transparent, swift"
-            description="How our studio moves an idea from whiteboard to production without bureaucracy."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {CADENCE.map((step, idx) => (
-              <div
-                key={step.phase}
-                className="bento rounded-[16px] p-7 flex flex-col justify-between border border-white/[0.08]"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {FEATURED_PROOF.map((project) => (
+              <Link
+                key={project.title}
+                to={project.link}
+                className="interactive-card p-6 rounded-[20px] flex flex-col justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="font-mono text-[12px] text-[#D9A55B]">{step.phase}</span>
-                    <span className="font-mono text-[11px] text-[#62666D]">{step.time}</span>
+                  {/* Clean Device Mockup Frame */}
+                  <div className="relative rounded-[12px] overflow-hidden bg-[#0A0B0D] border border-white/10 mb-6 aspect-[16/10]">
+                    <img
+                      src={project.image}
+                      alt={`Mockup of ${project.title}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0A0B0D]/85 backdrop-blur-md text-[11px] font-medium text-[#D9A55B] border border-white/10">
+                      {project.category}
+                    </div>
                   </div>
-                  <h3 className="text-[20px] font-medium text-[#F4F4F6] tracking-tight mb-2">
-                    {step.title}
+
+                  <h3 className="text-[20px] font-semibold text-[#F4F4F6] mb-1 group-hover:text-[#D9A55B] transition-colors">
+                    {project.title}
                   </h3>
-                  <p className="text-[14px] text-[#8A8F98] leading-relaxed">
-                    {step.desc}
+                  <p className="text-[14px] text-[#9EA3AD] mb-5">
+                    {project.headline}
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] font-mono text-[11px] text-[#62666D]">
-                  Checkpoint 0{idx + 1}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* 8. Verified Proof: Testimonials */}
-      <section className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          <SectionHeading eyebrow="Proof" title="Endorsements from founders" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {reviews.slice(0, 6).map((r) => (
-              <figure key={r.name} className="bento rounded-[16px] p-7 flex flex-col justify-between gap-8 border border-white/[0.08]">
-                <blockquote className="text-[15px] text-[#D0D6E0] leading-relaxed">
-                  "{r.body.trim()}"
-                </blockquote>
-                <figcaption className="flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
-                    <img src={r.img} alt="" loading="lazy" className="w-full h-full object-cover" />
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[13px]">
+                  <span className="text-[#59D499] font-medium flex items-center gap-1">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    {project.outcome}
                   </span>
-                  <div>
-                    <span className="block text-[14px] font-medium text-[#F4F4F6]">{r.name.trim()}</span>
-                    <span className="block text-[12px] text-[#8A8F98]">{r.role}</span>
-                  </div>
-                </figcaption>
-              </figure>
+                  <span className="text-[#767B85]">{project.turnaround}</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 9. Production Telemetry */}
-      <section className="w-full hairline-y py-16 px-5 sm:px-8">
-        <dl className="max-w-[1100px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {STATS.map((s) => (
-            <div key={s.label}>
-              <dt className="sr-only">{s.label}</dt>
-              <dd className="gradient-text text-[44px] md:text-[56px] font-medium tracking-[-0.03em] leading-none mb-2">
-                {s.value}
-              </dd>
-              <div className="text-[13px] font-medium text-[#F4F4F6] mb-1">{s.label}</div>
-              <p className="text-[11px] font-mono text-[#62666D]">{s.sub}</p>
-            </div>
-          ))}
-        </dl>
-      </section>
+      {/* 3. WHAT WE DO: OUTCOMES INSTEAD OF TECHNOLOGY */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-[13px] font-medium text-[#D9A55B] uppercase tracking-wider block mb-2">
+              Our Capabilities
+            </span>
+            <h2 className="text-[30px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight mb-4">
+              What we solve for your business
+            </h2>
+            <p className="text-[16px] text-[#9EA3AD]">
+              We handle every layer—from user journeys to design systems and reliable code—under one roof.
+            </p>
+          </div>
 
-      {/* 10. FAQ */}
-      <section id="faq" className="w-full hairline-y py-20 md:py-32 px-5 sm:px-8 scroll-mt-20">
-        <div className="max-w-[820px] mx-auto">
-          <SectionHeading eyebrow="FAQ" title={homepage.section8.title} />
-          <Accordion items={homepage.section8.faqs} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {OUTCOMES.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="interactive-card p-8 rounded-[20px] flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-[10px] bg-white/[0.05] border border-white/10 flex items-center justify-center text-[#D9A55B] mb-6">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[12px] font-semibold uppercase tracking-wider text-[#D9A55B] block mb-1">
+                      {item.tag}
+                    </span>
+                    <h3 className="text-[22px] font-semibold text-[#F4F4F6] mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-[15px] text-[#9EA3AD] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-white/10">
+                    <Link
+                      to="/services"
+                      className="text-[14px] font-medium text-[#D9A55B] hover:text-[#E4B46E] transition-colors inline-flex items-center gap-1 min-h-[44px] group"
+                    >
+                      <span>Learn more about our approach</span>
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* 11. Closing Call: Direct Partnership */}
-      <section id="cta" className="relative w-full hairline-y py-24 md:py-36 px-5 sm:px-8 text-center overflow-hidden scroll-mt-20">
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D9A55B]/12 blur-[140px] rounded-full pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="relative max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="gradient-text text-[36px] sm:text-[52px] md:text-[66px] font-medium tracking-[-0.035em] leading-[1.05] mb-6">
-            Built for the businesses you are about to become.
+      {/* 4. HOW WE WORK: INTERACTIVE LINEAR-STYLE WORKFLOW */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10 bg-[#0E1013]">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <span className="text-[13px] font-medium text-[#D9A55B] uppercase tracking-wider block mb-2">
+              Predictable Workflow
+            </span>
+            <h2 className="text-[30px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight mb-4">
+              How we work from idea to launch
+            </h2>
+            <p className="text-[16px] text-[#9EA3AD]">
+              No mysteries, no disappearing acts. An interactive, structured sequence you can inspect in real time.
+            </p>
+          </div>
+
+          <StickyFeatures />
+        </div>
+      </section>
+
+      {/* Linear Traveling Hairline Light Beam */}
+      <div className="hairline-beam" />
+
+      {/* 5. STUDIO CRAFT & IDENTITY */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="interactive-card p-8 sm:p-12 rounded-[24px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8 flex flex-col gap-3">
+                <div className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-[#D9A55B]">
+                  <span className="w-2 h-2 rounded-full bg-[#59D499] pulse-dot" />
+                  <span>Engineered in Chennai, India</span>
+                </div>
+                <h3 className="text-[26px] sm:text-[34px] font-semibold text-[#F4F4F6] tracking-tight leading-snug">
+                  A dedicated software studio built on craft, transparency, and speed.
+                </h3>
+                <p className="text-[16px] text-[#9EA3AD] leading-relaxed max-w-2xl">
+                  When you hire Cookie Inc., you partner directly with senior designers and developers in Chennai. No account managers playing telephone, no handoffs to junior contractors.
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex flex-col gap-3">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-between">
+                  <span className="text-[13px] text-[#9EA3AD]">Studio Base</span>
+                  <span className="text-[14px] font-medium text-[#F4F4F6]">Chennai, India</span>
+                </div>
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-between">
+                  <span className="text-[13px] text-[#9EA3AD]">Core Team</span>
+                  <span className="text-[14px] font-medium text-[#59D499]">10+ Creators</span>
+                </div>
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-between">
+                  <span className="text-[13px] text-[#9EA3AD]">Code Ownership</span>
+                  <span className="text-[14px] font-medium text-[#D9A55B]">100% Client</span>
+                </div>
+                <Link
+                  to="/about"
+                  className="mt-2 text-[14px] font-medium text-[#D9A55B] hover:text-[#E4B46E] transition-colors inline-flex items-center gap-1.5 min-h-[44px] group"
+                >
+                  <span>Explore studio story & principles</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. REAL CLIENT WORDS: Testimonials from Actual Clients */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10 bg-[#0E1013]">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <span className="text-[13px] font-medium text-[#D9A55B] uppercase tracking-wider block mb-2">
+              Client Feedback
+            </span>
+            <h2 className="text-[30px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight mb-4">
+              What founders say about working with us
+            </h2>
+            <p className="text-[16px] text-[#9EA3AD]">
+              Direct feedback from business leaders who trusted us with their core platforms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {REVIEWS.map((review) => (
+              <blockquote
+                key={review.name}
+                className="interactive-card p-8 rounded-[20px] flex flex-col justify-between"
+              >
+                <div className="mb-6">
+                  {/* Rating Stars */}
+                  <div className="flex items-center gap-1 text-[#D9A55B] mb-4" aria-label="5 out of 5 stars">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-[16px] sm:text-[17px] text-[#F4F4F6] leading-relaxed">
+                    “{review.body}”
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3.5 pt-4 border-t border-white/10">
+                  <div className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center font-semibold text-[#D9A55B] text-[14px]">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <cite className="not-italic font-semibold text-[#F4F4F6] text-[15px] block">
+                      {review.name}
+                    </cite>
+                    <span className="text-[13px] text-[#767B85] block">
+                      {review.role}
+                    </span>
+                  </div>
+                </div>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FREQUENTLY ASKED QUESTIONS */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10">
+        <div className="max-w-[850px] mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[13px] font-medium text-[#D9A55B] uppercase tracking-wider block mb-2">
+              Common Questions
+            </span>
+            <h2 className="text-[30px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight mb-4">
+              Everything you need to know before reaching out
+            </h2>
+            <p className="text-[16px] text-[#9EA3AD]">
+              Straight answers on timelines, pricing, support, and code ownership.
+            </p>
+          </div>
+
+          <Accordion items={section8.faqs} />
+        </div>
+      </section>
+
+      {/* 8. CLOSING LOW-PRESSURE INVITATION CTA */}
+      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10 text-center bg-[#0E1013]">
+        <div className="max-w-2xl mx-auto flex flex-col items-center">
+          <h2 className="text-[32px] sm:text-[48px] font-semibold text-[#F4F4F6] tracking-tight leading-[1.1] mb-5">
+            Ready to build your next product?
           </h2>
-          <p className="text-[17px] text-[#8A8F98] mb-10 max-w-xl leading-relaxed">
-            Tell us what you are building. You will collaborate directly with founders who write code, with a clear scope and fixed delivery date.
+          <p className="text-[17px] sm:text-[19px] text-[#9EA3AD] leading-relaxed mb-9">
+            Tell us what you are looking to build. We will reply within 1 business day with clear recommendations, realistic timelines, and a transparent quote.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button to="/contact" variant="primary" size="lg">
+            <Button to="/contact" variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto">
               Start a project
+              <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>
             <a
               href="https://wa.cookie.org.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[14px] font-medium text-[#D0D6E0] hover:text-[#F4F4F6] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+              className="text-[15px] font-medium text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors px-5 py-2.5 min-h-[48px] inline-flex items-center gap-2"
             >
-              <span className="w-2 h-2 rounded-full bg-[#59D499] animate-pulse" />
-              <span>Direct WhatsApp Line</span>
+              <MessageSquare className="w-4 h-4 text-[#59D499]" />
+              Chat on WhatsApp
             </a>
           </div>
         </div>

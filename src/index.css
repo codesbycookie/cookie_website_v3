@@ -182,81 +182,284 @@ section:first-child::after {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, transparent);
 }
 
-/* Scroll reveal (added by main.jsx observer) */
-.rv {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
-              transform 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
-              border-color 200ms ease, background 200ms ease;
+/* Subtle ambient glow breathing animation */
+@keyframes ambient-breathe {
+  0%, 100% {
+    transform: translate(-50%, 0) scale(0.96);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(-50%, 0) scale(1.06);
+    opacity: 0.22;
+  }
 }
-.rv.is-in { opacity: 1; transform: none; }
+.ambient-glow {
+  animation: ambient-breathe 8s ease-in-out infinite;
+  transform-origin: 50% 0%;
+  will-change: transform, opacity;
+}
 
-/* Border beam: a light that travels around the card's 1px edge */
-@property --beam-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+/* Linear Hero Ambient Spotlight Cone */
+.linear-spotlight-cone {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 950px;
+  height: 520px;
+  background: radial-gradient(
+    ellipse 65% 55% at 50% 0%,
+    rgba(217, 165, 91, 0.18) 0%,
+    rgba(217, 165, 91, 0.06) 45%,
+    transparent 72%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  animation: ambient-breathe 8s ease-in-out infinite;
+  will-change: transform, opacity;
 }
-@keyframes beam-spin { to { --beam-angle: 360deg; } }
-.beam { position: relative; }
-.beam::after,
-.bento::after {
+
+/* Subtle pulse for live status indicators */
+@keyframes pulse-soft {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(89, 212, 153, 0.8);
+  }
+}
+.pulse-dot {
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+
+/* Radar Pulse Rings for badges */
+@keyframes radar-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+.radar-pulse {
+  position: relative;
+}
+.radar-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid #59D499;
+  animation: radar-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+/* Linear-style Interactive Card: Cursor-following glowing border + inner spotlight */
+.interactive-card {
+  position: relative;
+  background-color: #111215;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms ease,
+              box-shadow 220ms ease,
+              background-color 220ms ease;
+  overflow: hidden;
+}
+
+/* Linear illuminated border following mouse pointer (via mask composite) */
+.interactive-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  pointer-events: none;
-  background: conic-gradient(from var(--beam-angle), transparent 0deg, transparent 300deg, rgba(243, 217, 168, 0.9) 335deg, rgba(255, 255, 255, 0.95) 350deg, transparent 360deg);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(217, 165, 91, 0.9) 0%,
+    rgba(255, 255, 255, 0.25) 40%,
+    transparent 75%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  animation: beam-spin 6s linear infinite;
-}
-.bento::after { opacity: 0; transition: opacity 300ms ease; animation-duration: 4s; }
-.bento:hover::after { opacity: 1; }
-.beam-hover::after { opacity: 0; transition: opacity 300ms ease; animation: beam-spin 4s linear infinite; }
-.beam-hover:hover::after { opacity: 1; }
-
-/* Hero window entrance + subtle perspective settle */
-@keyframes window-in {
-  from { opacity: 0; transform: perspective(1400px) rotateX(10deg) translateY(30px) scale(0.97); }
-  to { opacity: 1; transform: perspective(1400px) rotateX(0) translateY(0) scale(1); }
-}
-.window-in { animation: window-in 1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both; transform-origin: 50% 0; }
-@keyframes feed-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.feed-in { animation: feed-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-@keyframes bar-fill { from { width: 0; } }
-.bar-fill { animation: bar-fill 1400ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-@keyframes caret { 50% { opacity: 0; } }
-.caret { animation: caret 1s steps(1) infinite; }
-
-/* Sticky scroll feature steps */
-.feature-step { opacity: 0.35; transition: opacity 400ms ease; }
-.feature-step[data-active="true"] { opacity: 1; }
-
-/* Scroll reveal */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.reveal { animation: fade-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-/* Linear precision card surface */
-.linear-card {
-  background: linear-gradient(180deg, rgba(47, 48, 49, 0.4) 0%, rgba(8, 9, 10, 0.7) 100%);
-  border: 1px solid rgba(73, 75, 77, 0.55);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+  z-index: 10;
 }
 
-.linear-card:hover {
-  border-color: rgba(138, 143, 152, 0.6);
-  background: linear-gradient(180deg, rgba(47, 48, 49, 0.55) 0%, rgba(8, 9, 10, 0.75) 100%);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 24px 48px -12px rgba(0, 0, 0, 0.85);
+/* Linear inner surface radial spotlight under cursor */
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(217, 165, 91, 0.12) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2.5px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), 0 0 28px -6px rgba(217, 165, 91, 0.22);
+  background-color: #141519;
+}
+
+.interactive-card:hover::before,
+.interactive-card:hover::after {
+  opacity: 1;
+}
+
+.interactive-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Linear Rotating Border Beam Pill */
+.linear-border-beam {
+  position: relative;
+  padding: 1px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+}
+.linear-border-beam::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 290deg, #D9A55B 360deg);
+  animation: rotate-beam 3.5s linear infinite;
+}
+.linear-border-beam > div {
+  position: relative;
+  z-index: 1;
+  background: #0A0B0D;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+}
+@keyframes rotate-beam {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Linear Shimmer Pill */
+.shimmer-pill {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.shimmer-pill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(217, 165, 91, 0.35) 50%, transparent);
+  animation: shimmer-swipe 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+.shimmer-pill:hover {
+  border-color: rgba(217, 165, 91, 0.45);
+  box-shadow: 0 0 16px -2px rgba(217, 165, 91, 0.25);
+}
+@keyframes shimmer-swipe {
+  0% { left: -100%; }
+  35%, 100% { left: 150%; }
+}
+
+/* Linear Traveling Hairline Light Beam */
+.hairline-beam {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.09) 20%, rgba(255, 255, 255, 0.09) 80%, transparent);
+  overflow: hidden;
+}
+.hairline-beam::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 45%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D9A55B 50%, transparent);
+  animation: hairline-slide 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes hairline-slide {
+  0% { left: -45%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 125%; opacity: 0; }
+}
+
+/* Linear Feed-in keyframe for tabs and micro-interactions */
+@keyframes feed-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.feed-in {
+  animation: feed-in 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scroll reveal (managed by IntersectionObserver) */
+.rv {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
+              transform 450ms cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms);
+  will-change: opacity, transform;
+}
+.rv.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle Hero Entrance */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-reveal {
+  animation: hero-fade-up 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-reveal-delay-1 {
+  animation: hero-fade-up 400ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+.hero-reveal-delay-2 {
+  animation: hero-fade-up 400ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+}
+.hero-reveal-delay-3 {
+  animation: hero-fade-up 400ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
 }
 
 /* Linear primary CTA: light pill with dark text */
