@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Briefcase } from "lucide-react";
 import CookieLogo from "../components/shared/CookieLogo";
 import { portfoliopage } from "../data/data";
 
@@ -155,6 +156,12 @@ export default function Portfolio() {
 
       {/* 1. HEADER SECTION (generous ~140px top padding under navbar) */}
       <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 text-left">
+        {/* Status pill badge: hairline border, grey icon, matching other pages */}
+        <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
+          <Briefcase className="w-3.5 h-3.5 text-[#8A8F98]" aria-hidden="true" />
+          <span>Selected Work & Case Studies</span>
+        </div>
+
         {/* Main headline with white-to-grey gradient fill */}
         <h1 className="linear-headline linear-fade-in text-[36px] sm:text-[50px] md:text-[62px] max-w-[14ch] text-balance mb-4">
           Real software shipped for real businesses

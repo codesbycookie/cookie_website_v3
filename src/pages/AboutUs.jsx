@@ -16,6 +16,7 @@ import {
   HeartHandshake,
   MapPin,
   Check,
+  ArrowRight,
 } from "lucide-react";
 
 /**
@@ -280,45 +281,43 @@ export default function AboutUs() {
   return (
     <div className="w-full flex flex-col items-center bg-[#08090A] text-[#F7F8F8] relative overflow-hidden">
       {/* 1. HERO SECTION */}
-      <section className="relative w-full pt-24 pb-20 md:pt-32 md:pb-28 px-5 sm:px-8 text-center flex flex-col items-center border-b border-white/[0.06] overflow-hidden">
+      <section className="relative w-full pt-24 sm:pt-32 md:pt-36 pb-16 sm:pb-20 px-6 sm:px-8 border-b border-white/[0.06] overflow-hidden">
         {/* Top faint amber glow (6-8% opacity) */}
         <div className="linear-top-glow" aria-hidden="true" />
 
         {/* Subtle film grain */}
         <div className="linear-film-grain" aria-hidden="true" />
 
-        <div className="relative z-10 flex flex-col items-center max-w-3xl mx-auto">
+        <div className="relative z-10 max-w-[1180px] mx-auto text-left">
           {/* Location pill: hairline border, grey icon, no amber top line */}
-          <div className="linear-fade-in inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[13px] font-medium text-[#8A8F98] mb-6">
+          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
             <MapPin className="w-3.5 h-3.5 text-[#8A8F98]" />
             <span>Software Studio · Chennai, India</span>
           </div>
 
           {/* Headline: gradient fill, tight tracking, lines reveal with a masked slide-up */}
-          <div className="overflow-hidden mb-6">
-            <h1 className="linear-headline linear-mask-slide-up text-[36px] sm:text-[52px] md:text-[64px] font-semibold leading-[1.08] tracking-[-0.035em] text-balance">
+          <div className="overflow-hidden mb-5">
+            <h1 className="linear-headline linear-mask-slide-up text-[36px] sm:text-[50px] md:text-[62px] max-w-[18ch] text-balance">
               A focused studio in Chennai dedicated to craft
             </h1>
           </div>
 
           {/* Subtext: 80ms delay */}
-          <p className="linear-fade-in linear-delay-1 text-[16px] sm:text-[18px] text-[#8A8F98] max-w-2xl leading-relaxed mb-8 text-pretty">
+          <p className="linear-fade-in linear-delay-1 text-[15px] sm:text-[17px] text-[#8A8F98] max-w-2xl leading-relaxed mb-8">
             We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity.
           </p>
 
-          {/* Primary CTA button: solid light surface, 80ms delay after subtext */}
-          <div className="linear-fade-in linear-delay-2">
+          {/* Primary CTA button */}
+          <div className="linear-fade-in linear-delay-2 flex items-center">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded-[8px] bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
+              className="px-5 py-2.5 rounded-full bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
             >
               <span>Work with us</span>
-              <span
-                className="transition-transform duration-200 group-hover:translate-x-[2px]"
+              <ArrowRight
+                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                 aria-hidden="true"
-              >
-                →
-              </span>
+              />
             </Link>
           </div>
         </div>
