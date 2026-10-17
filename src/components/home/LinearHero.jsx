@@ -246,12 +246,7 @@ export default function LinearHero() {
           HERO CORE: ANNOUNCEMENT, EXPANSIVE HEADLINE, CTAS & CHIPS
           ───────────────────────────────────────────────────────────── */}
       {/* Announcement Pill */}
-      <motion.div
-        initial={{ y: -14, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: MOTION_TOKENS.ease }}
-        className="mb-7"
-      >
+      <div className="mb-7 hero-css-fade-up hero-delay-0">
         <Link
           to="/contact"
           className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200"
@@ -262,7 +257,7 @@ export default function LinearHero() {
           </span>
           <ArrowRight className="w-3.5 h-3.5 text-[#62666D] group-hover:text-[#D9A55B] transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
-      </motion.div>
+      </div>
 
       {/* Wide Cinematic Headline with Cascading Staggered Word Reveal & Dynamic Action Verb */}
       <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.15] max-w-[1040px] mx-auto mb-7 text-[#F7F8F8] text-balance">
@@ -270,19 +265,13 @@ export default function LinearHero() {
         <span className="block overflow-hidden pb-1.5 pt-0.5">
           <span className="inline-flex flex-wrap justify-center gap-x-[0.25em] headline-gradient">
             {["We", "build", "websites,", "mobile", "apps,", "and", "custom", "tools"].map((word, i) => (
-              <motion.span
+              <span
                 key={i}
-                initial={{ y: "110%", opacity: 0, filter: "blur(5px)" }}
-                animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.65,
-                  delay: 0.15 + i * 0.045,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="inline-block"
+                className="hero-word"
+                style={{ animationDelay: `${40 + i * 40}ms` }}
               >
                 {word}
-              </motion.span>
+              </span>
             ))}
           </span>
         </span>
@@ -291,19 +280,13 @@ export default function LinearHero() {
         <span className="block overflow-hidden pb-2 pt-0.5">
           <span className="inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em] headline-gradient">
             {["that", "help", "ambitious", "companies"].map((word, i) => (
-              <motion.span
+              <span
                 key={i}
-                initial={{ y: "110%", opacity: 0, filter: "blur(5px)" }}
-                animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.65,
-                  delay: 0.52 + i * 0.045,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="inline-block"
+                className="hero-word"
+                style={{ animationDelay: `${360 + i * 40}ms` }}
               >
                 {word}
-              </motion.span>
+              </span>
             ))}
 
             {/* Dynamic Cycling Focus Word — strictly baseline-aligned, zero layout shift */}
@@ -311,11 +294,11 @@ export default function LinearHero() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={DYNAMIC_VERBS[verbIndex].text}
-                  initial={{ y: "115%", opacity: 0, filter: "blur(4px)" }}
-                  animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                  exit={{ y: "-115%", opacity: 0, filter: "blur(4px)" }}
+                  initial={{ y: "115%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  exit={{ y: "-115%", opacity: 0 }}
                   transition={{
-                    duration: 0.42,
+                    duration: 0.38,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className={`inline-block font-semibold ${DYNAMIC_VERBS[verbIndex].color}`}
@@ -329,22 +312,12 @@ export default function LinearHero() {
       </h1>
 
       {/* Harmoniously Proportioned Subtext */}
-      <motion.p
-        initial={{ y: 16, opacity: 0, filter: "blur(4px)" }}
-        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: 0.6, delay: 0.8, ease: MOTION_TOKENS.ease }}
-        className="text-[16px] sm:text-[18px] md:text-[20px] text-[#8A8F98] max-w-[660px] mx-auto leading-[1.62] mb-10 text-balance font-normal"
-      >
+      <p className="text-[16px] sm:text-[18px] md:text-[20px] text-[#8A8F98] max-w-[660px] mx-auto leading-[1.62] mb-10 text-balance font-normal hero-css-fade-up hero-delay-2">
         A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
-      </motion.p>
+      </p>
 
       {/* Action Buttons with Magnetic hover on Primary */}
-      <motion.div
-        initial={{ y: 16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.55, delay: 1.0, ease: MOTION_TOKENS.ease }}
-        className="flex flex-col sm:flex-row items-center gap-3.5 mb-9"
-      >
+      <div className="flex flex-col sm:flex-row items-center gap-3.5 mb-9 hero-css-fade-up hero-delay-3">
         <Magnetic strength={8}>
           <Button
             to="/contact"
@@ -360,7 +333,7 @@ export default function LinearHero() {
         <Button to="/work" variant="ghost" size="lg" className="min-h-[46px] w-full sm:w-auto">
           Explore our work
         </Button>
-      </motion.div>
+      </div>
 
       {/* Trust Chips with animated stroke check icons */}
       <div className="hero-css-fade-up hero-delay-5 flex flex-wrap items-center justify-center gap-6 text-[13px] text-[#62666D] mb-16 sm:mb-20">

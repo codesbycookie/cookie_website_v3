@@ -45,11 +45,23 @@ if (typeof window !== "undefined") {
           io.observe(el);
         });
     };
+    let scanTimer = null;
+    const scheduleScan = () => {
+      if (scanTimer) clearTimeout(scanTimer);
+      scanTimer = setTimeout(() => {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(scan, { timeout: 800 });
+        } else {
+          requestAnimationFrame(scan);
+        }
+      }, 200);
+    };
+
     const rootEl = document.getElementById("root");
     if (rootEl) {
-      new MutationObserver(scan).observe(rootEl, { childList: true, subtree: true });
+      new MutationObserver(scheduleScan).observe(rootEl, { childList: true, subtree: true });
     }
-    scan();
+    scheduleScan();
   }
 }
 
