@@ -297,7 +297,7 @@ export default function AboutUs() {
 
           {/* Headline: gradient fill, tight tracking, lines reveal with a masked slide-up */}
           <div className="overflow-hidden mb-5">
-            <h1 className="linear-headline linear-mask-slide-up text-[36px] sm:text-[50px] md:text-[62px] max-w-[18ch] text-balance">
+            <h1 className="linear-headline linear-mask-slide-up text-[32px] sm:text-[46px] md:text-[54px] max-w-[18ch] text-balance leading-[1.12]">
               A focused studio in Chennai dedicated to craft
             </h1>
           </div>
@@ -416,7 +416,7 @@ export default function AboutUs() {
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12 sm:mb-16">
-            <h2 className="linear-headline text-[30px] sm:text-[38px] md:text-[42px] font-semibold mb-3">
+            <h2 className="linear-headline text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-[1.14] mb-3">
               How we work with clients
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#8A8F98]">
@@ -493,7 +493,7 @@ export default function AboutUs() {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Sticky Left Column: Heading and Subline */}
           <div className="md:col-span-5 lg:col-span-4 md:sticky md:top-28 md:self-start">
-            <h2 className="linear-headline text-[30px] sm:text-[38px] md:text-[42px] font-semibold mb-3">
+            <h2 className="linear-headline text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-[1.14] mb-3">
               Our journey so far
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
@@ -553,7 +553,7 @@ export default function AboutUs() {
             dotColor="#D9A55B"
           />
 
-          <h2 className="linear-headline text-[32px] sm:text-[44px] md:text-[52px] font-semibold text-balance mb-4">
+          <h2 className="linear-headline text-[32px] sm:text-[42px] md:text-[50px] font-semibold text-balance leading-[1.12] mb-4">
             Ready to work with a dedicated team?
           </h2>
 

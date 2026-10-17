@@ -166,7 +166,7 @@ export default function ContactUs() {
 
           {/* Headline: gradient fill with masked reveal */}
           <div className="overflow-hidden mb-4">
-            <h1 className="linear-headline linear-mask-slide-up text-[36px] sm:text-[50px] md:text-[62px] max-w-[16ch] text-balance">
+            <h1 className="linear-headline linear-mask-slide-up text-[32px] sm:text-[46px] md:text-[54px] max-w-[16ch] text-balance leading-[1.12]">
               Tell us about what you want to build
             </h1>
           </div>

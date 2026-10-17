@@ -73,7 +73,7 @@ export default function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease: MOTION_TOKENS.ease }}
-          className="text-[36px] sm:text-[54px] md:text-[62px] font-medium tracking-[-0.035em] leading-[1.08] mb-6"
+          className="text-[32px] sm:text-[44px] md:text-[54px] font-medium tracking-[-0.035em] leading-[1.12] mb-6"
         >
           <span className="headline-gradient block">Ready to build your next product?</span>
         </motion.h2>
@@ -84,7 +84,7 @@ export default function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: MOTION_TOKENS.ease }}
-          className="text-[17px] sm:text-[19px] text-[#8A8F98] leading-[1.6] mb-10 max-w-xl"
+          className="text-[15px] sm:text-[17px] text-[#8A8F98] leading-[1.6] mb-10 max-w-xl"
         >
           Tell us what you are building. We will reply with a clear scope, realistic timeline, and transparent quote within one business day.
         </motion.p>

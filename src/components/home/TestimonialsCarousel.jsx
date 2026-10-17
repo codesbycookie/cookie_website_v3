@@ -85,7 +85,7 @@ export default function TestimonialsCarousel() {
                 className="space-y-8"
               >
                 {/* Big type quote */}
-                <blockquote className="text-[22px] sm:text-[30px] md:text-[34px] font-medium text-[#F7F8F8] tracking-[-0.03em] leading-[1.28]">
+                <blockquote className="text-[19px] sm:text-[26px] md:text-[30px] font-medium text-[#F7F8F8] tracking-[-0.025em] leading-[1.32]">
                   "{current.body}"
                 </blockquote>
 

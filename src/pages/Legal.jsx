@@ -33,7 +33,7 @@ export default function Legal({ type }) {
             Legal Documentation
           </div>
 
-          <h1 className="gradient-text text-[36px] sm:text-[48px] font-medium tracking-[-0.035em] leading-[1.1] mb-4">
+          <h1 className="gradient-text text-[32px] sm:text-[46px] md:text-[50px] font-medium tracking-[-0.035em] leading-[1.12] mb-4">
             {isTerms ? "Terms of Service" : "Privacy Policy"}
           </h1>
 

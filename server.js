@@ -113,8 +113,8 @@ export async function createServer() {
 
   // Handle all routes with SSR
   app.use(async (req, res, next) => {
-    // Skip static assets or non-GET requests if handled by other middlewares
-    if (req.method !== "GET") return next();
+    // Skip static assets or non-GET/HEAD requests if handled by other middlewares
+    if (req.method !== "GET" && req.method !== "HEAD") return next();
     const url = req.originalUrl.split("?")[0];
 
     try {

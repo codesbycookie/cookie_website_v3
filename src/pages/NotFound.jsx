@@ -43,7 +43,7 @@ export default function NotFound() {
         </h1>
 
         {/* Reassuring description */}
-        <p className="hero-reveal-delay-2 text-[16px] sm:text-[18px] text-[#9EA3AD] leading-relaxed mb-10 max-w-md">
+        <p className="hero-reveal-delay-2 text-[15px] sm:text-[17px] text-[#9EA3AD] leading-relaxed mb-10 max-w-md">
           The link you followed might be outdated or the page has moved. Do not worry—everything else at Cookie Inc. is active and running smoothly.
         </p>
 

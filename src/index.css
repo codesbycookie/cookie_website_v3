@@ -827,7 +827,7 @@ section:first-child::after {
   font-family: var(--font-sans);
   font-weight: 550;
   letter-spacing: -0.035em;
-  line-height: 1.08;
+  line-height: 1.12;
   background: linear-gradient(180deg, #FFFFFF 0%, #F5ECE0 45%, #8E8A83 100%);
   -webkit-background-clip: text;
   background-clip: text;

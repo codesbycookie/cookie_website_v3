@@ -56,11 +56,11 @@ export default function CaseStudy() {
             {study.client && <span>· {study.client}</span>}
           </div>
 
-          <h1 className="text-[34px] sm:text-[50px] md:text-[62px] font-semibold text-[#F4F4F6] tracking-[-0.03em] leading-[1.1] mb-6">
+          <h1 className="text-[32px] sm:text-[46px] md:text-[54px] font-semibold text-[#F4F4F6] tracking-[-0.03em] leading-[1.12] mb-6">
             {study.title}
           </h1>
 
-          <p className="text-[17px] sm:text-[20px] text-[#9EA3AD] max-w-2xl leading-relaxed mb-10">
+          <p className="text-[15px] sm:text-[18px] text-[#9EA3AD] max-w-2xl leading-relaxed mb-10">
             {study.description}
           </p>
 
@@ -223,7 +223,7 @@ export default function CaseStudy() {
           <h2 className="text-[32px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight leading-[1.12] mb-4">
             Ready to build your next product?
           </h2>
-          <p className="text-[17px] text-[#9EA3AD] mb-8">
+          <p className="text-[15px] sm:text-[17px] text-[#9EA3AD] mb-8 max-w-xl">
             Tell us about your project. We will reply with technical scope and a realistic quote within 1 business day.
           </p>
           <Button to="/contact" variant="primary" size="lg" className="min-h-[48px]">

@@ -163,12 +163,12 @@ export default function Portfolio() {
         </div>
 
         {/* Main headline with white-to-grey gradient fill */}
-        <h1 className="linear-headline linear-fade-in text-[36px] sm:text-[50px] md:text-[62px] max-w-[14ch] text-balance mb-4">
+        <h1 className="linear-headline linear-fade-in text-[32px] sm:text-[46px] md:text-[54px] max-w-[15ch] text-balance leading-[1.12] mb-4">
           Real software shipped for real businesses
         </h1>
 
         {/* Short supporting line in grey */}
-        <p className="linear-fade-in linear-delay-1 text-[15px] sm:text-[16px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10">
+        <p className="linear-fade-in linear-delay-1 text-[15px] sm:text-[17px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10">
           Selected web applications, mobile platforms, and systems shipped for our clients.
         </p>
 
@@ -464,7 +464,7 @@ export default function Portfolio() {
           />
 
           {/* Big centered gradient headline */}
-          <h2 className="linear-headline text-[32px] sm:text-[44px] md:text-[54px] max-w-xl text-balance mb-4">
+          <h2 className="linear-headline text-[32px] sm:text-[42px] md:text-[50px] max-w-xl text-balance leading-[1.12] mb-4">
             Ready to build your next product?
           </h2>
 

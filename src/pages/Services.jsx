@@ -327,7 +327,7 @@ export default function Services() {
 
           {/* Headline: gradient fill with masked reveal */}
           <div className="overflow-hidden mb-5">
-            <h1 className="linear-headline linear-mask-slide-up text-[36px] sm:text-[50px] md:text-[62px] max-w-[18ch] text-balance">
+            <h1 className="linear-headline linear-mask-slide-up text-[32px] sm:text-[46px] md:text-[54px] max-w-[17ch] text-balance leading-[1.12]">
               Clear services designed around your business goals
             </h1>
           </div>
@@ -370,7 +370,7 @@ export default function Services() {
       <section className="relative z-10 w-full py-16 md:py-24 px-6 sm:px-8 border-b border-white/[0.06]">
         <div className="max-w-[1180px] mx-auto text-left">
           <div className="max-w-2xl mb-8">
-            <h2 className="text-[24px] sm:text-[32px] md:text-[36px] font-medium text-[#F7F8F8] tracking-[-0.025em] mb-2">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-medium text-[#F7F8F8] tracking-[-0.03em] leading-[1.14] mb-2">
               Which service is right for you?
             </h2>
             <p className="text-[14px] sm:text-[15px] text-[#8A8F98]">
@@ -469,7 +469,7 @@ export default function Services() {
       <section id="package-section" className="relative z-10 w-full py-20 md:py-28 px-6 sm:px-8 border-b border-white/[0.06]">
         <div className="max-w-[1180px] mx-auto text-left">
           <div className="max-w-2xl mb-12 sm:mb-16">
-            <h2 className="text-[28px] sm:text-[38px] md:text-[44px] font-medium text-[#F7F8F8] tracking-[-0.03em] mb-3">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-medium text-[#F7F8F8] tracking-[-0.03em] leading-[1.14] mb-3">
               Packages with defined deliverables
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
@@ -589,7 +589,7 @@ export default function Services() {
       <section className="relative z-10 w-full py-20 md:py-28 px-6 sm:px-8 border-b border-white/[0.06]">
         <div className="max-w-[1180px] mx-auto text-left">
           <div className="max-w-2xl mb-12 sm:mb-16">
-            <h2 className="text-[28px] sm:text-[38px] md:text-[44px] font-medium text-[#F7F8F8] tracking-[-0.03em] mb-3">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-medium text-[#F7F8F8] tracking-[-0.03em] leading-[1.14] mb-3">
               What we solve for you
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
@@ -659,7 +659,7 @@ export default function Services() {
                       {cap.deliverables.map((item) => (
                         <li
                           key={item}
-                          className="text-[12px] sm:text-[13px] text-[#8A8F98] flex items-center gap-2"
+                          className="text-[13px] sm:text-[14px] text-[#8A8F98] flex items-center gap-2"
                         >
                           <span className="w-[3px] h-[3px] rounded-full bg-[#D9A55B]/65 shrink-0" />
                           <span>{item}</span>
@@ -683,7 +683,7 @@ export default function Services() {
       >
         <div className="max-w-[1180px] mx-auto text-left">
           <div className="max-w-2xl mb-14 sm:mb-18">
-            <h2 className="text-[28px] sm:text-[38px] md:text-[44px] font-medium text-[#F7F8F8] tracking-[-0.03em] mb-3">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-medium text-[#F7F8F8] tracking-[-0.03em] leading-[1.14] mb-3">
               How we take you to launch
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
@@ -768,7 +768,7 @@ export default function Services() {
           {/* Small cookie mark fading in above headline */}
           <CookieLogo className="w-8 h-8 text-[#F7F8F8] mb-6" dotColor="#D9A55B" />
 
-          <h2 className="linear-headline text-[32px] sm:text-[44px] md:text-[50px] font-semibold leading-[1.12] tracking-[-0.035em] text-balance mb-4">
+          <h2 className="linear-headline text-[32px] sm:text-[42px] md:text-[50px] font-semibold leading-[1.12] tracking-[-0.035em] text-balance mb-4">
             Not sure which option fits best?
           </h2>
 
