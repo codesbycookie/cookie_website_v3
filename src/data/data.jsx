@@ -688,7 +688,7 @@ export const portfoliopage = {
         stack: ["React", "Tailwind CSS", "Express", "PostgreSQL"],
         description:
           "A centralized checklist tool for SAP consultants to orchestrate tasks across implementation, testing, and go-live phases.",
-        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730704/SAP_1_1_om5jcx.png",
+        src: "/imgs/sap_checklist.jpg",
         ctaText: "View Case Study",
         ctaLink: "/work/sap-checklist",
         content: () => {

@@ -57,7 +57,7 @@ export default function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Back to top"
-      className="fixed bottom-6 right-5 sm:right-8 z-40 w-11 h-11 rounded-full bg-[#08090A]/90 hover:bg-[#18191B] border border-white/10 hover:border-[#D9A55B]/60 text-[#D0D6E0] hover:text-[#F4F4F6] shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] active:scale-95 group"
+      className="fixed bottom-6 right-5 sm:right-8 z-40 w-10 h-10 rounded-full bg-[#08090A]/90 hover:bg-[#121316] border border-white/[0.08] hover:border-white/[0.16] text-[#8A8F98] hover:text-[#F7F8F8] backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] group"
     >
       {/* Micro progress ring */}
       <svg
@@ -70,8 +70,8 @@ export default function BackToTop() {
           cy="18"
           r={radius}
           fill="none"
-          stroke="rgba(255, 255, 255, 0.08)"
-          strokeWidth="2"
+          stroke="rgba(255, 255, 255, 0.06)"
+          strokeWidth="1.5"
         />
         <circle
           cx="18"
@@ -79,7 +79,7 @@ export default function BackToTop() {
           r={radius}
           fill="none"
           stroke="#D9A55B"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
@@ -87,7 +87,7 @@ export default function BackToTop() {
         />
       </svg>
 
-      <ArrowUp className="w-4 h-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
+      <ArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
     </button>
   );
 }

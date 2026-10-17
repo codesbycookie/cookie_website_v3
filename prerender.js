@@ -29,64 +29,64 @@ const ROUTE_META = {
     desc: "We build websites, mobile apps, and custom tools that help ambitious companies grow. Shipped by engineers in Chennai.",
   },
   "/work": {
-    title: "Selected Work — Cookie Inc.",
-    desc: "Case studies of web apps, mobile products, and systems shipped for real business clients across industries.",
+    title: "Selected work | Cookie Inc.",
+    desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
   },
   "/portfolio": {
-    title: "Selected Work — Cookie Inc.",
-    desc: "Case studies of web apps, mobile products, and systems shipped for real business clients across industries.",
+    title: "Selected work | Cookie Inc.",
+    desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
   },
   "/services": {
-    title: "Services & Defined Packages — Cookie Inc.",
+    title: "Services & Defined Packages | Cookie Inc.",
     desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
   },
   "/service": {
-    title: "Services & Defined Packages — Cookie Inc.",
+    title: "Services & Defined Packages | Cookie Inc.",
     desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
   },
   "/about": {
-    title: "About the Studio — Cookie Inc.",
-    desc: "A focused software studio in Chennai. You collaborate directly with senior creators—no middlemen, no runaround.",
+    title: "About the studio | Cookie Inc.",
+    desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
   },
   "/about-us": {
-    title: "About the Studio — Cookie Inc.",
-    desc: "A focused software studio in Chennai. You collaborate directly with senior creators—no middlemen, no runaround.",
+    title: "About the studio | Cookie Inc.",
+    desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
   },
   "/contact": {
-    title: "Start a Project — Cookie Inc.",
+    title: "Start a Project | Cookie Inc.",
     desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
   },
   "/contact-us": {
-    title: "Start a Project — Cookie Inc.",
+    title: "Start a Project | Cookie Inc.",
     desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
   },
   "/countdown": {
-    title: "Studio Launch Preview — Cookie Inc.",
+    title: "Studio Launch Preview | Cookie Inc.",
     desc: "Something new is launching soon from Cookie Inc. Sign up for early access to our next studio platform.",
   },
   "/privacy": {
-    title: "Privacy Policy — Cookie Inc.",
+    title: "Privacy Policy | Cookie Inc.",
     desc: "Cookie Inc. privacy practices and data commitments.",
   },
   "/terms": {
-    title: "Terms of Service — Cookie Inc.",
+    title: "Terms of Service | Cookie Inc.",
     desc: "Standard terms and conditions governing Cookie Inc. studio engagements.",
   },
+  "/work/torque-toyzz": {
+    title: "Torque Toyzz Case Study | Cookie Inc.",
+    desc: "Instant WhatsApp E-Commerce platform for Torque Toyzz. 3.4x higher checkout rate, delivered in 14 days.",
+  },
   "/work/iq-bridge": {
-    title: "IQ Bridge Case Study — Cookie Inc.",
-    desc: "Educational ecosystem connecting universities, recruiters, and learners with live analytics.",
+    title: "IQ Bridge Case Study | Cookie Inc.",
+    desc: "EdTech portfolio platform for IQ Bridge. 14 countries reached, delivered in 21 days.",
   },
   "/work/audnex": {
-    title: "Audnex Case Study — Cookie Inc.",
-    desc: "Next-gen audio streaming web and mobile application designed for audiophiles.",
+    title: "Audnex Case Study | Cookie Inc.",
+    desc: "Creative studio showcase for Audnex. 100% client retention, delivered in 28 days.",
   },
   "/work/sap-checklist": {
-    title: "SAP Checklist Case Study — Cookie Inc.",
-    desc: "Enterprise audit, compliance, and workflow automation portal for industrial operations.",
-  },
-  "/work/torque-toyzz": {
-    title: "Torque Toyzz Case Study — Cookie Inc.",
-    desc: "High-octane e-commerce platform and community hub for premium die-cast scale models.",
+    title: "SAP Checklist Portal Case Study | Cookie Inc.",
+    desc: "Enterprise operations management and compliance portal for SAP Consulting Group. Delivered in 42 days.",
   },
 };
 
@@ -94,12 +94,12 @@ function injectMeta(html, url) {
   const meta = ROUTE_META[url] || ROUTE_META["/"];
   let res = html;
   if (meta.title) {
-    res = res.replace(/<title>.*?<\/title>/s, `<title>${meta.title}</title>`);
-    res = res.replace(/<meta property="og:title" content=".*?" \/>/s, `<meta property="og:title" content="${meta.title}" />`);
+    res = res.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
+    res = res.replace(/<meta\s+property=["']og:title["'][\s\S]*?\/>/i, `<meta property="og:title" content="${meta.title}" />`);
   }
   if (meta.desc) {
-    res = res.replace(/<meta name="description" content=".*?" \/>/s, `<meta name="description" content="${meta.desc}" />`);
-    res = res.replace(/<meta property="og:description" content=".*?" \/>/s, `<meta property="og:description" content="${meta.desc}" />`);
+    res = res.replace(/<meta\s+name=["']description["'][\s\S]*?\/>/i, `<meta name="description" content="${meta.desc}" />`);
+    res = res.replace(/<meta\s+property=["']og:description["'][\s\S]*?\/>/i, `<meta property="og:description" content="${meta.desc}" />`);
   }
   return res;
 }
@@ -130,6 +130,15 @@ async function prerender() {
     fs.mkdirSync(path.dirname(targetFile), { recursive: true });
     fs.writeFileSync(targetFile, html, "utf-8");
     console.log(`  ✓ Pre-rendered: ${url} -> dist/client/${relativePath}`);
+
+    // Also emit flat .html file for hosts that match clean URLs without trailing slash directory indexes
+    if (url !== "/") {
+      const flatRelativePath = `${url.replace(/^\//, "")}.html`;
+      const flatTargetFile = path.resolve(__dirname, "dist/client", flatRelativePath);
+      fs.mkdirSync(path.dirname(flatTargetFile), { recursive: true });
+      fs.writeFileSync(flatTargetFile, html, "utf-8");
+      console.log(`  ✓ Pre-rendered: ${url} -> dist/client/${flatRelativePath}`);
+    }
   }
 
   console.log("> Pre-rendering completed successfully.");

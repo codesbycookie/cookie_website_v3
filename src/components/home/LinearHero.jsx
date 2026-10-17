@@ -175,7 +175,7 @@ export default function LinearHero() {
       id="hero"
       data-section="hero"
       onMouseMove={handleMouseMove}
-      className="relative w-full pt-16 pb-24 md:pt-24 md:pb-32 px-5 sm:px-8 text-center flex flex-col items-center overflow-hidden border-b border-white/[0.08]"
+      className="relative w-full pt-20 pb-20 md:pt-28 md:pb-28 px-6 sm:px-8 overflow-hidden border-b border-white/[0.08]"
     >
       <style>{`
         @keyframes driftLeft {
@@ -206,7 +206,7 @@ export default function LinearHero() {
             animation: none;
             width: 100%;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
           }
         }
       `}</style>
@@ -243,153 +243,142 @@ export default function LinearHero() {
       </svg>
 
       {/* ─────────────────────────────────────────────────────────────
-          HERO CORE: ANNOUNCEMENT, EXPANSIVE HEADLINE, CTAS & CHIPS
+          HERO CORE: LEFT-ALIGNED (JUST LIKE WORKS PAGE)
           ───────────────────────────────────────────────────────────── */}
-      {/* Announcement Pill */}
-      <div className="mb-7 hero-css-fade-up hero-delay-0">
-        <Link
-          to="/contact"
-          className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] pulse-dot" />
-          <span className="text-[12px] font-medium text-[#8A8F98] group-hover:text-[#F7F8F8] transition-colors">
-            Available for new client projects in 2026
-          </span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#62666D] group-hover:text-[#D9A55B] transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
-      </div>
+      <div className="relative z-10 w-full max-w-[1180px] mx-auto text-left flex flex-col items-start">
+        {/* Announcement Pill */}
+        <div className="mb-6 sm:mb-7 hero-css-fade-up hero-delay-0">
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B] pulse-dot" />
+            <span className="text-[12px] font-medium text-[#8A8F98] group-hover:text-[#F7F8F8] transition-colors">
+              Available for new client projects in 2026
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#62666D] group-hover:text-[#D9A55B] transition-transform duration-200 group-hover:translate-x-1" />
+          </Link>
+        </div>
 
-      {/* Wide Cinematic Headline with Cascading Staggered Word Reveal & Dynamic Action Verb */}
-      <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.15] max-w-[1040px] mx-auto mb-7 text-[#F7F8F8] text-balance">
-        {/* Line 1: We build websites, mobile apps, and custom tools */}
-        <span className="block overflow-hidden pb-1.5 pt-0.5">
-          <span className="inline-flex flex-wrap justify-center gap-x-[0.25em] headline-gradient">
-            {["We", "build", "websites,", "mobile", "apps,", "and", "custom", "tools"].map((word, i) => (
-              <span
-                key={i}
-                className="hero-word"
-                style={{ animationDelay: `${40 + i * 40}ms` }}
-              >
-                {word}
-              </span>
-            ))}
-          </span>
-        </span>
-
-        {/* Line 2: that help ambitious companies [grow. | scale. | convert. | lead.] */}
-        <span className="block overflow-hidden pb-2 pt-0.5">
-          <span className="inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em] headline-gradient">
-            {["that", "help", "ambitious", "companies"].map((word, i) => (
-              <span
-                key={i}
-                className="hero-word"
-                style={{ animationDelay: `${360 + i * 40}ms` }}
-              >
-                {word}
-              </span>
-            ))}
-
-            {/* Dynamic Cycling Focus Word — strictly baseline-aligned, zero layout shift */}
-            <span className="inline-flex items-baseline relative overflow-hidden align-baseline min-w-[3.2em] sm:min-w-[3.4em] text-left">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={DYNAMIC_VERBS[verbIndex].text}
-                  initial={{ y: "115%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-115%", opacity: 0 }}
-                  transition={{
-                    duration: 0.38,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`inline-block font-semibold ${DYNAMIC_VERBS[verbIndex].color}`}
+        {/* Wide Cinematic Headline with Cascading Staggered Word Reveal & Dynamic Action Verb */}
+        <h1 className="text-[34px] sm:text-[48px] md:text-[58px] lg:text-[66px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.12] max-w-[1020px] mb-6 text-[#F7F8F8] text-left">
+          {/* Line 1: We build websites, mobile apps, and custom tools */}
+          <span className="block overflow-hidden pb-1.5 pt-0.5">
+            <span className="inline-flex flex-wrap justify-start gap-x-[0.25em]">
+              {["We", "build", "websites,", "mobile", "apps,", "and", "custom", "tools"].map((word, i) => (
+                <span
+                  key={i}
+                  className="hero-word"
+                  style={{ animationDelay: `${40 + i * 40}ms` }}
                 >
-                  {DYNAMIC_VERBS[verbIndex].text}
-                </motion.span>
-              </AnimatePresence>
+                  {word}
+                </span>
+              ))}
             </span>
           </span>
-        </span>
-      </h1>
 
-      {/* Harmoniously Proportioned Subtext */}
-      <p className="text-[16px] sm:text-[18px] md:text-[20px] text-[#8A8F98] max-w-[660px] mx-auto leading-[1.62] mb-10 text-balance font-normal hero-css-fade-up hero-delay-2">
-        A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
-      </p>
+          {/* Line 2: that help ambitious companies [grow. | scale. | convert. | lead.] */}
+          <span className="block overflow-hidden pb-2 pt-0.5">
+            <span className="inline-flex flex-wrap items-baseline justify-start gap-x-[0.25em]">
+              {["that", "help", "ambitious", "companies"].map((word, i) => (
+                <span
+                  key={i}
+                  className="hero-word"
+                  style={{ animationDelay: `${360 + i * 40}ms` }}
+                >
+                  {word}
+                </span>
+              ))}
 
-      {/* Action Buttons with Magnetic hover on Primary */}
-      <div className="flex flex-col sm:flex-row items-center gap-3.5 mb-9 hero-css-fade-up hero-delay-3">
-        <Magnetic strength={8}>
-          <Button
-            to="/contact"
-            variant="primary"
-            size="lg"
-            className="min-h-[46px] w-full sm:w-auto group relative shadow-sm"
-          >
-            <span>Start a project</span>
-            <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
-          </Button>
-        </Magnetic>
-
-        <Button to="/work" variant="ghost" size="lg" className="min-h-[46px] w-full sm:w-auto">
-          Explore our work
-        </Button>
-      </div>
-
-      {/* Trust Chips with animated stroke check icons */}
-      <div className="hero-css-fade-up hero-delay-5 flex flex-wrap items-center justify-center gap-6 text-[13px] text-[#62666D] mb-16 sm:mb-20">
-        {TRUST_CHIPS.map((chip, i) => (
-          <span key={chip} className="flex items-center gap-2">
-            <svg
-              className="w-4 h-4 text-[#59D499]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <motion.path
-                d="M4 12l5 5L20 7"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 + i * 0.12, ease: MOTION_TOKENS.ease }}
-              />
-            </svg>
-            <span className="text-[#8A8F98]">{chip}</span>
+              {/* Dynamic Cycling Focus Word — strictly baseline-aligned, zero layout shift */}
+              <span className="inline-flex items-baseline relative overflow-hidden align-baseline min-w-[3.2em] sm:min-w-[3.4em] text-left">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={DYNAMIC_VERBS[verbIndex].text}
+                    initial={{ y: "115%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-115%", opacity: 0 }}
+                    transition={{
+                      duration: 0.38,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className={`inline-block font-semibold ${DYNAMIC_VERBS[verbIndex].color}`}
+                  >
+                    {DYNAMIC_VERBS[verbIndex].text}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
           </span>
-        ))}
-      </div>
+        </h1>
 
+        {/* Harmoniously Proportioned Subtext */}
+        <p className="text-[16px] sm:text-[18px] md:text-[19px] text-[#8A8F98] max-w-2xl leading-relaxed mb-8 text-left font-normal hero-css-fade-up hero-delay-2">
+          A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
+        </p>
 
-      {/* ─────────────────────────────────────────────────────────────
-          INTEGRATED CLIENT TRUST MATRIX: STATS & KINETIC LOGO TICKERS
-          (Merged seamlessly from ClientStrip into the Hero)
-          ───────────────────────────────────────────────────────────── */}
-      <div className="w-full max-w-[1200px] mx-auto">
-        {/* Quiet Trust Metrics Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-[960px] mx-auto mb-12 sm:mb-14">
-          {TRUST_METRICS.map((metric) => {
-            const Icon = metric.icon;
-            return (
-              <div
-                key={metric.label}
-                className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-[12px] bg-white/[0.02] border border-white/[0.07] backdrop-blur-sm"
+        {/* Action Buttons with Magnetic hover on Primary */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8 hero-css-fade-up hero-delay-3 w-full sm:w-auto">
+          <Magnetic strength={8}>
+            <Button
+              to="/contact"
+              variant="primary"
+              size="lg"
+              className="min-h-[46px] w-full sm:w-auto group relative shadow-sm"
+            >
+              <span>Start a project</span>
+              <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
+          </Magnetic>
+
+          <Button to="/work" variant="ghost" size="lg" className="min-h-[46px] w-full sm:w-auto">
+            Explore our work
+          </Button>
+        </div>
+
+        {/* Trust Chips with animated stroke check icons */}
+        <div className="hero-css-fade-up hero-delay-4 flex flex-wrap items-center justify-start gap-x-6 gap-y-2.5 text-[13px] text-[#62666D] mb-12 sm:mb-14">
+          {TRUST_CHIPS.map((chip, i) => (
+            <span key={chip} className="flex items-center gap-2">
+              <svg
+                className="w-4 h-4 text-[#59D499]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
               >
-                <div className="w-9 h-9 rounded-[8px] bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0">
-                  <Icon className="w-4 h-4 text-[#D9A55B]" />
-                </div>
-                <div className="text-left">
-                  <div className="text-[18px] sm:text-[20px] font-semibold text-[#F7F8F8] tracking-tight">
-                    {metric.value}
-                  </div>
-                  <div className="text-[11px] sm:text-[12px] text-[#8A8F98] font-medium leading-none">
-                    {metric.label}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                <motion.path
+                  d="M4 12l5 5L20 7"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 + i * 0.12, ease: MOTION_TOKENS.ease }}
+                />
+              </svg>
+              <span className="text-[#8A8F98]">{chip}</span>
+            </span>
+          ))}
+        </div>
+
+        {/* Quiet Trust Metrics Bar (Styled with hairline vertical dividers like Works page) */}
+        <div className="hero-css-fade-up hero-delay-5 grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-0 pt-2 pb-14 sm:pb-16 w-full text-left">
+          {TRUST_METRICS.map((metric, i) => (
+            <div
+              key={metric.label}
+              className={`flex flex-col sm:pr-8 sm:mr-8 ${
+                i !== TRUST_METRICS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
+              }`}
+            >
+              <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight">
+                {metric.value}
+              </span>
+              <span className="text-[13px] sm:text-[14px] text-[#8A8F98]">
+                {metric.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 

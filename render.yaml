@@ -12,3 +12,60 @@ services:
         value: production
       - key: NODE_VERSION
         value: 20
+
+  # Option 2: Static Site (When deployed as a Static Site on Render)
+  # Explicit route rewrites ensure pre-rendered clean URLs like /contact serve their unique HTML
+  - type: web
+    name: cookie-website-v3-static
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist/client
+    routes:
+      - type: rewrite
+        source: /contact
+        destination: /contact/index.html
+      - type: rewrite
+        source: /contact-us
+        destination: /contact/index.html
+      - type: rewrite
+        source: /work
+        destination: /work/index.html
+      - type: rewrite
+        source: /portfolio
+        destination: /portfolio/index.html
+      - type: rewrite
+        source: /services
+        destination: /services/index.html
+      - type: rewrite
+        source: /service
+        destination: /services/index.html
+      - type: rewrite
+        source: /about
+        destination: /about/index.html
+      - type: rewrite
+        source: /about-us
+        destination: /about/index.html
+      - type: rewrite
+        source: /countdown
+        destination: /countdown/index.html
+      - type: rewrite
+        source: /privacy
+        destination: /privacy/index.html
+      - type: rewrite
+        source: /terms
+        destination: /terms/index.html
+      - type: rewrite
+        source: /work/torque-toyzz
+        destination: /work/torque-toyzz/index.html
+      - type: rewrite
+        source: /work/iq-bridge
+        destination: /work/iq-bridge/index.html
+      - type: rewrite
+        source: /work/audnex
+        destination: /work/audnex/index.html
+      - type: rewrite
+        source: /work/sap-checklist
+        destination: /work/sap-checklist/index.html
+      - type: rewrite
+        source: /*
+        destination: /index.html

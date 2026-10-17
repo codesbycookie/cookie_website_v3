@@ -140,9 +140,8 @@ export default function TestimonialsCarousel() {
                   type="button"
                   onClick={() => setActiveIndex(i)}
                   aria-label={`Jump to quote by ${r.name}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    isActive ? "w-6 bg-[#D9A55B]" : "w-1.5 bg-white/20 hover:bg-white/40"
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${isActive ? "w-6 bg-[#D9A55B]" : "w-1.5 bg-white/20 hover:bg-white/40"
+                    }`}
                 />
               );
             })}

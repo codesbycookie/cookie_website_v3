@@ -4,6 +4,7 @@ import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import BackToTop from "../components/shared/BackToTop";
 import CookieIntroLoader from "../components/shared/CookieIntroLoader";
+import SEO from "../components/shared/SEO";
 
 export default function MainLayout({ children }) {
   const { pathname, hash } = useLocation();
@@ -22,6 +23,7 @@ export default function MainLayout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#08090A] text-[#F4F4F6] relative selection:bg-[#D9A55B]/25 selection:text-[#F4F4F6]">
+      <SEO />
       {/* Bespoke 1-2s Brand Intro Loader with GSAP flight animation to navbar */}
       <CookieIntroLoader />
 

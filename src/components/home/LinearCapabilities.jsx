@@ -121,7 +121,7 @@ function MobileVisual() {
           {/* Status Bar */}
           <div className="h-9 px-5 pt-1.5 flex items-center justify-between text-[11px] font-medium shrink-0 z-20">
             <span className="font-semibold tracking-tight text-white/90">9:41</span>
-            
+
             {/* Dynamic Island Pill */}
             <div className="w-18 h-4 rounded-full bg-black flex items-center justify-between px-2 shrink-0 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#57C1FF]" />
@@ -142,10 +142,10 @@ function MobileVisual() {
                 shouldReduceMotion
                   ? {}
                   : {
-                      y: [-12, 0, 0, -12],
-                      opacity: [0, 1, 1, 0],
-                      scale: [0.94, 1, 1, 0.94],
-                    }
+                    y: [-12, 0, 0, -12],
+                    opacity: [0, 1, 1, 0],
+                    scale: [0.94, 1, 1, 0.94],
+                  }
               }
               transition={{ duration: 4.5, repeat: Infinity, ease: MOTION_TOKENS.ease }}
               className="p-2 rounded-[14px] bg-[#181A20] border border-white/10 shadow-lg flex items-center gap-2"
@@ -345,9 +345,9 @@ function BrandVisual() {
                 shouldReduceMotion
                   ? {}
                   : {
-                      rotate: [45, 225, 45],
-                      scale: [0.92, 1.06, 0.92],
-                    }
+                    rotate: [45, 225, 45],
+                    scale: [0.92, 1.06, 0.92],
+                  }
               }
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               className="w-14 h-14 rounded-[8px] border border-[#57C1FF]/40 bg-[#57C1FF]/05"
@@ -455,15 +455,13 @@ export default function LinearCapabilities() {
           return (
             <div
               key={cap.label}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${
-                isEven ? "lg:grid-flow-dense" : ""
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${isEven ? "lg:grid-flow-dense" : ""
+                }`}
             >
               {/* Text Column */}
               <div
-                className={`lg:col-span-5 ${
-                  isEven ? "lg:col-start-8" : "lg:col-start-1"
-                }`}
+                className={`lg:col-span-5 ${isEven ? "lg:col-start-8" : "lg:col-start-1"
+                  }`}
               >
                 <Reveal direction="up">
                   {/* Small uppercase label */}
@@ -495,9 +493,8 @@ export default function LinearCapabilities() {
 
               {/* Framed Visual with TiltIn Entrance */}
               <div
-                className={`lg:col-span-7 ${
-                  isEven ? "lg:col-start-1" : "lg:col-start-6"
-                }`}
+                className={`lg:col-span-7 ${isEven ? "lg:col-start-1" : "lg:col-start-6"
+                  }`}
               >
                 <TiltIn>
                   <VisualComponent />

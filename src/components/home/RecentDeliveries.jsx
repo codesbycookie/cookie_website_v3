@@ -455,11 +455,11 @@ export default function RecentDeliveries() {
             invalidateOnRefresh: true,
             snap: SNAP
               ? {
-                  snapTo: "labels",
-                  duration: 0.4,
-                  ease: "power2.inOut",
-                  delay: 0.05,
-                }
+                snapTo: "labels",
+                duration: 0.4,
+                ease: "power2.inOut",
+                delay: 0.05,
+              }
               : false,
             onUpdate: (self) => {
               const p = self.progress;
@@ -616,9 +616,8 @@ export default function RecentDeliveries() {
 
           {/* Split Two-Column Stage */}
           <div
-            className={`grid grid-cols-12 gap-10 xl:gap-14 items-center ${
-              ALTERNATE_SIDES && activeProject % 2 === 1 ? "direction-rtl" : ""
-            }`}
+            className={`grid grid-cols-12 gap-10 xl:gap-14 items-center ${ALTERNATE_SIDES && activeProject % 2 === 1 ? "direction-rtl" : ""
+              }`}
           >
             {/* LEFT COLUMN: Progress Rail + Stacked Text Blocks (~40%) */}
             <div className="col-span-5 flex items-start gap-6 xl:gap-8">
@@ -640,11 +639,10 @@ export default function RecentDeliveries() {
                       aria-label={`${p.client} (project ${idx + 1} of ${PROJECTS.length})`}
                       onClick={() => jumpToProject(idx)}
                       onKeyDown={(e) => handleRailKeyDown(e, idx)}
-                      className={`w-1 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] ${
-                        isActive
+                      className={`w-1 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] ${isActive
                           ? "h-8 bg-[#D9A55B]"
                           : "h-3 bg-white/20 hover:bg-white/40"
-                      }`}
+                        }`}
                     />
                   );
                 })}
@@ -825,11 +823,10 @@ export default function RecentDeliveries() {
                     e.stopPropagation();
                   }
                 }}
-                className={`w-[86vw] sm:w-[480px] shrink-0 snap-center rounded-[20px] bg-[#0E1013] border transition-all duration-300 p-5 sm:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.5)] flex flex-col justify-between ${
-                  isActive
+                className={`w-[86vw] sm:w-[480px] shrink-0 snap-center rounded-[20px] bg-[#0E1013] border transition-all duration-300 p-5 sm:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.5)] flex flex-col justify-between ${isActive
                     ? "border-white/[0.18]"
                     : "border-white/[0.07] opacity-85"
-                }`}
+                  }`}
               >
                 <div className="space-y-4">
                   {/* Mockup Frame */}
@@ -908,11 +905,10 @@ export default function RecentDeliveries() {
             <button
               key={i}
               onClick={() => scrollMobileTo(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                i === mobileActiveIndex
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === mobileActiveIndex
                   ? "w-6 bg-[#D9A55B]"
                   : "w-1.5 bg-white/20 hover:bg-white/40"
-              }`}
+                }`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}

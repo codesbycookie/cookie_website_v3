@@ -60,7 +60,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-2.5 text-[13px] text-[#F4F4F6]">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#59D499]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#F7F8F8]" />
               <span>Available for new client projects in 2026</span>
             </div>
           </div>

@@ -1,328 +1,488 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { portfoliopage } from "../data/data";
-import Button from "../components/shared/Button";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import CookieLogo from "../components/shared/CookieLogo";
-import {
-  ArrowRight,
-  ExternalLink,
-  Check,
-  TrendingUp,
-  Globe,
-  Smartphone,
-  Database,
-} from "lucide-react";
+import { portfoliopage } from "../data/data";
 
 /**
- * Portfolio Page (Complete Redesign)
- * The one question: "Have they done something similar to what I need, and does it look and work well?"
- * Client-first, story-driven (Problem -> What we made -> Result), filterable, device mockups.
+ * Rebuilt Works Page (/work) - Linear Vibe:
+ * Calm, precise, text-forward, with real product visuals as the only visual weight.
+ * Hairline 1px borders, subtle white-to-grey gradient headlines, zero drop shadows.
  */
+
+// Four featured case studies with detail routes (/work/[slug])
+const FEATURED_STUDIES = [
+  {
+    slug: "torque-toyzz",
+    title: "Torque Toyzz: Instant WhatsApp E-Commerce",
+    client: "Torque Toyzz",
+    category: "Websites & Web Apps",
+    metric: "3.4x higher checkout rate",
+    turnaround: "Delivered in 14 days",
+    tags: ["E-Commerce", "WhatsApp API", "Catalog Search"],
+    image: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
+    ctaLink: "/work/torque-toyzz",
+  },
+  {
+    slug: "iq-bridge",
+    title: "IQ Bridge: EdTech portfolio platform",
+    client: "IQ Bridge",
+    category: "Websites & Web Apps",
+    metric: "14 countries reached",
+    turnaround: "Delivered in 21 days",
+    tags: ["EdTech", "Web App", "AI UI"],
+    image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423538/iqbridge_cs_bubzkk.jpg",
+    ctaLink: "/work/iq-bridge",
+  },
+  {
+    slug: "audnex",
+    title: "Audnex: Creative studio showcase",
+    client: "Audnex",
+    category: "Websites & Web Apps",
+    metric: "100% client retention",
+    turnaround: "Delivered in 28 days",
+    tags: ["Portfolio", "Motion UI", "Creative Studio"],
+    image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423530/audnex_website_kr9xn2.jpg",
+    ctaLink: "/work/audnex",
+  },
+  {
+    slug: "sap-checklist",
+    title: "SAP Checklist Portal: Operations management",
+    client: "SAP Consulting Group",
+    category: "Custom Business Systems",
+    metric: "100% gate compliance",
+    turnaround: "Delivered in 42 days",
+    tags: ["Enterprise", "PostgreSQL", "Full-Stack App"],
+    image: "/imgs/sap_checklist.jpg",
+    ctaLink: "/work/sap-checklist",
+  },
+];
+
+// Other clients (logo + name + category, NOT clickable)
+const OTHER_CLIENTS = [
+  {
+    name: "How to Cook",
+    category: "Culinary Media & E-Com",
+    filterCategory: "Websites & Web Apps",
+    logo: "/imgs/How_to_cook_logo.svg",
+  },
+  {
+    name: "V&D Granite",
+    category: "Industrial & Export",
+    filterCategory: "Websites & Web Apps",
+    logo: "/imgs/V&D-logo.png",
+  },
+  {
+    name: "Traffic",
+    category: "Urban Transit & Fleet",
+    filterCategory: "Custom Business Systems",
+    logo: "/imgs/Traffic-logo.jpg",
+  },
+  {
+    name: "Tourist",
+    category: "Travel & Hospitality",
+    filterCategory: "Websites & Web Apps",
+    logo: "/imgs/Tourist-logo.jpg",
+  },
+  {
+    name: "Fashbridge",
+    category: "Apparel Retail",
+    filterCategory: "Websites & Web Apps",
+    logo: "/imgs/Fashbridge-logo.png",
+  },
+];
+
+const STUDIO_STATS = [
+  { value: "40+", label: "Production builds" },
+  { value: "100%", label: "On-time delivery" },
+  { value: "21 days", label: "Average turnaround" },
+  { value: "14 countries", label: "Global footprint" },
+];
+
 export default function Portfolio() {
-  const { section4 } = portfoliopage;
   const [activeFilter, setActiveFilter] = useState("all");
+  const prefersReducedMotion = useReducedMotion();
+  const filterRowRef = useRef(null);
+  const filterBtnsRef = useRef([]);
 
-  const FILTERS = [
-    { id: "all", label: "All Projects" },
-    { id: "webapp", label: "Web Applications" },
-    { id: "mobile", label: "Mobile Apps" },
-    { id: "ecommerce", label: "E-Commerce" },
-    { id: "enterprise", label: "Business Tools" },
+  // Derive unique categories that contain at least one featured project
+  const projectCategories = Array.from(
+    new Set(FEATURED_STUDIES.map((p) => p.category))
+  );
+
+  const filterOptions = [
+    { id: "all", label: "All" },
+    ...projectCategories.map((cat) => ({ id: cat, label: cat })),
   ];
 
-  // Story-driven client projects
-  const PROJECTS = [
-    {
-      slug: "torque-toyzz",
-      title: "Torque Toyzz: Instant WhatsApp E-Commerce",
-      client: "Torque Toyzz",
-      industry: "Retail & Hobbyist Commerce",
-      filterCategory: "ecommerce",
-      goal: "The owner wanted to sell remote-controlled vehicles online without forcing mobile buyers through complex registration forms.",
-      solution: "We built a mobile-first online catalog with instantaneous search and a 1-tap WhatsApp checkout that connects buyers straight to the sales team.",
-      outcome: "3.4x higher mobile checkout rate and delivered in just 2 weeks.",
-      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
-      technologies: ["Fast Mobile Storefront", "WhatsApp Business Integration", "Instant Search"],
-      year: "2025",
-    },
-    {
-      slug: "iq-bridge",
-      title: "IQ Bridge: Institutional EdTech Platform",
-      client: "IQ Bridge",
-      industry: "Education & Institutional Assessment",
-      filterCategory: "webapp",
-      goal: "The founders needed a credible digital presence to explain their automated assessment tools to universities and international partners.",
-      solution: "We organized complex platform features into a clear, visually authoritative website with direct institutional demo booking.",
-      outcome: "Expanded inquiries across 14 countries within 60 days of launch.",
-      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423538/iqbridge_cs_bubzkk.jpg",
-      technologies: ["Institutional Web Platform", "Interactive Product Tour", "Demo Booking Flow"],
-      year: "2025",
-    },
-    {
-      slug: "audnex",
-      title: "Audnex: High-Taste Studio Showcase",
-      client: "Audnex",
-      industry: "Creative Media & Sound Design",
-      filterCategory: "webapp",
-      goal: "A premium sound studio required an international digital presence to win enterprise contracts overseas.",
-      solution: "We crafted an interactive showcase with smooth hardware-accelerated transitions and optimized audio streaming previews.",
-      outcome: "Sub-second load times and steady inbound client inquiries from European agencies.",
-      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423530/audnex_website_kr9xn2.jpg",
-      technologies: ["Interactive Showcase", "Smooth Media Streaming", "Fast Global Delivery"],
-      year: "2025",
-    },
-    {
-      slug: "sap-checklist",
-      title: "SAP Checklist: Enterprise Verification Portal",
-      client: "SAP Consulting Group",
-      industry: "Enterprise Industrial Operations",
-      filterCategory: "enterprise",
-      goal: "Consulting teams were drowning in spreadsheets tracking hundreds of critical verification milestones during ERP transitions.",
-      solution: "We created a centralized web portal with role-based permissions, automated milestone approvals, and live project status tracking.",
-      outcome: "Eliminated manual tracking errors across industrial cutovers with zero system downtime.",
-      image: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730704/SAP_1_1_om5jcx.png",
-      technologies: ["Operations Dashboard", "Role-Based Permissions", "Milestone Tracking"],
-      year: "2025",
-    },
-    {
-      slug: "skill-link",
-      title: "Skill Link: Real-Time Collaborative Classroom",
-      client: "Skill Link",
-      industry: "Online Education",
-      filterCategory: "webapp",
-      goal: "Educators needed a stable online classroom that wouldn't lag or drop connections during interactive whiteboard sessions.",
-      solution: "We engineered a low-latency web application supporting simultaneous student whiteboards, video sync, and session recordings.",
-      outcome: "Reliable interactive sessions with sub-50ms sync latency.",
-      image: "/imgs/Skill_link_mockup.svg",
-      technologies: ["Real-Time Classroom", "Live Collaborative Boards", "Low-Latency Sync"],
-      year: "2024",
-    },
-    {
-      slug: "elderly",
-      title: "Elderly Companion: Accessible Health Tracker",
-      client: "Elderly Health Org",
-      industry: "Healthcare & Senior Living",
-      filterCategory: "mobile",
-      goal: "Older adults struggled with cluttered medication apps loaded with tiny text, complex menus, and annoying banner ads.",
-      solution: "We designed a distraction-free mobile companion with extra-large high-contrast buttons, simple daily alerts, and one-touch family check-ins.",
-      outcome: "100% adherence to senior accessibility standards and zero user confusion.",
-      image: "/imgs/Elderly-Mock-up.svg",
-      technologies: ["High-Contrast Mobile UI", "Simple Medication Alerts", "One-Touch Check-ins"],
-      year: "2024",
-    },
-    {
-      slug: "velus-sons",
-      title: "Velu’s & Sons: Heritage Food Brand Store",
-      client: "Velu Heritage Foods",
-      industry: "Packaged Food & Direct Retail",
-      filterCategory: "ecommerce",
-      goal: "A traditional food brand wanted to bypass third-party marketplaces and sell direct to retail consumers across India.",
-      solution: "We built an elegant digital storefront highlighting product purity, customer reviews, and direct digital payments.",
-      outcome: "Direct retail sales grew by 3.8x with direct repeat reorders.",
-      image: "/imgs/Cashew_Mockup.svg",
-      technologies: ["Direct Digital Storefront", "Direct Online Payments", "Mobile Order Tracking"],
-      year: "2024",
-    },
-  ];
+  // Keyboard navigation for filter pills
+  const handleFilterKeyDown = (e, idx) => {
+    let nextIdx = idx;
+    if (e.key === "ArrowRight") {
+      nextIdx = (idx + 1) % filterOptions.length;
+    } else if (e.key === "ArrowLeft") {
+      nextIdx = (idx - 1 + filterOptions.length) % filterOptions.length;
+    } else if (e.key === "Home") {
+      nextIdx = 0;
+    } else if (e.key === "End") {
+      nextIdx = filterOptions.length - 1;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    const targetFilter = filterOptions[nextIdx];
+    setActiveFilter(targetFilter.id);
+    filterBtnsRef.current[nextIdx]?.focus();
+  };
 
-  const CLIENT_LOGOS = [
-    { name: "IQ Bridge", logo: "/imgs/iq-bridge-logo.png" },
-    { name: "Audnex", logo: "/imgs/Audnex-logo.jpg" },
-    { name: "Traffic", logo: "/imgs/Traffic-logo.jpg" },
-    { name: "Tourist", logo: "/imgs/Tourist-logo.jpg" },
-    { name: "V&D Granite", logo: "/imgs/V&D-logo.png" },
-    { name: "How to Cook", logo: "/imgs/How_to_cook_logo.svg" },
-  ];
-
-  const filteredProjects = PROJECTS.filter((p) => {
+  const filteredFeatured = FEATURED_STUDIES.filter((p) => {
     if (activeFilter === "all") return true;
-    return p.filterCategory === activeFilter;
+    return p.category === activeFilter;
+  });
+
+  const filteredOtherClients = OTHER_CLIENTS.filter((c) => {
+    if (activeFilter === "all") return true;
+    return c.filterCategory === activeFilter;
   });
 
   return (
-    <div className="w-full flex flex-col items-center bg-[#0A0B0D] text-[#F4F4F6] relative overflow-hidden">
-      {/* Linear Ambient Spotlight Cone */}
-      <div
-        className="linear-spotlight-cone"
-        aria-hidden="true"
-      />
+    <div className="w-full min-h-screen bg-[#08090A] text-[#F7F8F8] flex flex-col items-center relative overflow-x-clip selection:bg-[#D9A55B]/25 selection:text-[#F7F8F8]">
+      {/* Top faint amber glow (6-8% opacity, large blur) */}
+      <div className="linear-top-glow" aria-hidden="true" />
 
-      {/* Hero Section */}
-      <section className="relative w-full pt-20 pb-12 md:pt-28 md:pb-20 px-5 sm:px-8 text-center flex flex-col items-center">
-        <div className="hero-reveal linear-border-beam mb-4">
-          <div>
-            <div className="flex items-center gap-2 px-3.5 py-1.5 text-[13px] font-medium text-[#9EA3AD]">
-              <span className="w-2 h-2 rounded-full bg-[#59D499] pulse-dot" />
-              <span>Real Client Case Studies</span>
-            </div>
-          </div>
-        </div>
+      {/* Subtle film grain */}
+      <div className="linear-film-grain" aria-hidden="true" />
 
-        <h1 className="hero-reveal-delay-1 text-[36px] sm:text-[52px] md:text-[66px] font-semibold text-[#F4F4F6] tracking-[-0.03em] leading-[1.1] max-w-3xl mb-5">
-          Real products built for real businesses
+      {/* 1. HEADER SECTION (generous ~140px top padding under navbar) */}
+      <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 text-left">
+        {/* Main headline with white-to-grey gradient fill */}
+        <h1 className="linear-headline linear-fade-in text-[36px] sm:text-[50px] md:text-[62px] max-w-[14ch] text-balance mb-4">
+          Real software shipped for real businesses
         </h1>
 
-        <p className="hero-reveal-delay-2 text-[17px] sm:text-[20px] text-[#9EA3AD] max-w-2xl leading-relaxed mb-10">
-          Every project below is a living, working platform shipped for a business client. No throwaway concepts, no generic templates.
+        {/* Short supporting line in grey */}
+        <p className="linear-fade-in linear-delay-1 text-[15px] sm:text-[16px] text-[#8A8F98] max-w-2xl leading-relaxed mb-10">
+          Selected web applications, mobile platforms, and systems shipped for our clients.
         </p>
 
-        {/* Filter Pills */}
-        <div
-          role="group"
-          aria-label="Filter projects by category"
-          className="hero-reveal-delay-3 flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-[#121316] border border-white/10"
-        >
-          {FILTERS.map((f) => {
-            const isSelected = activeFilter === f.id;
-            return (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => setActiveFilter(f.id)}
-                className={`px-4 py-2 rounded-full text-[14px] font-medium transition-all cursor-pointer min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
-                  isSelected
-                    ? "bg-[#D9A55B] text-[#0A0B0D] font-semibold shadow-[0_4px_16px_rgba(217,165,91,0.3)]"
-                    : "text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-white/[0.05]"
-                }`}
-              >
-                {f.label}
-              </button>
-            );
-          })}
+        {/* Studio Stats: inline quiet row with hairline vertical dividers */}
+        <div className="linear-fade-in linear-delay-2 grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-0 pt-2">
+          {STUDIO_STATS.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`flex flex-col sm:pr-8 sm:mr-8 ${
+                i !== STUDIO_STATS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
+              }`}
+            >
+              <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight">
+                {stat.value}
+              </span>
+              <span className="text-[13px] sm:text-[14px] text-[#8A8F98]">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
-      </section>
+      </header>
 
-      {/* Project Stories (The Problem -> What We Made -> The Result) */}
-      <section className="w-full py-12 md:py-20 px-5 sm:px-8 border-t border-white/10">
-        <div className="max-w-[1140px] mx-auto space-y-16 md:space-y-24">
-          {filteredProjects.map((project, idx) => {
-            const isEven = idx % 2 === 0;
-            return (
-              <article
-                key={project.slug}
-                className="interactive-card p-6 sm:p-10 md:p-12 rounded-[24px]"
-              >
-                <div
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
-                    isEven ? "" : "lg:flex-row-reverse"
+      {/* 2. FILTER ROW (sticky under navbar with blurred translucent background & hairline bottom border) */}
+      <nav
+        ref={filterRowRef}
+        aria-label="Filter case studies"
+        className="sticky top-[64px] z-30 w-full backdrop-blur-md bg-[#08090A]/85 border-b border-white/[0.08] transition-colors"
+      >
+        <div className="max-w-[1180px] mx-auto px-6 sm:px-8 py-3.5 flex items-center">
+          <div
+            role="group"
+            aria-label="Filter case studies by category"
+            className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, black 88%, transparent 100%)",
+            }}
+          >
+            {filterOptions.map((f, idx) => {
+              const isActive = activeFilter === f.id;
+              return (
+                <button
+                  key={f.id}
+                  ref={(el) => (filterBtnsRef.current[idx] = el)}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveFilter(f.id)}
+                  onKeyDown={(e) => handleFilterKeyDown(e, idx)}
+                  className={`relative px-3.5 py-1.5 rounded-full text-[13px] sm:text-[14px] font-medium transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40 ${
+                    isActive
+                      ? "text-[#F7F8F8]"
+                      : "text-[#8A8F98] hover:text-[#F7F8F8]"
                   }`}
+                  style={{
+                    border: isActive
+                      ? "1px solid rgba(217, 165, 91, 0.45)"
+                      : "1px solid rgba(255, 255, 255, 0.08)",
+                    backgroundColor: isActive
+                      ? "rgba(255, 255, 255, 0.04)"
+                      : "transparent",
+                  }}
                 >
-                  {/* Visual Image / Mockup */}
-                  <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
-                    <div className="relative rounded-[16px] overflow-hidden bg-[#0A0B0D] border border-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.7)] group">
-                      <img
-                        src={project.image}
-                        alt={`Screenshot of ${project.title}`}
-                        className="w-full h-auto max-h-[380px] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0A0B0D]/85 backdrop-blur-md border border-white/10 text-[12px] font-medium text-[#D9A55B]">
-                        {project.industry}
-                      </div>
-                    </div>
-                  </div>
+                  {/* Sliding highlight indicator using shared layoutId */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="linear-filter-indicator"
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 400, damping: 32 }
+                      }
+                      className="absolute inset-0 rounded-full bg-white/[0.03] pointer-events-none"
+                    />
+                  )}
+                  <span className="relative z-10">{f.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
 
-                  {/* Story Narrative */}
-                  <div className={`lg:col-span-5 flex flex-col justify-between ${isEven ? "" : "lg:order-1"}`}>
+      {/* 3. FEATURED CASE STUDIES GRID */}
+      <section
+        id="featured-case-studies"
+        aria-label="Featured case studies"
+        className="relative z-10 w-full max-w-[1180px] mx-auto px-6 sm:px-8 pt-12 sm:pt-16 pb-20 sm:pb-24"
+      >
+        <div className="min-h-[500px]">
+          <motion.div
+            layout={!prefersReducedMotion}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredFeatured.map((card, i) => (
+                <motion.article
+                  key={card.slug}
+                  layout={!prefersReducedMotion}
+                  initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: prefersReducedMotion ? 0 : -8 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: prefersReducedMotion ? 0 : (i % 2) * 0.06,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="h-full"
+                >
+                  <Link
+                    to={card.ctaLink}
+                    className="group linear-card rounded-[14px] p-4 sm:p-5 flex flex-col justify-between h-full text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+                  >
                     <div>
-                      <div className="flex items-center gap-2 text-[13px] text-[#767B85] mb-2 font-medium">
-                        <span>Client: {project.client}</span>
-                        <span>·</span>
-                        <span>{project.year}</span>
+                      {/* Framed project mockup on top (hairline border, inner top highlight, image fills frame) */}
+                      <div className="relative w-full aspect-[16/10] rounded-[10px] overflow-hidden border border-white/[0.08] bg-[#0C0D10] mb-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.10)]">
+                        <img
+                          src={card.image}
+                          alt={`${card.title} mockup`}
+                          width="720"
+                          height="450"
+                          loading={i < 2 ? "eager" : "lazy"}
+                          fetchPriority={i < 2 ? "high" : "auto"}
+                          className="w-full h-full object-cover object-top transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+                        />
                       </div>
 
-                      <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#F4F4F6] tracking-tight leading-[1.2] mb-5">
-                        {project.title}
+                      {/* Project title */}
+                      <h2 className="text-[20px] sm:text-[22px] font-medium tracking-[-0.03em] leading-tight text-[#F7F8F8] mb-2">
+                        {card.title}
                       </h2>
 
-                      {/* Problem Statement */}
-                      <div className="mb-4">
-                        <span className="text-[12px] font-semibold uppercase tracking-wider text-[#D9A55B] block mb-1">
-                          The Challenge
-                        </span>
-                        <p className="text-[14px] text-[#9EA3AD] leading-relaxed">
-                          {project.goal}
-                        </p>
-                      </div>
+                      {/* One-line outcome with real metric in grey */}
+                      <p className="text-[14px] sm:text-[15px] text-[#8A8F98] leading-relaxed mb-3">
+                        {card.metric}
+                      </p>
 
-                      {/* What We Made */}
-                      <div className="mb-5">
-                        <span className="text-[12px] font-semibold uppercase tracking-wider text-[#D9A55B] block mb-1">
-                          What We Made
-                        </span>
-                        <p className="text-[14px] text-[#9EA3AD] leading-relaxed">
-                          {project.solution}
-                        </p>
-                      </div>
-
-                      {/* The Outcome */}
-                      <div className="p-4 rounded-[12px] bg-[#0A0B0D] border border-white/10 mb-6">
-                        <span className="text-[12px] font-semibold uppercase tracking-wider text-[#59D499] block mb-1 flex items-center gap-1.5">
-                          <TrendingUp className="w-3.5 h-3.5" />
-                          The Result
-                        </span>
-                        <p className="text-[15px] font-medium text-[#F4F4F6]">
-                          {project.outcome}
-                        </p>
-                      </div>
+                      {/* Tags as plain grey text separated by commas (not pills) */}
+                      <p className="text-[13px] text-[#62666D] mb-4">
+                        {card.tags.join(", ")}
+                      </p>
                     </div>
 
-                    {/* Small technologies pill row */}
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
-                      {project.technologies.map((tech) => (
+                    <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-[13px] sm:text-[14px]">
+                      {/* Delivered in X days in grey */}
+                      <span className="text-[#8A8F98]">{card.turnaround}</span>
+
+                      {/* Plain text link with small arrow that nudges 2px right on hover */}
+                      <span className="inline-flex items-center gap-1.5 text-[#F7F8F8] group-hover:text-white">
+                        Read case study
                         <span
-                          key={tech}
-                          className="text-[12px] text-[#767B85] px-2.5 py-1 rounded-[6px] bg-white/[0.04]"
+                          className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[2px] group-hover:text-[#D9A55B]"
+                          aria-hidden="true"
                         >
-                          {tech}
+                          →
                         </span>
-                      ))}
+                      </span>
                     </div>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+                  </Link>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Empty state */}
+          {filteredFeatured.length === 0 && (
+            <div className="py-20 text-center">
+              <p className="text-[#8A8F98] text-[15px] mb-3">
+                No featured case studies found in this category.
+              </p>
+              <button
+                type="button"
+                onClick={() => setActiveFilter("all")}
+                className="text-[14px] text-[#F7F8F8] hover:underline cursor-pointer inline-flex items-center gap-1.5"
+              >
+                Show all
+                <span className="text-[#D9A55B]">→</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Verified Client Trust Logos */}
-      <section className="w-full py-16 px-5 sm:px-8 border-t border-white/10 bg-[#0E1013]">
-        <div className="max-w-[1140px] mx-auto text-center">
-          <p className="text-[13px] font-medium text-[#767B85] uppercase tracking-wider mb-8">
-            Trusted by founders and leadership teams across industries
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-center opacity-80">
-            {CLIENT_LOGOS.map((client) => (
-              <div
-                key={client.name}
-                className="p-4 rounded-[12px] bg-[#121316] border border-white/10 flex items-center justify-center h-20"
-              >
+      {/* 4. OTHER CLIENTS LIST (hairline grid, not links, logo greyscale to color on hover, end tile to /contact) */}
+      <section
+        aria-label="Other client partners"
+        className="relative z-10 w-full max-w-[1180px] mx-auto px-6 sm:px-8 pb-24 sm:pb-32"
+      >
+        {/* Small sentence-case heading */}
+        <h3 className="text-[14px] sm:text-[15px] font-medium text-[#8A8F98] tracking-[-0.01em] mb-4">
+          Also built for
+        </h3>
+
+        {/* Hairline grid: gap 1px over rgba(255,255,255,0.06) background */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/[0.06] border border-white/[0.08] rounded-[14px] overflow-hidden p-0 list-none">
+          {filteredOtherClients.map((client) => (
+            <li
+              key={client.name}
+              className="flex items-center justify-between p-5 sm:p-6 bg-[#08090A] transition-colors duration-200 hover:bg-white/[0.02] group"
+            >
+              <div className="pr-4">
+                <span className="block text-[15px] sm:text-[16px] font-medium text-[#F7F8F8] tracking-tight">
+                  {client.name}
+                </span>
+                <span className="block text-[13px] text-[#8A8F98] mt-0.5">
+                  {client.category}
+                </span>
+              </div>
+              <div className="shrink-0 flex items-center justify-end w-28 h-10">
                 <img
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  className="max-h-10 max-w-[120px] object-contain filter grayscale contrast-125"
                   loading="lazy"
+                  width="110"
+                  height="40"
+                  className="max-h-7 max-w-[100px] object-contain filter grayscale opacity-55 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:opacity-100"
                 />
               </div>
-            ))}
+            </li>
+          ))}
+
+          {/* End tile: mirroring Linear's 'Your company' tile */}
+          <li className="flex items-center justify-between p-5 sm:p-6 bg-[#08090A] transition-colors duration-200 hover:bg-white/[0.02] group/end">
+            <div>
+              <span className="block text-[15px] sm:text-[16px] font-medium text-[#F7F8F8] tracking-tight">
+                Your project
+              </span>
+              <span className="block text-[13px] text-[#8A8F98] mt-0.5">
+                Bespoke design & engineering
+              </span>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1.5 text-[14px] text-[#F7F8F8] hover:text-white transition-colors duration-200 group/link shrink-0"
+            >
+              Start a project
+              <span
+                className="transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/link:translate-x-[2px] text-[#D9A55B]"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+      {/* 5. TESTIMONIAL (one quote, centered, large two-tone type, static, no carousel) */}
+      <section
+        aria-label="Client testimonial"
+        className="relative z-10 w-full max-w-[1040px] mx-auto px-6 sm:px-8 pb-24 sm:pb-32 text-center"
+      >
+        <blockquote className="text-[22px] sm:text-[28px] md:text-[32px] font-medium tracking-[-0.025em] leading-[1.3] max-w-3xl mx-auto mb-6">
+          <span className="text-[#F7F8F8]">
+            “Fast responses and clear pricing throughout the build.{" "}
+          </span>
+          <span className="text-[#8A8F98]">
+            They delivered exactly what we scoped.”
+          </span>
+        </blockquote>
+
+        <div className="inline-flex items-center gap-3">
+          {/* Small initial avatar */}
+          <div
+            className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-[13px] font-medium text-[#8A8F98]"
+            aria-hidden="true"
+          >
+            T
           </div>
+          <p className="text-[14px] text-[#8A8F98]">
+            Tharun, Founder, How to Cook
+          </p>
         </div>
       </section>
 
-      {/* Closing CTA */}
-      <section className="w-full py-20 md:py-28 px-5 sm:px-8 border-t border-white/10 text-center">
-        <div className="max-w-2xl mx-auto flex flex-col items-center">
-          <h2 className="text-[32px] sm:text-[44px] font-semibold text-[#F4F4F6] tracking-tight leading-[1.12] mb-4">
-            Have a project in mind?
+      {/* 6. FINAL CTA (Linear-style closing block with faint bottom glow & subtle radial grid) */}
+      <section
+        aria-label="Call to action"
+        className="relative w-full py-24 sm:py-32 px-6 sm:px-8 overflow-hidden text-center flex flex-col items-center border-t border-white/[0.08]"
+      >
+        {/* Faint amber glow rising from bottom edge (6-8% opacity) */}
+        <div className="linear-bottom-glow" aria-hidden="true" />
+
+        {/* Very faint line grid fading radially behind it */}
+        <div className="linear-cta-grid" aria-hidden="true" />
+
+        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+          {/* Small cookie mark with bite taken out of top-right edge */}
+          <CookieLogo
+            className="w-8 h-8 text-[#F7F8F8] mb-6 opacity-85"
+            color="#F7F8F8"
+            dotColor="#D9A55B"
+          />
+
+          {/* Big centered gradient headline */}
+          <h2 className="linear-headline text-[32px] sm:text-[44px] md:text-[54px] max-w-xl text-balance mb-4">
+            Ready to build your next product?
           </h2>
-          <p className="text-[17px] text-[#9EA3AD] mb-8">
-            Tell us about what you want to achieve. We will reply with technical advice and a realistic quote.
+
+          {/* Existing supporting sentence in grey */}
+          <p className="text-[15px] sm:text-[17px] text-[#8A8F98] max-w-lg leading-relaxed mb-8">
+            Tell us what you are building. We will reply with a clear scope, timeline, and quote.
           </p>
-          <Button to="/contact" variant="primary" size="lg" className="min-h-[48px]">
-            Start a project
-            <ArrowRight className="w-4 h-4 ml-1.5" />
-          </Button>
+
+          {/* Two buttons: Start a project (solid light surface) & Chat on WhatsApp (hairline ghost) */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <Link
+              to="/contact"
+              className="px-5 py-2.5 rounded-[8px] bg-[#F7F8F8] text-[#08090A] text-[14px] font-medium hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-200"
+            >
+              Start a project
+            </Link>
+            <a
+              href="https://wa.cookie.org.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-[8px] bg-transparent text-[#F7F8F8] border border-white/[0.12] hover:border-white/[0.24] hover:bg-white/[0.03] text-[14px] font-medium transition-colors duration-200"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </div>
