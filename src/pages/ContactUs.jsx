@@ -155,10 +155,10 @@ export default function ContactUs() {
         <div className="linear-film-grain" aria-hidden="true" />
 
         <div className="relative z-10 max-w-[1180px] mx-auto text-left">
-          {/* Status pill: hairline border, 6px neutral white dot with slow opacity pulse */}
-          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
+          {/* Status pill: hairline border with subtle 10% cream tint */}
+          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)]">
             <span
-              className="w-1.5 h-1.5 rounded-full bg-[#F7F8F8] animate-[pulse_3s_ease-in-out_infinite]"
+              className="w-1.5 h-1.5 rounded-full bg-[#FAF6EE] animate-[pulse_3s_ease-in-out_infinite]"
               aria-hidden="true"
             />
             <span>Currently accepting new client projects</span>
@@ -183,7 +183,7 @@ export default function ContactUs() {
         <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Right Column: Project Inquiry Form (order-1 on mobile/tablet, order-2 on desktop) */}
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="rounded-[16px] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8 md:p-9 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+            <div className="rounded-[16px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] p-6 sm:p-8 md:p-9 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]">
               {isSuccess ? (
                 <div
                   ref={successRef}
@@ -241,7 +241,7 @@ export default function ContactUs() {
                       aria-required="true"
                       aria-invalid={Boolean(errors.name && touched.name)}
                       aria-describedby={errors.name && touched.name ? "name-error" : undefined}
-                      className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-white/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
+                      className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-[#D9A55B]/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
                         errors.name && touched.name
                           ? "border border-white/40"
                           : "border border-white/[0.08] hover:border-white/[0.16]"
@@ -279,7 +279,7 @@ export default function ContactUs() {
                         aria-required="true"
                         aria-invalid={Boolean(errors.email && touched.email)}
                         aria-describedby={errors.email && touched.email ? "email-error" : undefined}
-                        className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-white/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
+                        className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-[#D9A55B]/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
                           errors.email && touched.email
                             ? "border border-white/40"
                             : "border border-white/[0.08] hover:border-white/[0.16]"
@@ -315,7 +315,7 @@ export default function ContactUs() {
                         aria-required="true"
                         aria-invalid={Boolean(errors.phone && touched.phone)}
                         aria-describedby={errors.phone && touched.phone ? "phone-error" : undefined}
-                        className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-white/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
+                        className={`w-full h-[44px] px-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-[#D9A55B]/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
                           errors.phone && touched.phone
                             ? "border border-white/40"
                             : "border border-white/[0.08] hover:border-white/[0.16]"
@@ -345,7 +345,7 @@ export default function ContactUs() {
                         value={formData.projectType}
                         onChange={handleChange}
                         disabled={isSubmitting}
-                        className="w-full h-[44px] pl-3.5 pr-10 rounded-[10px] bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] text-[#F7F8F8] text-[16px] sm:text-[14px] appearance-none cursor-pointer focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-white/[0.06] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                        className="w-full h-[44px] pl-3.5 pr-10 rounded-[10px] bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] text-[#F7F8F8] text-[16px] sm:text-[14px] appearance-none cursor-pointer focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-[#D9A55B]/[0.06] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
                       >
                         {projectTypes.map((pt) => (
                           <option key={pt.value} value={pt.value} className="bg-[#08090A] text-[#F7F8F8]">
@@ -381,7 +381,7 @@ export default function ContactUs() {
                       aria-required="true"
                       aria-invalid={Boolean(errors.message && touched.message)}
                       aria-describedby={errors.message && touched.message ? "message-error" : undefined}
-                      className={`w-full min-h-[110px] p-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] resize-y transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-white/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
+                      className={`w-full min-h-[110px] p-3.5 rounded-[10px] bg-white/[0.02] text-[#F7F8F8] text-[16px] sm:text-[14px] placeholder-[#62666D] resize-y transition-colors focus:outline-none focus:border-[#D9A55B]/60 focus:ring-4 focus:ring-[#D9A55B]/[0.06] disabled:opacity-60 disabled:cursor-not-allowed ${
                         errors.message && touched.message
                           ? "border border-white/40"
                           : "border border-white/[0.08] hover:border-white/[0.16]"
@@ -406,7 +406,7 @@ export default function ContactUs() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full min-h-[46px] rounded-full bg-[#F7F8F8] hover:bg-white text-[#08090A] font-medium text-[14px] sm:text-[15px] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
+                    className="w-full min-h-[46px] rounded-full bg-[#FAF6EE] hover:bg-[#FFFDF9] text-[#08090A] font-medium text-[14px] sm:text-[15px] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_0_24px_rgba(217,165,91,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
                   >
                     {isSubmitting ? (
                       <>
@@ -441,7 +441,7 @@ export default function ContactUs() {
               </p>
 
               {/* Single hairline group with divided rows */}
-              <div className="rounded-[14px] border border-white/[0.08] bg-white/[0.02] overflow-hidden divide-y divide-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div className="rounded-[14px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] overflow-hidden divide-y divide-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]">
                 {/* WhatsApp */}
                 <a
                   href={social_links.whatsapp}
@@ -450,7 +450,7 @@ export default function ContactUs() {
                   className="p-4 sm:p-4.5 flex items-center justify-between group hover:bg-white/[0.03] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
                 >
                   <div className="flex items-center gap-3.5">
-                    <MessageSquare className="w-[18px] h-[18px] text-[#8A8F98] shrink-0" aria-hidden="true" />
+                    <MessageSquare className="w-[18px] h-[18px] text-[#8A8F98] group-hover:text-[#D9A55B] transition-colors shrink-0" aria-hidden="true" />
                     <div>
                       <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] block">
                         WhatsApp Message
@@ -461,7 +461,7 @@ export default function ContactUs() {
                     </div>
                   </div>
                   <ArrowUpRight
-                    className="w-4 h-4 text-[#62666D] group-hover:text-[#F7F8F8] transition-all duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                    className="w-4 h-4 text-[#62666D] group-hover:text-[#FAF5EB] transition-all duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
                     aria-hidden="true"
                   />
                 </a>
@@ -472,7 +472,7 @@ export default function ContactUs() {
                   className="p-4 sm:p-4.5 flex items-center justify-between group hover:bg-white/[0.03] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
                 >
                   <div className="flex items-center gap-3.5">
-                    <Mail className="w-[18px] h-[18px] text-[#8A8F98] shrink-0" aria-hidden="true" />
+                    <Mail className="w-[18px] h-[18px] text-[#8A8F98] group-hover:text-[#D9A55B] transition-colors shrink-0" aria-hidden="true" />
                     <div>
                       <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] block">
                         contact@cookieinc.in
@@ -483,14 +483,14 @@ export default function ContactUs() {
                     </div>
                   </div>
                   <ArrowUpRight
-                    className="w-4 h-4 text-[#62666D] group-hover:text-[#F7F8F8] transition-all duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                    className="w-4 h-4 text-[#62666D] group-hover:text-[#FAF5EB] transition-all duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
                     aria-hidden="true"
                   />
                 </a>
 
                 {/* Chennai Studio HQ (not a link, no arrow) */}
                 <div className="p-4 sm:p-4.5 flex items-center gap-3.5">
-                  <MapPin className="w-[18px] h-[18px] text-[#8A8F98] shrink-0" aria-hidden="true" />
+                  <MapPin className="w-[18px] h-[18px] text-[#D9A55B]/80 shrink-0" aria-hidden="true" />
                   <div>
                     <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] block">
                       Chennai, India
@@ -531,7 +531,7 @@ export default function ContactUs() {
                     className="relative linear-fade-in"
                     style={{ animationDelay: `${idx * 60}ms` }}
                   >
-                    <span className="absolute -left-7 top-0.5 w-[21px] h-[21px] rounded-full bg-[#08090A] border border-white/[0.12] text-[#8A8F98] font-mono tabular-nums text-[11px] flex items-center justify-center shrink-0 z-10">
+                    <span className="absolute -left-7 top-0.5 w-[21px] h-[21px] rounded-full bg-[rgba(217,165,91,0.04)] border border-[#D9A55B]/25 text-[#FAF5EB] font-mono tabular-nums text-[11px] flex items-center justify-center shrink-0 z-10 shadow-[inset_0_1px_0_rgba(217,165,91,0.10)]">
                       {item.step}
                     </span>
                     <div>

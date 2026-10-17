@@ -109,7 +109,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation: sliding active-pill highlight */}
         <nav
-          className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 p-1 rounded-full bg-white/[0.02] border border-white/[0.05]"
+          className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 p-1 rounded-full bg-[rgba(245,235,220,0.02)] border border-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.05)]"
           onMouseLeave={() => setHoveredNav(null)}
           aria-label="Main Navigation"
         >
@@ -125,14 +125,14 @@ export default function Navbar() {
                 key={item.link}
                 to={item.link}
                 onMouseEnter={() => setHoveredNav(item.link)}
-                className={`relative px-4 py-1.5 text-[13px] font-medium rounded-full transition-colors duration-150 select-none min-h-[36px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${isActive || isHovered ? "text-[#F4F4F6]" : "text-[#9EA3AD] hover:text-[#F4F4F6]"
+                className={`relative px-4 py-1.5 text-[13px] font-medium rounded-full transition-colors duration-150 select-none min-h-[36px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${isActive || isHovered ? "text-[#FAF5EB]" : "text-[#9EA3AD] hover:text-[#FAF5EB]"
                   }`}
                 aria-current={isActive ? "page" : undefined}
               >
                 {showPill && (
                   <motion.div
                     layoutId="navbar-pill"
-                    className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/[0.08]"
+                    className="absolute inset-0 rounded-full bg-[rgba(217,165,91,0.08)] border border-[#D9A55B]/15 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}

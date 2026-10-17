@@ -823,7 +823,7 @@ export default function RecentDeliveries() {
                     e.stopPropagation();
                   }
                 }}
-                className={`w-[86vw] sm:w-[480px] shrink-0 snap-center rounded-[20px] bg-[#0E1013] border transition-all duration-300 p-5 sm:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.5)] flex flex-col justify-between ${isActive
+                className={`w-[86vw] sm:w-[480px] shrink-0 snap-center rounded-[20px] bg-[rgba(245,235,220,0.02)] border transition-all duration-300 p-5 sm:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(217,165,91,0.08)] flex flex-col justify-between ${isActive
                     ? "border-white/[0.18]"
                     : "border-white/[0.07] opacity-85"
                   }`}

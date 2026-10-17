@@ -320,8 +320,8 @@ export default function Services() {
         <div className="linear-film-grain" aria-hidden="true" />
 
         <div className="relative z-10 max-w-[1180px] mx-auto text-left">
-          {/* Pill: hairline border, grey text, no dot, no amber line */}
-          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
+          {/* Pill: hairline border with subtle 10% cream tint */}
+          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)]">
             <span>Services & Structured Packages</span>
           </div>
 
@@ -341,7 +341,7 @@ export default function Services() {
           <div className="linear-fade-in linear-delay-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <Link
               to="/contact"
-              className="px-5 py-2.5 rounded-full bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
+              className="px-5 py-2.5 rounded-full bg-[#FAF6EE] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-[#FFFDF9] hover:shadow-[0_0_24px_rgba(217,165,91,0.18)] transition-all duration-200 inline-flex items-center gap-2 group shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
             >
               <span>Get a clear quote</span>
               <ArrowRight
@@ -411,7 +411,7 @@ export default function Services() {
                         stiffness: 420,
                         damping: 34,
                       }}
-                      className="absolute inset-0 rounded-[10px] bg-white/[0.06] border border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                      className="absolute inset-0 rounded-[10px] bg-[#D9A55B]/[0.08] border border-[#D9A55B]/25 shadow-[inset_0_1px_0_rgba(217,165,91,0.12)]"
                     />
                   )}
 
@@ -429,7 +429,7 @@ export default function Services() {
             role="tabpanel"
             aria-labelledby={`tab-${currentGoal.id}`}
             aria-live="polite"
-            className="rounded-[14px] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] min-h-[128px] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            className="rounded-[14px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] p-6 sm:p-7 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] min-h-[128px] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
           >
             <div className="overflow-hidden flex-1">
               <AnimatePresence mode="wait">
@@ -478,7 +478,7 @@ export default function Services() {
           </div>
 
           {/* Unified 3-Column Hairline Grid with Aligned Rows & 60ms Column Stagger */}
-          <div className="rounded-[16px] border border-white/[0.08] bg-white/[0.02] overflow-hidden grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+          <div className="rounded-[16px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] overflow-hidden grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]">
             {section2.packages.map((pkg, idx) => {
               const isFeatured = idx === 1;
               const isRecommended = currentGoal.recommended === pkg.title;
@@ -498,13 +498,13 @@ export default function Services() {
                     delay: idx * 0.06,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={`group relative p-6 sm:p-8 flex flex-col justify-between transition-colors duration-300 ${
+                  className={`group relative p-5 md:p-6 lg:p-8 flex flex-col justify-between transition-colors duration-300 ${
                     isFeatured
                       ? "bg-white/[0.03] hover:bg-white/[0.045] order-first md:order-none"
                       : "hover:bg-white/[0.035] order-last md:order-none"
                   } ${
                     isRecommended
-                      ? "shadow-[inset_0_0_0_1px_rgba(255,255,255,0.16)] bg-white/[0.04]"
+                      ? "shadow-[inset_0_0_0_1px_rgba(217,165,91,0.22)] bg-white/[0.04]"
                       : ""
                   }`}
                 >
@@ -520,7 +520,7 @@ export default function Services() {
                     {/* Reserved equal-height badge row (fixes alignment across all 3 cards) */}
                     <div className="h-6 mb-4 flex items-center">
                       {isFeatured && (
-                        <span className="px-2.5 py-0.5 rounded-full border border-white/[0.12] bg-white/[0.03] text-[11px] font-medium text-[#8A8F98]">
+                        <span className="px-2.5 py-0.5 rounded-full border border-[#D9A55B]/25 bg-[#D9A55B]/[0.05] text-[11px] font-medium text-[#D9A55B]">
                           Most requested
                         </span>
                       )}
@@ -563,14 +563,14 @@ export default function Services() {
                     {isFeatured ? (
                       <Link
                         to="/contact"
-                        className="w-full min-h-[44px] rounded-full bg-[#F7F8F8] hover:bg-white text-[#08090A] text-[14px] font-medium transition-colors flex items-center justify-center"
+                        className="w-full min-h-[44px] rounded-full bg-[#FAF6EE] hover:bg-[#FFFDF9] text-[#08090A] text-[14px] font-medium transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] flex items-center justify-center"
                       >
                         Get a quote
                       </Link>
                     ) : (
                       <Link
                         to="/contact"
-                        className="w-full min-h-[44px] rounded-full border border-white/[0.08] hover:border-white/[0.16] bg-white/[0.02] hover:bg-white/[0.04] text-[#F7F8F8] text-[14px] font-medium transition-colors flex items-center justify-center"
+                        className="w-full min-h-[44px] rounded-full border border-white/[0.08] hover:border-[#D9A55B]/30 bg-white/[0.02] hover:bg-white/[0.04] text-[#F7F8F8] text-[14px] font-medium transition-colors flex items-center justify-center"
                       >
                         Get a quote
                       </Link>
@@ -601,13 +601,13 @@ export default function Services() {
           <div
             ref={solveGridRef}
             onMouseMove={handleSolveMouseMove}
-            className="relative rounded-[16px] border border-white/[0.08] bg-white/[0.02] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+            className="relative rounded-[16px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]"
           >
             {/* Soft cursor-following spotlight across the whole grid (desktop pointers only) */}
             <div
               className="pointer-events-none absolute inset-0 opacity-100 transition-opacity hidden lg:block"
               style={{
-                background: `radial-gradient(520px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255, 255, 255, 0.04), transparent 75%)`,
+                background: `radial-gradient(520px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(217, 165, 91, 0.055), transparent 75%)`,
               }}
               aria-hidden="true"
             />
@@ -630,11 +630,11 @@ export default function Services() {
                     delay: row * 0.06,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={`group relative p-6 sm:p-7 flex flex-col justify-between hover:bg-white/[0.035] transition-colors duration-200 border-b border-white/[0.06] last:border-b-0 ${
+                  className={`group relative p-5 sm:p-6 lg:p-7 flex flex-col justify-between hover:bg-white/[0.035] transition-colors duration-200 border-b border-white/[0.06] last:border-b-0 ${
                     idx % 2 === 0 ? "md:border-r md:border-white/[0.06]" : ""
                   } ${
                     idx % 3 !== 2 ? "lg:border-r lg:border-white/[0.06]" : "lg:border-r-0"
-                  } ${idx >= 3 ? "lg:border-b-0" : ""}`}
+                  } ${idx >= 4 ? "md:border-b-0" : ""} ${idx >= 3 ? "lg:border-b-0" : ""}`}
                 >
                   <div>
                     {/* Plain 20px grey line icon (brightens to white on cell hover) */}
@@ -661,7 +661,7 @@ export default function Services() {
                           key={item}
                           className="text-[12px] sm:text-[13px] text-[#8A8F98] flex items-center gap-2"
                         >
-                          <span className="w-[3px] h-[3px] rounded-full bg-[#62666D] shrink-0" />
+                          <span className="w-[3px] h-[3px] rounded-full bg-[#D9A55B]/65 shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -778,7 +778,7 @@ export default function Services() {
 
           <Link
             to="/contact"
-            className="px-6 py-3 rounded-full bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
+            className="px-6 py-3 rounded-full bg-[#FAF6EE] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-[#FFFDF9] hover:shadow-[0_0_24px_rgba(217,165,91,0.18)] transition-all duration-200 inline-flex items-center gap-2 group shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
           >
             <span>Book a free consultation</span>
             <ArrowRight

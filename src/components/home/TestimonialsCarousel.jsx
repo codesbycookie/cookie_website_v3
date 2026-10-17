@@ -55,7 +55,7 @@ export default function TestimonialsCarousel() {
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative rounded-[12px] bg-white/[0.02] border border-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] p-8 sm:p-12 md:p-16 flex flex-col justify-between min-h-[340px] select-none"
+          className="relative rounded-[12px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] p-8 sm:p-12 md:p-16 flex flex-col justify-between min-h-[340px] select-none"
         >
           {/* Thin Hairline Progress Indicator at the top of the card */}
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-white/[0.06] overflow-hidden rounded-t-[12px]">
@@ -93,7 +93,7 @@ export default function TestimonialsCarousel() {
                 <div className="flex items-center justify-between pt-6 border-t border-white/[0.06] flex-wrap gap-4">
                   <div className="flex items-center gap-3.5">
                     {/* Initial avatar */}
-                    <div className="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.10] flex items-center justify-center font-medium text-[#D9A55B] text-[15px] shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[rgba(217,165,91,0.05)] border border-[#D9A55B]/20 flex items-center justify-center font-medium text-[#D9A55B] text-[15px] shrink-0">
                       {current.name[0]}
                     </div>
                     <div>

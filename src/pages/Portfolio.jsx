@@ -156,9 +156,9 @@ export default function Portfolio() {
 
       {/* 1. HEADER SECTION (generous ~140px top padding under navbar) */}
       <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 text-left">
-        {/* Status pill badge: hairline border, grey icon, matching other pages */}
-        <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
-          <Briefcase className="w-3.5 h-3.5 text-[#8A8F98]" aria-hidden="true" />
+        {/* Status pill badge: hairline border with subtle 10% cream tint */}
+        <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)]">
+          <Briefcase className="w-3.5 h-3.5 text-[#D9A55B]/80" aria-hidden="true" />
           <span>Selected Work & Case Studies</span>
         </div>
 
@@ -220,15 +220,15 @@ export default function Portfolio() {
                   onKeyDown={(e) => handleFilterKeyDown(e, idx)}
                   className={`relative px-3.5 py-1.5 rounded-full text-[13px] sm:text-[14px] font-medium transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40 ${
                     isActive
-                      ? "text-[#F7F8F8]"
+                      ? "text-[#FAF5EB]"
                       : "text-[#8A8F98] hover:text-[#F7F8F8]"
                   }`}
                   style={{
                     border: isActive
-                      ? "1px solid rgba(217, 165, 91, 0.45)"
+                      ? "1px solid rgba(217, 165, 91, 0.35)"
                       : "1px solid rgba(255, 255, 255, 0.08)",
                     backgroundColor: isActive
-                      ? "rgba(255, 255, 255, 0.04)"
+                      ? "rgba(217, 165, 91, 0.08)"
                       : "transparent",
                   }}
                 >
@@ -241,7 +241,7 @@ export default function Portfolio() {
                           ? { duration: 0 }
                           : { type: "spring", stiffness: 400, damping: 32 }
                       }
-                      className="absolute inset-0 rounded-full bg-white/[0.03] pointer-events-none"
+                      className="absolute inset-0 rounded-full bg-[#D9A55B]/[0.05] pointer-events-none"
                     />
                   )}
                   <span className="relative z-10">{f.label}</span>
@@ -284,7 +284,7 @@ export default function Portfolio() {
                   >
                     <div>
                       {/* Framed project mockup on top (hairline border, inner top highlight, image fills frame) */}
-                      <div className="relative w-full aspect-[16/10] rounded-[10px] overflow-hidden border border-white/[0.08] bg-[#0C0D10] mb-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.10)]">
+                      <div className="relative w-full aspect-[16/10] rounded-[10px] overflow-hidden border border-white/[0.08] bg-[#0C0D10] mb-5 shadow-[inset_0_1px_0_0_rgba(217,165,91,0.12)]">
                         <img
                           src={card.image}
                           alt={`${card.title} mockup`}
@@ -433,7 +433,7 @@ export default function Portfolio() {
         <div className="inline-flex items-center gap-3">
           {/* Small initial avatar */}
           <div
-            className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-[13px] font-medium text-[#8A8F98]"
+            className="w-7 h-7 rounded-full bg-[rgba(217,165,91,0.06)] border border-[#D9A55B]/20 flex items-center justify-center text-[13px] font-medium text-[#D9A55B]"
             aria-hidden="true"
           >
             T
@@ -477,7 +477,7 @@ export default function Portfolio() {
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link
               to="/contact"
-              className="px-5 py-2.5 rounded-[8px] bg-[#F7F8F8] text-[#08090A] text-[14px] font-medium hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-200"
+              className="px-5 py-2.5 rounded-[8px] bg-[#FAF6EE] text-[#08090A] text-[14px] font-medium hover:bg-[#FFFDF9] hover:shadow-[0_0_20px_rgba(217,165,91,0.18)] transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
             >
               Start a project
             </Link>

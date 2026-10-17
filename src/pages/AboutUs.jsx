@@ -128,7 +128,7 @@ function StudioCard({ prefersReducedMotion }) {
   ];
 
   return (
-    <div className="rounded-[16px] bg-white/[0.02] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] p-6 sm:p-7 w-full max-w-sm mx-auto lg:mx-0">
+    <div className="rounded-[16px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(217,165,91,0.10)] p-6 sm:p-7 w-full max-w-sm mx-auto lg:mx-0">
       {/* Header with quiet sentence-case grey label */}
       <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-4">
         <span className="text-[13px] font-medium text-[#F7F8F8]">
@@ -289,9 +289,9 @@ export default function AboutUs() {
         <div className="linear-film-grain" aria-hidden="true" />
 
         <div className="relative z-10 max-w-[1180px] mx-auto text-left">
-          {/* Location pill: hairline border, grey icon, no amber top line */}
-          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
-            <MapPin className="w-3.5 h-3.5 text-[#8A8F98]" />
+          {/* Location pill: hairline border with subtle 10% cream tint */}
+          <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)]">
+            <MapPin className="w-3.5 h-3.5 text-[#D9A55B]/80" />
             <span>Software Studio · Chennai, India</span>
           </div>
 
@@ -307,11 +307,11 @@ export default function AboutUs() {
             We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity.
           </p>
 
-          {/* Primary CTA button */}
+          {/* Primary CTA button: warm porcelain */}
           <div className="linear-fade-in linear-delay-2 flex items-center">
             <Link
               to="/contact"
-              className="px-5 py-2.5 rounded-full bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
+              className="px-5 py-2.5 rounded-full bg-[#FAF6EE] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-[#FFFDF9] hover:shadow-[0_0_24px_rgba(217,165,91,0.18)] transition-all duration-200 inline-flex items-center gap-2 group shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
             >
               <span>Work with us</span>
               <ArrowRight
@@ -336,7 +336,7 @@ export default function AboutUs() {
 
           {/* Right Column: Narrative with TextFillOnScroll */}
           <div className="lg:col-span-7 flex flex-col text-left">
-            <div className="text-[13px] text-[#8A8F98] mb-3">
+            <div className="text-[13px] text-[#D9A55B]/90 font-medium tracking-[0.02em] mb-3">
               Why we exist
             </div>
 
@@ -430,14 +430,14 @@ export default function AboutUs() {
             onMouseMove={handleGridMouseMove}
             onMouseEnter={() => setIsGridHovered(true)}
             onMouseLeave={() => setIsGridHovered(false)}
-            className="relative rounded-[16px] border border-white/[0.08] overflow-hidden bg-white/[0.08]"
+            className="relative rounded-[16px] border border-white/[0.08] overflow-hidden bg-white/[0.08] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]"
           >
             {/* Soft cursor-following spotlight across whole grid (desktop only) */}
             {!prefersReducedMotion && isGridHovered && (
               <div
                 className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300 hidden md:block"
                 style={{
-                  background: `radial-gradient(460px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255, 255, 255, 0.04), transparent 80%)`,
+                  background: `radial-gradient(460px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(217, 165, 91, 0.055), transparent 80%)`,
                 }}
                 aria-hidden="true"
               />
@@ -457,7 +457,7 @@ export default function AboutUs() {
                       delay: idx * 0.06,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="bg-[#08090A] p-7 sm:p-9 flex flex-col justify-between hover:bg-white/[0.02] transition-colors duration-200 group relative z-0"
+                    className="bg-[#08090A] p-7 sm:p-9 flex flex-col justify-between hover:bg-[rgba(245,235,220,0.025)] transition-colors duration-200 group relative z-0"
                   >
                     <div>
                       {/* Plain 20px line icon in #8A8F98, brightens on cell hover */}
@@ -474,7 +474,7 @@ export default function AboutUs() {
 
                     {/* Check-marked benefit line with hairline divider */}
                     <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-[13px] text-[#8A8F98]">
-                      <Check className="w-3.5 h-3.5 text-[#8A8F98] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#D9A55B]/80 shrink-0" />
                       <span>{principle.benefit}</span>
                     </div>
                   </motion.div>
@@ -564,7 +564,7 @@ export default function AboutUs() {
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded-[8px] bg-[#F7F8F8] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] transition-all duration-200 inline-flex items-center gap-2 group"
+              className="px-6 py-3 rounded-[8px] bg-[#FAF6EE] text-[#08090A] text-[14px] sm:text-[15px] font-medium hover:bg-[#FFFDF9] hover:shadow-[0_0_24px_rgba(217,165,91,0.18)] transition-all duration-200 inline-flex items-center gap-2 group shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
             >
               <span>Start a conversation</span>
               <span
