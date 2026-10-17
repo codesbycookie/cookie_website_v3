@@ -8,16 +8,9 @@ export default function CookieLogo({
   className = "w-6 h-6",
   color = "#F4F4F6",
   dotColor = "#D9A55B",
-  withGlow = false,
 }) {
   return (
     <div className={`relative inline-flex items-center justify-center shrink-0 ${className}`}>
-      {withGlow && (
-        <div
-          className="absolute inset-0 bg-[#D9A55B]/30 blur-md rounded-full pointer-events-none"
-          aria-hidden="true"
-        />
-      )}
       <svg
         viewBox="0 0 115 117"
         fill="none"

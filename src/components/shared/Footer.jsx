@@ -38,8 +38,8 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0A0B0D] border-t border-white/10 text-[#9EA3AD] text-[14px]">
-      <div className="max-w-[1140px] mx-auto px-5 sm:px-8 pt-16 pb-12">
+    <footer className="w-full bg-[#08090A] border-t border-white/[0.08] text-[#8A8F98] text-[14px] relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-16 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14">
           {/* Brand & Studio Mission */}
           <div className="md:col-span-5 flex flex-col justify-between gap-6">
@@ -78,18 +78,24 @@ export default function Footer() {
                       {link.to ? (
                         <Link
                           to={link.to}
-                          className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center"
+                          className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center group/link"
                         >
-                          {link.name}
+                          <span className="relative">
+                            {link.name}
+                            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#D9A55B] origin-left scale-x-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/link:scale-x-100" />
+                          </span>
                         </Link>
                       ) : (
                         <a
                           href={link.href}
                           target={link.href.startsWith("http") ? "_blank" : undefined}
                           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center"
+                          className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center group/link"
                         >
-                          {link.name}
+                          <span className="relative">
+                            {link.name}
+                            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#D9A55B] origin-left scale-x-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/link:scale-x-100" />
+                          </span>
                         </a>
                       )}
                     </li>
@@ -100,9 +106,19 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Oversized dark titanium "Cookie Inc." wordmark (iPhone-inspired bottom-to-top gradient) with cream dot */}
+        <div className="relative w-full overflow-hidden select-none pointer-events-none my-10 sm:my-14 text-center" aria-hidden="true">
+          <span className="block text-[64px] sm:text-[115px] md:text-[165px] lg:text-[195px] font-bold tracking-[-0.04em] text-center whitespace-nowrap leading-none">
+            <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#1E2128] via-[#3E4554] to-[#6D7486]">
+              Cookie Inc
+            </span>
+            <span className="text-[#D9A55B] ml-0.5 sm:ml-1">.</span>
+          </span>
+        </div>
+
         {/* Bottom Bar: Copyright & Policies */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#767B85]">
-          <p>© {new Date().getFullYear()} Cookie Inc. Built with care in Chennai, India.</p>
+          <p>© {new Date().getFullYear()} Cookie Inc<span className="text-[#D9A55B]">.</span> Built with care in Chennai, India.</p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="hover:text-[#9EA3AD] transition-colors">
               Privacy Policy

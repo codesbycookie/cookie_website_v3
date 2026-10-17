@@ -118,7 +118,9 @@ async function prerender() {
   console.log(`> Pre-rendering ${ROUTES.length} routes for static & SSR hosting...`);
 
   for (const url of ROUTES) {
-    const { html: appHtml } = render(url);
+    let { html: appHtml } = render(url);
+    // Strip non-critical image preloads emitted by React 19 SSR to preserve network bandwidth for CSS/JS
+    appHtml = appHtml.replace(/<link rel="preload" as="image" href=".*?"\/>/g, "");
     let html = template.replace("<!--ssr-outlet-->", appHtml);
     html = injectMeta(html, url);
 

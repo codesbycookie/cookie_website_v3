@@ -68,9 +68,8 @@ export default function Accordion({ items = [], allowMultiple = false, className
                   <span>{item.question}</span>
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-[#8A8F98] transition-transform duration-200 shrink-0 ml-4 group-hover:text-[#F4F4F6] ${
-                    isOpen ? "rotate-180 text-[#D9A55B]" : ""
-                  }`}
+                  className={`w-5 h-5 text-[#8A8F98] transition-transform duration-200 shrink-0 ml-4 group-hover:text-[#F4F4F6] ${isOpen ? "rotate-180 text-[#D9A55B]" : ""
+                    }`}
                   aria-hidden="true"
                 />
               </button>
@@ -81,9 +80,8 @@ export default function Accordion({ items = [], allowMultiple = false, className
               role="region"
               aria-labelledby={headerId}
               hidden={!isOpen}
-              className={`overflow-hidden transition-all duration-200 ease-in-out ${
-                isOpen ? "max-h-96 opacity-100 pb-5 px-2 pl-9" : "max-h-0 opacity-0"
-              }`}
+              className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? "max-h-96 opacity-100 pb-5 px-2 pl-9" : "max-h-0 opacity-0"
+                }`}
             >
               <p className="text-[14px] sm:text-[15px] text-[#8A8F98] leading-relaxed">
                 {item.answer}

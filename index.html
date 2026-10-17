@@ -28,13 +28,26 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/imgs/cookie_white.png" />
 
-    <!-- Typography: Inter + Geist Mono -->
+    <!-- Typography: Inter + Geist Mono (Non-blocking font loading with fallback display swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300..700&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300..700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300..700&display=swap"
+      />
+    </noscript>
   </head>
 
   <body class="bg-[#0A0B0D] text-[#F4F4F6] font-sans antialiased selection:bg-[#D9A55B]/25 selection:text-[#F4F4F6]">
