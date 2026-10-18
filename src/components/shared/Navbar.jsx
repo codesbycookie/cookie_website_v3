@@ -10,10 +10,30 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
+  const [headerHeight, setHeaderHeight] = useState(68);
 
   const location = useLocation();
   const drawerRef = useRef(null);
   const toggleBtnRef = useRef(null);
+  const headerRef = useRef(null);
+
+  // Measure header height dynamically for mobile drawer positioning
+  useEffect(() => {
+    if (!headerRef.current) return;
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    updateHeaderHeight();
+    const ro = new ResizeObserver(updateHeaderHeight);
+    ro.observe(headerRef.current);
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
+  }, []);
 
   // Track scroll position for header visual state
   useEffect(() => {
@@ -119,17 +139,18 @@ export default function Navbar() {
   return (
     <>
       <header
+        ref={headerRef}
         onClick={handleHeaderClick}
         title={scrolled ? "Tap to scroll to top" : undefined}
         className={`sticky top-0 ${
           mobileMenuOpen ? "z-[60]" : "z-50"
         } w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#08090A]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.4)] cursor-pointer md:cursor-auto"
-            : "bg-transparent border-b border-transparent"
+            ? "bg-[#08090A]/70 backdrop-blur-3xl backdrop-saturate-[190%] border-b border-white/[0.12] shadow-[0_12px_36px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] cursor-pointer md:cursor-auto"
+            : "bg-[#08090A]/40 backdrop-blur-2xl backdrop-saturate-[160%] border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.05)]"
         }`}
       >
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 py-4 sm:py-5 min-h-[68px] sm:min-h-[76px] flex items-center justify-between relative">
           {/* Brand */}
           <Link
             to="/"
@@ -153,9 +174,9 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation: sliding active-pill highlight */}
+          {/* Desktop Navigation: sliding active-pill highlight with enhanced glassmorphism */}
           <nav
-            className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 p-1 rounded-full bg-[rgba(245,235,220,0.02)] border border-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.05)]"
+            className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 rounded-full bg-[#08090A]/40 backdrop-blur-2xl backdrop-saturate-150 border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.06)]"
             onMouseLeave={() => setHoveredNav(null)}
             aria-label="Main Navigation"
           >
@@ -182,7 +203,7 @@ export default function Navbar() {
                   {showPill && (
                     <motion.div
                       layoutId="navbar-pill"
-                      className="absolute inset-0 rounded-full bg-[rgba(217,165,91,0.08)] border border-[#D9A55B]/15 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] pointer-events-none"
+                      className="absolute inset-0 rounded-full bg-[rgba(217,165,91,0.12)] border border-[#D9A55B]/20 backdrop-blur-md shadow-[inset_0_1px_0_rgba(217,165,91,0.12)] pointer-events-none"
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
@@ -253,7 +274,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden fixed inset-x-0 top-14 bottom-0 bg-[#08090A]/98 backdrop-blur-2xl border-t border-white/10 z-[55] flex flex-col justify-between p-6 overflow-y-auto"
+            style={{ top: `${headerHeight}px` }}
+            className="md:hidden fixed inset-x-0 bottom-0 bg-[#08090A]/90 backdrop-blur-3xl border-t border-white/10 z-[55] flex flex-col justify-between p-6 overflow-y-auto"
           >
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between px-3 mb-3">

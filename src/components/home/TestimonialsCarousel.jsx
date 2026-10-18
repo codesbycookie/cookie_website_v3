@@ -9,6 +9,35 @@ export default function TestimonialsCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const cardRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
+
+  // Measure card width dynamically so the SVG curve follows the card's rounded top border
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const updateWidth = () => {
+      if (cardRef.current) {
+        setCardWidth(cardRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    const ro = new ResizeObserver(updateWidth);
+    ro.observe(cardRef.current);
+    window.addEventListener("resize", updateWidth);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
+  // Compute curvy top path matching the rounded-[16px] corner geometry
+  const r = 16;
+  const topPath =
+    cardWidth > 32
+      ? `M 0.5,${r} A ${r - 0.5} ${r - 0.5} 0 0 1 ${r} 0.5 L ${
+          cardWidth - r
+        } 0.5 A ${r - 0.5} ${r - 0.5} 0 0 1 ${cardWidth - 0.5} ${r}`
+      : "";
 
   // Auto-advance every 6 seconds, pausing on hover or reduced-motion
   useEffect(() => {
@@ -53,20 +82,44 @@ export default function TestimonialsCarousel() {
 
         {/* Testimonial Stage Card */}
         <div
+          ref={cardRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative rounded-[16px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] p-6 sm:p-10 md:p-14 flex flex-col justify-between min-h-[340px] sm:min-h-[360px] select-none"
+          className="relative rounded-[16px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] hover:border-white/[0.14] transition-colors duration-300 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] p-6 sm:p-10 md:p-14 flex flex-col justify-between min-h-[340px] sm:min-h-[360px] select-none"
         >
-          {/* Thin Hairline Progress Indicator at the top of the card */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-white/[0.06] overflow-hidden rounded-t-[16px]">
-            <motion.div
-              key={`${activeIndex}-${isPaused}`}
-              initial={{ width: "0%" }}
-              animate={isPaused || shouldReduceMotion ? { width: "0%" } : { width: "100%" }}
-              transition={{ duration: 6, ease: "linear" }}
-              className="h-full bg-[#D9A55B]"
-            />
-          </div>
+          {/* Curvy Hairline Progress Indicator that traces the rounded top contour */}
+          {topPath && (
+            <svg
+              className="absolute -top-[1px] -left-[1px] pointer-events-none overflow-visible z-10"
+              style={{ width: cardWidth, height: 36 }}
+              aria-hidden="true"
+            >
+              {/* Background track along the curve */}
+              <path
+                d={topPath}
+                fill="none"
+                stroke="rgba(255, 255, 255, 0.08)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              {/* Brown animated progress indicator tracing the curvy corners */}
+              <motion.path
+                key={`${activeIndex}-${isPaused}`}
+                d={topPath}
+                fill="none"
+                stroke="#D9A55B"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={
+                  isPaused || shouldReduceMotion
+                    ? { pathLength: 0 }
+                    : { pathLength: 1 }
+                }
+                transition={{ duration: 6, ease: "linear" }}
+              />
+            </svg>
+          )}
 
           {/* Swipeable & Animated Quote Container */}
           <motion.div
