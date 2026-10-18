@@ -39,7 +39,7 @@ const COLUMNS = [
 export default function Footer() {
   return (
     <footer className="w-full bg-[#08090A] border-t border-white/[0.08] text-[#8A8F98] text-[14px] relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-16 pb-12 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-16 pb-20 sm:pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14">
           {/* Brand & Studio Mission */}
           <div className="md:col-span-5 flex flex-col justify-between gap-6">
@@ -107,8 +107,8 @@ export default function Footer() {
         </div>
 
         {/* Oversized dark titanium "Cookie Inc." wordmark (iPhone-inspired bottom-to-top gradient) with cream dot */}
-        <div className="relative w-full overflow-hidden select-none pointer-events-none my-10 sm:my-14 text-center" aria-hidden="true">
-          <span className="block text-[64px] sm:text-[115px] md:text-[165px] lg:text-[195px] font-bold tracking-[-0.04em] text-center whitespace-nowrap leading-none">
+        <div className="relative w-full flex items-center justify-center overflow-hidden select-none pointer-events-none my-8 sm:my-14" aria-hidden="true">
+          <span className="inline-flex items-center justify-center text-[clamp(2.4rem,11vw,12.5rem)] font-bold tracking-[-0.035em] sm:tracking-[-0.04em] text-center whitespace-nowrap leading-none max-w-full">
             <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#1E2128] via-[#3E4554] to-[#6D7486]">
               Cookie Inc
             </span>
@@ -117,15 +117,37 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Policies */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#767B85]">
-          <p>© {new Date().getFullYear()} Cookie Inc<span className="text-[#D9A55B]">.</span> Built with care in Chennai, India.</p>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy" className="hover:text-[#9EA3AD] transition-colors">
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-6 text-[12px] sm:text-[13px]">
+          {/* Copyright statement */}
+          <div className="text-center sm:text-left text-[#8A8F98]">
+            <p className="leading-relaxed">
+              © {new Date().getFullYear()} Cookie Inc<span className="text-[#D9A55B]">.</span> All rights reserved.
+              <span className="hidden sm:inline text-[#62666D]"> · Built with care in Chennai, India.</span>
+            </p>
+            <p className="text-[11px] text-[#62666D] mt-1 sm:hidden">
+              Built with care in Chennai, India.
+            </p>
+          </div>
+
+          {/* Legal Policies & Cookie Preferences */}
+          <div className="flex items-center gap-3 sm:gap-6 text-[#8A8F98] flex-wrap justify-center sm:justify-end">
+            <Link to="/privacy" className="hover:text-[#F7F8F8] transition-colors py-1">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-[#9EA3AD] transition-colors">
+            <span className="text-white/20 select-none" aria-hidden="true">·</span>
+            <Link to="/terms" className="hover:text-[#F7F8F8] transition-colors py-1">
               Terms of Service
             </Link>
+            <span className="text-white/20 select-none" aria-hidden="true">·</span>
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("cookieinc:open-cookie-preferences"));
+              }}
+              className="hover:text-[#F7F8F8] transition-colors py-1 focus:outline-none focus-visible:text-[#D9A55B] cursor-pointer"
+            >
+              Cookie Preferences
+            </button>
           </div>
         </div>
       </div>

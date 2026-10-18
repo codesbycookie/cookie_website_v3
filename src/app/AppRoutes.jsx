@@ -8,7 +8,8 @@ import AboutUs from "../pages/AboutUs";
 import Services from "../pages/Services";
 import ContactUs from "../pages/ContactUs";
 import Countdown from "../pages/Countdown";
-import Legal from "../pages/Legal";
+import Terms from "../pages/Terms";
+import Privacy from "../pages/Privacy";
 import NotFound from "../pages/NotFound";
 
 export default function AppRoutes() {
@@ -37,9 +38,9 @@ export default function AppRoutes() {
       {/* Studio countdown / launch preview */}
       <Route path="/countdown" element={<MainLayout><Countdown /></MainLayout>} />
       
-      {/* Legal & privacy */}
-      <Route path="/privacy" element={<MainLayout><Legal type="privacy" /></MainLayout>} />
-      <Route path="/terms" element={<MainLayout><Legal type="terms" /></MainLayout>} />
+      {/* Separate dedicated legal & privacy pages */}
+      <Route path="/privacy" element={<MainLayout><Privacy /></MainLayout>} />
+      <Route path="/terms" element={<MainLayout><Terms /></MainLayout>} />
 
       {/* 404 for all other paths */}
       <Route path="*" element={<NotFound />} />

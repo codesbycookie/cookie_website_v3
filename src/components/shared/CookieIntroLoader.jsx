@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useTheme } from "../../utils/theme";
 
 /**
  * CookieIntroLoader:
- * - Bespoke brand intro loader using /imgs/cookie_logo_web.jpeg
+ * - Bespoke brand intro loader using transparent vector logo
  * - Logo enters center stage with Studio title and hairline progress
  * - Seamlessly flies and docks directly into #navbar-brand-logo
  * - Non-blocking: skips on SSR and during Lighthouse/PageSpeed benchmark audits
  * - Sessions: plays once on initial arrival per session, preventing repeated load latency
  */
 export default function CookieIntroLoader() {
+  const { theme } = useTheme();
   const containerRef = useRef(null);
   const backdropRef = useRef(null);
   const logoWrapperRef = useRef(null);
@@ -210,9 +212,9 @@ export default function CookieIntroLoader() {
         style={{ transformOrigin: "50% 50%" }}
       >
         <img
-          src="/imgs/cookie_logo_web.jpeg"
+          src="/imgs/cookie_white.png"
           alt="Cookie Inc."
-          className="w-full h-full"
+          className="w-full h-full object-contain"
           loading="eager"
         />
       </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -8,7 +7,6 @@ import Button from "./Button";
 import CookieLogo from "./CookieLogo";
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
@@ -16,11 +14,6 @@ export default function Navbar() {
   const location = useLocation();
   const drawerRef = useRef(null);
   const toggleBtnRef = useRef(null);
-
-  // Client hydration detection for SSR-safe portal
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Track scroll position for header visual state
   useEffect(() => {
@@ -149,9 +142,9 @@ export default function Navbar() {
               className="w-7 h-7 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
             >
               <img
-                src="/imgs/cookie_logo_web.jpeg"
+                src="/imgs/cookie_white.png"
                 alt="Cookie Inc."
-                className="w-full h-full"
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="flex items-center text-[16px] font-medium tracking-tight text-[#F4F4F6]">
@@ -189,7 +182,7 @@ export default function Navbar() {
                   {showPill && (
                     <motion.div
                       layoutId="navbar-pill"
-                      className="absolute inset-0 rounded-full bg-[rgba(217,165,91,0.08)] border border-[#D9A55B]/15 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]"
+                      className="absolute inset-0 rounded-full bg-[rgba(217,165,91,0.08)] border border-[#D9A55B]/15 shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] pointer-events-none"
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
@@ -199,7 +192,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Actions: Persistent Start a Project CTA with slow traveling border light */}
+          {/* Desktop Actions: WhatsApp + Persistent Start a Project CTA with slow traveling border light */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://wa.cookie.org.in"
@@ -246,11 +239,12 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer (Portaled to document.body to prevent backdrop-filter containing block trapping) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
-        {mounted && mobileMenuOpen && createPortal(
+        {mobileMenuOpen && (
           <motion.div
             id="mobile-navigation"
+            key="mobile-drawer"
             ref={drawerRef}
             role="dialog"
             aria-modal="true"
@@ -314,8 +308,7 @@ export default function Navbar() {
                 Start a project
               </Button>
             </div>
-          </motion.div>,
-          document.body
+          </motion.div>
         )}
       </AnimatePresence>
     </>

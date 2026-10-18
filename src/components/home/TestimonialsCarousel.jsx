@@ -55,10 +55,10 @@ export default function TestimonialsCarousel() {
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative rounded-[12px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] p-8 sm:p-12 md:p-16 flex flex-col justify-between min-h-[340px] select-none"
+          className="relative rounded-[16px] bg-[rgba(245,235,220,0.02)] border border-white/[0.08] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)] p-6 sm:p-10 md:p-14 flex flex-col justify-between min-h-[340px] sm:min-h-[360px] select-none"
         >
           {/* Thin Hairline Progress Indicator at the top of the card */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-white/[0.06] overflow-hidden rounded-t-[12px]">
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-white/[0.06] overflow-hidden rounded-t-[16px]">
             <motion.div
               key={`${activeIndex}-${isPaused}`}
               initial={{ width: "0%" }}
@@ -68,7 +68,7 @@ export default function TestimonialsCarousel() {
             />
           </div>
 
-          {/* Swipeable & Animated Quote Container: Cross-fade with 12px rise */}
+          {/* Swipeable & Animated Quote Container */}
           <motion.div
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -82,37 +82,39 @@ export default function TestimonialsCarousel() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.45, ease: MOTION_TOKENS.ease }}
-                className="space-y-8"
+                className="flex-1 flex flex-col justify-between space-y-6 sm:space-y-8"
               >
-                {/* Big type quote */}
-                <blockquote className="text-[19px] sm:text-[26px] md:text-[30px] font-medium text-[#F7F8F8] tracking-[-0.025em] leading-[1.32]">
-                  "{current.body}"
-                </blockquote>
+                {/* Big type quote with consistent minimum height container */}
+                <div className="min-h-[110px] sm:min-h-[130px] md:min-h-[150px] flex items-center">
+                  <blockquote className="text-[18px] sm:text-[24px] md:text-[28px] font-medium text-[#F7F8F8] tracking-[-0.025em] leading-[1.35]">
+                    "{current.body}"
+                  </blockquote>
+                </div>
 
-                {/* Name + role underneath with initial avatar */}
-                <div className="flex items-center justify-between pt-6 border-t border-white/[0.06] flex-wrap gap-4">
-                  <div className="flex items-center gap-3.5">
+                {/* Persistent Author + Navigation Row (Guaranteed flex-nowrap: arrows never wrap or jump) */}
+                <div className="flex items-center justify-between pt-5 sm:pt-6 border-t border-white/[0.06] flex-nowrap gap-3">
+                  <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
                     {/* Initial avatar */}
-                    <div className="w-10 h-10 rounded-full bg-[rgba(217,165,91,0.05)] border border-[#D9A55B]/20 flex items-center justify-center font-medium text-[#D9A55B] text-[15px] shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[rgba(217,165,91,0.06)] border border-[#D9A55B]/25 flex items-center justify-center font-medium text-[#D9A55B] text-[15px] shrink-0">
                       {current.name[0]}
                     </div>
-                    <div>
-                      <cite className="not-italic font-medium text-[#F7F8F8] text-[15px] block">
+                    <div className="min-w-0 flex-1">
+                      <cite className="not-italic font-medium text-[#F7F8F8] text-[14px] sm:text-[15px] block truncate">
                         {current.name}
                       </cite>
-                      <span className="text-[13px] text-[#8A8F98] block">
+                      <span className="text-[12px] sm:text-[13px] text-[#8A8F98] block truncate">
                         {current.role}
                       </span>
                     </div>
                   </div>
 
-                  {/* Manual Arrow Controls */}
-                  <div className="flex items-center gap-2">
+                  {/* Manual Arrow Controls - Permanently anchored on the right */}
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
                       type="button"
                       onClick={handlePrev}
                       aria-label="Previous testimonial"
-                      className="w-8 h-8 rounded-full border border-white/[0.08] hover:border-white/[0.16] bg-white/[0.02] hover:bg-white/[0.06] flex items-center justify-center text-[#8A8F98] hover:text-[#F7F8F8] transition-colors cursor-pointer"
+                      className="w-9 h-9 sm:w-8 sm:h-8 rounded-full border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.03] hover:bg-white/[0.08] flex items-center justify-center text-[#8A8F98] hover:text-[#F7F8F8] transition-colors cursor-pointer touch-manipulation active:scale-95 shrink-0"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
@@ -120,7 +122,7 @@ export default function TestimonialsCarousel() {
                       type="button"
                       onClick={handleNext}
                       aria-label="Next testimonial"
-                      className="w-8 h-8 rounded-full border border-white/[0.08] hover:border-white/[0.16] bg-white/[0.02] hover:bg-white/[0.06] flex items-center justify-center text-[#8A8F98] hover:text-[#F7F8F8] transition-colors cursor-pointer"
+                      className="w-9 h-9 sm:w-8 sm:h-8 rounded-full border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.03] hover:bg-white/[0.08] flex items-center justify-center text-[#8A8F98] hover:text-[#F7F8F8] transition-colors cursor-pointer touch-manipulation active:scale-95 shrink-0"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>

@@ -75,7 +75,12 @@ const appElement = (
   </React.StrictMode>
 );
 
-if (container && container.innerHTML.trim().length > 0) {
+const hasSsrContent =
+  container &&
+  container.firstElementChild !== null &&
+  !container.innerHTML.includes("<!--ssr-outlet-->");
+
+if (hasSsrContent) {
   ReactDOM.hydrateRoot(container, appElement);
 } else if (container) {
   ReactDOM.createRoot(container).render(appElement);

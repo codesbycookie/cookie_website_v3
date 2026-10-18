@@ -367,9 +367,8 @@ export default function LinearHero() {
           {TRUST_METRICS.map((metric, i) => (
             <div
               key={metric.label}
-              className={`flex flex-col sm:pr-8 sm:mr-8 ${
-                i !== TRUST_METRICS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
-              }`}
+              className={`flex flex-col sm:pr-8 sm:mr-8 ${i !== TRUST_METRICS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
+                }`}
             >
               <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight">
                 {metric.value}

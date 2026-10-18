@@ -157,13 +157,13 @@ export default function Portfolio() {
       {/* 1. HEADER SECTION (generous ~140px top padding under navbar) */}
       <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 text-left">
         {/* Status pill badge: hairline border with subtle 10% cream tint */}
-        <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)]">
-          <Briefcase className="w-3.5 h-3.5 text-[#D9A55B]/80" aria-hidden="true" />
-          <span>Selected Work & Case Studies</span>
+        <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)] whitespace-nowrap">
+          <Briefcase className="w-3.5 h-3.5 text-[#D9A55B]/80 shrink-0" aria-hidden="true" />
+          <span className="whitespace-nowrap">Selected Work &amp; Case Studies</span>
         </div>
 
         {/* Main headline with white-to-grey gradient fill */}
-        <h1 className="linear-headline linear-fade-in text-[32px] sm:text-[46px] md:text-[54px] max-w-[15ch] text-balance leading-[1.12] mb-4">
+        <h1 className="linear-headline linear-fade-in text-[32px] sm:text-[46px] md:text-[54px] max-w-2xl text-balance leading-[1.14] mb-4">
           Real software shipped for real businesses
         </h1>
 
@@ -181,10 +181,10 @@ export default function Portfolio() {
                 i !== STUDIO_STATS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
               }`}
             >
-              <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight">
+              <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight whitespace-nowrap">
                 {stat.value}
               </span>
-              <span className="text-[13px] sm:text-[14px] text-[#8A8F98]">
+              <span className="text-[13px] sm:text-[14px] text-[#8A8F98] whitespace-nowrap">
                 {stat.label}
               </span>
             </div>
@@ -196,17 +196,13 @@ export default function Portfolio() {
       <nav
         ref={filterRowRef}
         aria-label="Filter case studies"
-        className="sticky top-[64px] z-30 w-full backdrop-blur-md bg-[#08090A]/85 border-b border-white/[0.08] transition-colors"
+        className="sticky top-[64px] z-30 w-full backdrop-blur-md bg-[#08090A]/90 border-b border-white/[0.08] transition-colors"
       >
-        <div className="max-w-[1180px] mx-auto px-6 sm:px-8 py-3.5 flex items-center">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-8 py-3 flex items-center">
           <div
             role="group"
             aria-label="Filter case studies by category"
-            className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full"
-            style={{
-              WebkitMaskImage:
-                "linear-gradient(to right, black 88%, transparent 100%)",
-            }}
+            className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full flex-nowrap pr-6"
           >
             {filterOptions.map((f, idx) => {
               const isActive = activeFilter === f.id;
@@ -218,7 +214,7 @@ export default function Portfolio() {
                   aria-pressed={isActive}
                   onClick={() => setActiveFilter(f.id)}
                   onKeyDown={(e) => handleFilterKeyDown(e, idx)}
-                  className={`relative px-3.5 py-1.5 rounded-full text-[13px] sm:text-[14px] font-medium transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40 ${
+                  className={`relative px-4 py-1.5 rounded-full text-[13px] sm:text-[14px] font-medium transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40 whitespace-nowrap shrink-0 inline-flex items-center ${
                     isActive
                       ? "text-[#FAF5EB]"
                       : "text-[#8A8F98] hover:text-[#F7F8F8]"
@@ -244,7 +240,7 @@ export default function Portfolio() {
                       className="absolute inset-0 rounded-full bg-[#D9A55B]/[0.05] pointer-events-none"
                     />
                   )}
-                  <span className="relative z-10">{f.label}</span>
+                  <span className="relative z-10 whitespace-nowrap">{f.label}</span>
                 </button>
               );
             })}

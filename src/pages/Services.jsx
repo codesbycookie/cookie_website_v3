@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
-  useScroll,
-  useTransform,
   useReducedMotion,
 } from "framer-motion";
 import { servicepage } from "../data/data";
@@ -23,43 +21,19 @@ import {
 
 /**
  * Step item component for the horizontal launch sequence rail on desktop.
- * Steps ahead of the progress line sit at 50% opacity and reach 100% when active.
- * Tabular numerals brighten from #62666D to #F7F8F8.
  */
-function DesktopStepItem({ step, index, total, scrollProgress, prefersReducedMotion }) {
-  const stepStart = index / total;
-  const stepArrival = (index + 0.35) / total;
-
-  const opacity = useTransform(
-    scrollProgress,
-    [Math.max(0, stepStart - 0.1), Math.min(1, stepArrival)],
-    [0.5, 1]
-  );
-
-  const color = useTransform(
-    scrollProgress,
-    [Math.max(0, stepStart - 0.05), Math.min(1, stepArrival)],
-    ["#62666D", "#F7F8F8"]
-  );
-
+function DesktopStepItem({ step }) {
   return (
-    <motion.div
-      style={prefersReducedMotion ? { opacity: 1 } : { opacity }}
-      className="relative pt-6"
-    >
-      {/* Hollow node on the rail */}
+    <div className="relative pt-6">
+      {/* Milestone node on the rail */}
       <div
-        className="absolute top-[1px] left-0 w-[9px] h-[9px] rounded-full border border-white/[0.28] bg-[#08090A]"
+        className="absolute top-[1px] left-0 w-[9px] h-[9px] rounded-full bg-[#D9A55B] ring-4 ring-[#08090A] shadow-[0_0_8px_rgba(217,165,91,0.6)] z-10"
         aria-hidden="true"
       />
 
-      {/* Tabular numeral in #62666D brightening to #F7F8F8 */}
-      <motion.span
-        style={prefersReducedMotion ? { color: "#F7F8F8" } : { color }}
-        className="block text-[12px] tabular-nums font-normal mb-2.5 transition-colors"
-      >
+      <span className="block text-[12px] font-mono text-[#D9A55B] font-medium tabular-nums mb-2">
         {step.num}
-      </motion.span>
+      </span>
 
       <h3 className="text-[17px] sm:text-[18px] font-medium text-[#F7F8F8] tracking-[-0.015em] mb-2">
         {step.title}
@@ -68,55 +42,50 @@ function DesktopStepItem({ step, index, total, scrollProgress, prefersReducedMot
       <p className="text-[13px] sm:text-[14px] text-[#8A8F98] leading-relaxed">
         {step.desc}
       </p>
-    </motion.div>
+    </div>
   );
 }
 
 /**
- * Mobile / vertical launch sequence step item with vertical rail and scroll tracking.
+ * Mobile / vertical launch sequence step item with stable continuous connected rail.
  */
-function MobileStepItem({ step, index, total, scrollProgress, prefersReducedMotion }) {
-  const stepStart = index / total;
-  const stepArrival = (index + 0.35) / total;
-
-  const opacity = useTransform(
-    scrollProgress,
-    [Math.max(0, stepStart - 0.1), Math.min(1, stepArrival)],
-    [0.5, 1]
-  );
-
-  const color = useTransform(
-    scrollProgress,
-    [Math.max(0, stepStart - 0.05), Math.min(1, stepArrival)],
-    ["#62666D", "#F7F8F8"]
-  );
+function MobileStepItem({ step, index, total }) {
+  const isLast = index === total - 1;
 
   return (
-    <motion.div
-      style={prefersReducedMotion ? { opacity: 1 } : { opacity }}
-      className="relative"
-    >
-      {/* Hollow node on vertical rail */}
-      <span
-        className="absolute -left-7 top-1 w-[9px] h-[9px] rounded-full border border-white/[0.28] bg-[#08090A]"
-        aria-hidden="true"
-      />
+    <div className="flex gap-4 sm:gap-5 group relative">
+      {/* Rail Column: Perfectly Centered Node + Connected Stem */}
+      <div className="flex flex-col items-center shrink-0 w-6">
+        {/* Milestone Node with Amber Glow */}
+        <div className="relative flex items-center justify-center w-6 h-6 mt-0.5 shrink-0">
+          <span
+            className="w-2.5 h-2.5 rounded-full bg-[#D9A55B] shadow-[0_0_8px_rgba(217,165,91,0.6)] ring-4 ring-[#08090A] z-10"
+            aria-hidden="true"
+          />
+        </div>
 
-      <motion.span
-        style={prefersReducedMotion ? { color: "#F7F8F8" } : { color }}
-        className="block text-[12px] tabular-nums font-normal mb-1.5 transition-colors"
-      >
-        {step.num}
-      </motion.span>
+        {/* Stable Connecting Hairline Rail */}
+        {!isLast && (
+          <div
+            className="w-[1.5px] flex-1 bg-gradient-to-b from-[#D9A55B]/70 via-[#D9A55B]/30 to-white/10 my-1 min-h-[56px]"
+            aria-hidden="true"
+          />
+        )}
+      </div>
 
-      <h3 className="text-[17px] font-medium text-[#F7F8F8] mb-1.5">
-        {step.title}
-      </h3>
-
-      <p className="text-[13px] text-[#8A8F98] leading-relaxed">
-        {step.desc}
-      </p>
-    </motion.div>
+      {/* Content Column */}
+      <div className="pb-8 last:pb-2 pt-0.5">
+        <span className="block text-[12px] font-mono text-[#D9A55B] font-medium tracking-wide mb-1">
+          {step.num}
+        </span>
+        <h3 className="text-[17px] font-medium text-[#F7F8F8] tracking-[-0.015em] mb-1.5">
+          {step.title}
+        </h3>
+        <p className="text-[13px] sm:text-[14px] text-[#8A8F98] leading-relaxed">
+          {step.desc}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -298,14 +267,6 @@ export default function Services() {
       desc: "We handle domain cutover, cross-browser testing, and security checks. After launch, we monitor performance and support your team.",
     },
   ];
-
-  // 6. Launch sequence scroll progress tracking
-  const stepsContainerRef = useRef(null);
-  const { scrollYProgress: stepsProgress } = useScroll({
-    target: stepsContainerRef,
-    offset: ["start 0.85", "end 0.6"],
-  });
-  const railScaleX = useTransform(stepsProgress, [0, 1], [0, 1]);
 
   return (
     <div className="w-full flex flex-col items-center bg-[#08090A] text-[#F7F8F8] relative overflow-hidden selection:bg-[#D9A55B]/25 selection:text-[#F7F8F8]">
@@ -678,7 +639,6 @@ export default function Services() {
           5. HOW WE TAKE YOU TO LAUNCH (HORIZONTAL PROGRESS RAIL)
           ───────────────────────────────────────────────────────────── */}
       <section
-        ref={stepsContainerRef}
         className="relative z-10 w-full py-20 md:py-28 px-6 sm:px-8 border-b border-white/[0.06]"
       >
         <div className="max-w-[1180px] mx-auto text-left">
@@ -693,61 +653,28 @@ export default function Services() {
 
           {/* Desktop/Tablet Horizontal Rail Layout */}
           <div className="relative hidden md:block">
-            {/* Background 1px Hairline Rail */}
+            {/* Background Hairline Rail with Amber Accent */}
             <div
-              className="absolute top-[5px] left-0 right-0 h-[1px] bg-white/[0.08]"
+              className="absolute top-[5px] left-0 right-0 h-[1.5px] bg-gradient-to-r from-[#D9A55B] via-[#D9A55B]/70 to-[#D9A55B]/30"
               aria-hidden="true"
             />
 
-            {/* Amber Progress Line filling rail on scroll */}
-            {!prefersReducedMotion && (
-              <motion.div
-                style={{ scaleX: railScaleX }}
-                className="absolute top-[5px] left-0 right-0 h-[1px] bg-[#D9A55B] origin-left"
-                aria-hidden="true"
-              />
-            )}
-
-            {/* 4-Step Columns with scroll-driven opacity (50% -> 100%) and numeral brightening */}
+            {/* 4-Step Columns */}
             <div className="grid grid-cols-4 gap-8">
-              {PROCESS_STEPS.map((step, idx) => (
-                <DesktopStepItem
-                  key={step.num}
-                  step={step}
-                  index={idx}
-                  total={PROCESS_STEPS.length}
-                  scrollProgress={stepsProgress}
-                  prefersReducedMotion={prefersReducedMotion}
-                />
+              {PROCESS_STEPS.map((step) => (
+                <DesktopStepItem key={step.num} step={step} />
               ))}
             </div>
           </div>
 
-          {/* Mobile Vertical Sequence Layout with Hairline Rail */}
-          <div className="relative md:hidden pl-7 space-y-8">
-            {/* Background vertical rail */}
-            <div
-              className="absolute left-[10px] top-2 bottom-3 w-[1px] bg-white/[0.08]"
-              aria-hidden="true"
-            />
-
-            {/* Amber progress rail filling top to bottom */}
-            {!prefersReducedMotion && (
-              <motion.div
-                style={{ scaleY: railScaleX }}
-                className="absolute left-[10px] top-2 bottom-3 w-[1px] bg-[#D9A55B] origin-top"
-                aria-hidden="true"
-              />
-            )}
-
+          {/* Mobile Vertical Sequence Layout with Stable Connected Rail */}
+          <div className="md:hidden space-y-0">
             {PROCESS_STEPS.map((step, idx) => (
               <MobileStepItem
                 key={step.num}
                 step={step}
                 index={idx}
                 total={PROCESS_STEPS.length}
-                scrollProgress={stepsProgress}
-                prefersReducedMotion={prefersReducedMotion}
               />
             ))}
           </div>
