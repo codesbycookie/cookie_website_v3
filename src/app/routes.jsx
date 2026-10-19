@@ -13,7 +13,6 @@ import CaseStudy from "../pages/case_study/case_study";
 import AboutUs from "../pages/about_us/about_us";
 import Services from "../pages/services/services";
 import ContactUs from "../pages/contact_us/contact_us";
-import Countdown from "../pages/countdown/countdown";
 import Terms from "../pages/terms/terms";
 import Privacy from "../pages/privacy/privacy";
 import NotFound from "../pages/not_found/not_found";
@@ -73,6 +72,7 @@ export default function AppRoutes() {
       <Route path="/portfolio" element={<MainLayout><Portfolio /></MainLayout>} />
       <Route path="/work" element={<MainLayout><Portfolio /></MainLayout>} />
       <Route path="/work/:slug" element={<MainLayout><CaseStudy /></MainLayout>} />
+      <Route path="/case-studies/:slug" element={<MainLayout><CaseStudy /></MainLayout>} />
 
       {/* About */}
       <Route path="/about-us" element={<MainLayout><AboutUs /></MainLayout>} />
@@ -85,9 +85,6 @@ export default function AppRoutes() {
       {/* Contact */}
       <Route path="/contact-us" element={<MainLayout><ContactUs /></MainLayout>} />
       <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
-
-      {/* Studio countdown */}
-      <Route path="/countdown" element={<MainLayout><Countdown /></MainLayout>} />
 
       {/* Dedicated legal & privacy pages */}
       <Route path="/privacy" element={<MainLayout><Privacy /></MainLayout>} />

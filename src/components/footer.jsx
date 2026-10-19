@@ -12,16 +12,15 @@ const COLUMNS = [
       { name: "Services & Pricing", to: "/services" },
       { name: "About the Studio", to: "/about" },
       { name: "Start a Project", to: "/contact" },
-      { name: "Upcoming Release", to: "/countdown" },
     ],
   },
   {
     title: "Case Studies",
     links: [
       { name: "Torque Toyzz (E-Commerce)", to: "/work/torque-toyzz" },
-      { name: "IQ Bridge (EdTech)", to: "/work/iq-bridge" },
-      { name: "Audnex (Motion & Media)", to: "/work/audnex" },
-      { name: "SAP Checklist (Enterprise)", to: "/work/sap-checklist" },
+      { name: "SAP ERP Campus Hub", to: "/work/sap-erp-application" },
+      { name: "Chitu Vibes (Commerce)", to: "/work/chitu-vibes" },
+      { name: "SAP Checklist Portal", to: "/work/sap-checklist-portal" },
     ],
   },
   {
@@ -32,6 +31,7 @@ const COLUMNS = [
       { name: "Chennai Studio HQ", href: social_links.gmb },
       { name: "LinkedIn Company Page", href: social_links.linkedin },
       { name: "Instagram Updates", href: social_links.instagram },
+      { name: "X / Twitter Updates", href: social_links.twitter },
     ],
   },
 ];

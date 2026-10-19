@@ -14,12 +14,11 @@ const ROUTES = [
   "/about-us",
   "/contact",
   "/contact-us",
-  "/countdown",
   "/privacy",
   "/terms",
-  "/work/iq-bridge",
-  "/work/audnex",
-  "/work/sap-checklist",
+  "/work/sap-erp-application",
+  "/work/chitu-vibes",
+  "/work/sap-checklist-portal",
   "/work/torque-toyzz",
 ];
 
@@ -59,10 +58,6 @@ const ROUTE_META = {
   "/contact-us": {
     title: "Start a Project | Cookie Inc.",
     desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
-  },
-  "/countdown": {
-    title: "Studio Launch Preview | Cookie Inc.",
-    desc: "Something new is launching soon from Cookie Inc. Sign up for early access to our next studio platform.",
   },
   "/privacy": {
     title: "Privacy Policy | Cookie Inc.",

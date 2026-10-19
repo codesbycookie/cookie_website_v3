@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown, MessageSquare } from "lucide-react";
+import { social_links } from "../data/data";
 
 /**
  * Clean studio floating action dock:
@@ -68,7 +69,7 @@ export default function FloatingActionDock() {
       <div className="flex items-center gap-2 p-1.5 sm:p-2 rounded-full bg-[#08090A]/90 border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.8),inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
         {/* 1. WhatsApp Direct Action */}
         <a
-          href="https://wa.cookie.org.in"
+          href={social_links.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-[12px] sm:text-[13px] font-medium text-[#D0D6E0] hover:text-[#F4F4F6] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"

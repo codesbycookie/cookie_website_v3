@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { social_links } from "../../../../data/data";
+import { sendInquiryEmail } from "../../../../utils/emailjs.services.jsx";
 import {
   MessageSquare,
   Mail,
@@ -116,8 +117,18 @@ export default function Section2() {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    const selectedType = projectTypes.find((t) => t.value === formData.projectType);
+    const projectTitle = selectedType ? selectedType.label : formData.projectType;
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      await sendInquiryEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        title: projectTitle,
+        message: formData.message,
+      });
+
       setIsSuccess(true);
       setFormData({
         name: "",
@@ -129,7 +140,10 @@ export default function Section2() {
       setTouched({});
       setErrors({});
     } catch (err) {
-      setSubmitError("Failed to send message. Please reach us directly on WhatsApp or email.");
+      console.error("EmailJS submission error:", err);
+      setSubmitError(
+        "Failed to send your message. Please reach us directly on WhatsApp or email (contact@cookieinc.in)."
+      );
     } finally {
       setIsSubmitting(false);
     }

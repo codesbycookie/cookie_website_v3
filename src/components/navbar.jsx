@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navbar } from "../data/data";
+import { navbar, social_links } from "../data/data";
 import Button from "./button";
 import CookieLogo from "./cookie_logo";
 
@@ -216,7 +216,7 @@ export default function Navbar() {
           {/* Desktop Actions: WhatsApp + Persistent Start a Project CTA */}
           <div className="hidden md:flex items-center gap-2.5">
             <a
-              href="https://wa.cookie.org.in"
+              href={social_links.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[12.5px] font-medium text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors px-2.5 py-1 inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[6px]"

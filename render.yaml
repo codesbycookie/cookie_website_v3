@@ -46,9 +46,6 @@ services:
         source: /about-us
         destination: /about/index.html
       - type: rewrite
-        source: /countdown
-        destination: /countdown/index.html
-      - type: rewrite
         source: /privacy
         destination: /privacy/index.html
       - type: rewrite
@@ -58,14 +55,14 @@ services:
         source: /work/torque-toyzz
         destination: /work/torque-toyzz/index.html
       - type: rewrite
-        source: /work/iq-bridge
-        destination: /work/iq-bridge/index.html
+        source: /work/sap-erp-application
+        destination: /work/sap-erp-application/index.html
       - type: rewrite
-        source: /work/audnex
-        destination: /work/audnex/index.html
+        source: /work/chitu-vibes
+        destination: /work/chitu-vibes/index.html
       - type: rewrite
-        source: /work/sap-checklist
-        destination: /work/sap-checklist/index.html
+        source: /work/sap-checklist-portal
+        destination: /work/sap-checklist-portal/index.html
       - type: rewrite
         source: /*
         destination: /index.html

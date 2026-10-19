@@ -38,10 +38,6 @@ export const ROUTE_META = {
     title: "Start a Project | Cookie Inc.",
     desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
   },
-  "/countdown": {
-    title: "Studio Launch Preview | Cookie Inc.",
-    desc: "Something new is launching soon from Cookie Inc. Sign up for early access to our next studio platform.",
-  },
   "/privacy": {
     title: "Privacy Policy | Cookie Inc.",
     desc: "Cookie Inc. privacy practices and data commitments.",

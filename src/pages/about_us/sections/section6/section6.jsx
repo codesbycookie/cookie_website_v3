@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CookieLogo from "../../../../components/cookie_logo";
+import { social_links } from "../../../../data/data";
 
 export default function Section6() {
   return (
@@ -40,7 +41,7 @@ export default function Section6() {
             </span>
           </Link>
           <a
-            href="https://wa.cookie.org.in"
+            href={social_links.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-[8px] bg-transparent text-[#F7F8F8] border border-white/[0.12] hover:border-white/[0.24] hover:bg-white/[0.03] text-[14px] font-medium transition-colors duration-200 inline-flex items-center gap-2"

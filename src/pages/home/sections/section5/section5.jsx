@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MessageSquare, Sparkles } from "lucide-react";
 import Button from "../../../../components/button";
 import CookieLogo from "../../../../components/cookie_logo";
+import { social_links } from "../../../../data/data";
 import { Magnetic, MOTION_TOKENS } from "../../../../utils/motion.util";
 
 function CookieBrandBadge() {
@@ -111,7 +112,7 @@ export default function Section5() {
 
           <Magnetic strength={8} className="w-full sm:w-auto">
             <a
-              href="https://wa.cookie.org.in"
+              href={social_links.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[14px] font-medium text-[#8A8F98] hover:text-[#F7F8F8] transition-colors px-5 py-2.5 min-h-[46px] inline-flex items-center justify-center gap-2 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] w-full sm:w-auto"
