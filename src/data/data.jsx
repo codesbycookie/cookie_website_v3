@@ -790,3 +790,14 @@ export const social_links = {
   twitter: "https://twitter.cookie.org.in",
   gmb: "https://gmb.cookie.org.in",
 };
+
+// Architecture Compliance (Pattern D: UPPER_SNAKE_CASE exports)
+export const HOME = homepage;
+export const ABOUT = aboutpage;
+export const SERVICES = servicespage;
+export const PORTFOLIO = portfoliopage;
+export const CONTACT = contactpage;
+export const NAVBAR = navbar;
+export const FOOTER = footer;
+export const SOCIAL_LINKS = social_links;
+

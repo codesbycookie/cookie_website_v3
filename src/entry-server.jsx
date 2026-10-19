@@ -1,7 +1,7 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
-import App from "./app/App";
+import App from "./app/app";
 
 export function render(url) {
   const html = renderToString(

@@ -1,0 +1,31 @@
+/**
+ * Global Tailwind theme tokens & variables
+ * Linear.app Aesthetic · WCAG 2.2 AA Accessible
+ */
+:root {
+  --bg-primary: #08090A;
+  --bg-secondary: #0E1013;
+  --bg-card: rgba(245, 235, 220, 0.02);
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-primary: #F7F8F8;
+  --text-secondary: #8A8F98;
+  --text-muted: #62666D;
+  --accent-amber: #D9A55B;
+  --accent-amber-glow: rgba(217, 165, 91, 0.12);
+  --accent-green: #59D499;
+}
+
+[data-theme="light"] {
+  --bg-primary: #F7F8F8;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --border-hairline: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --text-primary: #08090A;
+  --text-secondary: #525866;
+  --text-muted: #8A8F98;
+  --accent-amber: #B87B2E;
+  --accent-amber-glow: rgba(184, 123, 46, 0.12);
+  --accent-green: #1F9D60;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import App from "./app/App";
+import App from "./app/app";
 import "./index.css";
 
 // Linear-style cursor spotlight on cards (delegated, CSS-variable driven)
