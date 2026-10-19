@@ -190,7 +190,7 @@ export default function Privacy() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION (Linear / Studio Aesthetic)
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative z-10 w-full pt-24 sm:pt-32 md:pt-36 pb-16 sm:pb-20 px-6 sm:px-8 border-b border-white/[0.06] overflow-hidden">
+      <section className="relative z-10 w-full pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-16 px-6 sm:px-8 border-b border-white/[0.06] overflow-hidden">
         {/* Top faint amber glow */}
         <div className="linear-top-glow" aria-hidden="true" />
         <div className="linear-film-grain" aria-hidden="true" />

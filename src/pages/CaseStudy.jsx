@@ -31,7 +31,7 @@ export default function CaseStudy() {
   return (
     <div className="w-full flex flex-col items-center relative overflow-x-clip bg-[#0A0B0D] text-[#F4F4F6]">
       {/* Top back navigation & Hero */}
-      <section className="relative w-full pt-16 pb-16 md:pt-24 md:pb-20 px-5 sm:px-8">
+      <section className="relative w-full pt-8 pb-14 md:pt-12 md:pb-16 px-5 sm:px-8">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-[#D9A55B]/10 blur-[150px] rounded-full pointer-events-none"
           aria-hidden="true"

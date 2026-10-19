@@ -273,7 +273,7 @@ export default function Services() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION
           ───────────────────────────────────────────────────────────── */}
-      <header className="relative z-10 w-full border-b border-white/[0.06] pt-24 sm:pt-32 md:pt-36 pb-14 sm:pb-18 px-6 sm:px-8 overflow-hidden">
+      <header className="relative z-10 w-full border-b border-white/[0.06] pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-16 px-6 sm:px-8 overflow-hidden">
         {/* Top faint amber glow (6-8% opacity) */}
         <div className="linear-top-glow" aria-hidden="true" />
 

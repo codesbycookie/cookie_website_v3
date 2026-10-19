@@ -154,8 +154,8 @@ export default function Portfolio() {
       {/* Subtle film grain */}
       <div className="linear-film-grain" aria-hidden="true" />
 
-      {/* 1. HEADER SECTION (generous ~140px top padding under navbar) */}
-      <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 text-left">
+      {/* 1. HEADER SECTION (sleek top padding under navbar) */}
+      <header className="relative z-10 w-full max-w-[1180px] mx-auto pt-8 sm:pt-12 md:pt-16 pb-10 sm:pb-14 px-6 sm:px-8 text-left">
         {/* Status pill badge: hairline border with subtle 10% cream tint */}
         <div className="linear-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D9A55B]/15 bg-[#D9A55B]/[0.025] text-[12px] sm:text-[13px] font-medium text-[#9E9991] mb-6 shadow-[inset_0_1px_0_rgba(217,165,91,0.06)] whitespace-nowrap">
           <Briefcase className="w-3.5 h-3.5 text-[#D9A55B]/80 shrink-0" aria-hidden="true" />

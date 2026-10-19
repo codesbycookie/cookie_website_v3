@@ -175,7 +175,7 @@ export default function LinearHero() {
       id="hero"
       data-section="hero"
       onMouseMove={handleMouseMove}
-      className="relative w-full pt-20 pb-20 md:pt-28 md:pb-28 px-6 sm:px-8 overflow-hidden border-b border-white/[0.08]"
+      className="relative w-full pt-6 sm:pt-10 md:pt-16 pb-14 sm:pb-16 md:pb-20 px-5 sm:px-8 overflow-hidden border-b border-white/[0.08]"
     >
       <style>{`
         @keyframes driftLeft {
@@ -247,7 +247,7 @@ export default function LinearHero() {
           ───────────────────────────────────────────────────────────── */}
       <div className="relative z-10 w-full max-w-[1180px] mx-auto text-left flex flex-col items-start">
         {/* Announcement Pill */}
-        <div className="mb-6 sm:mb-7 hero-css-fade-up hero-delay-0">
+        <div className="mb-4 sm:mb-7 hero-css-fade-up hero-delay-0">
           <Link
             to="/contact"
             className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200"
@@ -261,9 +261,9 @@ export default function LinearHero() {
         </div>
 
         {/* Wide Cinematic Headline with Cascading Staggered Word Reveal & Dynamic Action Verb */}
-        <h1 className="text-[34px] sm:text-[48px] md:text-[58px] lg:text-[66px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.12] max-w-[1020px] mb-6 text-[#F7F8F8] text-left">
+        <h1 className="text-[28px] xs:text-[32px] sm:text-[46px] md:text-[56px] lg:text-[66px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.12] max-w-[1020px] mb-4 sm:mb-6 text-[#F7F8F8] text-left">
           {/* Line 1: We build websites, mobile apps, and custom tools */}
-          <span className="block overflow-hidden pb-1.5 pt-0.5">
+          <span className="block overflow-hidden pb-1 sm:pb-1.5 pt-0.5">
             <span className="inline-flex flex-wrap justify-start gap-x-[0.25em]">
               {["We", "build", "websites,", "mobile", "apps,", "and", "custom", "tools"].map((word, i) => (
                 <span
@@ -278,7 +278,7 @@ export default function LinearHero() {
           </span>
 
           {/* Line 2: that help ambitious companies [grow. | scale. | convert. | lead.] */}
-          <span className="block overflow-hidden pb-2 pt-0.5">
+          <span className="block overflow-hidden pb-1.5 sm:pb-2 pt-0.5">
             <span className="inline-flex flex-wrap items-baseline justify-start gap-x-[0.25em]">
               {["that", "help", "ambitious", "companies"].map((word, i) => (
                 <span
@@ -313,35 +313,40 @@ export default function LinearHero() {
         </h1>
 
         {/* Harmoniously Proportioned Subtext */}
-        <p className="text-[16px] sm:text-[18px] md:text-[19px] text-[#8A8F98] max-w-2xl leading-relaxed mb-8 text-left font-normal hero-css-fade-up hero-delay-2">
+        <p className="text-[14.5px] sm:text-[17px] md:text-[19px] text-[#8A8F98] max-w-2xl leading-relaxed mb-6 sm:mb-8 text-left font-normal hero-css-fade-up hero-delay-2">
           A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
         </p>
 
         {/* Action Buttons with Magnetic hover on Primary */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8 hero-css-fade-up hero-delay-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 mb-5 sm:mb-8 hero-css-fade-up hero-delay-3 w-full sm:w-auto">
           <Magnetic strength={8}>
             <Button
               to="/contact"
               variant="primary"
               size="lg"
-              className="min-h-[46px] w-full sm:w-auto group relative shadow-sm"
+              className="min-h-[44px] sm:min-h-[46px] w-full sm:w-auto group relative shadow-sm text-[14px] sm:text-[15px]"
             >
               <span>Start a project</span>
               <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
             </Button>
           </Magnetic>
 
-          <Button to="/work" variant="ghost" size="lg" className="min-h-[46px] w-full sm:w-auto">
+          <Button
+            to="/work"
+            variant="ghost"
+            size="lg"
+            className="min-h-[44px] sm:min-h-[46px] w-full sm:w-auto text-[14px] sm:text-[15px]"
+          >
             Explore our work
           </Button>
         </div>
 
-        {/* Trust Chips with animated stroke check icons */}
-        <div className="hero-css-fade-up hero-delay-4 flex flex-wrap items-center justify-start gap-x-6 gap-y-2.5 text-[13px] text-[#62666D] mb-12 sm:mb-14">
+        {/* Trust Chips with animated stroke check icons - neatly aligned on mobile and desktop */}
+        <div className="hero-css-fade-up hero-delay-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-x-6 text-[12.5px] sm:text-[13px] text-[#62666D] mb-8 sm:mb-14">
           {TRUST_CHIPS.map((chip, i) => (
             <span key={chip} className="flex items-center gap-2">
               <svg
-                className="w-4 h-4 text-[#59D499]"
+                className="w-4 h-4 text-[#59D499] shrink-0"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -357,7 +362,7 @@ export default function LinearHero() {
                   transition={{ duration: 0.6, delay: 0.6 + i * 0.12, ease: MOTION_TOKENS.ease }}
                 />
               </svg>
-              <span className="text-[#8A8F98]">{chip}</span>
+              <span className="text-[#8A8F98] whitespace-nowrap">{chip}</span>
             </span>
           ))}
         </div>

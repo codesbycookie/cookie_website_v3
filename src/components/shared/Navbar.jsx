@@ -10,7 +10,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
-  const [headerHeight, setHeaderHeight] = useState(68);
+  const [headerHeight, setHeaderHeight] = useState(54);
 
   const location = useLocation();
   const drawerRef = useRef(null);
@@ -37,7 +37,7 @@ export default function Navbar() {
 
   // Track scroll position for header visual state
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -102,7 +102,6 @@ export default function Navbar() {
 
   // Tap header bar when scrolled: smoothly return to top of page
   const handleHeaderClick = (e) => {
-    // If the click is inside a button, link, or interactive element, ignore
     if (e.target.closest("a, button, input, textarea, select, [role='button']")) {
       return;
     }
@@ -146,21 +145,22 @@ export default function Navbar() {
           mobileMenuOpen ? "z-[60]" : "z-50"
         } w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#08090A]/70 backdrop-blur-3xl backdrop-saturate-[190%] border-b border-white/[0.12] shadow-[0_12px_36px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] cursor-pointer md:cursor-auto"
-            : "bg-[#08090A]/40 backdrop-blur-2xl backdrop-saturate-[160%] border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.05)]"
+            ? "bg-[#08090A]/85 backdrop-blur-2xl backdrop-saturate-[180%] border-b border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] cursor-pointer md:cursor-auto"
+            : "bg-[#08090A]/40 backdrop-blur-xl border-b border-white/[0.05] shadow-[0_2px_12px_rgba(0,0,0,0.2)]"
         }`}
       >
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 py-4 sm:py-5 min-h-[68px] sm:min-h-[76px] flex items-center justify-between relative">
+        {/* Slim, smaller-padding navbar container */}
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-13 sm:h-14 flex items-center justify-between relative">
           {/* Brand */}
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[4px] py-0.5 touch-manipulation"
+            className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[4px] py-0.5 touch-manipulation"
             aria-label="Cookie Inc. Home"
           >
             <div
               id="navbar-brand-logo"
-              className="w-7 h-7 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
+              className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
             >
               <img
                 src="/imgs/cookie_white.png"
@@ -168,15 +168,15 @@ export default function Navbar() {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="flex items-center text-[16px] font-medium tracking-tight text-[#F4F4F6]">
+            <div className="flex items-center text-[15px] sm:text-[16px] font-medium tracking-tight text-[#F4F4F6]">
               <span>{navbar.title[0]}</span>
               <span className="text-[#D9A55B]">{navbar.title[1] || "."}</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation: sliding active-pill highlight with enhanced glassmorphism */}
+          {/* Desktop Navigation: sliding active-pill highlight */}
           <nav
-            className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 rounded-full bg-[#08090A]/40 backdrop-blur-2xl backdrop-saturate-150 border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.06)]"
+            className="hidden md:flex items-center gap-0.5 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-1 rounded-full bg-[#08090A]/50 backdrop-blur-2xl border border-white/[0.08] shadow-[0_2px_16px_rgba(0,0,0,0.3)]"
             onMouseLeave={() => setHoveredNav(null)}
             aria-label="Main Navigation"
           >
@@ -193,7 +193,7 @@ export default function Navbar() {
                   to={item.link}
                   onClick={() => handleNavItemClick(item.link)}
                   onMouseEnter={() => setHoveredNav(item.link)}
-                  className={`relative px-4 py-1.5 text-[13px] font-medium rounded-full transition-colors duration-150 select-none min-h-[36px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
+                  className={`relative px-3.5 py-1 text-[13px] font-medium rounded-full transition-colors duration-150 select-none inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] ${
                     isActive || isHovered
                       ? "text-[#FAF5EB]"
                       : "text-[#9EA3AD] hover:text-[#FAF5EB]"
@@ -213,13 +213,13 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Actions: WhatsApp + Persistent Start a Project CTA with slow traveling border light */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop Actions: WhatsApp + Persistent Start a Project CTA */}
+          <div className="hidden md:flex items-center gap-2.5">
             <a
               href="https://wa.cookie.org.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-medium text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors px-3 py-1.5 min-h-[40px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[6px]"
+              className="text-[12.5px] font-medium text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors px-2.5 py-1 inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] rounded-[6px]"
             >
               WhatsApp
             </a>
@@ -230,22 +230,20 @@ export default function Navbar() {
               className="group relative inline-flex p-[1px] rounded-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B]"
               aria-label="Start a project"
             >
-              {/* Traveling border beam */}
               <span
                 className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#D9A55B_360deg)] animate-[rotate-beam_4.5s_linear_infinite]"
                 aria-hidden="true"
               />
-              {/* Button core */}
-              <span className="relative z-10 px-4 py-2 rounded-full bg-[#111215] hover:bg-[#16181D] text-[#F4F4F6] text-[13px] font-medium transition-colors duration-200 inline-flex items-center gap-1.5 border border-white/10 shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+              <span className="relative z-10 px-3.5 py-1.5 rounded-full bg-[#111215] hover:bg-[#16181D] text-[#F4F4F6] text-[12.5px] font-medium transition-colors duration-200 inline-flex items-center gap-1.5 border border-white/10 shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                 <span>Start a project</span>
-                <span className="text-[#D9A55B] transition-transform duration-200 group-hover:translate-x-1 inline-block">
+                <span className="text-[#D9A55B] transition-transform duration-200 group-hover:translate-x-0.5 inline-block text-[11px]">
                   →
                 </span>
               </span>
             </Link>
           </div>
 
-          {/* Mobile Hamburger Button with 44x44px touch target & tactile feedback */}
+          {/* Mobile Hamburger Button */}
           <button
             ref={toggleBtnRef}
             type="button"
@@ -253,14 +251,14 @@ export default function Navbar() {
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-controls="mobile-navigation"
-            className="md:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-[8px] text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-[#2F3031]/60 border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] cursor-pointer inline-flex items-center justify-center touch-manipulation active:scale-95 transition-transform"
+            className="md:hidden w-9 h-9 p-2 rounded-[8px] text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-[#2F3031]/60 border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] cursor-pointer inline-flex items-center justify-center touch-manipulation active:scale-95 transition-transform"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with tighter padding to ensure Start a Project is immediately visible */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -274,15 +272,18 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            style={{ top: `${headerHeight}px` }}
-            className="md:hidden fixed inset-x-0 bottom-0 bg-[#08090A]/90 backdrop-blur-3xl border-t border-white/10 z-[55] flex flex-col justify-between p-6 overflow-y-auto"
+            style={{
+              top: `${headerHeight}px`,
+              maxHeight: `calc(100dvh - ${headerHeight}px)`,
+            }}
+            className="md:hidden fixed inset-x-0 bottom-0 bg-[#08090A]/96 backdrop-blur-3xl border-t border-white/10 z-[55] flex flex-col justify-between p-4 sm:p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,16px))] overflow-y-auto"
           >
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between px-3 mb-3">
-                <span className="text-[12px] font-medium uppercase tracking-wider text-[#767B85]">
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between px-2 mb-1.5">
+                <span className="text-[11px] font-medium uppercase tracking-wider text-[#767B85]">
                   Cookie Inc. Studio
                 </span>
-                <CookieLogo className="w-5 h-5" color="#9EA3AD" dotColor="#D9A55B" />
+                <CookieLogo className="w-4 h-4" color="#9EA3AD" dotColor="#D9A55B" />
               </div>
 
               {[
@@ -300,7 +301,7 @@ export default function Navbar() {
                     key={page.link}
                     to={page.link}
                     onClick={() => handleNavItemClick(page.link)}
-                    className={`text-[17px] font-medium px-4 py-3.5 min-h-[48px] rounded-[10px] transition-colors duration-100 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] touch-manipulation active:scale-[0.99] ${
+                    className={`text-[15px] font-medium px-3.5 py-2.5 min-h-[42px] rounded-[8px] transition-colors duration-100 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A55B] touch-manipulation active:scale-[0.99] ${
                       isActive
                         ? "bg-[#1E2024] text-[#F4F4F6] border border-white/10"
                         : "text-[#9EA3AD] hover:text-[#F4F4F6] hover:bg-white/[0.04] border border-transparent"
@@ -308,22 +309,23 @@ export default function Navbar() {
                     aria-current={isActive ? "page" : undefined}
                   >
                     <span>{page.name}</span>
-                    {isActive && <span className="w-2 h-2 rounded-full bg-[#D9A55B]" />}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B]" />}
                   </Link>
                 );
               })}
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-              <div className="flex items-center justify-between text-[13px] text-[#9EA3AD] px-1">
+            {/* Bottom section with smaller padding so 'Start a project' is clearly visible */}
+            <div className="pt-3.5 mt-2 border-t border-white/10 flex flex-col gap-2.5 shrink-0">
+              <div className="flex items-center justify-between text-[12px] text-[#9EA3AD] px-1">
                 <span>Studio HQ</span>
                 <span className="text-[#F4F4F6] font-medium">Chennai, Tamil Nadu</span>
               </div>
               <Button
                 to="/contact"
                 variant="primary"
-                size="lg"
-                className="w-full min-h-[48px] touch-manipulation"
+                size="md"
+                className="w-full min-h-[44px] text-[14px] touch-manipulation"
                 ariaLabel="Start a project"
                 onClick={() => setMobileMenuOpen(false)}
               >

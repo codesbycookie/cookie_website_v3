@@ -147,7 +147,7 @@ export default function ContactUs() {
   return (
     <div className="w-full flex flex-col items-center bg-[#08090A] text-[#F7F8F8] relative overflow-hidden selection:bg-[#D9A55B]/25 selection:text-[#F7F8F8]">
       {/* 1. HERO SECTION */}
-      <header className="relative z-10 w-full border-b border-white/[0.06] pt-24 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 overflow-hidden">
+      <header className="relative z-10 w-full border-b border-white/[0.06] pt-8 sm:pt-12 md:pt-16 pb-10 sm:pb-14 px-6 sm:px-8 overflow-hidden">
         {/* Top faint amber glow (6-8% opacity) */}
         <div className="linear-top-glow" aria-hidden="true" />
 

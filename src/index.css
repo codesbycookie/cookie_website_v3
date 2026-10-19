@@ -719,20 +719,6 @@ section:first-child::after {
   color: #D0D6E0;
 }
 
-/* Linear hairline glow beam */
-.hairline-beam {
-  position: relative;
-}
-
-.hairline-beam::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(217, 165, 91, 0.6), transparent);
-}
 
 /* Focus visible styling (3:1 contrast ratio) */
 :focus-visible {

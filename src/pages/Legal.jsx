@@ -74,7 +74,7 @@ export default function Legal({ type }) {
       <div className="linear-film-grain" aria-hidden="true" />
 
       {/* Main Document Section */}
-      <section className="relative z-10 w-full pt-24 sm:pt-32 md:pt-36 pb-20 md:pb-28 px-5 sm:px-8">
+      <section className="relative z-10 w-full pt-8 sm:pt-12 md:pt-16 pb-16 md:pb-20 px-5 sm:px-8">
         <div className="max-w-[860px] mx-auto">
           {/* Breadcrumb Navigation */}
           <Link
