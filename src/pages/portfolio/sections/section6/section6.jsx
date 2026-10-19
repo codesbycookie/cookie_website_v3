@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CookieLogo from "../../../../components/cookie_logo/cookie_logo";
+import CookieLogo from "../../../../components/cookie_logo";
 
 export default function Section6() {
   return (

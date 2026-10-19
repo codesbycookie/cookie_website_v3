@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
-import BackToTop from "../components/back_to_top/back_to_top";
-import CookieIntroLoader from "../components/cookie_intro_loader/cookie_intro_loader";
-import SEOMeta from "../components/seo/seo-meta";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import BackToTop from "../components/back_to_top";
+import CookieIntroLoader from "../components/cookie_intro_loader";
+import SEOMeta from "../components/seo-meta";
 
 import Home from "../pages/home/home";
 import Portfolio from "../pages/portfolio/portfolio";

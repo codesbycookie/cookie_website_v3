@@ -1,7 +1,7 @@
 import React from "react";
 import Section1 from "./sections/section1/section1";
 import Section2 from "./sections/section2/section2";
-import SEOMeta from "../../components/seo/seo-meta";
+import SEOMeta from "../../components/seo-meta";
 
 export default function ContactUs() {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useTheme } from "../../context/theme.context.jsx";
+import { useTheme } from "../context/theme.context.jsx";
 
 /**
  * CookieIntroLoader:

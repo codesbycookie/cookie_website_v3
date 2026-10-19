@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../../components/button/button";
+import Button from "../../../../components/button";
 import { CheckCircle2 } from "lucide-react";
 
 export default function Section3({ study }) {

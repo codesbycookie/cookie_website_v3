@@ -12,8 +12,8 @@ You must strictly adhere to the project structure, directory layout, and naming 
 
 | Item Type | Disk / Path Naming Rule | Correct Example | Forbidden Example |
 |---|---|---|---|
-| **Component file** | mirrors lowercase/snake_case folder | `components/navbar/navbar.jsx` | `components/Navbar/Navbar.jsx` |
-| **Component file (multi-word)** | `snake_case` | `components/product_card/product_card.jsx` | `components/product_card/ProductCard.jsx` |
+| **Component file** | flat lowercase/snake_case file directly in `components/` | `components/navbar.jsx` | `components/navbar/navbar.jsx` or `components/Navbar.jsx` |
+| **Component file (multi-word)** | `snake_case` flat file | `components/product_card.jsx` | `components/product_card/product_card.jsx` |
 | **Page folder & file** | `snake_case` or flat lowercase | `pages/gift_products/gift_products.jsx` | `pages/GiftProducts/GiftProducts.jsx` |
 | **Page Section folder & file**| `sections/section<n>/section<n>.jsx`| `pages/home/sections/section1/section1.jsx` | `pages/home/Section1.jsx` |
 | **Context** | `<name>.context.jsx` | `context/cart.context.jsx` | `context/CartContext.jsx` |
@@ -32,11 +32,9 @@ src/
 │   ├── app.css                   # Global Tailwind theme tokens & variables
 │   ├── app.jsx                   # Root wrapper: Providers, Layout, Router
 │   └── routes.jsx                # Route definitions & MainLayout shell
-├── components/                   # Shared UI modules
-│   ├── <component_name>/         # Lowercase or snake_case
-│   │   └── <component_name>.jsx  # EXACT mirror of folder name
-│   └── seo/
-│       └── seo-meta.jsx          # SEO & head tag manager
+├── components/                   # Shared UI modules (flat directory: components/<name>.jsx)
+│   ├── <component_name>.jsx      # e.g., button.jsx, navbar.jsx, footer.jsx, seo-meta.jsx
+
 ├── context/                      # Global state providers
 │   └── <name>.context.jsx        # e.g., cart.context.jsx
 ├── data/                         # Static copy dictionaries & content data
@@ -63,10 +61,11 @@ src/
 
 ## 3. Mandatory Implementation Patterns
 
-### Pattern A: Folder-File Mirroring (Co-location)
-Whenever creating a new shared component or page, create a dedicated folder and a primary `.jsx` file with the exact same name:
-* Folder: `src/components/user_card/`
-* File: `src/components/user_card/user_card.jsx`
+### Pattern A: Flat Component Directory
+Shared components live directly in `src/components/<name>.jsx` (flat lowercase or snake_case, no unnecessary subfolders):
+* File: `src/components/button.jsx`
+* File: `src/components/navbar.jsx`
+* File: `src/components/cookie_logo.jsx`
 
 ### Pattern B: Section-Based Page Decomposition
 Pages MUST NOT be written as huge single-file components. Every page acts as an orchestrator that imports ordered sections:

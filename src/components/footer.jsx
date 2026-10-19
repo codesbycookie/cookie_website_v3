@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { footer, social_links } from "../../data/data";
-import CookieLogo from "../cookie_logo/cookie_logo";
+import { footer, social_links } from "../data/data";
+import CookieLogo from "./cookie_logo";
 
 const COLUMNS = [
   {

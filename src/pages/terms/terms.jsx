@@ -3,7 +3,7 @@ import Section1 from "./sections/section1/section1";
 import Section2 from "./sections/section2/section2";
 import Section3 from "./sections/section3/section3";
 import Section4 from "./sections/section4/section4";
-import SEOMeta from "../../components/seo/seo-meta";
+import SEOMeta from "../../components/seo-meta";
 
 export default function Terms() {
   return (

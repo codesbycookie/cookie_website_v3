@@ -8,7 +8,7 @@ import {
   Zap,
   Globe,
 } from "lucide-react";
-import Button from "../../../../components/button/button";
+import Button from "../../../../components/button";
 import { Magnetic, MOTION_TOKENS } from "../../../../utils/motion.util";
 
 const DYNAMIC_VERBS = [

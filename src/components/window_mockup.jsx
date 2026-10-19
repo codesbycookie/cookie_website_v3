@@ -1,5 +1,5 @@
 import React from "react";
-import KeyHint from "../key_hint/key_hint";
+import KeyHint from "./key_hint";
 
 /**
  * WindowMockup: Raycast/Linear-style product window mockup

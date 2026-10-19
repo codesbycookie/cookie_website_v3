@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navbar } from "../../data/data";
-import Button from "../button/button";
-import CookieLogo from "../cookie_logo/cookie_logo";
+import { navbar } from "../data/data";
+import Button from "./button";
+import CookieLogo from "./cookie_logo";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

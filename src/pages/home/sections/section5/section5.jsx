@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MessageSquare, Sparkles } from "lucide-react";
-import Button from "../../../../components/button/button";
-import CookieLogo from "../../../../components/cookie_logo/cookie_logo";
+import Button from "../../../../components/button";
+import CookieLogo from "../../../../components/cookie_logo";
 import { Magnetic, MOTION_TOKENS } from "../../../../utils/motion.util";
 
 function CookieBrandBadge() {

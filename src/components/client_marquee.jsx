@@ -1,5 +1,5 @@
 import React from "react";
-import Marquee from "../marquee/marquee";
+import Marquee from "./marquee";
 
 const MARQUEE_ITEMS = [
   { name: "Torque Toyzz", role: "E-Commerce", accent: "#D9A55B" },

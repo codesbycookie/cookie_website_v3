@@ -1,6 +1,6 @@
 import React from "react";
 import Section1 from "./sections/section1/section1";
-import SEOMeta from "../../components/seo/seo-meta";
+import SEOMeta from "../../components/seo-meta";
 
 export default function NotFound() {
   return (

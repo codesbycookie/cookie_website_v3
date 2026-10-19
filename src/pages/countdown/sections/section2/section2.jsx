@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../../components/button/button";
+import Button from "../../../../components/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 
 export default function Section2() {

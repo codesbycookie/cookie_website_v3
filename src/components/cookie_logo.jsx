@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../../context/theme.context.jsx";
+import { useTheme } from "../context/theme.context.jsx";
 
 /**
  * CookieLogo: Vector brand mark for Cookie Inc.

@@ -4,7 +4,7 @@ import Section2 from "./sections/section2/section2";
 import Section3 from "./sections/section3/section3";
 import Section4 from "./sections/section4/section4";
 import Section5 from "./sections/section5/section5";
-import SEOMeta from "../../components/seo/seo-meta";
+import SEOMeta from "../../components/seo-meta";
 
 /**
  * Cookie Inc. Official Home Page Orchestrator
