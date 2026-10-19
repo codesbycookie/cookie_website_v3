@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import BackToTop from "../components/back_to_top";
+import DesktopScrollbar from "../components/desktop_scrollbar";
 import CookieIntroLoader from "../components/cookie_intro_loader";
 import SEOMeta from "../components/seo-meta";
 
@@ -54,6 +55,7 @@ export function MainLayout({ children }) {
 
       <Footer />
       <BackToTop />
+      <DesktopScrollbar />
     </div>
   );
 }

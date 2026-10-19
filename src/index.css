@@ -726,23 +726,36 @@ section:first-child::after {
   outline-offset: 2px;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Custom Desktop Scrollbar Design System: Native scrollbar hidden on desktop in favor of floating rail */
+@media (min-width: 768px) {
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #08090A;
-}
+/* Mobile & Touch Fallback Scrollbar */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #494B4D;
-  border-radius: 4px;
-}
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #62666D;
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
 }
 
 /* Marquee animation */
