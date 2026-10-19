@@ -269,7 +269,7 @@ export default function Section1() {
                 <span
                   key={i}
                   className="hero-word"
-                  style={{ animationDelay: `${40 + i * 40}ms` }}
+                  style={{ animationDelay: `${10 + i * 15}ms` }}
                 >
                   {word}
                 </span>
@@ -284,7 +284,7 @@ export default function Section1() {
                 <span
                   key={i}
                   className="hero-word"
-                  style={{ animationDelay: `${360 + i * 40}ms` }}
+                  style={{ animationDelay: `${140 + i * 15}ms` }}
                 >
                   {word}
                 </span>

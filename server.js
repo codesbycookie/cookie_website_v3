@@ -74,6 +74,26 @@ const ROUTE_META = {
   },
 };
 
+import zlib from "node:zlib";
+
+function compressAndSend(req, res, content, contentType = "text/html; charset=utf-8") {
+  const acceptEncoding = req.headers["accept-encoding"] || "";
+  res.setHeader("Content-Type", contentType);
+
+  // Compress if larger than 1KB
+  const buf = Buffer.isBuffer(content) ? content : Buffer.from(content, "utf-8");
+  if (buf.length > 1024) {
+    if (acceptEncoding.includes("br")) {
+      res.setHeader("Content-Encoding", "br");
+      return res.end(zlib.brotliCompressSync(buf));
+    } else if (acceptEncoding.includes("gzip")) {
+      res.setHeader("Content-Encoding", "gzip");
+      return res.end(zlib.gzipSync(buf));
+    }
+  }
+  return res.end(buf);
+}
+
 function injectMeta(html, url) {
   const meta = ROUTE_META[url] || ROUTE_META["/"];
   let res = html;
@@ -85,6 +105,9 @@ function injectMeta(html, url) {
     res = res.replace(/<meta\s+name=["']description["'][\s\S]*?\/>/i, `<meta name="description" content="${meta.desc}" />`);
     res = res.replace(/<meta\s+property=["']og:description["'][\s\S]*?\/>/i, `<meta property="og:description" content="${meta.desc}" />`);
   }
+  const currentUrl = `https://cookie-website-v3.onrender.com${url === "/" ? "" : url}`;
+  res = res.replace(/<link\s+rel=["']canonical["'][\s\S]*?\/>/i, `<link rel="canonical" href="${currentUrl}" />`);
+  res = res.replace(/<meta\s+property=["']og:url["'][\s\S]*?\/>/i, `<meta property="og:url" content="${currentUrl}" />`);
   return res;
 }
 
@@ -100,8 +123,16 @@ export async function createServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const compression = (await import("express")).default;
-    // Serve static files from dist/client
+    // 1-year immutable caching for fingerprinted production bundles in /assets/
+    app.use(
+      "/assets",
+      express.static(path.resolve(__dirname, "dist/client/assets"), {
+        immutable: true,
+        maxAge: "1y",
+      })
+    );
+
+    // 1-day caching for static icons, public images
     app.use(
       express.static(path.resolve(__dirname, "dist/client"), {
         index: false,
@@ -127,11 +158,14 @@ export async function createServer() {
         const flatPath = url === "/" ? "index.html" : `${url.replace(/^\//, "").replace(/\/$/, "")}.html`;
         const prerenderedPath = path.resolve(__dirname, "dist/client", cleanPath);
         const prerenderedFlatPath = path.resolve(__dirname, "dist/client", flatPath);
+
         if (fs.existsSync(prerenderedPath)) {
-          return res.status(200).set({ "Content-Type": "text/html" }).send(fs.readFileSync(prerenderedPath, "utf-8"));
+          const content = fs.readFileSync(prerenderedPath, "utf-8");
+          return compressAndSend(req, res, content);
         }
         if (fs.existsSync(prerenderedFlatPath)) {
-          return res.status(200).set({ "Content-Type": "text/html" }).send(fs.readFileSync(prerenderedFlatPath, "utf-8"));
+          const content = fs.readFileSync(prerenderedFlatPath, "utf-8");
+          return compressAndSend(req, res, content);
         }
 
         const templateFile = fs.existsSync(path.resolve(__dirname, "dist/client/_template.html"))
@@ -149,7 +183,7 @@ export async function createServer() {
       let html = template.replace("<!--ssr-outlet-->", appHtml);
       html = injectMeta(html, url);
 
-      res.status(200).set({ "Content-Type": "text/html" }).end(html);
+      return compressAndSend(req, res, html);
     } catch (e) {
       if (!isProduction && vite) {
         vite.ssrFixStacktrace(e);

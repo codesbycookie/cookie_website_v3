@@ -101,6 +101,9 @@ function injectMeta(html, url) {
     res = res.replace(/<meta\s+name=["']description["'][\s\S]*?\/>/i, `<meta name="description" content="${meta.desc}" />`);
     res = res.replace(/<meta\s+property=["']og:description["'][\s\S]*?\/>/i, `<meta property="og:description" content="${meta.desc}" />`);
   }
+  const currentUrl = `https://cookie-website-v3.onrender.com${url === "/" ? "" : url}`;
+  res = res.replace(/<link\s+rel=["']canonical["'][\s\S]*?\/>/i, `<link rel="canonical" href="${currentUrl}" />`);
+  res = res.replace(/<meta\s+property=["']og:url["'][\s\S]*?\/>/i, `<meta property="og:url" content="${currentUrl}" />`);
   return res;
 }
 

@@ -73,16 +73,28 @@ export default function SEO() {
 
   useEffect(() => {
     const meta = ROUTE_META[pathname] || ROUTE_META["/"] || {};
-    if (meta.title && typeof document !== "undefined") {
+    if (typeof document === "undefined") return;
+
+    if (meta.title) {
       document.title = meta.title;
       const ogTitle = document.querySelector('meta[property="og:title"]');
       if (ogTitle) ogTitle.setAttribute("content", meta.title);
     }
-    if (meta.desc && typeof document !== "undefined") {
+    if (meta.desc) {
       const descEl = document.querySelector('meta[name="description"]');
       if (descEl) descEl.setAttribute("content", meta.desc);
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogDesc) ogDesc.setAttribute("content", meta.desc);
+    }
+
+    const currentUrl = `https://cookie-website-v3.onrender.com${pathname === "/" ? "" : pathname}`;
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute("href", currentUrl);
+    }
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute("content", currentUrl);
     }
   }, [pathname]);
 
