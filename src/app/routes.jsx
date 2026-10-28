@@ -16,6 +16,10 @@ import ContactUs from "../pages/contact_us/contact_us";
 import Terms from "../pages/terms/terms";
 import Privacy from "../pages/privacy/privacy";
 import NotFound from "../pages/not_found/not_found";
+import Maintenance from "../pages/maintenance/maintenance";
+
+const IS_MAINTENANCE_MODE =
+  String(import.meta.env.VITE_MAINTENANCE_MODE).toLowerCase() === "true";
 
 /**
  * MainLayout shell: Navbar, Footer, BackToTop, CookieIntroLoader & WCAG skip link.
@@ -63,6 +67,14 @@ export function MainLayout({ children }) {
  * Route definitions adhering strictly to AGENTS.md directory hierarchy.
  */
 export default function AppRoutes() {
+  if (IS_MAINTENANCE_MODE) {
+    return (
+      <Routes>
+        <Route path="*" element={<Maintenance />} />
+      </Routes>
+    );
+  }
+
   return (
     <Routes>
       {/* Core studio routes */}
@@ -89,6 +101,9 @@ export default function AppRoutes() {
       {/* Dedicated legal & privacy pages */}
       <Route path="/privacy" element={<MainLayout><Privacy /></MainLayout>} />
       <Route path="/terms" element={<MainLayout><Terms /></MainLayout>} />
+
+      {/* Maintenance preview route */}
+      <Route path="/maintenance" element={<Maintenance />} />
 
       {/* 404 for all other paths */}
       <Route path="*" element={<NotFound />} />
