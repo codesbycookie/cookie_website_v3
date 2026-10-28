@@ -650,7 +650,7 @@ export const portfoliopage = {
           "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
         src: "/imgs/Sap_app2.jpeg",
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/sap-erp-application",
+        ctaLink: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793212928/Screenshot_2026-10-29_001127_rllxzr.png",
         content: () => {
           return (
             <p>
@@ -700,7 +700,7 @@ export const portfoliopage = {
         stack: ["React", "Node.js", "Express", "Tailwind CSS"],
         description:
           "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
-        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/q_auto,f_auto/v1753423541/sap_checklist_jzbsbf.jpg",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793212928/Screenshot_2026-10-29_001127_rllxzr.png",
         ctaText: "View Case Study",
         ctaLink: "/case-studies/sap-checklist-portal",
         content: () => {

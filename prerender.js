@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const SITE_URL = "https://cookieinc.in";
+
 const ROUTES = [
   "/",
   "/work",
@@ -20,7 +22,22 @@ const ROUTES = [
   "/work/chitu-vibes",
   "/work/sap-checklist-portal",
   "/work/torque-toyzz",
+  "/case-studies/sap-erp-application",
+  "/case-studies/chitu-vibes",
+  "/case-studies/sap-checklist-portal",
+  "/case-studies/torque-toyzz",
 ];
+
+const CANONICAL_PATH_MAP = {
+  "/portfolio": "/work",
+  "/service": "/services",
+  "/about-us": "/about",
+  "/contact-us": "/contact",
+  "/case-studies/sap-erp-application": "/work/sap-erp-application",
+  "/case-studies/chitu-vibes": "/work/chitu-vibes",
+  "/case-studies/sap-checklist-portal": "/work/sap-checklist-portal",
+  "/case-studies/torque-toyzz": "/work/torque-toyzz",
+};
 
 const ROUTE_META = {
   "/": {
@@ -28,11 +45,11 @@ const ROUTE_META = {
     desc: "We build websites, mobile apps, and custom tools that help ambitious companies grow. Shipped by engineers in Chennai.",
   },
   "/work": {
-    title: "Selected work | Cookie Inc.",
+    title: "Selected Work & Case Studies | Cookie Inc.",
     desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
   },
   "/portfolio": {
-    title: "Selected work | Cookie Inc.",
+    title: "Selected Work & Case Studies | Cookie Inc.",
     desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
   },
   "/services": {
@@ -44,11 +61,11 @@ const ROUTE_META = {
     desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
   },
   "/about": {
-    title: "About the studio | Cookie Inc.",
+    title: "About the Studio | Cookie Inc.",
     desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
   },
   "/about-us": {
-    title: "About the studio | Cookie Inc.",
+    title: "About the Studio | Cookie Inc.",
     desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
   },
   "/contact": {
@@ -67,38 +84,57 @@ const ROUTE_META = {
     title: "Terms of Service | Cookie Inc.",
     desc: "Standard terms and conditions governing Cookie Inc. studio engagements.",
   },
+  "/work/sap-erp-application": {
+    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
+    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
+  },
+  "/case-studies/sap-erp-application": {
+    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
+    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
+  },
+  "/work/chitu-vibes": {
+    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
+    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
+  },
+  "/case-studies/chitu-vibes": {
+    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
+    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
+  },
+  "/work/sap-checklist-portal": {
+    title: "SAP Checklist Portal Case Study | Cookie Inc.",
+    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
+  },
+  "/case-studies/sap-checklist-portal": {
+    title: "SAP Checklist Portal Case Study | Cookie Inc.",
+    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
+  },
   "/work/torque-toyzz": {
     title: "Torque Toyzz Case Study | Cookie Inc.",
-    desc: "Instant WhatsApp E-Commerce platform for Torque Toyzz. 3.4x higher checkout rate, delivered in 14 days.",
+    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
   },
-  "/work/iq-bridge": {
-    title: "IQ Bridge Case Study | Cookie Inc.",
-    desc: "EdTech portfolio platform for IQ Bridge. 14 countries reached, delivered in 21 days.",
-  },
-  "/work/audnex": {
-    title: "Audnex Case Study | Cookie Inc.",
-    desc: "Creative studio showcase for Audnex. 100% client retention, delivered in 28 days.",
-  },
-  "/work/sap-checklist": {
-    title: "SAP Checklist Portal Case Study | Cookie Inc.",
-    desc: "Enterprise operations management and compliance portal for SAP Consulting Group. Delivered in 42 days.",
+  "/case-studies/torque-toyzz": {
+    title: "Torque Toyzz Case Study | Cookie Inc.",
+    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
   },
 };
 
 function injectMeta(html, url) {
-  const meta = ROUTE_META[url] || ROUTE_META["/"];
+  const canonicalPath = CANONICAL_PATH_MAP[url] || url;
+  const meta = ROUTE_META[url] || ROUTE_META[canonicalPath] || ROUTE_META["/"];
   let res = html;
   if (meta.title) {
     res = res.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
     res = res.replace(/<meta\s+property=["']og:title["'][\s\S]*?\/>/i, `<meta property="og:title" content="${meta.title}" />`);
+    res = res.replace(/<meta\s+name=["']twitter:title["'][\s\S]*?\/>/i, `<meta name="twitter:title" content="${meta.title}" />`);
   }
   if (meta.desc) {
     res = res.replace(/<meta\s+name=["']description["'][\s\S]*?\/>/i, `<meta name="description" content="${meta.desc}" />`);
     res = res.replace(/<meta\s+property=["']og:description["'][\s\S]*?\/>/i, `<meta property="og:description" content="${meta.desc}" />`);
+    res = res.replace(/<meta\s+name=["']twitter:description["'][\s\S]*?\/>/i, `<meta name="twitter:description" content="${meta.desc}" />`);
   }
-  const currentUrl = `https://cookie-website-v3.onrender.com${url === "/" ? "" : url}`;
-  res = res.replace(/<link\s+rel=["']canonical["'][\s\S]*?\/>/i, `<link rel="canonical" href="${currentUrl}" />`);
-  res = res.replace(/<meta\s+property=["']og:url["'][\s\S]*?\/>/i, `<meta property="og:url" content="${currentUrl}" />`);
+  const canonicalUrl = `${SITE_URL}${canonicalPath === "/" ? "/" : canonicalPath}`;
+  res = res.replace(/<link\s+rel=["']canonical["'][\s\S]*?\/>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
+  res = res.replace(/<meta\s+property=["']og:url["'][\s\S]*?\/>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
   return res;
 }
 
