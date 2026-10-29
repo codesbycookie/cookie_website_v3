@@ -12,6 +12,7 @@ const COLUMNS = [
       { name: "Services & Pricing", to: "/services" },
       { name: "About the Studio", to: "/about" },
       { name: "Start a Project", to: "/contact" },
+      { name: "EasyBill (Product)", to: "/easybill" },
     ],
   },
   {
@@ -29,7 +30,7 @@ const COLUMNS = [
     title: "Direct Channels",
     links: [
       { name: "WhatsApp Instant Chat", href: social_links.whatsapp },
-      { name: "Email: contact@cookieinc.in", href: "mailto:contact@cookieinc.in" },
+      { name: "Email: hello@cookieinc.in", href: "mailto:hello@cookieinc.in" },
       { name: "Chennai Studio HQ", href: social_links.gmb },
       { name: "LinkedIn Company Page", href: social_links.linkedin },
       { name: "Instagram Updates", href: social_links.instagram },

@@ -133,6 +133,7 @@ export default function Navbar() {
     { name: "Services", link: "/services", aliases: ["/service"] },
     { name: "About", link: "/about", aliases: ["/about-us"] },
     { name: "Contact", link: "/contact", aliases: ["/contact-us"] },
+    { name: "EasyBill", link: "/easybill", badge: "Beta" },
   ];
 
   return (
@@ -207,7 +208,14 @@ export default function Navbar() {
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
-                  <span className="relative z-10">{item.name}</span>
+                  <span className="relative z-10 inline-flex items-center gap-1.5">
+                    {item.name}
+                    {item.badge && (
+                      <span className="px-1.5 py-0.2 text-[9px] font-mono font-semibold uppercase tracking-wider rounded bg-[#D9A55B]/15 text-[#D9A55B] border border-[#D9A55B]/30">
+                        {item.badge}
+                      </span>
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -292,6 +300,7 @@ export default function Navbar() {
                 { name: "Services & Pricing", link: "/services", aliases: ["/service"] },
                 { name: "About the Studio", link: "/about", aliases: ["/about-us"] },
                 { name: "Contact Us", link: "/contact", aliases: ["/contact-us"] },
+                { name: "EasyBill", link: "/easybill", badge: "Beta" },
               ].map((page) => {
                 const isActive =
                   location.pathname === page.link ||
@@ -308,7 +317,14 @@ export default function Navbar() {
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
-                    <span>{page.name}</span>
+                    <span className="flex items-center gap-2">
+                      {page.name}
+                      {page.badge && (
+                        <span className="px-1.5 py-0.5 text-[9.5px] font-mono font-semibold uppercase tracking-wider rounded bg-[#D9A55B]/15 text-[#D9A55B] border border-[#D9A55B]/30">
+                          {page.badge}
+                        </span>
+                      )}
+                    </span>
                     {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D9A55B]" />}
                   </Link>
                 );

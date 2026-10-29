@@ -18,6 +18,7 @@ const ROUTES = [
   "/contact-us",
   "/privacy",
   "/terms",
+  "/easybill",
   "/work/torque-toyzz",
   "/work/iq-bridge",
   "/work/chithu-vibes",
@@ -80,6 +81,10 @@ const ROUTE_META = {
   "/terms": {
     title: "Terms of Service | Cookie Inc.",
     desc: "Standard terms and conditions governing Cookie Inc. studio engagements.",
+  },
+  "/easybill": {
+    title: "EasyBill — An upcoming product by Cookie Inc. | Coming Soon",
+    desc: "Billing made easy. Business made smarter. A proposed billing solution for everyday retail operations by Cookie Inc.",
   },
   "/work/torque-toyzz": {
     title: "Torque Toyzz — E-Commerce Platform Case Study | Cookie Inc.",

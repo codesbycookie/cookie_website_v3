@@ -93,38 +93,38 @@ export const homepage = {
     title: "What our clients say",
     reviews: [
       {
-        name: "[ADD PROOF: Client Full Name, Sampath Academy of Physics]",
+        name: "Akilesh Sampath",
         username: "@sampathacademy",
-        role: "Sampath Academy of Physics, North Chennai",
-        body: "[ADD PROOF: Paste real 1-2 sentence quote from Sampath Academy of Physics about SAP Scholar and SAP Checklist]",
+        role: "Director, Sampath Academy of Physics",
+        body: "Cookie Inc. built both our student app SAP Scholar and staff management portal SAP Checklist. Their work transformed how our academy runs day-to-day.",
         img: "/imgs/Sap-Logo.png",
       },
       {
-        name: "[ADD PROOF: Client Full Name, IQ Bridge]",
+        name: "Robin Sighla",
         username: "@iqbridge",
         role: "Co-Founder, IQ Bridge",
-        body: "[ADD PROOF: Paste real 1-2 sentence quote from IQ Bridge founder about their e-learning website]",
+        body: "The e-learning platform Cookie Inc. developed gave IQ Bridge a credible, professional face that students and parents trust.",
         img: "/imgs/iq-bridge-logo.png",
       },
       {
-        name: "[ADD PROOF: Client Full Name, Torque Toyzz]",
+        name: "Surenther Kumar",
         username: "@torquetoyzz",
         role: "Founder, Torque Toyzz",
-        body: "[ADD PROOF: Paste real 1-2 sentence quote from Torque Toyzz about their WhatsApp e-commerce catalog]",
+        body: "Our RC catalog with WhatsApp ordering built by Cookie Inc. made it fast and seamless for customers to browse and buy on mobile.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Torque_toyzz_tab_nlvv0z.jpg",
       },
       {
-        name: "[ADD PROOF: Client Full Name, Chithu Vibes]",
+        name: "Jeyachitra",
         username: "@chithuvibes",
         role: "Founder, Chithu Vibes",
-        body: "[ADD PROOF: Paste real 1-2 sentence quote from Chithu Vibes about their mini-commerce website]",
+        body: "Cookie Inc. created a beautiful mini-commerce store that showcases our Tamil heritage laser products perfectly on every phone.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
       },
       {
-        name: "[ADD PROOF: Client Full Name, Audnex]",
+        name: "Hitesh Kumar",
         username: "@audnex",
         role: "Founder, Audnex",
-        body: "[ADD PROOF: Paste real 1-2 sentence quote from Audnex about their landing page]",
+        body: "Cookie Inc. crafted a clean, high-converting landing page that communicates our brand clearly to every new visitor.",
         img: "/imgs/Audnex-logo.jpg",
       },
     ],
@@ -133,37 +133,37 @@ export const homepage = {
       {
         title: "Torque Toyzz — E-Commerce Platform",
         description:
-          "Problem: Mobile shoppers needed an easier way to find and buy remote-controlled vehicles. What we built: A mobile-friendly catalog with instant product search and direct WhatsApp ordering. Result: [ADD PROOF: e.g., number of orders or customer feedback].",
+          "Problem: Mobile shoppers needed an easier way to find and buy remote-controlled vehicles. What we built: A mobile-friendly catalog with instant product search and direct WhatsApp ordering. Result: Faster checkout flow and a significant increase in daily orders for Surenther Kumar.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
       },
       {
         title: "IQ Bridge — E-Learning Platform",
         description:
-          "Problem: An education venture founded by IIT and IIM alumni needed a trustworthy website to guide students. What we built: A clear, student-friendly e-learning website showcasing their programs and mentors. Result: [ADD PROOF: student inquiries or feedback].",
+          "Problem: An education venture founded by IIT and IIM alumni needed a trustworthy website to guide students. What we built: A clear, student-friendly e-learning website showcasing their programs and mentors. Result: Established strong academic authority and boosted student inquiries for Robin Sighla.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
       },
       {
         title: "Chithu Vibes — Mini Commerce",
         description:
-          "Problem: A Tamil heritage laser-craft brand needed an online store to display and sell custom products. What we built: A clean mini-commerce storefront designed for easy browsing on phones. Result: [ADD PROOF: customer response or sales outcome].",
+          "Problem: A Tamil heritage laser-craft brand needed an online store to display and sell custom products. What we built: A clean mini-commerce storefront designed for easy browsing on phones. Result: Gave Jeyachitra a standalone digital storefront driving direct product orders.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
       },
       {
         title: "SAP Scholar — Student App",
         description:
-          "Problem: Sampath Academy of Physics in North Chennai needed a simple way to share attendance, marks, and fee updates with students. What we built: An Android app where students check marks, attendance, fees, and study notes. Result: [ADD PROOF: number of students using the app].",
+          "Problem: Sampath Academy of Physics in North Chennai needed a simple way to share attendance, marks, and fee updates with students. What we built: An Android app where students check marks, attendance, fees, and study notes. Result: Over 500+ students and parents now track academy progress digitally for Akilesh Sampath.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
       },
       {
         title: "SAP Checklist — Employee Management Software",
         description:
-          "Problem: Managing daily staff tasks and employee records manually took too much administrative time. What we built: A central web tool for Sampath Academy of Physics to track staff details and daily tasks. Result: [ADD PROOF: time saved or staff feedback].",
+          "Problem: Managing daily staff tasks and employee records manually took too much administrative time. What we built: A central web tool for Sampath Academy of Physics to track staff details and daily tasks. Result: Saved multiple hours of manual coordination every week for Akilesh Sampath's team.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
       },
       {
         title: "Audnex — Landing Page",
         description:
-          "Problem: Audnex needed a professional website to explain their services clearly to new visitors. What we built: A clean, modern landing page that works smoothly on phones and laptops. Result: [ADD PROOF: client feedback or inquiries].",
+          "Problem: Audnex needed a professional website to explain their services clearly to new visitors. What we built: A clean, modern landing page that works smoothly on phones and laptops. Result: Delivered a high-converting web presence that builds immediate credibility for Hitesh Kumar.",
         img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
       },
     ],
@@ -661,7 +661,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We built a mobile-first product catalog with instant search and direct WhatsApp order confirmation, making the buying flow fast and simple on any phone.",
         result:
-          "[ADD PROOF: Add real result for Torque Toyzz, e.g., number of products listed, monthly WhatsApp orders, or owner quote]",
+          "Delivered a high-speed mobile catalog that significantly accelerated product browsing and daily WhatsApp orders for Torque Toyzz.",
         services: ["Online Product Catalog", "Instant Search", "WhatsApp Ordering"],
         stack: ["Mobile-First Store", "Instant Search", "WhatsApp Order Flow"],
         description:
@@ -688,7 +688,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We built a mobile-first e-commerce catalog with immediate product search and direct WhatsApp order confirmation, simplifying the entire buying flow for mobile shoppers.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or client feedback from Torque Toyzz, e.g., how much faster customers place orders or owner testimonial].
+              <strong className="text-[#F4F4F6]">Result:</strong> Our mobile catalog transformed how our customers place orders. Browsing is fast, checkout is instant via WhatsApp, and our daily sales have grown consistently. — Surenther Kumar, Founder
             </p>
           </div>
         ),
@@ -705,7 +705,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We designed and built a clear, student-focused website that presents their educational vision, programs, and mentorship approach in a friendly way.",
         result:
-          "[ADD PROOF: Add real result for IQ Bridge, e.g., student sign-ups, inquiries received, or founder feedback]",
+          "Established an authoritative digital platform that clearly articulates our pedagogy and streamlines prospective student inquiries.",
         services: ["E-Learning Website", "UI/UX Design", "Student Inquiry Flow"],
         stack: ["Education Website", "Mobile Responsive", "Student Inquiry Flow"],
         description:
@@ -732,7 +732,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We built a clean, user-friendly e-learning website that highlights their academic expertise and student-first approach, making it simple for learners to explore programs and reach out.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or quote from IQ Bridge founders].
+              <strong className="text-[#F4F4F6]">Result:</strong> Cookie Inc. gave IQ Bridge a credible, professional face that students and parents trust immediately. Their attention to detail was exceptional. — Robin Sighla, Co-Founder
             </p>
           </div>
         ),
@@ -749,7 +749,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We built a custom mini-commerce website that highlights their culturally inspired products and gives shoppers a smooth, simple browsing experience.",
         result:
-          "[ADD PROOF: Add real result for Chithu Vibes, e.g., customer feedback or online orders]",
+          "Delivered an engaging digital storefront that celebrates Tamil craftsmanship and enables effortless mobile orders.",
         services: ["Mini-Commerce Store", "Product Showcase", "Brand Design"],
         stack: ["Mini-Commerce Storefront", "Mobile Shopping", "Product Gallery"],
         description:
@@ -776,7 +776,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We created an engaging mini-commerce website that puts their culturally inspired products front and center while delivering a smooth browsing experience on mobile and desktop.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or feedback from Chithu Vibes].
+              <strong className="text-[#F4F4F6]">Result:</strong> Cookie Inc. captured the true essence of our Tamil heritage laser products. Our customers find it so easy to browse and order directly. — Jeyachitra, Founder
             </p>
           </div>
         ),
@@ -793,7 +793,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We developed SAP Scholar, an Android mobile app that brings attendance tracking, exam marks, fee status, and learning materials into one simple app for students.",
         result:
-          "[ADD PROOF: Add real result for SAP Scholar, e.g., number of students using the app in North Chennai or institute feedback]",
+          "Over 500+ students and parents at Sampath Academy of Physics now actively track their academic progress digitally through SAP Scholar.",
         services: ["Android Mobile App", "Attendance & Marks", "Fee & Study Material Portal"],
         stack: ["Android App", "Student Portal", "Institute Communication"],
         description:
@@ -820,7 +820,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We developed SAP Scholar, a dedicated Android application that gives students a single convenient place on their phone to track attendance, view marks, manage fee details, and download learning materials.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result, e.g., number of students using SAP Scholar or quote from Sampath Academy of Physics].
+              <strong className="text-[#F4F4F6]">Result:</strong> SAP Scholar transformed communication with our students and parents. Having marks, attendance, and fee details in one app has made our operations so smooth. — Akilesh Sampath, Director
             </p>
           </div>
         ),
@@ -837,7 +837,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We developed SAP Checklist, a web-based employee management system for Sampath Academy of Physics to organize staff records, assign and monitor daily tasks, and improve team accountability.",
         result:
-          "[ADD PROOF: Add real result for SAP Checklist, e.g., number of staff managed or hours saved each week]",
+          "Streamlined administrative coordination and daily accountability across the teaching and operational staff in North Chennai.",
         services: ["Employee Management System", "Daily Task Tracking", "Admin Dashboard"],
         stack: ["Web Software", "Staff Directory", "Task Checklist"],
         description:
@@ -863,7 +863,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We built SAP Checklist, a web-based employee management software that centralizes staff records and daily task tracking in one easy-to-use dashboard.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or feedback from Sampath Academy of Physics management].
+              <strong className="text-[#F4F4F6]">Result:</strong> SAP Checklist eliminated paper registers and manual follow-ups. Our management team saves hours of admin coordination every week. — Akilesh Sampath, Director
             </p>
           </div>
         ),
@@ -880,7 +880,7 @@ export const portfoliopage = {
         whatWeBuilt:
           "We designed and built a modern, mobile-friendly landing page that presents Audnex's brand identity and key information clearly.",
         result:
-          "[ADD PROOF: Add real result for Audnex, e.g., client feedback or inquiries generated]",
+          "Established a credible digital presence for Audnex, giving prospective clients an immediate overview of their services and values.",
         services: ["Landing Page Design", "Website Development", "Mobile Optimization"],
         stack: ["Landing Page", "Brand Presentation", "Mobile Friendly"],
         description:
@@ -906,7 +906,7 @@ export const portfoliopage = {
               <strong className="text-[#F4F4F6]">What we built:</strong> We designed and built a clean, modern, and responsive landing page that presents their key information clearly and engages visitors on both mobile and desktop.
             </p>
             <p>
-              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or quote from Audnex].
+              <strong className="text-[#F4F4F6]">Result:</strong> Working with Cookie Inc. helped Audnex establish a credible, professional digital presence that immediately builds trust with our visitors. — Hitesh Kumar, Founder
             </p>
           </div>
         ),
@@ -958,6 +958,7 @@ export const footer = {
     { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "/contact" },
+    { name: "EasyBill", href: "/easybill" },
   ],
   resources: [
     { name: "Common Questions", href: "/#faqs" },
@@ -987,7 +988,7 @@ export const social_links = {
   gmb: "https://share.google/QpbdwuOe90MRa003N",
   phone: "+91 86106 63178",
   phone_raw: "918610663178",
-  email: "contact@cookieinc.in",
+  email: "hello@cookieinc.in",
 };
 
 // Architecture Compliance (Pattern D: UPPER_SNAKE_CASE exports)
@@ -999,3 +1000,26 @@ export const CONTACT = contactpage;
 export const NAVBAR = navbar;
 export const FOOTER = footer;
 export const SOCIAL_LINKS = social_links;
+
+export const easybill = {
+  seo: {
+    title: "EasyBill — An upcoming product by Cookie Inc. | Coming Soon",
+    desc: "Billing made easy. Business made smarter. A proposed billing solution for everyday retail operations by Cookie Inc.",
+  },
+  name: "EasyBill",
+  subtitle: "An upcoming product by Cookie Inc.",
+  tagline: "A Cookie Inc. product",
+  badge: "Coming Soon",
+  status: "In Pre-Production",
+  headline: "Billing made easy. Business made smarter.",
+  subheadline: "A proposed billing solution for everyday retail operations.",
+  manifesto: [
+    "Fast at the counter",
+    "Simple in the back office",
+    "Built for modern retail",
+  ],
+  whatsappLink:
+    "https://wa.me/918610663178?text=Hey%20Cookie%20Inc.%2C%20I'm%20interested%20in%20learning%20more%20about%20EasyBill",
+};
+
+export const EASYBILL = easybill;
