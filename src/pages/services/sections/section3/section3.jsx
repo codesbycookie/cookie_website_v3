@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
-import { servicepage } from "../../../../data/data";
+import { servicepage, social_links } from "../../../../data/data";
 
 export default function Section3() {
   const { section2 } = servicepage;
@@ -23,6 +22,9 @@ export default function Section3() {
         <div className="rounded-[16px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] overflow-hidden grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]">
           {section2.packages.map((pkg, idx) => {
             const isFeatured = idx === 1;
+            const whatsappHref = `https://wa.me/${social_links.phone_raw}?text=${encodeURIComponent(
+              `Hey Cookie Inc., I want to learn more about ${pkg.title}`
+            )}`;
 
             return (
               <motion.div
@@ -92,19 +94,23 @@ export default function Section3() {
 
                 <div className="pt-4 mt-auto">
                   {isFeatured ? (
-                    <Link
-                      to="/contact"
+                    <a
+                      href={whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full min-h-[44px] rounded-full bg-[#FAF6EE] hover:bg-[#FFFDF9] text-[#08090A] text-[14px] font-medium transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] flex items-center justify-center"
                     >
                       Get a quote
-                    </Link>
+                    </a>
                   ) : (
-                    <Link
-                      to="/contact"
+                    <a
+                      href={whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full min-h-[44px] rounded-full border border-white/[0.08] hover:border-[#D9A55B]/30 bg-white/[0.02] hover:bg-white/[0.04] text-[#F7F8F8] text-[14px] font-medium transition-colors flex items-center justify-center"
                     >
                       Get a quote
-                    </Link>
+                    </a>
                   )}
                 </div>
               </motion.div>

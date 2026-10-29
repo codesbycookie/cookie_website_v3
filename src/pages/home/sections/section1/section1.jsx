@@ -1,13 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
-  Zap,
-  Globe,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Button from "../../../../components/button";
 import { Magnetic, MOTION_TOKENS } from "../../../../utils/motion.util";
 
@@ -21,135 +15,60 @@ const DYNAMIC_VERBS = [
 const TRUST_CHIPS = [
   "Fixed-scope quotes",
   "Weekly working previews",
-  "100% in-house Chennai team",
-];
-
-const TRUST_METRICS = [
-  { label: "Production Builds", value: "40+", icon: Zap },
-  { label: "On-Time Delivery", value: "100%", icon: ShieldCheck },
-  { label: "Average Turnaround", value: "21 Days", icon: CheckCircle2 },
-  { label: "Global Footprint", value: "14 Countries", icon: Globe },
+  "In-house Chennai studio",
 ];
 
 const CLIENT_TRACK_1 = [
   {
-    id: "torque",
+    id: "torque-toyzz",
     name: "Torque Toyzz",
-    sector: "WhatsApp Commerce",
-    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
-    outcome: "3.4x higher checkout rate",
-    turnaround: "Delivered in 14 days",
-    tag: "Mobile Catalog",
+    sector: "E-Commerce Platform",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Torque_toyzz_tab_nlvv0z.jpg",
     link: "/work/torque-toyzz",
-    hasCaseStudy: true,
-  },
-  {
-    id: "how-to-cook",
-    name: "How to Cook",
-    sector: "Culinary Media & E-Com",
-    logo: "/imgs/How_to_cook_logo.svg",
-    outcome: "120k+ monthly active readers",
-    turnaround: "Delivered in 18 days",
-    tag: "High-Traffic Web",
-    link: "/work",
-    hasCaseStudy: false,
   },
   {
     id: "iq-bridge",
     name: "IQ Bridge",
-    sector: "AI & EdTech",
-    logo: "/imgs/iq-bridge-logo.png",
-    outcome: "Inquiries across 14 countries",
-    turnaround: "Delivered in 21 days",
-    tag: "Institutional Platform",
+    sector: "E-Learning Platform",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
     link: "/work/iq-bridge",
-    hasCaseStudy: true,
   },
   {
-    id: "vd-granite",
-    name: "V&D Granite",
-    sector: "Industrial & Export",
-    logo: "/imgs/V&D-logo.png",
-    outcome: "Real-time inventory tracking",
-    turnaround: "Delivered in 30 days",
-    tag: "B2B ERP Portal",
-    link: "/work",
-    hasCaseStudy: false,
-  },
-  {
-    id: "audnex",
-    name: "Audnex Studio",
-    sector: "Creative Agency",
-    logo: "/imgs/Audnex-logo.jpg",
-    outcome: "100% European client retention",
-    turnaround: "Delivered in 28 days",
-    tag: "Motion Portfolio",
-    link: "/work/audnex",
-    hasCaseStudy: true,
+    id: "chithu-vibes",
+    name: "Chithu Vibes",
+    sector: "Mini Commerce",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+    link: "/work/chithu-vibes",
   },
 ];
 
 const CLIENT_TRACK_2 = [
   {
-    id: "traffic",
-    name: "Traffic",
-    sector: "Urban Transit & Fleet",
-    logo: "/imgs/Traffic-logo.jpg",
-    outcome: "Sub-second dispatch response",
-    turnaround: "Delivered in 24 days",
-    tag: "Fleet Management",
-    link: "/work",
-    hasCaseStudy: false,
+    id: "sap-scholar",
+    name: "SAP Scholar",
+    sector: "Student App",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
+    link: "/work/sap-scholar",
   },
   {
     id: "sap-checklist",
-    name: "SAP Consulting Group",
-    sector: "Enterprise Operations",
-    logo: "/imgs/Sap-Logo.png",
-    outcome: "100% verification gate compliance",
-    turnaround: "Delivered in 42 days",
-    tag: "Enterprise Web App",
+    name: "SAP Checklist",
+    sector: "Employee Management Software",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
     link: "/work/sap-checklist",
-    hasCaseStudy: true,
   },
   {
-    id: "tourist",
-    name: "Tourist",
-    sector: "Travel & Hospitality",
-    logo: "/imgs/Tourist-logo.jpg",
-    outcome: "Real-time tour reservation flow",
-    turnaround: "Delivered in 16 days",
-    tag: "Booking Engine",
-    link: "/work",
-    hasCaseStudy: false,
-  },
-  {
-    id: "fashbridge",
-    name: "Fashbridge",
-    sector: "Apparel Retail",
-    logo: "/imgs/Fashbridge-logo.png",
-    outcome: "Unified multi-store catalog",
-    turnaround: "Delivered in 20 days",
-    tag: "Omnichannel Commerce",
-    link: "/work",
-    hasCaseStudy: false,
-  },
-  {
-    id: "torque-2",
-    name: "Torque Toyzz",
-    sector: "E-Commerce",
-    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763730491/Torque_Toyzz_1_1_ulc32t.png",
-    outcome: "1-tap WhatsApp checkout",
-    turnaround: "Delivered in 14 days",
-    tag: "WhatsApp API",
-    link: "/work/torque-toyzz",
-    hasCaseStudy: true,
+    id: "audnex",
+    name: "Audnex",
+    sector: "Landing Page",
+    logo: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
+    link: "/work/audnex",
   },
 ];
 
 export default function Section1() {
   const heroRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 30 });
+  const spotlightRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
   const [verbIndex, setVerbIndex] = useState(0);
 
@@ -162,11 +81,11 @@ export default function Section1() {
   }, [shouldReduceMotion]);
 
   const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
+    if (!heroRef.current || !spotlightRef.current) return;
     const rect = heroRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMousePos({ x, y });
+    spotlightRef.current.style.background = `radial-gradient(700px circle at ${x}% ${y}%, rgba(217, 165, 91, 0.08), transparent 70%)`;
   };
 
   return (
@@ -219,9 +138,11 @@ export default function Section1() {
 
       {/* 2. Interactive Specular Ambient Spotlight tracking cursor */}
       <div
+        ref={spotlightRef}
         className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-700 -z-10"
         style={{
-          background: `radial-gradient(700px circle at ${mousePos.x}% ${mousePos.y}%, rgba(217, 165, 91, 0.08), transparent 70%)`,
+          background:
+            "radial-gradient(700px circle at 50% 30%, rgba(217, 165, 91, 0.08), transparent 70%)",
         }}
       />
 
@@ -231,20 +152,6 @@ export default function Section1() {
         aria-hidden="true"
       />
 
-      {/* 4. Subtle Film Grain overlay */}
-      <svg
-        className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.024] -z-10 mix-blend-overlay"
-        aria-hidden="true"
-      >
-        <filter id="hero-film-grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#hero-film-grain)" />
-      </svg>
-
-      {/* ─────────────────────────────────────────────────────────────
-          HERO CORE: LEFT-ALIGNED (JUST LIKE WORKS PAGE)
-          ───────────────────────────────────────────────────────────── */}
       <div className="relative z-10 w-full max-w-[1180px] mx-auto text-left flex flex-col items-start">
         {/* Announcement Pill */}
         <div className="mb-4 sm:mb-7 hero-css-fade-up hero-delay-0">
@@ -260,9 +167,8 @@ export default function Section1() {
           </Link>
         </div>
 
-        {/* Wide Cinematic Headline with Cascading Staggered Word Reveal & Dynamic Action Verb */}
+        {/* Wide Cinematic Headline */}
         <h1 className="text-[28px] xs:text-[32px] sm:text-[46px] md:text-[56px] lg:text-[66px] xl:text-[72px] font-semibold tracking-[-0.035em] leading-[1.12] max-w-[1020px] mb-4 sm:mb-6 text-[#F7F8F8] text-left">
-          {/* Line 1: We build websites, mobile apps, and custom tools */}
           <span className="block overflow-hidden pb-1 sm:pb-1.5 pt-0.5">
             <span className="inline-flex flex-wrap justify-start gap-x-[0.25em]">
               {["We", "build", "websites,", "mobile", "apps,", "and", "custom", "tools"].map((word, i) => (
@@ -277,7 +183,6 @@ export default function Section1() {
             </span>
           </span>
 
-          {/* Line 2: that help ambitious companies [grow. | scale. | convert. | lead.] */}
           <span className="block overflow-hidden pb-1.5 sm:pb-2 pt-0.5">
             <span className="inline-flex flex-wrap items-baseline justify-start gap-x-[0.25em]">
               {["that", "help", "ambitious", "companies"].map((word, i) => (
@@ -290,7 +195,6 @@ export default function Section1() {
                 </span>
               ))}
 
-              {/* Dynamic Cycling Focus Word — strictly baseline-aligned, zero layout shift */}
               <span className="inline-flex items-baseline relative overflow-hidden align-baseline min-w-[3.2em] sm:min-w-[3.4em] text-left">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -312,12 +216,11 @@ export default function Section1() {
           </span>
         </h1>
 
-        {/* Harmoniously Proportioned Subtext */}
         <p className="text-[14.5px] sm:text-[17px] md:text-[19px] text-[#8A8F98] max-w-2xl leading-relaxed mb-6 sm:mb-8 text-left font-normal hero-css-fade-up hero-delay-2">
           A focused studio in Chennai. You collaborate directly with the people creating your software—no middlemen, no runaround.
         </p>
 
-        {/* Action Buttons with Magnetic hover on Primary */}
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 mb-5 sm:mb-8 hero-css-fade-up hero-delay-3 w-full sm:w-auto">
           <Magnetic strength={8}>
             <Button
@@ -341,8 +244,8 @@ export default function Section1() {
           </Button>
         </div>
 
-        {/* Trust Chips with animated stroke check icons - neatly aligned on mobile and desktop */}
-        <div className="hero-css-fade-up hero-delay-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-x-6 text-[12.5px] sm:text-[13px] text-[#62666D] mb-8 sm:mb-14">
+        {/* Trust Chips */}
+        <div className="hero-css-fade-up hero-delay-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-x-6 text-[12.5px] sm:text-[13px] text-[#62666D] mb-10 sm:mb-14">
           {TRUST_CHIPS.map((chip, i) => (
             <span key={chip} className="flex items-center gap-2">
               <svg
@@ -366,138 +269,89 @@ export default function Section1() {
             </span>
           ))}
         </div>
-
-        {/* Quiet Trust Metrics Bar (Styled with hairline vertical dividers like Works page) */}
-        <div className="hero-css-fade-up hero-delay-5 grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-0 pt-2 pb-14 sm:pb-16 w-full text-left">
-          {TRUST_METRICS.map((metric, i) => (
-            <div
-              key={metric.label}
-              className={`flex flex-col sm:pr-8 sm:mr-8 ${i !== TRUST_METRICS.length - 1 ? "sm:border-r sm:border-white/[0.08]" : ""
-                }`}
-            >
-              <span className="text-[20px] sm:text-[22px] font-semibold text-[#F7F8F8] tracking-tight">
-                {metric.value}
-              </span>
-              <span className="text-[13px] sm:text-[14px] text-[#8A8F98]">
-                {metric.label}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* Dual Counter-Flow Kinetic Client Tickers */}
+      {/* Dual Counter-Flow Kinetic Client Tickers (6 Official Projects) */}
       <div className="ticker-container relative w-full overflow-hidden space-y-4 sm:space-y-5">
-        {/* Soft Fade Edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-[#08090A] via-[#08090A]/80 to-transparent z-20" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-[#08090A] via-[#08090A]/80 to-transparent z-20" />
 
         {/* Track 1: Drifting Left */}
         <div className="animate-drift-left gap-4 sm:gap-5 px-3">
-          {[...CLIENT_TRACK_1, ...CLIENT_TRACK_1].map((client, idx) => {
-            const badgeContent = (
-              <>
-                <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.1] overflow-hidden flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    loading="lazy"
-                    decoding="async"
-                    width="32"
-                    height="32"
-                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-
-                <div className="flex items-center gap-2.5 whitespace-nowrap">
-                  <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] tracking-tight group-hover:text-[#FFE2A8] transition-colors">
-                    {client.name}
-                  </span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/[0.04] text-[#8A8F98] border border-white/[0.06] group-hover:text-[#A3A7AE] transition-colors">
-                    {client.sector}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 pl-1 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
-                  <span className="text-[10px] uppercase font-mono text-[#59D499]/90 hidden sm:inline">
-                    Live
-                  </span>
-                </div>
-              </>
-            );
-
-            return client.hasCaseStudy ? (
-              <Link
-                key={`${client.id}-${idx}`}
-                to={client.link}
-                className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0 cursor-pointer"
-              >
-                {badgeContent}
-              </Link>
-            ) : (
-              <div
-                key={`${client.id}-${idx}`}
-                className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0"
-              >
-                {badgeContent}
+          {[...CLIENT_TRACK_1, ...CLIENT_TRACK_1, ...CLIENT_TRACK_1].map((client, idx) => (
+            <Link
+              key={`${client.id}-${idx}`}
+              to={client.link}
+              className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0 cursor-pointer"
+            >
+              <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.1] overflow-hidden flex items-center justify-center p-1 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  decoding="async"
+                  width="32"
+                  height="32"
+                  className="w-full h-full object-cover rounded-full transition-all duration-300"
+                />
               </div>
-            );
-          })}
+
+              <div className="flex items-center gap-2.5 whitespace-nowrap">
+                <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] tracking-tight group-hover:text-[#FFE2A8] transition-colors">
+                  {client.name}
+                </span>
+                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/[0.04] text-[#8A8F98] border border-white/[0.06] group-hover:text-[#A3A7AE] transition-colors">
+                  {client.sector}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 pl-1 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
+                <span className="text-[10px] uppercase font-mono text-[#59D499]/90 hidden sm:inline">
+                  Shipped
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* Track 2: Drifting Right */}
         <div className="animate-drift-right gap-4 sm:gap-5 px-3">
-          {[...CLIENT_TRACK_2, ...CLIENT_TRACK_2].map((client, idx) => {
-            const badgeContent = (
-              <>
-                <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.1] overflow-hidden flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    loading="lazy"
-                    decoding="async"
-                    width="32"
-                    height="32"
-                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-
-                <div className="flex items-center gap-2.5 whitespace-nowrap">
-                  <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] tracking-tight group-hover:text-[#FFE2A8] transition-colors">
-                    {client.name}
-                  </span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/[0.04] text-[#8A8F98] border border-white/[0.06] group-hover:text-[#A3A7AE] transition-colors">
-                    {client.sector}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 pl-1 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
-                  <span className="text-[10px] uppercase font-mono text-[#59D499]/90 hidden sm:inline">
-                    Live
-                  </span>
-                </div>
-              </>
-            );
-
-            return client.hasCaseStudy ? (
-              <Link
-                key={`${client.id}-${idx}`}
-                to={client.link}
-                className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0 cursor-pointer"
-              >
-                {badgeContent}
-              </Link>
-            ) : (
-              <div
-                key={`${client.id}-${idx}`}
-                className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0"
-              >
-                {badgeContent}
+          {[...CLIENT_TRACK_2, ...CLIENT_TRACK_2, ...CLIENT_TRACK_2].map((client, idx) => (
+            <Link
+              key={`${client.id}-${idx}`}
+              to={client.link}
+              className="group flex items-center gap-3.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0D0E11]/90 border border-white/[0.08] hover:border-[#D9A55B]/40 hover:bg-[#121418] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] shrink-0 cursor-pointer"
+            >
+              <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.1] overflow-hidden flex items-center justify-center p-1 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  decoding="async"
+                  width="32"
+                  height="32"
+                  className="w-full h-full object-cover rounded-full transition-all duration-300"
+                />
               </div>
-            );
-          })}
+
+              <div className="flex items-center gap-2.5 whitespace-nowrap">
+                <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] tracking-tight group-hover:text-[#FFE2A8] transition-colors">
+                  {client.name}
+                </span>
+                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/[0.04] text-[#8A8F98] border border-white/[0.06] group-hover:text-[#A3A7AE] transition-colors">
+                  {client.sector}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 pl-1 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#59D499]" />
+                <span className="text-[10px] uppercase font-mono text-[#59D499]/90 hidden sm:inline">
+                  Shipped
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

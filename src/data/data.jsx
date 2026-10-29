@@ -2,260 +2,268 @@ import React from "react";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export const homepage = {
+  seo: {
+    title: "Websites, Apps & Custom Software in Chennai | Cookie Inc.",
+    desc: "We design and build websites, mobile apps, and custom business software in Chennai. Fixed timelines, clear pricing, and direct access to our founders.",
+  },
   section1: {
+    headline: "We build websites and apps that grow your business.",
+    headline_options: [
+      "We build websites and apps that grow your business.",
+      "Custom websites, mobile apps, and software built on time.",
+      "Turn your business idea into a working website or app.",
+    ],
+    cta_options: [
+      "Get a free quote",
+      "Book a free 20-minute call",
+      "Send us a message",
+    ],
     globe_description:
-      "From high-converting web applications to native-speed mobile apps, we engineer production software that helps ambitious businesses dominate their category.",
-    first_button: "Explore Our Work",
-    second_button: "Launch Your Project",
+      "We are a software and design studio in Chennai. We handle your entire project from first sketch to launch and daily support.",
+    first_button: "Get a free quote",
+    second_button: "View our work",
+    reassurance: "We reply within 24 hours. No sales pressure.",
   },
   section2: {
-    heading: "Software Engineered to Outperform, Scale, and Convert",
+    heading: "What we can build for your business",
     description:
-      "We don't build generic templates. We architect bespoke digital products designed to turn casual visitors into paying customers and power high-volume business operations.",
+      "You do not need to know anything about code. Tell us your business goal, and we will design, build, and launch the right tool for you.",
     feature_cards: [
       {
-        title: "High-Performance Web Apps",
+        title: "Websites & Online Stores",
         content:
-          "Blazing-fast, SEO-dominant web platforms engineered with modern React. Built for sub-second load times, flawless responsiveness, and aggressive conversion rates.",
+          "Fast, clear websites that look great on phones and computers. Customers can browse your products, book appointments, or order directly on WhatsApp.",
         img: "./imgs/web-development-icon.svg",
       },
       {
-        title: "Native Mobile Applications",
+        title: "Mobile Apps for Android & iOS",
         content:
-          "High-octane iOS and Android apps crafted for fluid responsiveness. One unified, bulletproof codebase engineered to perform under heavy production user traffic.",
+          "Easy-to-use phone apps for your customers, students, or staff. People can check updates, pay fees, or place orders from anywhere.",
         img: "./imgs/Mobile-dev.png",
       },
     ],
   },
   section3: {
-    heading:
-      "Engineering, brand craft, and market distribution — unified under one roof.",
+    heading: "Everything you need under one roof",
     cards: [
       {
-        title: "Brand Architecture & Identity",
+        title: "Logo & Brand Design",
         description:
-          "Iconic brand marks, comprehensive design systems, and visual guidelines that command instant authority and make your business unforgettable.",
+          "A clean logo, colors, and look that make customers trust your business from day one.",
       },
       {
-        title: "Performance Marketing & SEO",
+        title: "Custom Staff & Business Tools",
         description:
-          "Technical search dominance and targeted acquisition funnels built to drive qualified, high-ticket customer pipeline rather than vanity impressions.",
+          "Replace messy paper registers and spreadsheets with a simple dashboard to track staff tasks, attendance, and sales.",
       },
       {
-        title: "Dedicated Technical Support",
+        title: "Launch & Ongoing Care",
         description:
-          "Direct access to senior software engineers. We deploy, monitor cloud infrastructure, patch critical bugs, and unblock high-stakes product launches.",
+          "We set up your domain, put your site live, and stay available on WhatsApp whenever you need updates or help.",
       },
     ],
   },
   section4: {
-    title:
-      "Our High-Velocity Process: From Concept to Production in Three Sprints",
+    title: "How we work together in 4 simple steps",
     steps: [
       {
-        title: "Architect & Wireframe",
-        desc: "We dissect your business model, map every user touchpoint, and lock in a fixed-scope architectural plan before writing a single line of code.",
-        label: "Design",
+        title: "1. Free 20-minute discovery call",
+        desc: "You tell us what your business needs. We ask a few simple questions and suggest the best approach.",
+        label: "Step 1",
       },
       {
-        title: "Build With Precision",
-        desc: "Clean, maintainable code with weekly staging releases. You interact with working software every 7 days as it is being engineered.",
-        label: "Develop",
+        title: "2. Fixed quote & clear timeline",
+        desc: "Within 24 hours, we send a written plan showing exactly what we will build, when it will be ready, and the total cost.",
+        label: "Step 2",
       },
       {
-        title: "Stress-Test & Deploy",
-        desc: "Rigorous cross-device QA, Core Web Vitals tuning, and active production telemetry to guarantee flawless performance from day one.",
-        label: "Deliver",
+        title: "3. Weekly working previews",
+        desc: "We design and build your project step by step. Every week, we send a private link so you can try it on your phone.",
+        label: "Step 3",
+      },
+      {
+        title: "4. Launch, training & support",
+        desc: "We launch your website or app, show your team how to use it, and hand over 100% ownership of your code and designs.",
+        label: "Step 4",
       },
     ],
   },
   section5: {},
   section6: {
-    title: "Battle-Tested by Founders. Proven in Production.",
+    title: "What our clients say",
     reviews: [
       {
-        name: "Akilesh Sampath",
-        username: "@akilesh",
-        role: "Founder, ERP System",
-        body: "They did a marvelous job. This custom ERP streamlined our entire institution's daily workflows, eliminated manual paperwork, and paid for itself in months.",
+        name: "[ADD PROOF: Client Full Name, Sampath Academy of Physics]",
+        username: "@sampathacademy",
+        role: "Sampath Academy of Physics, North Chennai",
+        body: "[ADD PROOF: Paste real 1-2 sentence quote from Sampath Academy of Physics about SAP Scholar and SAP Checklist]",
         img: "/imgs/Sap-Logo.png",
       },
       {
-        name: "Karthikeyan",
-        username: "@karthik",
-        role: "Director, Traffic Logistics",
-        body: "The speed and visual polish of the final product blew us away. Flawless engineering, zero agency layers, and delivered ahead of schedule.",
-        img: "/imgs/Traffic-logo.jpg",
-      },
-      {
-        name: "JothiLakshmi",
-        username: "@jothi",
-        role: "Operations Head, Tourist",
-        body: "Direct WhatsApp communication with the builders, crystal-clear pricing, and zero middleman delay. Hands-down our best technology partner.",
-        img: "/imgs/Tourist-logo.jpg",
-      },
-      {
-        name: "Srinivas P",
-        username: "@srinivas",
-        role: "Managing Director, V&D Granite",
-        body: "Transparent quotes, rock-solid engineering, and an export catalog platform that opened major high-value international buyer leads.",
-        img: "/imgs/V&D-logo.png",
-      },
-      {
-        name: "Hitheeswar",
-        username: "@hitheeswar",
-        role: "CEO, Audnex",
-        body: "World-class motion UI and sub-100ms execution speed. Inbound global client inquiries surged immediately after our new platform went live.",
-        img: "/imgs/Audnex-logo.jpg",
-      },
-      {
-        name: "Robin Sighla",
-        username: "@robin",
+        name: "[ADD PROOF: Client Full Name, IQ Bridge]",
+        username: "@iqbridge",
         role: "Co-Founder, IQ Bridge",
-        body: "Incredible interactive engineering. They handled complex platform requirements with deep precision, proactive communication, and absolute ownership.",
+        body: "[ADD PROOF: Paste real 1-2 sentence quote from IQ Bridge founder about their e-learning website]",
         img: "/imgs/iq-bridge-logo.png",
       },
+      {
+        name: "[ADD PROOF: Client Full Name, Torque Toyzz]",
+        username: "@torquetoyzz",
+        role: "Founder, Torque Toyzz",
+        body: "[ADD PROOF: Paste real 1-2 sentence quote from Torque Toyzz about their WhatsApp e-commerce catalog]",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Torque_toyzz_tab_nlvv0z.jpg",
+      },
+      {
+        name: "[ADD PROOF: Client Full Name, Chithu Vibes]",
+        username: "@chithuvibes",
+        role: "Founder, Chithu Vibes",
+        body: "[ADD PROOF: Paste real 1-2 sentence quote from Chithu Vibes about their mini-commerce website]",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+      },
+      {
+        name: "[ADD PROOF: Client Full Name, Audnex]",
+        username: "@audnex",
+        role: "Founder, Audnex",
+        body: "[ADD PROOF: Paste real 1-2 sentence quote from Audnex about their landing page]",
+        img: "/imgs/Audnex-logo.jpg",
+      },
     ],
-    title2: "Featured Production Work",
+    title2: "Recent projects we built",
     projects: [
       {
-        title: "Torque Toyzz – High-Velocity E-Commerce Hub",
+        title: "Torque Toyzz — E-Commerce Platform",
         description:
-          "Mobile-first RC commerce catalog with 1-tap direct WhatsApp checkout, sub-100ms product search, and automated inventory sync.",
-        img: "/imgs/Torque_toyzz_tab.jpeg",
+          "Problem: Mobile shoppers needed an easier way to find and buy remote-controlled vehicles. What we built: A mobile-friendly catalog with instant product search and direct WhatsApp ordering. Result: [ADD PROOF: e.g., number of orders or customer feedback].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
       },
       {
-        title: "ERP Enterprise Portal – Academic & Operational Suite",
+        title: "IQ Bridge — E-Learning Platform",
         description:
-          "Unified multi-role management portal for institutions handling real-time fee tracking, attendance, faculty scheduling, and student records.",
-        img: "/imgs/Sap_app.jpeg",
+          "Problem: An education venture founded by IIT and IIM alumni needed a trustworthy website to guide students. What we built: A clear, student-friendly e-learning website showcasing their programs and mentors. Result: [ADD PROOF: student inquiries or feedback].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
       },
       {
-        title: "Chitu Vibes – Fluid Mini-Commerce Application",
+        title: "Chithu Vibes — Mini Commerce",
         description:
-          "High-engagement retail storefront designed for rapid product discovery, frictionless mobile ordering, and direct social commerce.",
-        img: "/imgs/Chitu_vibes_laptop.png",
+          "Problem: A Tamil heritage laser-craft brand needed an online store to display and sell custom products. What we built: A clean mini-commerce storefront designed for easy browsing on phones. Result: [ADD PROOF: customer response or sales outcome].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+      },
+      {
+        title: "SAP Scholar — Student App",
+        description:
+          "Problem: Sampath Academy of Physics in North Chennai needed a simple way to share attendance, marks, and fee updates with students. What we built: An Android app where students check marks, attendance, fees, and study notes. Result: [ADD PROOF: number of students using the app].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
+      },
+      {
+        title: "SAP Checklist — Employee Management Software",
+        description:
+          "Problem: Managing daily staff tasks and employee records manually took too much administrative time. What we built: A central web tool for Sampath Academy of Physics to track staff details and daily tasks. Result: [ADD PROOF: time saved or staff feedback].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
+      },
+      {
+        title: "Audnex — Landing Page",
+        description:
+          "Problem: Audnex needed a professional website to explain their services clearly to new visitors. What we built: A clean, modern landing page that works smoothly on phones and laptops. Result: [ADD PROOF: client feedback or inquiries].",
+        img: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
       },
     ],
   },
   section7: {
-    title: "Ready to Build Something That Actually Moves the Needle?",
+    title: "Have a project in mind? Let’s talk.",
     description:
-      "Tell us what you're building. We review your requirements and reply within 1 business day with clear architecture, realistic milestones, and a fixed quote.",
-    first_button: "Start Your Project",
-    second_button: "Chat on WhatsApp",
+      "Tell us what you want to build. We will reply within 24 hours with honest advice, a clear timeline, and a fixed price quote.",
+    first_button: "Get a free quote",
+    second_button: "View our work",
   },
   section8: {
-    title: "Frequently Asked Questions",
+    title: "Common questions before you start",
     faqs: [
       {
-        question: "What services does Cookie Inc. deliver?",
+        question: "How much will my website or app cost?",
         answer:
-          "We engineer custom web applications, native-feel iOS & Android apps, custom ERP systems, UI/UX design systems, and technical brand identities. One cohesive engineering studio handles everything from first wireframe to cloud production.",
+          "Every project is priced based on what you need built. Starting packages begin at [ADD PROOF: e.g., ₹XX,XXX for landing pages / ₹XX,XXX for custom apps]. Once we discuss your goals on a quick call, we give you a fixed written quote with zero hidden charges.",
       },
       {
-        question: "How long does a typical build take?",
+        question: "How long will it take to build?",
         answer:
-          "A focused web MVP or marketing engine typically ships in 2 to 4 weeks. Full-scale full-stack platforms, ERPs, and mobile applications take 6 to 12 weeks depending on complexity. We quote up-front with locked delivery dates.",
+          "A business website or landing page usually takes [ADD PROOF: e.g., 2 to 3 weeks]. A mini-commerce store, mobile app, or custom management tool typically takes [ADD PROOF: e.g., 4 to 8 weeks]. We agree on the delivery date before we start.",
       },
       {
-        question: "Do you provide post-launch support and maintenance?",
+        question: "Will I own the website, code, and design files?",
         answer:
-          "Yes. We monitor production uptime, push security patches, optimize database queries, and provide structured monthly support SLAs so your software runs smoothly as user traffic multiplies.",
+          "Yes, 100%. Once the project is completed and paid for, you own the domain, website, source code, and all design files. We never lock you in.",
       },
       {
-        question: "Can we review live case studies of past work?",
+        question: "What if you get delayed?",
         answer:
-          "Absolutely. Our portfolio showcases live platforms spanning e-commerce, EdTech, manufacturing, logistics, and creative agencies. We are happy to walk you through our technical architecture on a call.",
+          "We break your project into weekly steps and show you working progress every week. Because you see the work every 7 days, there are no last-minute surprises or disappearing acts.",
       },
       {
-        question: "What is your development cadence?",
+        question: "Do you provide support after launch?",
         answer:
-          "We work in rapid 1-week sprints. Every 7 days, you receive a clickable live staging build. You test and validate working software as it gets written, ensuring total transparency and zero surprises.",
+          "Yes. Every project includes post-launch support to fix any issues and help your team settle in. We also offer affordable monthly care plans if you want us to handle regular updates.",
       },
       {
-        question: "How does fixed-scope pricing work?",
+        question: "I am not technical. Will you guide me?",
         answer:
-          "No surprise hourly billing or hidden agency fees. We define deliverables, technical milestones, and timelines upfront. You know the exact cost before we write the first line of code.",
-      },
-      {
-        question: "What happens after our product goes live?",
-        answer:
-          "We manage domain configuration, DNS cutover, SSL certification, server scaling, and initial real-world traffic monitoring to guarantee a seamless launch day.",
-      },
-      {
-        question: "How do we get started?",
-        answer:
-          "Simply reach out through our contact form or ping our founders directly on WhatsApp at +91 86106 63178. We will schedule a scoping call and share a structured quote within 24 hours.",
+          "Yes. You do not need to know any technical terms. We explain everything in plain English and handle the domain, hosting, design, and setup for you.",
       },
     ],
-    description: "Have a specific project or idea in mind? Let's talk.",
-    button: "Contact Our Engineers",
+    description: "Still have a question? Send us a quick message.",
+    button: "Get a free quote",
   },
 };
 
 export const aboutpage = {
+  seo: {
+    title: "About Cookie Inc. | Software & Design Studio in Chennai",
+    desc: "Meet Cookie Inc., a Chennai software studio helping business owners, institutes, and shops launch websites, apps, and custom tools.",
+  },
   section1: {
-    title: ["The Studio Turning Bold Ideas into ", "Market Leaders"],
+    title: ["A Chennai studio that builds software ", "without the runaround."],
     subtitle:
-      "We are an engineering and design studio in Chennai. We cut through agency fluff, eliminate layers of bureaucracy, and craft production software for founders who refuse to compromise on quality.",
+      "We started Cookie Inc. to help business owners, coaching institutes, and growing brands get reliable websites and apps — with direct access to the people building them.",
     img: "/imgs/placeholder.png",
   },
   section2: {
-    title: "How We Built the Studio — From Zero to High-Velocity Shipping",
+    title: "How We Work & Why Business Owners Trust Us",
     items: [
       {
-        title: "Chapter 1: The Core Conviction",
+        title: "Chapter 1: Why We Started Cookie Inc.",
         description:
-          "We started with one clear premise: ambitious businesses deserve software built to the highest engineering and aesthetic standard — without paying bloated agency overhead.",
+          "Too many business owners told us the same story: they hired an agency, paid a big advance, and waited months with little to show. We started Cookie Inc. in Chennai to offer a simpler, honest way to build software.",
         image:
           "https://images.unsplash.com/photo-1732310216648-603c0255c000?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute bottom-80 left-[20%] rotate-[-5deg]",
       },
       {
-        title: "Chapter 2: First High-Impact Deliveries",
+        title: "Chapter 2: Direct Access to the Founders",
         description:
-          "We shipped our first commercial platforms and e-commerce engines. We developed our rapid scoping framework: cut the unnecessary fat, focus on core user journeys, and ship faster than anyone else.",
+          "When you work with us, you do not talk to a salesperson who disappears after you sign. You talk directly on WhatsApp and phone with the founders and builders creating your project.",
         image:
           "https://images.unsplash.com/photo-1697909623564-3dae17f6c20b?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-40 left-[25%] rotate-[-7deg]",
       },
       {
-        title: "Chapter 3: Full-Stack Power & Custom Architecture",
+        title: "Chapter 3: Online Stores & Brand Websites",
         description:
-          "We graduated to complex full-stack enterprise systems: role-based authentication, real-time database synchronisation, payment gateway architectures, and high-concurrency portals.",
+          "We helped retail and heritage brands like Torque Toyzz, Chithu Vibes, and Audnex launch clean online catalogs and websites that make it easy for customers to browse and buy on their phones.",
         image:
           "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-5 left-[40%] rotate-[8deg]",
       },
       {
-        title: "Chapter 4: The 7-Day Sprint Cadence",
+        title: "Chapter 4: Education Platforms & Coaching Apps",
         description:
-          "We codified our production rhythm: strict component design systems, weekly staging releases, and zero-defect deployments. Clients test living software as each sprint concludes.",
+          "We partnered with educators like IQ Bridge and Sampath Academy of Physics in North Chennai to build student Android apps, e-learning websites, and staff management tools.",
         image:
           "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-32 left-[55%] rotate-[10deg]",
       },
       {
-        title: "Chapter 5: Expanding Into Mobile & Custom ERPs",
+        title: "Chapter 5: End-to-End Care From Sketch to Support",
         description:
-          "We unified mobile application engineering and operational ERP development under one roof. Our clients began running their entire sales, inventory, and operations on software built by our team.",
-        image:
-          "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute top-20 right-[35%] rotate-[2deg]",
-      },
-      {
-        title: "Chapter 6: National Footprint & Proven Scale",
-        description:
-          "Our client roster expanded across Chennai, Bengaluru, Hyderabad, and overseas — shipping mission-critical platforms across edtech, manufacturing, commerce, and logistics.",
-        image:
-          "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        className: "absolute top-24 left-[45%] rotate-[-7deg]",
-      },
-      {
-        title: "Chapter 7: The Present and Beyond",
-        description:
-          "A tight, elite team of engineers and product designers shipping software that moves business needle. No junior handoffs, no corporate bloat — just pure engineering excellence.",
+          "We handle the logo, screen design, coding, website launch, and post-launch support. You focus on running your business while we take care of the technology.",
         image:
           "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         className: "absolute top-8 left-[30%] rotate-[4deg]",
@@ -263,137 +271,165 @@ export const aboutpage = {
     ],
   },
   section3: {
-    title: "Who Are We?",
-    tagline: "At Cookie Inc., we don’t just build — we engineer for commercial dominance",
+    title: "Why business owners choose us",
+    tagline: "Simple promises we keep on every project",
     items: [
       {
-        title: "Engineering Without Compromise",
+        title: "You talk directly to the builders",
         description:
-          "Modular code architecture, sub-second load times, and clean documentation your internal team can proudly own for years.",
-        header: "Code Quality",
+          "No middlemen or account managers. You speak directly with the people designing and building your website or app.",
+        header: "Direct Access",
         className: "md:col-span-2",
       },
       {
-        title: "Direct Builder Collaboration",
+        title: "Fixed price before we start",
         description:
-          "Zero account managers or corporate telephone games. You collaborate directly with the senior engineers writing your code.",
-        header: "Zero Fluff",
+          "We give you a clear written quote and delivery date upfront. No surprise bills halfway through.",
+        header: "Clear Pricing",
         className: "md:col-span-1",
       },
       {
-        title: "Obsessive Conversion Craft",
+        title: "You own 100% of your product",
         description:
-          "Every button placement, micro-interaction, and layout hierarchy is engineered to maximize customer retention and sales.",
-        header: "Product Craft",
+          "Your domain, design files, and code belong completely to you. We never hold your website hostage.",
+        header: "Full Ownership",
         className: "md:col-span-1",
       },
       {
-        title: "Predictable, Fixed-Scope Delivery",
+        title: "We stay to support you after launch",
         description:
-          "Clear deliverables, locked milestones, and transparent pricing before day one. No surprises, no scope creep, no delays.",
-        header: "On-Time Shipping",
+          "We do not vanish once your site goes live. We train your team and stay available when you need updates.",
+        header: "Ongoing Support",
         className: "md:col-span-2",
       },
     ],
   },
   section4: {
-    hypertext: "Built in Chennai. Engineered for Ambitious Founders Everywhere.",
-    fliptext: "~ Built By Founders, For Founders ~",
+    hypertext: "Built in Chennai for growing businesses.",
+    fliptext: "~ Honest Work. Fixed Timelines. ~",
   },
 };
 
-export const contactpage = {};
+export const contactpage = {
+  seo: {
+    title: "Contact Us for a Free Quote | Cookie Inc. Chennai",
+    desc: "Tell us what you want to build. We reply within 24 hours with honest advice, a realistic timeline, and a clear quote.",
+  },
+  faqs: [
+    {
+      question: "What happens after I send this message?",
+      answer:
+        "One of our founders will read your note and reply within 24 hours via WhatsApp, phone, or email to schedule a short 20-minute call.",
+    },
+    {
+      question: "Is the first call and quote really free?",
+      answer:
+        "Yes. Our first conversation and written project quote are 100% free with no obligation to hire us.",
+    },
+    {
+      question: "What if I do not have a full plan yet?",
+      answer:
+        "That is completely fine. Just tell us what your business does and what problem you want to solve. We will help you figure out the rest.",
+    },
+    {
+      question: "Can we speak in Tamil or English?",
+      answer:
+        "Yes, our team is based in Chennai and we are happy to speak with you in Tamil or English.",
+    },
+  ],
+};
 
 export const servicespage = {
+  seo: {
+    title: "Web Design, Mobile Apps & Software Services | Cookie Inc.",
+    desc: "Websites, online stores, Android & iOS apps, branding, and custom staff software built in Chennai with fixed timelines and clear pricing.",
+  },
   section1: {
-    title: ["High-Octane Execution That Exceeds ", "Every Expectation"],
+    title: ["Websites, apps, and custom tools ", "built around your business."],
     subtitle:
-      "Every line of code purposeful. Every feature tied to real business revenue. Web apps, mobile products, ERP engines, and brand systems delivered on time.",
+      "We handle everything from design to launch and support. Plain-English communication, fixed timelines, and clear pricing before we start.",
   },
   section2: {
-    title: "Turnkey Packages Baked for Immediate Growth",
+    title: "Clear packages to help you get started",
     subtitle:
-      "From emerging startups to market leaders, choose a defined starting scope engineered to launch your product with maximum impact.",
+      "Pick the package that matches your current business stage. We can also customize any package to fit your exact needs.",
     packages: [
       {
         title: "Business LaunchPad",
-        subtitle: "The complete foundation for high-impact market entry.",
+        subtitle:
+          "Best for new businesses, clinics, institutes, and shops that need a professional website and brand identity.",
+        startingPrice: "[ADD PROOF: Starting at ₹XX,XXX]",
+        timeline: "[ADD PROOF: Typical timeline: 2–3 weeks]",
+        whatsappHref:
+          "https://wa.me/918610663178?text=Hey%20Cookie%20Inc.%2C%20I%20want%20to%20learn%20more%20about%20Business%20LaunchPad",
         features: [
-          "Bespoke Brand Mark & Vector Identity Kit",
-          "High-Conversion Web Application Development",
-          "Custom Domain Setup with Enterprise SSL Security",
-          "Technical SEO & Core Web Vitals Optimization",
-          "Social Media Identity Suite & Launch Graphics",
-          "Google Business Profile & Local Search Dominance",
-          "30 Days of Dedicated Post-Launch Support",
+          "Custom logo and brand colors",
+          "Mobile-friendly business website (up to 5 pages)",
+          "Domain name and secure HTTPS setup",
+          "Google Search Console & Google Maps business listing setup",
+          "Direct WhatsApp chat button and contact form",
+          "30 days of free post-launch support",
         ],
       },
       {
         title: "LevelUp Pack",
-        subtitle: "For growing businesses ready to scale reach and customer acquisition.",
+        subtitle:
+          "Best for growing companies and institutes that need a dynamic website where you can update content easily.",
+        startingPrice: "[ADD PROOF: Starting at ₹XX,XXX]",
+        timeline: "[ADD PROOF: Typical timeline: 3–5 weeks]",
+        whatsappHref:
+          "https://wa.me/918610663178?text=Hey%20Cookie%20Inc.%2C%20I%20want%20to%20learn%20more%20about%20LevelUp%20Pack",
         features: [
-          "Comprehensive Brand Identity & Vector Design System",
-          "Multi-Page High-Performance Business Platform",
-          "Targeted Performance Marketing & SEO Strategy",
-          "Custom Third-Party API & Payment Integrations",
-          "Instant WhatsApp Business Chat Integration",
-          "Influencer Collaboration & High-Trust Brand Assets",
-          "Continuous Uptime Monitoring & Maintenance",
+          "Complete brand identity and design kit",
+          "Multi-page dynamic website with an easy admin panel",
+          "Online inquiry, booking, or lead collection system",
+          "Fast loading speed on mobile phones and laptops",
+          "Payment gateway or WhatsApp integration",
+          "Staff training + post-launch support",
         ],
       },
       {
-        title: "The Scale-Cart",
-        subtitle: "Full-scale commerce and operational software infrastructure.",
+        title: "The Scale-Cart & Custom Apps",
+        subtitle:
+          "Best for retail stores, coaching academies, and businesses that need an online store, mobile app, or staff software.",
+        startingPrice: "[ADD PROOF: Starting at ₹XX,XXX]",
+        timeline: "[ADD PROOF: Typical timeline: 4–8 weeks]",
+        whatsappHref:
+          "https://wa.me/918610663178?text=Hey%20Cookie%20Inc.%2C%20I%20want%20to%20learn%20more%20about%20The%20Scale-Cart%20%26%20Custom%20Apps",
         features: [
-          "High-Converting E-Commerce Storefront + Mobile App",
-          "Custom Admin Control Center & Real-Time Analytics",
-          "1-Tap Direct WhatsApp Checkout & Order Sync",
-          "Complete Brand Identity System & Marketing Collaterals",
-          "Advanced Conversion Rate & Speed Optimization",
-          "Paid Acquisition Funnel & Retargeting Strategy",
-          "Automated Inventory Tracking & WhatsApp Notifications",
-          "Ongoing Code Maintenance & Security Hardening",
+          "Online store, Android/iOS mobile app, or staff management software",
+          "Simple dashboard to manage products, students, or employees",
+          "1-tap WhatsApp order confirmation or fee/attendance tracking",
+          "Fast product search and category filters",
+          "Complete setup, testing, and staff onboarding",
+          "Dedicated post-launch support and maintenance",
         ],
       },
     ],
   },
   section3: {
-    title: "Making Of A Masterpiece",
+    title: "How we take your project from idea to launch",
     subtitle:
-      "From Blueprint to Launch — Every Stage of Our Sprint Cadence is Calibrated for Speed, Precision, and Impact.",
+      "Four clear steps so you always know what we are working on and when it will be ready.",
     timeline_data: [
       {
-        title: "Research & Strategy",
+        title: "1. Understand your business & lock the price",
         content: (
           <div className="py-10">
             <p className="mb-8 text-xs font-normal text-white-800 md:text-sm dark:text-white-200">
-              We begin by dissecting your customer journeys, operational bottlenecks, and competitor landscape. We validate requirements early to ensure zero wasted development cycles.
+              We talk with you to understand your customers and daily workflow. Then we give you a written list of what we will build, the exact delivery date, and a fixed price.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="/imgs/Research.webp"
-                alt="Research stage 1"
+                alt="Planning session 1"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
               />
               <img
                 src="/imgs/Research-2.jpg"
-                alt="Research stage 2"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Research-4.png"
-                alt="Research stage 3"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Research-3.jpg"
-                alt="Research stage 4"
+                alt="Planning session 2"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
@@ -403,37 +439,23 @@ export const servicespage = {
         ),
       },
       {
-        title: "High-Fidelity Design",
+        title: "2. Show you the screen designs first",
         content: (
           <div className="py-10">
             <p className="mb-8 text-xs font-normal text-white-800 md:text-sm dark:text-white-200">
-              We design interactive, clickable prototypes in Figma. You explore the look, feel, typography, and micro-interactions of your software before a single line of backend code is committed.
+              Before we build the final software, we show you how every screen will look on a phone and computer. We adjust the design until you are happy with it.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="/imgs/Design-1.png"
-                alt="Design showcase 1"
+                alt="Screen design preview 1"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
               />
               <img
                 src="/imgs/Design-2.png"
-                alt="Design showcase 2"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Design-3.png"
-                alt="Design showcase 3"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Design-4.jpeg"
-                alt="Design showcase 4"
+                alt="Screen design preview 2"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
@@ -443,37 +465,23 @@ export const servicespage = {
         ),
       },
       {
-        title: "Full-Stack Development",
+        title: "3. Build with weekly live previews",
         content: (
           <div className="py-10">
             <p className="mb-4 text-xs font-normal text-white md:text-sm dark:text-white-200">
-              Our engineers write clean, modular React and Node codebases. Every component is optimized for performance, security, and hardware-accelerated fluid transitions.
+              Every week, we share a private link where you can tap through your website or app on your own phone and see real progress.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="/imgs/Development-1.jpeg"
-                alt="Development sprint 1"
+                alt="Building software 1"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
               />
               <img
                 src="/imgs/Development-2.jpg"
-                alt="Development sprint 2"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Development-3.jpg"
-                alt="Development sprint 3"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Development-4.jpg"
-                alt="Development sprint 4"
+                alt="Building software 2"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
@@ -483,37 +491,23 @@ export const servicespage = {
         ),
       },
       {
-        title: "Testing, Launch & Scale",
+        title: "4. Launch, train your team & support",
         content: (
           <div className="py-10">
             <p className="mb-4 text-xs font-normal text-white md:text-sm dark:text-white-200">
-              On time. On point. We launch only after rigorous automated testing, browser compatibility checks, and load simulations — followed by dedicated telemetry and production support.
+              We test everything on phones and computers, put your project live, teach your staff how to use it, and stay available on WhatsApp for support.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="/imgs/Cashew_Mockup.svg"
-                alt="Delivered product 1"
+                src="https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png"
+                alt="Torque Toyzz E-Commerce Platform"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
               />
               <img
-                src="/imgs/Skill_link_mockup.svg"
-                alt="Delivered product 2"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Elderly-Mock-up.svg"
-                alt="Delivered product 3"
-                width={500}
-                height={500}
-                className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
-              />
-              <img
-                src="/imgs/Project-2.png"
-                alt="Delivered product 4"
+                src="https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png"
+                alt="IQ Bridge E-Learning Platform"
                 width={500}
                 height={500}
                 className="h-20 w-full rounded-lg object-cover hairline-border md:h-44 lg:h-60"
@@ -525,221 +519,397 @@ export const servicespage = {
     ],
   },
   section4: {
-    title: "What We Cook — Six Pillars of Studio Excellence",
-    subtitle: "From High-Velocity Web Apps to Custom Enterprise ERPs, We Build It All.",
+    title: "Services we offer",
+    subtitle: "Everything your business needs to look professional, sell online, and run smoothly.",
     services: [
       {
-        title: "Web Engineering",
+        title: "Business & Dynamic Websites",
         description: [
-          "Bespoke websites and web applications",
-          "engineered with modern React architectures",
-          "built for sub-second speeds and sales conversion.",
+          "Websites that load fast on phones and computers",
+          "Easy for you to update text, photos, and offers",
+          "Built to turn visitors into phone calls and inquiries",
         ],
       },
       {
-        title: "Enterprise ERPs",
+        title: "Online Stores & Mini-Commerce",
         description: [
-          "Custom operational hubs and dashboards",
-          "streamlining complex workflows and records",
-          "scaling seamlessly with your business expansion.",
+          "Product catalogs with instant search and filters",
+          "Customers can order in one tap via WhatsApp or online payment",
+          "Simple dashboard to add products and update prices",
         ],
       },
       {
-        title: "UI/UX Product Design",
+        title: "Mobile Apps (Android & iOS)",
         description: [
-          "Click-worthy, intuitive interfaces",
-          "reducing friction at every user milestone",
-          "delighting customers and driving retention.",
+          "Custom phone apps for students, customers, or staff",
+          "Track attendance, marks, fee details, or orders",
+          "Smooth and reliable on everyday smartphones",
         ],
       },
       {
-        title: "Digital Growth & SEO",
+        title: "Staff & Operations Software",
         description: [
-          "Technical search dominance and performance ads",
-          "capturing high-intent commercial buyers",
-          "engineered for measurable return on investment.",
+          "Replace messy spreadsheets and paper registers",
+          "Organize employee details and track daily tasks",
+          "Save hours of manual admin work every week",
         ],
       },
       {
-        title: "Mobile App Development",
+        title: "UI/UX Screen Design",
         description: [
-          "Native-grade iOS & Android applications",
-          "fluid animations and offline resilience",
-          "tested across real viewports and devices.",
+          "Clean, simple screens that anyone can use without confusion",
+          "Interactive previews before coding begins",
+          "Designed for both mobile phones and desktop screens",
         ],
       },
       {
-        title: "Brand Strategy & Design",
+        title: "Logo & Brand Identity",
         description: [
-          "Authoritative brandmarks and visual identities",
-          "setting your brand apart in competitive markets",
-          "ready for digital applications and physical print.",
+          "Memorable logos, brand colors, and fonts",
+          "Ready-to-use files for your website, signboard, and social media",
+          "Helps your business stand out and look trustworthy",
         ],
       },
     ],
   },
+  faqs: [
+    {
+      question: "How much does a project cost?",
+      answer:
+        "Our packages start at [ADD PROOF: e.g., ₹XX,XXX for a business website]. After a short 20-minute call to understand what you need, we send a fixed written price so you know the exact cost upfront.",
+    },
+    {
+      question: "Can I pay in milestones instead of all at once?",
+      answer:
+        "Yes. You pay in clear stages as you see the design and working software progress—never 100% upfront.",
+    },
+    {
+      question: "Will I be able to update products or text myself?",
+      answer:
+        "Yes. If you need to add products, post updates, or manage staff tasks, we build a simple dashboard and show you how to use it in 15 minutes.",
+    },
+    {
+      question: "What if I need help six months after launch?",
+      answer:
+        "We are based right here in Chennai and are always reachable on WhatsApp or phone for updates, new features, or support.",
+    },
+  ],
 };
 
 export const servicepage = servicespage;
 
 export const portfoliopage = {
+  seo: {
+    title: "Our Work & Client Case Studies | Cookie Inc. Chennai",
+    desc: "See the websites, e-learning platforms, mini-commerce stores, and mobile apps we have built for businesses and institutes.",
+  },
   section1: {
-    title: ["Our Work Isn’t Just Pretty Pixels. It’s ", "Real Revenue Engines"],
+    title: ["Real websites and apps we built ", "for real businesses."],
     subtitle:
-      "Documented case studies of production web applications, custom enterprise tools, and commercial platforms engineered for ambitious businesses.",
+      "Every project below solved a specific business problem. See what our clients needed, what we built for them, and how it helps their daily work.",
   },
   section2: {
     content: {
-      title: "Hand-Crafted for Commercial Success, Not Generic Templates.",
+      title: "Built Around Real Customer & Staff Needs.",
       tagline: [
-        "Designs that captivate. Code that scales under load.",
-        "Digital experiences engineered to dominate your market.",
+        "Easy for your customers to use on any phone.",
+        "Simple for your team to manage every day.",
       ],
       project: [
-        "Torque Toyzz: High-Speed E-Commerce",
-        "Custom catalog with instant WhatsApp checkout that drove 3.4x higher mobile order conversions.",
-        "SAP Checklist Portal: Enterprise Operations Hub",
-        "Centralized verification gateway managing mission-critical verification gates across multi-module SAP rollouts.",
+        "Torque Toyzz: E-Commerce Platform",
+        "Mobile-first catalog with immediate product search and direct WhatsApp order confirmation.",
+        "SAP Checklist: Employee Management Software",
+        "Centralized web tool for Sampath Academy of Physics to organize staff records and daily tasks.",
       ],
       images: [
-        "/imgs/Skill_link_mockup.svg",
-        "/imgs/Project-2.png",
+        "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
+        "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
       ],
     },
     images: [
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747072/abe746ee-6199-4b2f-bfe1-653722e87a31.png",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747210/f0feb4d9-fe85-4ce7-b567-0fa979167c80.png",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747158/9b496f2a-06ca-490d-8d47-587b75da95b1.png",
-      "/imgs/Project-2.png",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747951/Screenshot_2025-11-21_232834_y9yogu.png",
-      "/imgs/Fashbridge-logo.png",
-      "/imgs/iq-bridge-logo.png",
-      "/imgs/Cashew_Mockup.svg",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763748256/Screenshot_2025-11-21_233345_wnodom.png",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763748113/Screenshot_2025-11-21_233129_nbsiii.png",
-      "/imgs/Traffic-logo.jpg",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747608/77a9bb23-3601-46ee-b370-f33bfe566586.png",
-      "/imgs/V&D-logo.png",
-      "/imgs/Tourist-logo.jpg",
-      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1763747850/Screenshot_2025-11-21_232650_yzvags.png",
-      "/imgs/Audnex-logo.jpg",
-      "/imgs/How_to_cook_logo.svg",
-      "/imgs/Elderly-Mock-up.svg",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Torque_toyzz_tab_nlvv0z.jpg",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264917/iqbridge-2_pqbwq9.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264923/chituvibes2_wddjds.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Sap_app2_o1keyn.jpg",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
+      "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
     ],
   },
   section3: {
-    count: 40,
-    title: "+ Commercial Products Shipped and Scaled",
+    count: 6,
+    title: "Projects Delivered Across Retail, Education & Services",
     subtitle:
-      "From early MVP prototypes to high-traffic commercial platforms across India.",
-    button: "Build Your Product With Us",
+      "Have a similar project in mind? Tell us what you need and we will send you a clear plan and quote.",
+    button: "Get a free quote",
   },
   section4: {
-    title: "Documented Case Studies",
+    title: "Client Case Studies",
     cards: [
       {
-        slug: "sap-erp-application",
-        title: "SAP ERP Campus Application: Student & Academic Hub",
-        client: "Educational Institution",
-        year: "2025",
-        category: "Mobile Application & ERP",
-        timeline: "6 Weeks",
-        location: "Chennai, India",
-        stack: ["React Native", "Node.js", "PostgreSQL", "Cloudinary"],
-        description:
-          "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
-        src: "/imgs/Sap_app2.jpeg",
-        ctaText: "View Case Study",
-        ctaLink: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793212928/Screenshot_2026-10-29_001127_rllxzr.png",
-        content: () => {
-          return (
-            <p>
-              <br /> <strong>Project Type:</strong> Mobile Application & Institutional ERP
-              <br /> <strong>Key Outcome:</strong> 99.4% student adoption within 14 days of campus rollout.
-              <br />
-              <br />
-              Managing thousands of student records across course schedules, fee verification gates, and exam results created operational bottlenecks. We engineered a unified mobile application backed by a performant cloud database, enabling students and faculty to access academic schedules, verify fees, and track performance in real time.
-            </p>
-          );
-        },
-      },
-      {
-        slug: "chitu-vibes",
-        title: "Chitu Vibes: High-Engagement Commerce Storefront",
-        client: "Chitu Vibes",
-        year: "2025",
-        category: "E-Commerce & Catalog",
-        timeline: "4 Weeks",
-        location: "Chennai, India",
-        stack: ["React", "Tailwind CSS", "WhatsApp Business API", "Vite"],
-        description:
-          "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
-        src: "/imgs/Chitu_vibes_laptop.png",
-        ctaText: "View Case Study",
-        ctaLink: "/case-studies/chitu-vibes",
-        content: () => {
-          return (
-            <p>
-              <br /> <strong>Duration:</strong> March 2025 – April 2025
-              <br /> <strong>Project Type:</strong> High-Conversion E-Commerce Web App
-              <br />
-              <br />
-              Chitu Vibes needed to capture rapidly growing mobile shopping demand for specialized remote-controlled models and drones. We designed a clean, mobile-first product showcase with instantaneous search filters and direct WhatsApp order confirmation, streamlining the entire checkout flow for mobile shoppers.
-            </p>
-          );
-        },
-      },
-      {
-        slug: "sap-checklist-portal",
-        title: "SAP Checklist Portal: Mission-Critical Deployment Gateway",
-        client: "SAP Consulting Group",
-        year: "2025",
-        category: "Enterprise Web Application",
-        timeline: "6 Weeks",
-        location: "Hyderabad, India",
-        stack: ["React", "Node.js", "Express", "Tailwind CSS"],
-        description:
-          "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
-        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793212928/Screenshot_2026-10-29_001127_rllxzr.png",
-        ctaText: "View Case Study",
-        ctaLink: "/case-studies/sap-checklist-portal",
-        content: () => {
-          return (
-            <p>
-              <br /> <strong>Project Type:</strong> Web App – Checklist & Milestone Management
-              <br /> <strong>Result:</strong> Zero deployment gate failures across 12 consecutive enterprise ERP rollouts.
-              <br />
-              <br />
-              Complex enterprise ERP rollouts involve hundreds of verification gates across functional modules. We built a centralized, web-based SAP Checklist Portal that allows project managers and functional consultants to track milestone readiness, assign accountability, and execute cutover verifications with absolute precision.
-            </p>
-          );
-        },
-      },
-      {
         slug: "torque-toyzz",
-        title: "Torque Toyzz: Remote-Controlled Commerce Platform",
+        aliases: [],
+        title: "Torque Toyzz — E-Commerce Platform",
         client: "Torque Toyzz",
-        year: "2025",
-        category: "E-Commerce & WhatsApp Commerce",
-        timeline: "2 Weeks",
-        location: "Chennai, India",
-        stack: ["Next.js", "Tailwind CSS", "WhatsApp Business API"],
+        category: "E-Commerce Platform",
+        filterCategory: "Websites & Web Apps",
+        problem:
+          "Torque Toyzz needed an easy, friction-free online store to showcase remote-controlled vehicles and accessories so mobile shoppers could find products and place orders without a complicated checkout.",
+        whatWeBuilt:
+          "We built a mobile-first product catalog with instant search and direct WhatsApp order confirmation, making the buying flow fast and simple on any phone.",
+        result:
+          "[ADD PROOF: Add real result for Torque Toyzz, e.g., number of products listed, monthly WhatsApp orders, or owner quote]",
+        services: ["Online Product Catalog", "Instant Search", "WhatsApp Ordering"],
+        stack: ["Mobile-First Store", "Instant Search", "WhatsApp Order Flow"],
         description:
-          "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
-        src: "/imgs/Torque_toyzz_tab.jpeg",
+          "Torque Toyzz needed an accessible, frictionless e-commerce experience to showcase high-performance remote-controlled vehicles and accessories. We built a mobile-first catalog with immediate product search and direct WhatsApp order confirmation, simplifying the buying flow for mobile shoppers.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Torque_toyzz_tab_nlvv0z.jpg",
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264875/Torque_toyzz_Laptop_vtuqzm.png",
+        ],
         ctaText: "View Case Study",
-        ctaLink: "/case-studies/torque-toyzz",
-        content: () => {
-          return (
+        ctaLink: "/work/torque-toyzz",
+        deliverables: [
+          "Mobile-friendly catalog for remote-controlled vehicles and accessories",
+          "Instant product search so shoppers find items in seconds",
+          "1-tap WhatsApp order confirmation with zero checkout confusion",
+          "Works smoothly on phones, tablets, and laptops",
+        ],
+        content: () => (
+          <div className="space-y-4">
             <p>
-              <br /> <strong>Project Type:</strong> E-Commerce Platform
-              <br /> <strong>Impact:</strong> 3.4x boost in mobile-driven sales orders within 30 days.
-              <br />
-              <br />
-              Torque Toyzz needed an accessible, frictionless e-commerce experience to showcase high-performance remote-controlled vehicles and accessories. We built a mobile-first catalog with immediate product search and direct WhatsApp order confirmation, simplifying the buying flow for mobile shoppers.
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> Torque Toyzz needed an accessible, friction-free way to showcase remote-controlled vehicles and accessories online, as customers browsing on mobile phones needed a faster way to search and order.
             </p>
-          );
-        },
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We built a mobile-first e-commerce catalog with immediate product search and direct WhatsApp order confirmation, simplifying the entire buying flow for mobile shoppers.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or client feedback from Torque Toyzz, e.g., how much faster customers place orders or owner testimonial].
+            </p>
+          </div>
+        ),
+      },
+      {
+        slug: "iq-bridge",
+        aliases: [],
+        title: "IQ Bridge — E-Learning Platform",
+        client: "IQ Bridge",
+        category: "E-Learning Platform",
+        filterCategory: "Websites & Web Apps",
+        problem:
+          "IQ Bridge, an education platform founded by alumni of IIT and IIM, needed a professional website to communicate their academic expertise and help students connect with quality guidance.",
+        whatWeBuilt:
+          "We designed and built a clear, student-focused website that presents their educational vision, programs, and mentorship approach in a friendly way.",
+        result:
+          "[ADD PROOF: Add real result for IQ Bridge, e.g., student sign-ups, inquiries received, or founder feedback]",
+        services: ["E-Learning Website", "UI/UX Design", "Student Inquiry Flow"],
+        stack: ["Education Website", "Mobile Responsive", "Student Inquiry Flow"],
+        description:
+          "At Cookie, we built the IQ Bridge website to establish a strong digital presence for an education platform founded by alumni of IIT and IIM. We focused on presenting their academic expertise, educational vision, and student-focused approach through a professional, user-friendly website.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264927/iqbridge-1_zgswg3.png",
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264917/iqbridge-2_pqbwq9.png",
+        ],
+        ctaText: "View Case Study",
+        ctaLink: "/work/iq-bridge",
+        deliverables: [
+          "Professional website showcasing IIT and IIM alumni educators",
+          "Clear pages explaining courses, vision, and student guidance",
+          "Easy navigation for students and parents on mobile and desktop",
+          "Simple contact and inquiry flow for new students",
+        ],
+        content: () => (
+          <div className="space-y-4">
+            <p>
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> IQ Bridge, founded by alumni of IIT and IIM, needed a trustworthy online presence that clearly explained their educational vision and helped students connect with their mentorship programs.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We built a clean, user-friendly e-learning website that highlights their academic expertise and student-first approach, making it simple for learners to explore programs and reach out.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or quote from IQ Bridge founders].
+            </p>
+          </div>
+        ),
+      },
+      {
+        slug: "chithu-vibes",
+        aliases: ["chitu-vibes"],
+        title: "Chithu Vibes — Mini Commerce",
+        client: "Chithu Vibes",
+        category: "Mini Commerce",
+        filterCategory: "Websites & Web Apps",
+        problem:
+          "Chithu Vibes creates products that blend Tamil heritage with modern laser craftsmanship and needed an engaging online storefront where customers could explore and buy their creations.",
+        whatWeBuilt:
+          "We built a custom mini-commerce website that highlights their culturally inspired products and gives shoppers a smooth, simple browsing experience.",
+        result:
+          "[ADD PROOF: Add real result for Chithu Vibes, e.g., customer feedback or online orders]",
+        services: ["Mini-Commerce Store", "Product Showcase", "Brand Design"],
+        stack: ["Mini-Commerce Storefront", "Mobile Shopping", "Product Gallery"],
+        description:
+          "At Cookie, we built a mini-commerce website for Chithu Vibes, a brand that blends the richness of Tamil heritage with the precision of modern laser craftsmanship. We focused on creating an engaging digital storefront that showcases its unique, culturally inspired products.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264924/chituvibes1_j2kp0d.png",
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264923/chituvibes2_wddjds.png",
+        ],
+        ctaText: "View Case Study",
+        ctaLink: "/work/chithu-vibes",
+        deliverables: [
+          "Engaging online storefront reflecting Tamil heritage and laser craft",
+          "Visual product catalog designed for easy phone browsing",
+          "Simple product pages that highlight craftsmanship and details",
+          "Smooth ordering experience for retail buyers",
+        ],
+        content: () => (
+          <div className="space-y-4">
+            <p>
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> Chithu Vibes needed a dedicated online storefront to showcase their unique laser-crafted Tamil heritage products instead of relying only on social media posts.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We created an engaging mini-commerce website that puts their culturally inspired products front and center while delivering a smooth browsing experience on mobile and desktop.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or feedback from Chithu Vibes].
+            </p>
+          </div>
+        ),
+      },
+      {
+        slug: "sap-scholar",
+        aliases: ["sap-erp-application"],
+        title: "SAP Scholar — Student App",
+        client: "Sampath Academy of Physics",
+        category: "Android Student App",
+        filterCategory: "Custom Business Systems",
+        problem:
+          "Sampath Academy of Physics, a reputed CBSE coaching institute in North Chennai, needed a convenient way for students and parents to check attendance, marks, fee details, and study materials.",
+        whatWeBuilt:
+          "We developed SAP Scholar, an Android mobile app that brings attendance tracking, exam marks, fee status, and learning materials into one simple app for students.",
+        result:
+          "[ADD PROOF: Add real result for SAP Scholar, e.g., number of students using the app in North Chennai or institute feedback]",
+        services: ["Android Mobile App", "Attendance & Marks", "Fee & Study Material Portal"],
+        stack: ["Android App", "Student Portal", "Institute Communication"],
+        description:
+          "At Cookie, we developed SAP Scholar, an Android application for Sampath Academy of Physics, a reputed CBSE coaching institute in North Chennai. The app provides students with a convenient digital platform to access essential academic information, track attendance, view marks, manage fee details, and access learning materials.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264873/Sap_app_r0dh3j.jpg",
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Sap_app2_o1keyn.jpg",
+        ],
+        ctaText: "View Case Study",
+        ctaLink: "/work/sap-scholar",
+        deliverables: [
+          "Android application built for Sampath Academy of Physics students",
+          "Instant access to attendance records and test marks",
+          "Clear fee payment status and reminders",
+          "Direct access to digital study notes and learning materials",
+        ],
+        content: () => (
+          <div className="space-y-4">
+            <p>
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> Sampath Academy of Physics, a reputed CBSE coaching institute in North Chennai, wanted to simplify how students check their attendance, exam marks, fee records, and study materials.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We developed SAP Scholar, a dedicated Android application that gives students a single convenient place on their phone to track attendance, view marks, manage fee details, and download learning materials.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result, e.g., number of students using SAP Scholar or quote from Sampath Academy of Physics].
+            </p>
+          </div>
+        ),
+      },
+      {
+        slug: "sap-checklist",
+        aliases: ["sap-checklist-portal"],
+        title: "SAP Checklist — Employee Management Software",
+        client: "Sampath Academy of Physics",
+        category: "Employee Management Software",
+        filterCategory: "Custom Business Systems",
+        problem:
+          "Managing staff information, daily tasks, and administrative workflows across the coaching institute was difficult to track manually.",
+        whatWeBuilt:
+          "We developed SAP Checklist, a web-based employee management system for Sampath Academy of Physics to organize staff records, assign and monitor daily tasks, and improve team accountability.",
+        result:
+          "[ADD PROOF: Add real result for SAP Checklist, e.g., number of staff managed or hours saved each week]",
+        services: ["Employee Management System", "Daily Task Tracking", "Admin Dashboard"],
+        stack: ["Web Software", "Staff Directory", "Task Checklist"],
+        description:
+          "At Cookie, we developed SAP Checklist, a web-based employee management solution for Sampath Academy of Physics, a reputed CBSE coaching institute in North Chennai. The platform streamlines employee management by providing a centralized system to organize staff information, monitor tasks, and improve day-to-day administrative workflows.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264874/Checklist_Mockup_laptop_n0glyp.png",
+        ],
+        ctaText: "View Case Study",
+        ctaLink: "/work/sap-checklist",
+        deliverables: [
+          "Centralized web dashboard to organize employee information",
+          "Daily task checklists so staff know exactly what needs to be done",
+          "Clear visibility for management to review completed work",
+          "Simple interface that staff can use without technical training",
+        ],
+        content: () => (
+          <div className="space-y-4">
+            <p>
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> Sampath Academy of Physics needed a simpler way to organize staff information, monitor daily administrative tasks, and keep the team accountable without chasing paper checklists.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We built SAP Checklist, a web-based employee management software that centralizes staff records and daily task tracking in one easy-to-use dashboard.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or feedback from Sampath Academy of Physics management].
+            </p>
+          </div>
+        ),
+      },
+      {
+        slug: "audnex",
+        aliases: [],
+        title: "Audnex — Landing Page",
+        client: "Audnex",
+        category: "Landing Page",
+        filterCategory: "Websites & Web Apps",
+        problem:
+          "Audnex needed a clean, professional website that clearly explained who they are and what they offer to new visitors.",
+        whatWeBuilt:
+          "We designed and built a modern, mobile-friendly landing page that presents Audnex's brand identity and key information clearly.",
+        result:
+          "[ADD PROOF: Add real result for Audnex, e.g., client feedback or inquiries generated]",
+        services: ["Landing Page Design", "Website Development", "Mobile Optimization"],
+        stack: ["Landing Page", "Brand Presentation", "Mobile Friendly"],
+        description:
+          "At Cookie, we designed and developed a landing page for Audnex, focusing on creating a professional digital presence that communicates the brand's identity and value proposition. We aimed to deliver a clean, modern, and responsive user experience that engages visitors, presents key information effectively, and establishes a strong foundation for the brand's online presence.",
+        src: "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
+        imgs: [
+          "https://res.cloudinary.com/dh8zo1lan/image/upload/v1793264916/audnex1_wrdcvt.png",
+        ],
+        ctaText: "View Case Study",
+        ctaLink: "/work/audnex",
+        deliverables: [
+          "Clean, modern landing page communicating Audnex's brand value",
+          "Clear layout that guides visitors to key information and contact options",
+          "Responsive design that works smoothly on phones, tablets, and desktops",
+          "Fast page loading and search-friendly setup",
+        ],
+        content: () => (
+          <div className="space-y-4">
+            <p>
+              <strong className="text-[#F4F4F6]">Client’s problem:</strong> Audnex needed a strong, professional online foundation to explain their brand identity and value proposition to prospective clients.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">What we built:</strong> We designed and built a clean, modern, and responsive landing page that presents their key information clearly and engages visitors on both mobile and desktop.
+            </p>
+            <p>
+              <strong className="text-[#F4F4F6]">Result:</strong> [ADD PROOF: Add specific result or quote from Audnex].
+            </p>
+          </div>
+        ),
       },
     ],
   },
@@ -747,25 +917,26 @@ export const portfoliopage = {
 
 export const navbar = {
   title: ["Cookie Inc", "."],
+  cta: "Get a free quote",
   pages: [
     {
       link: "/",
       name: "Home",
     },
     {
-      link: "/about-us",
-      name: "About",
+      link: "/work",
+      name: "Work",
     },
     {
-      link: "/service",
+      link: "/services",
       name: "Services",
     },
     {
-      link: "/portfolio",
-      name: "Portfolio",
+      link: "/about",
+      name: "About",
     },
     {
-      link: "/contact-us",
+      link: "/contact",
       name: "Contact",
     },
   ],
@@ -777,23 +948,22 @@ export const footer = {
     logo: "/imgs/cookie_white.png",
     highlight: ".",
     description:
-      "We design and build production-ready digital software for ambitious businesses in Chennai and beyond.",
-    email_placeholder: "Enter your work email",
-    email_button: "Get in Touch",
+      "A software and design studio in Chennai. We build websites, mobile apps, and custom business tools with fixed timelines and clear pricing.",
+    email_placeholder: "Enter your email",
+    email_button: "Get a free quote",
   },
   quickLinks: [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about-us" },
-    { name: "Services", href: "/service" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact Us", href: "/contact-us" },
+    { name: "Work", href: "/work" },
+    { name: "Services", href: "/services" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
   ],
   resources: [
-    { name: "Help Center", href: "#" },
-    { name: "FAQs", href: "/#faqs" },
-    { name: "Case Studies", href: "/portfolio" },
-    { name: "Direct WhatsApp Line", href: "https://wa.me/918610663178" },
-    { name: "Start a Project", href: "/contact-us" },
+    { name: "Common Questions", href: "/#faqs" },
+    { name: "Client Work", href: "/work" },
+    { name: "Chat on WhatsApp", href: "https://wa.me/918610663178" },
+    { name: "Get a Free Quote", href: "/contact" },
   ],
   social: [
     { name: "Instagram", href: "https://www.instagram.com/cookieinc_/", icon: Instagram },
@@ -809,7 +979,8 @@ export const footer = {
 };
 
 export const social_links = {
-  whatsapp: "https://wa.me/918610663178",
+  whatsapp:
+    "https://wa.me/918610663178?text=Hey%20Cookie%20Inc.%2C%20I%20want%20to%20learn%20more%20about%20your%20services",
   instagram: "https://www.instagram.com/cookieinc_/",
   linkedin: "https://in.linkedin.com/company/cookieinc",
   twitter: "https://x.com/cookieinc_",

@@ -6,6 +6,7 @@ import BackToTop from "../components/back_to_top";
 import DesktopScrollbar from "../components/desktop_scrollbar";
 import CookieIntroLoader from "../components/cookie_intro_loader";
 import SEOMeta from "../components/seo-meta";
+import { useDynamicFavicon } from "../utils/favicon.util";
 
 import Home from "../pages/home/home";
 import Portfolio from "../pages/portfolio/portfolio";
@@ -26,6 +27,7 @@ const IS_MAINTENANCE_MODE =
  */
 export function MainLayout({ children }) {
   const { pathname, hash } = useLocation();
+  useDynamicFavicon();
 
   useEffect(() => {
     if (hash) {

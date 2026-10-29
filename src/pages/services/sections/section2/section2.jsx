@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { social_links } from "../../../../data/data";
 
 export default function Section2() {
   const prefersReducedMotion = useReducedMotion();
@@ -38,6 +38,9 @@ export default function Section2() {
   ];
 
   const currentGoal = GOALS.find((g) => g.id === selectedGoal) || GOALS[0];
+  const whatsappHref = `https://wa.me/${social_links.phone_raw}?text=${encodeURIComponent(
+    `Hey Cookie Inc., I want to learn more about ${currentGoal.recommended}`
+  )}`;
   const tabRefs = useRef([]);
 
   const handleTabKeyDown = (e, index) => {
@@ -142,12 +145,14 @@ export default function Section2() {
             </AnimatePresence>
           </div>
 
-          <Link
-            to="/contact"
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="shrink-0 px-4 py-2 rounded-full border border-white/[0.08] hover:border-white/[0.16] bg-white/[0.02] hover:bg-white/[0.04] text-[13px] sm:text-[14px] text-[#F7F8F8] font-medium transition-colors"
           >
-            Discuss this scope
-          </Link>
+            Get a quote
+          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { social_links } from "../../../../data/data";
+import { social_links, contactpage } from "../../../../data/data";
 import { sendInquiryEmail } from "../../../../utils/emailjs.services.jsx";
+import { setFaviconState } from "../../../../utils/favicon.util.jsx";
 import {
   MessageSquare,
   Mail,
@@ -36,12 +37,12 @@ export default function Section2() {
   }, [isSuccess]);
 
   const projectTypes = [
-    { value: "website", label: "New Website or Web App" },
-    { value: "mobile", label: "Mobile App (iOS / Android)" },
-    { value: "ecommerce", label: "E-Commerce Store & Checkout" },
-    { value: "operations", label: "Custom Business Tool or Dashboard" },
-    { value: "branding", label: "Visual Identity & Design System" },
-    { value: "other", label: "General Project Consultation" },
+    { value: "website", label: "Business Website or Landing Page" },
+    { value: "ecommerce", label: "Online Store or Mini-Commerce" },
+    { value: "mobile", label: "Mobile App (Android / iOS)" },
+    { value: "operations", label: "Custom Staff or Student Management Software" },
+    { value: "branding", label: "Logo, Brand & Screen Design" },
+    { value: "other", label: "Not sure yet — need advice" },
   ];
 
   const validateField = (name, value) => {
@@ -60,7 +61,7 @@ export default function Section2() {
       return "Please enter a phone or WhatsApp number.";
     }
     if (name === "message" && !value.trim()) {
-      return "Please describe what you are looking to build.";
+      return "Please tell us a little about what you want to build.";
     }
     return undefined;
   };
@@ -116,6 +117,7 @@ export default function Section2() {
 
     setIsSubmitting(true);
     setSubmitError(null);
+    setFaviconState("prompt");
 
     const selectedType = projectTypes.find((t) => t.value === formData.projectType);
     const projectTitle = selectedType ? selectedType.label : formData.projectType;
@@ -130,6 +132,7 @@ export default function Section2() {
       });
 
       setIsSuccess(true);
+      setFaviconState("success");
       setFormData({
         name: "",
         email: "",
@@ -141,6 +144,7 @@ export default function Section2() {
       setErrors({});
     } catch (err) {
       console.error("EmailJS submission error:", err);
+      setFaviconState("idle");
       setSubmitError(
         "Failed to send your message. Please reach us directly on WhatsApp or email (contact@cookieinc.in)."
       );
@@ -166,10 +170,10 @@ export default function Section2() {
                   <Check className="w-5 h-5 text-[#F7F8F8]" aria-hidden="true" />
                 </div>
                 <h2 className="text-[22px] sm:text-[24px] font-medium text-[#F7F8F8] tracking-tight mb-2.5">
-                  Message sent
+                  Message received
                 </h2>
                 <p className="text-[14px] sm:text-[15px] text-[#8A8F98] max-w-sm leading-relaxed mb-7">
-                  Our team in Chennai will review your project details and get back to you within 1 business day.
+                  Thank you! We reply within 24 hours via WhatsApp, phone, or email with next steps and a clear quote.
                 </p>
                 <button
                   type="button"
@@ -183,10 +187,10 @@ export default function Section2() {
               <form onSubmit={handleSubmit} noValidate className="linear-fade-in flex flex-col gap-6">
                 <div>
                   <h2 className="text-[20px] sm:text-[22px] font-medium text-[#F7F8F8] tracking-[-0.02em] mb-1">
-                    Project inquiry
+                    Request your free quote
                   </h2>
                   <p className="text-[13px] sm:text-[14px] text-[#8A8F98]">
-                    Fill out the form below and we will get back to you shortly.
+                    We reply within 24 hours. No technical jargon and no obligation to hire us.
                   </p>
                 </div>
 
@@ -305,7 +309,7 @@ export default function Section2() {
                     htmlFor="field-projectType"
                     className="text-[13px] sm:text-[14px] font-medium text-[#F7F8F8]"
                   >
-                    What are you looking to build?
+                    What do you want to build?
                   </label>
                   <div className="relative">
                     <select
@@ -335,7 +339,7 @@ export default function Section2() {
                     htmlFor="field-message"
                     className="text-[13px] sm:text-[14px] font-medium text-[#F7F8F8] flex items-center gap-1"
                   >
-                    <span>Tell us about your project or goals</span>
+                    <span>Tell us about your business and what you need</span>
                     <span className="text-[#8A8F98] select-none" aria-hidden="true">*</span>
                   </label>
                   <textarea
@@ -346,7 +350,7 @@ export default function Section2() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled={isSubmitting}
-                    placeholder="Share a few sentences on what you need, your target audience, and your preferred timeline."
+                    placeholder="Share a few simple sentences about your business and what problem you want to solve."
                     aria-required="true"
                     aria-invalid={Boolean(errors.message && touched.message)}
                     aria-describedby={errors.message && touched.message ? "message-error" : undefined}
@@ -384,12 +388,12 @@ export default function Section2() {
                       <span>Sending</span>
                     </>
                   ) : (
-                    <span>Send project inquiry</span>
+                    <span>Get a free quote</span>
                   )}
                 </button>
 
-                <p className="text-[12px] text-[#62666D] text-center">
-                  Typically answered within 1 business day · Zero obligation
+                <p className="text-[12px] text-[#8A8F98] text-center">
+                  We reply within 24 hours · Free quote, zero obligation
                 </p>
               </form>
             )}
@@ -400,10 +404,10 @@ export default function Section2() {
         <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col gap-10">
           <div>
             <h2 className="text-[20px] sm:text-[22px] font-medium text-[#F7F8F8] tracking-[-0.02em] mb-2">
-              Prefer to talk directly?
+              Prefer to chat on WhatsApp?
             </h2>
             <p className="text-[14px] sm:text-[15px] text-[#8A8F98] leading-relaxed mb-6">
-              Skip the form and reach our founders directly on WhatsApp or email.
+              Skip the form and message our founders directly on WhatsApp or email.
             </p>
 
             <div className="rounded-[14px] border border-white/[0.08] bg-[rgba(245,235,220,0.02)] overflow-hidden divide-y divide-white/[0.06] shadow-[inset_0_1px_0_rgba(217,165,91,0.08)]">
@@ -417,10 +421,10 @@ export default function Section2() {
                   <MessageSquare className="w-[18px] h-[18px] text-[#8A8F98] group-hover:text-[#D9A55B] transition-colors shrink-0" aria-hidden="true" />
                   <div>
                     <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] block">
-                      WhatsApp Message
+                      Message us on WhatsApp
                     </span>
                     <span className="text-[12px] sm:text-[13px] text-[#8A8F98]">
-                      Fastest for quick inquiries
+                      Fastest way to talk (+91 86106 63178)
                     </span>
                   </div>
                 </div>
@@ -441,7 +445,7 @@ export default function Section2() {
                       contact@cookieinc.in
                     </span>
                     <span className="text-[12px] sm:text-[13px] text-[#8A8F98]">
-                      Replies within 24 hours
+                      We reply within 24 hours
                     </span>
                   </div>
                 </div>
@@ -455,10 +459,10 @@ export default function Section2() {
                 <MapPin className="w-[18px] h-[18px] text-[#D9A55B]/80 shrink-0" aria-hidden="true" />
                 <div>
                   <span className="text-[14px] sm:text-[15px] font-medium text-[#F7F8F8] block">
-                    Chennai, India
+                    Chennai, Tamil Nadu, India
                   </span>
                   <span className="text-[12px] sm:text-[13px] text-[#8A8F98]">
-                    Studio headquarters and engineering base
+                    Speak with us in Tamil or English
                   </span>
                 </div>
               </div>
@@ -467,24 +471,24 @@ export default function Section2() {
 
           <div>
             <h3 className="text-[16px] sm:text-[17px] font-medium text-[#F7F8F8] tracking-[-0.01em] mb-6">
-              What happens after you reach out?
+              What happens after you contact us?
             </h3>
             <ol className="relative pl-7 space-y-6 before:absolute before:left-[10px] before:top-2 before:bottom-3 before:w-[1px] before:bg-white/[0.08]">
               {[
                 {
                   step: "1",
-                  title: "Initial review within 24 hours",
-                  desc: "We read your requirements and check our immediate schedule.",
+                  title: "We reply within 24 hours",
+                  desc: "One of our founders reads your message and reaches out on WhatsApp, phone, or email.",
                 },
                 {
                   step: "2",
-                  title: "A quick 20-minute discussion",
-                  desc: "A no-pressure conversation with the builders to clarify your exact objectives.",
+                  title: "Free 20-minute discovery call",
+                  desc: "We listen to your business goals and suggest the simplest way to build what you need.",
                 },
                 {
                   step: "3",
-                  title: "Fixed scope, price, and timeline",
-                  desc: "You get a transparent written quote. No hidden costs, ever.",
+                  title: "Fixed price quote & delivery date",
+                  desc: "You get a clear written plan with the exact cost and timeline. Zero hidden charges.",
                 },
               ].map((item, idx) => (
                 <li
@@ -510,8 +514,30 @@ export default function Section2() {
 
           <div className="flex items-center gap-2.5 text-[13px] text-[#8A8F98]">
             <ShieldCheck className="w-[18px] h-[18px] text-[#8A8F98] shrink-0" aria-hidden="true" />
-            <span>We never share your information or send unrequested marketing emails.</span>
+            <span>Your details stay private. We never send spam.</span>
           </div>
+        </div>
+      </div>
+
+      {/* Short Contact FAQ Block */}
+      <div className="max-w-[1180px] mx-auto mt-16 pt-12 border-t border-white/[0.08]">
+        <h2 className="text-[22px] sm:text-[26px] font-medium text-[#F7F8F8] tracking-[-0.02em] mb-6">
+          Quick answers before you message us
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {contactpage.faqs.map((faq) => (
+            <div
+              key={faq.question}
+              className="rounded-[12px] border border-white/[0.08] bg-white/[0.015] p-5"
+            >
+              <h3 className="text-[15px] font-medium text-[#F7F8F8] mb-2">
+                {faq.question}
+              </h3>
+              <p className="text-[14px] text-[#8A8F98] leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

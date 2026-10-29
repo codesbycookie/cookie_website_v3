@@ -23,7 +23,6 @@ export default function Section1({ study }) {
           <span className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[#D9A55B]">
             {study.category || "Case Study"}
           </span>
-          {study.year && <span>· {study.year}</span>}
           {study.client && <span>· {study.client}</span>}
         </div>
 
@@ -35,37 +34,29 @@ export default function Section1({ study }) {
           {study.description}
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/10 text-[14px]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10 text-[14px]">
           <div>
             <span className="block text-[12px] font-medium uppercase tracking-wider text-[#767B85] mb-1">
               Client
             </span>
             <span className="text-[#F4F4F6] font-medium">
-              {study.client || study.title.split("–")[0].trim()}
+              {study.client || study.title.split("—")[0].trim()}
             </span>
           </div>
           <div>
             <span className="block text-[12px] font-medium uppercase tracking-wider text-[#767B85] mb-1">
-              Services
+              Category
             </span>
             <span className="text-[#F4F4F6] font-medium">
-              {study.services?.join(", ") || "Web App & Design"}
+              {study.category || "Web & Mobile Software"}
             </span>
           </div>
           <div>
             <span className="block text-[12px] font-medium uppercase tracking-wider text-[#767B85] mb-1">
-              Timeline
+              Deliverables
             </span>
             <span className="text-[#F4F4F6] font-medium">
-              {study.timeline || "3 Weeks"}
-            </span>
-          </div>
-          <div>
-            <span className="block text-[12px] font-medium uppercase tracking-wider text-[#767B85] mb-1">
-              Location
-            </span>
-            <span className="text-[#F4F4F6] font-medium">
-              {study.location || "India"}
+              {study.services?.join(", ") || "Design & Development"}
             </span>
           </div>
         </div>

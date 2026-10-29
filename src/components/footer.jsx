@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { footer, social_links } from "../data/data";
+import { social_links } from "../data/data";
 import CookieLogo from "./cookie_logo";
 
 const COLUMNS = [
@@ -18,9 +18,11 @@ const COLUMNS = [
     title: "Case Studies",
     links: [
       { name: "Torque Toyzz (E-Commerce)", to: "/work/torque-toyzz" },
-      { name: "SAP ERP Campus Hub", to: "/work/sap-erp-application" },
-      { name: "Chitu Vibes (Commerce)", to: "/work/chitu-vibes" },
-      { name: "SAP Checklist Portal", to: "/work/sap-checklist-portal" },
+      { name: "IQ Bridge (E-Learning)", to: "/work/iq-bridge" },
+      { name: "Chithu Vibes (Mini Commerce)", to: "/work/chithu-vibes" },
+      { name: "SAP Scholar (Student App)", to: "/work/sap-scholar" },
+      { name: "SAP Checklist (Employee Software)", to: "/work/sap-checklist" },
+      { name: "Audnex (Landing Page)", to: "/work/audnex" },
     ],
   },
   {
@@ -78,7 +80,7 @@ export default function Footer() {
                       {link.to ? (
                         <Link
                           to={link.to}
-                          className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center group/link"
+                           className="text-[13px] text-[#9EA3AD] hover:text-[#F4F4F6] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A55B] rounded-[2px] min-h-[36px] inline-flex items-center group/link"
                         >
                           <span className="relative">
                             {link.name}
@@ -106,7 +108,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Oversized dark titanium "Cookie Inc." wordmark (iPhone-inspired bottom-to-top gradient) with cream dot */}
+        {/* Oversized dark titanium "Cookie Inc." wordmark */}
         <div className="relative w-full flex items-center justify-center overflow-hidden select-none pointer-events-none my-8 sm:my-14" aria-hidden="true">
           <span className="inline-flex items-center justify-center text-[clamp(2.4rem,11vw,12.5rem)] font-bold tracking-[-0.035em] sm:tracking-[-0.04em] text-center whitespace-nowrap leading-none max-w-full">
             <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#1E2128] via-[#3E4554] to-[#6D7486]">
@@ -118,7 +120,6 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Policies */}
         <div className="pt-8 border-t border-white/[0.08] flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-6 text-[12px] sm:text-[13px]">
-          {/* Copyright statement */}
           <div className="text-center sm:text-left text-[#8A8F98]">
             <p className="leading-relaxed">
               © {new Date().getFullYear()} Cookie Inc<span className="text-[#D9A55B]">.</span> All rights reserved.
@@ -129,7 +130,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Legal Policies & Cookie Preferences */}
           <div className="flex items-center gap-3 sm:gap-6 text-[#8A8F98] flex-wrap justify-center sm:justify-end">
             <Link to="/privacy" className="hover:text-[#F7F8F8] transition-colors py-1">
               Privacy Policy

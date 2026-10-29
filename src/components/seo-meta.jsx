@@ -3,19 +3,23 @@ import { useLocation } from "react-router-dom";
 
 export const SITE_URL = "https://cookieinc.in";
 
-/**
- * Maps alias routes to their canonical primary path so Google Search Console
- * never flags duplicate content across alias routes.
- */
 export const CANONICAL_PATH_MAP = {
   "/portfolio": "/work",
   "/service": "/services",
   "/about-us": "/about",
   "/contact-us": "/contact",
-  "/case-studies/sap-erp-application": "/work/sap-erp-application",
-  "/case-studies/chitu-vibes": "/work/chitu-vibes",
-  "/case-studies/sap-checklist-portal": "/work/sap-checklist-portal",
+  "/work/chitu-vibes": "/work/chithu-vibes",
+  "/work/sap-erp-application": "/work/sap-scholar",
+  "/work/sap-checklist-portal": "/work/sap-checklist",
   "/case-studies/torque-toyzz": "/work/torque-toyzz",
+  "/case-studies/iq-bridge": "/work/iq-bridge",
+  "/case-studies/chithu-vibes": "/work/chithu-vibes",
+  "/case-studies/chitu-vibes": "/work/chithu-vibes",
+  "/case-studies/sap-scholar": "/work/sap-scholar",
+  "/case-studies/sap-erp-application": "/work/sap-scholar",
+  "/case-studies/sap-checklist": "/work/sap-checklist",
+  "/case-studies/sap-checklist-portal": "/work/sap-checklist",
+  "/case-studies/audnex": "/work/audnex",
 };
 
 export function resolveCanonicalPath(pathname) {
@@ -25,80 +29,72 @@ export function resolveCanonicalPath(pathname) {
 
 export const ROUTE_META = {
   "/": {
-    title: "Cookie Inc. — Chennai-based Software Studio",
-    desc: "We build websites, mobile apps, and custom tools that help ambitious companies grow. Shipped by engineers in Chennai.",
+    title: "Websites, Apps & Software in Chennai | Cookie Inc.",
+    desc: "We design and build websites, mobile apps, and custom business software in Chennai. Fixed timelines, clear pricing, and direct access to our founders.",
   },
   "/work": {
-    title: "Selected Work & Case Studies | Cookie Inc.",
-    desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
+    title: "Our Work & Client Case Studies | Cookie Inc.",
+    desc: "See the websites, e-learning platforms, mini-commerce stores, and mobile apps we have built for businesses and institutes.",
   },
   "/portfolio": {
-    title: "Selected Work & Case Studies | Cookie Inc.",
-    desc: "Real software shipped for real businesses. Production web apps, mobile products, and systems delivered by engineers in Chennai.",
+    title: "Our Work & Client Case Studies | Cookie Inc.",
+    desc: "See the websites, e-learning platforms, mini-commerce stores, and mobile apps we have built for businesses and institutes.",
   },
   "/services": {
-    title: "Services & Defined Packages | Cookie Inc.",
-    desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
+    title: "Web Design, Mobile Apps & Software | Cookie Inc.",
+    desc: "Websites, online stores, Android & iOS apps, branding, and staff software built in Chennai with fixed timelines and clear pricing.",
   },
   "/service": {
-    title: "Services & Defined Packages | Cookie Inc.",
-    desc: "Transparent software packages and capabilities for ambitious businesses. Websites, mobile apps, and custom business tools.",
+    title: "Web Design, Mobile Apps & Software | Cookie Inc.",
+    desc: "Websites, online stores, Android & iOS apps, branding, and staff software built in Chennai with fixed timelines and clear pricing.",
   },
   "/about": {
-    title: "About the Studio | Cookie Inc.",
-    desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
+    title: "About Cookie Inc. | Software Studio in Chennai",
+    desc: "Meet Cookie Inc., a Chennai software studio helping business owners, institutes, and shops launch websites, apps, and custom tools.",
   },
   "/about-us": {
-    title: "About the Studio | Cookie Inc.",
-    desc: "We started Cookie Inc. to give ambitious businesses dependable software without agency overhead or unnecessary complexity. A focused studio in Chennai dedicated to craft.",
+    title: "About Cookie Inc. | Software Studio in Chennai",
+    desc: "Meet Cookie Inc., a Chennai software studio helping business owners, institutes, and shops launch websites, apps, and custom tools.",
   },
   "/contact": {
-    title: "Start a Project | Cookie Inc.",
-    desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
+    title: "Contact Us for a Free Quote | Cookie Inc. Chennai",
+    desc: "Tell us what you want to build. We reply within 24 hours with honest advice, a realistic timeline, and a clear quote.",
   },
   "/contact-us": {
-    title: "Start a Project | Cookie Inc.",
-    desc: "Tell us about what you want to build. We reply within 1 business day with clear recommendations and a realistic quote.",
+    title: "Contact Us for a Free Quote | Cookie Inc. Chennai",
+    desc: "Tell us what you want to build. We reply within 24 hours with honest advice, a realistic timeline, and a clear quote.",
   },
   "/privacy": {
     title: "Privacy Policy | Cookie Inc.",
-    desc: "Cookie Inc. privacy practices and data commitments.",
+    desc: "How Cookie Inc. protects your contact details and project information.",
   },
   "/terms": {
     title: "Terms of Service | Cookie Inc.",
-    desc: "Standard terms and conditions governing Cookie Inc. studio engagements.",
-  },
-  "/work/sap-erp-application": {
-    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
-    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
-  },
-  "/case-studies/sap-erp-application": {
-    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
-    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
-  },
-  "/work/chitu-vibes": {
-    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
-    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
-  },
-  "/case-studies/chitu-vibes": {
-    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
-    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
-  },
-  "/work/sap-checklist-portal": {
-    title: "SAP Checklist Portal Case Study | Cookie Inc.",
-    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
-  },
-  "/case-studies/sap-checklist-portal": {
-    title: "SAP Checklist Portal Case Study | Cookie Inc.",
-    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
+    desc: "Clear terms and conditions for working with Cookie Inc. software studio.",
   },
   "/work/torque-toyzz": {
-    title: "Torque Toyzz Case Study | Cookie Inc.",
-    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
+    title: "Torque Toyzz E-Commerce Case Study | Cookie Inc.",
+    desc: "How we built a mobile-first RC vehicle catalog with instant search and direct WhatsApp ordering for Torque Toyzz.",
   },
-  "/case-studies/torque-toyzz": {
-    title: "Torque Toyzz Case Study | Cookie Inc.",
-    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
+  "/work/iq-bridge": {
+    title: "IQ Bridge E-Learning Case Study | Cookie Inc.",
+    desc: "How we designed and built a student-focused e-learning website for IQ Bridge, founded by IIT and IIM alumni.",
+  },
+  "/work/chithu-vibes": {
+    title: "Chithu Vibes Mini-Commerce Case Study | Cookie Inc.",
+    desc: "How we built a custom mini-commerce website for Chithu Vibes to showcase laser-crafted Tamil heritage products.",
+  },
+  "/work/sap-scholar": {
+    title: "SAP Scholar Student App Case Study | Cookie Inc.",
+    desc: "How we built an Android app for Sampath Academy of Physics in North Chennai to track attendance, marks, and fees.",
+  },
+  "/work/sap-checklist": {
+    title: "SAP Checklist Employee Software Case Study | Cookie Inc.",
+    desc: "How we built a web-based staff and task management tool for Sampath Academy of Physics in North Chennai.",
+  },
+  "/work/audnex": {
+    title: "Audnex Landing Page Case Study | Cookie Inc.",
+    desc: "How we designed and built a clean, modern, mobile-friendly landing page for Audnex.",
   },
 };
 

@@ -18,14 +18,12 @@ const ROUTES = [
   "/contact-us",
   "/privacy",
   "/terms",
-  "/work/sap-erp-application",
-  "/work/chitu-vibes",
-  "/work/sap-checklist-portal",
   "/work/torque-toyzz",
-  "/case-studies/sap-erp-application",
-  "/case-studies/chitu-vibes",
-  "/case-studies/sap-checklist-portal",
-  "/case-studies/torque-toyzz",
+  "/work/iq-bridge",
+  "/work/chithu-vibes",
+  "/work/sap-scholar",
+  "/work/sap-checklist",
+  "/work/audnex",
 ];
 
 const CANONICAL_PATH_MAP = {
@@ -33,10 +31,9 @@ const CANONICAL_PATH_MAP = {
   "/service": "/services",
   "/about-us": "/about",
   "/contact-us": "/contact",
-  "/case-studies/sap-erp-application": "/work/sap-erp-application",
-  "/case-studies/chitu-vibes": "/work/chitu-vibes",
-  "/case-studies/sap-checklist-portal": "/work/sap-checklist-portal",
-  "/case-studies/torque-toyzz": "/work/torque-toyzz",
+  "/work/chitu-vibes": "/work/chithu-vibes",
+  "/work/sap-erp-application": "/work/sap-scholar",
+  "/work/sap-checklist-portal": "/work/sap-checklist",
 };
 
 const ROUTE_META = {
@@ -84,37 +81,29 @@ const ROUTE_META = {
     title: "Terms of Service | Cookie Inc.",
     desc: "Standard terms and conditions governing Cookie Inc. studio engagements.",
   },
-  "/work/sap-erp-application": {
-    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
-    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
-  },
-  "/case-studies/sap-erp-application": {
-    title: "SAP ERP Campus Application Case Study | Cookie Inc.",
-    desc: "A student-focused SAP ERP mobile application designed to streamline academic records, real-time fee verifications, and faculty communication.",
-  },
-  "/work/chitu-vibes": {
-    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
-    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
-  },
-  "/case-studies/chitu-vibes": {
-    title: "Chitu Vibes E-Commerce Case Study | Cookie Inc.",
-    desc: "A rapid online catalog and storefront built for a leading retailer of remote-controlled models, featuring instant mobile search and 1-tap WhatsApp checkout.",
-  },
-  "/work/sap-checklist-portal": {
-    title: "SAP Checklist Portal Case Study | Cookie Inc.",
-    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
-  },
-  "/case-studies/sap-checklist-portal": {
-    title: "SAP Checklist Portal Case Study | Cookie Inc.",
-    desc: "A centralized verification gateway for enterprise SAP consultants to manage tasks across multi-module configuration, testing, and cutover.",
-  },
   "/work/torque-toyzz": {
-    title: "Torque Toyzz Case Study | Cookie Inc.",
-    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
+    title: "Torque Toyzz — E-Commerce Platform Case Study | Cookie Inc.",
+    desc: "Mobile-first RC commerce catalog with immediate product search and direct WhatsApp order confirmation, simplifying the buying flow for mobile shoppers.",
   },
-  "/case-studies/torque-toyzz": {
-    title: "Torque Toyzz Case Study | Cookie Inc.",
-    desc: "A fast online catalog built for a premium remote-controlled model retailer with direct WhatsApp ordering and automated customer engagement.",
+  "/work/iq-bridge": {
+    title: "IQ Bridge — E-Learning Platform Case Study | Cookie Inc.",
+    desc: "Digital learning platform founded by IIT and IIM alumni presenting academic expertise, educational vision, and student-focused online guidance.",
+  },
+  "/work/chithu-vibes": {
+    title: "Chithu Vibes — Mini Commerce Case Study | Cookie Inc.",
+    desc: "Mini-commerce storefront blending the richness of Tamil heritage with modern laser craftsmanship in an engaging digital shopping experience.",
+  },
+  "/work/sap-scholar": {
+    title: "SAP Scholar — Student App Case Study | Cookie Inc.",
+    desc: "Android application for Sampath Academy of Physics in North Chennai to track attendance, view marks, manage fee details, and access learning materials.",
+  },
+  "/work/sap-checklist": {
+    title: "SAP Checklist — Employee Management Software Case Study | Cookie Inc.",
+    desc: "Web-based employee management software for Sampath Academy of Physics to organize staff records, monitor tasks, and streamline administrative workflows.",
+  },
+  "/work/audnex": {
+    title: "Audnex — Landing Page Case Study | Cookie Inc.",
+    desc: "Clean, modern, and responsive landing page designed to communicate Audnex's brand identity, value proposition, and online authority.",
   },
 };
 
@@ -145,7 +134,6 @@ async function prerender() {
   }
 
   const template = fs.readFileSync(templatePath, "utf-8");
-  // Preserve original template with <!--ssr-outlet--> for dynamic SSR runtime
   fs.writeFileSync(path.resolve(__dirname, "dist/client/_template.html"), template, "utf-8");
   const { render } = await import("./dist/server/entry-server.js");
 
@@ -153,7 +141,6 @@ async function prerender() {
 
   for (const url of ROUTES) {
     let { html: appHtml } = render(url);
-    // Strip non-critical image preloads emitted by React 19 SSR to preserve network bandwidth for CSS/JS
     appHtml = appHtml.replace(/<link rel="preload" as="image" href=".*?"\/>/g, "");
     let html = template.replace("<!--ssr-outlet-->", appHtml);
     html = injectMeta(html, url);
@@ -165,7 +152,6 @@ async function prerender() {
     fs.writeFileSync(targetFile, html, "utf-8");
     console.log(`  ✓ Pre-rendered: ${url} -> dist/client/${relativePath}`);
 
-    // Also emit flat .html file for hosts that match clean URLs without trailing slash directory indexes
     if (url !== "/") {
       const flatRelativePath = `${url.replace(/^\//, "")}.html`;
       const flatTargetFile = path.resolve(__dirname, "dist/client", flatRelativePath);

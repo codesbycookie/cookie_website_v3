@@ -11,7 +11,10 @@ export default function CaseStudy() {
   const { slug } = useParams();
 
   const study = portfoliopage.section4.cards.find(
-    (c) => c.slug === slug || c.ctaLink?.endsWith(`/${slug}`)
+    (c) =>
+      c.slug === slug ||
+      c.aliases?.includes(slug) ||
+      c.ctaLink?.endsWith(`/${slug}`)
   );
 
   useEffect(() => {
